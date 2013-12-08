@@ -7,7 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CShop.h"
 
-@interface CCoreManager : NSObject
+
+@interface CCoreManager : NSObject{
+    
+    //Array of timers
+    NSMutableArray *arrShops;
+}
+
+//Array of timers
+@property (strong, nonatomic) NSMutableArray *arrShops;
+
+-(void) addShop:(CShop*) r_CShop;
+-(NSArray*) listShop;
+
+
+-(void) fillWithSampleData;
 
 @end

@@ -121,7 +121,7 @@
 		5A002D8C185478BD00E324C2 /* eShop */ = {
 			isa = PBXGroup;
 			children = (
-				5A002DBE1854791300E324C2 /* Core */,
+				5A002DBE1854791300E324C2 /* Model */,
 				5A002D95185478BD00E324C2 /* AppDelegate.h */,
 				5A002D96185478BD00E324C2 /* AppDelegate.m */,
 				5A002D98185478BD00E324C2 /* Main.storyboard */,
@@ -164,7 +164,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		5A002DBE1854791300E324C2 /* Core */ = {
+		5A002DBE1854791300E324C2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				5A002DC218547C7E00E324C2 /* CShop.h */,
@@ -172,7 +172,7 @@
 				5A002DC518547CE300E324C2 /* CCoreManager.h */,
 				5A002DC618547CE300E324C2 /* CCoreManager.m */,
 			);
-			name = Core;
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

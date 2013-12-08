@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CShop : NSObject
+@interface CShop : NSObject <NSCoding>
+
+@property (strong,nonatomic) NSString *sName;
+
+
+-(id)initWithName:(NSString*)p_strName;
 
 @end

@@ -8,11 +8,20 @@
 
 #import "AppDelegate.h"
 
+#import "CDatabase.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    
+     NSLog(@"DB PAth:%@",[CDatabase getDBPath]);
+    [CDatabase createTables];
+    [CDatabase fillData];
+    
+    
     return YES;
 }
 							

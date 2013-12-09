@@ -24,6 +24,8 @@
 		5A002DB5185478BD00E324C2 /* eShopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A002DB4185478BD00E324C2 /* eShopTests.m */; };
 		5A002DC418547C7E00E324C2 /* CShop.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A002DC318547C7E00E324C2 /* CShop.m */; };
 		5A002DC718547CE300E324C2 /* CCoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A002DC618547CE300E324C2 /* CCoreManager.m */; };
+		5AAAAB361856515F00319E87 /* CDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AAAAB351856515F00319E87 /* CDatabase.m */; };
+		5AAAAB381856578600319E87 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AAAAB371856578600319E87 /* libsqlite3.0.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,10 @@
 		5A002DC318547C7E00E324C2 /* CShop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CShop.m; path = Core/CShop.m; sourceTree = "<group>"; };
 		5A002DC518547CE300E324C2 /* CCoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCoreManager.h; path = Core/CCoreManager.h; sourceTree = "<group>"; };
 		5A002DC618547CE300E324C2 /* CCoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCoreManager.m; path = Core/CCoreManager.m; sourceTree = "<group>"; };
+		5AAAAB311856507F00319E87 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		5AAAAB341856515F00319E87 /* CDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDatabase.h; path = Database/CDatabase.h; sourceTree = "<group>"; };
+		5AAAAB351856515F00319E87 /* CDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDatabase.m; path = Database/CDatabase.m; sourceTree = "<group>"; };
+		5AAAAB371856578600319E87 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AAAAB381856578600319E87 /* libsqlite3.0.dylib in Frameworks */,
 				5A002D89185478BD00E324C2 /* CoreGraphics.framework in Frameworks */,
 				5A002D8B185478BD00E324C2 /* UIKit.framework in Frameworks */,
 				5A002D87185478BD00E324C2 /* Foundation.framework in Frameworks */,
@@ -110,6 +117,8 @@
 		5A002D85185478BD00E324C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5AAAAB371856578600319E87 /* libsqlite3.0.dylib */,
+				5AAAAB311856507F00319E87 /* libsqlite3.dylib */,
 				5A002D86185478BD00E324C2 /* Foundation.framework */,
 				5A002D88185478BD00E324C2 /* CoreGraphics.framework */,
 				5A002D8A185478BD00E324C2 /* UIKit.framework */,
@@ -121,6 +130,7 @@
 		5A002D8C185478BD00E324C2 /* eShop */ = {
 			isa = PBXGroup;
 			children = (
+				5AAAAB331856513700319E87 /* Database */,
 				5A002DBE1854791300E324C2 /* Model */,
 				5A002D95185478BD00E324C2 /* AppDelegate.h */,
 				5A002D96185478BD00E324C2 /* AppDelegate.m */,
@@ -173,6 +183,15 @@
 				5A002DC618547CE300E324C2 /* CCoreManager.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		5AAAAB331856513700319E87 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				5AAAAB341856515F00319E87 /* CDatabase.h */,
+				5AAAAB351856515F00319E87 /* CDatabase.m */,
+			);
+			name = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A002DC418547C7E00E324C2 /* CShop.m in Sources */,
+				5AAAAB361856515F00319E87 /* CDatabase.m in Sources */,
 				5A002DA0185478BD00E324C2 /* SecondViewController.m in Sources */,
 				5A002D97185478BD00E324C2 /* AppDelegate.m in Sources */,
 				5A002D9D185478BD00E324C2 /* FirstViewController.m in Sources */,

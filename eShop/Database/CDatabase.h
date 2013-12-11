@@ -21,5 +21,6 @@
 +(void) createTables;
 +(void) dropTables;
 +(void) fillData;
++(NSMutableArray*) getShopList;
 
 @end

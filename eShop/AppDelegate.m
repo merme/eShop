@@ -16,11 +16,10 @@
 {
     // Override point for customization after application launch.
     
-    
-     NSLog(@"DB PAth:%@",[CDatabase getDBPath]);
+    [CDatabase dropTables];
     [CDatabase createTables];
     [CDatabase fillData];
-    
+    NSMutableArray* ns=[CDatabase getShopList];
     
     return YES;
 }

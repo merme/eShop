@@ -26,6 +26,7 @@
 		5A002DC718547CE300E324C2 /* CCoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A002DC618547CE300E324C2 /* CCoreManager.m */; };
 		5AAAAB361856515F00319E87 /* CDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AAAAB351856515F00319E87 /* CDatabase.m */; };
 		5AAAAB381856578600319E87 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AAAAB371856578600319E87 /* libsqlite3.0.dylib */; };
+		5AB6C5421858FA020009A1D6 /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5AB6C5411858FA020009A1D6 /* TODO.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		5AAAAB341856515F00319E87 /* CDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDatabase.h; path = Database/CDatabase.h; sourceTree = "<group>"; };
 		5AAAAB351856515F00319E87 /* CDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDatabase.m; path = Database/CDatabase.m; sourceTree = "<group>"; };
 		5AAAAB371856578600319E87 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		5AB6C5411858FA020009A1D6 /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 		5A002D8C185478BD00E324C2 /* eShop */ = {
 			isa = PBXGroup;
 			children = (
+				5AB6C5411858FA020009A1D6 /* TODO.txt */,
 				5AAAAB331856513700319E87 /* Database */,
 				5A002DBE1854791300E324C2 /* Model */,
 				5A002D95185478BD00E324C2 /* AppDelegate.h */,
@@ -270,6 +273,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AB6C5421858FA020009A1D6 /* TODO.txt in Resources */,
 				5A002DA2185478BD00E324C2 /* Images.xcassets in Resources */,
 				5A002D91185478BD00E324C2 /* InfoPlist.strings in Resources */,
 				5A002D9A185478BD00E324C2 /* Main.storyboard in Resources */,

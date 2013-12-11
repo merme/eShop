@@ -7,6 +7,7 @@
 //
 
 #import "CDatabase.h"
+#import "CShop.h"
 
 @implementation CDatabase
 
@@ -20,10 +21,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
 
 +(void) createTables{
     //Get Temporary Directory
-    NSString* dbPath = [CDatabase getDBPath];
-    
-    NSLog(@"Database path:%@",dbPath);
-    
+    NSString* dbPath = [CDatabase getDBPath];    
     
     int result = sqlite3_open([dbPath UTF8String], &contactDB);
     
@@ -37,7 +35,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     NSMutableArray *sSqlQueries = [NSMutableArray array];
     [sSqlQueries addObject:@"CREATE TABLE IF NOT EXISTS SHOPS( SHOP_ID INTEGER PRIMARY KEY, NAME TEXT UNIQUE NOT NULL);"]; // same with float values
     [sSqlQueries addObject:@"CREATE TABLE IF NOT EXISTS PRODUCTS(PRODUCT_ID INTEGER PRIMARY KEY, NAME TEXT UNIQUE NOT NULL);"];
-    [sSqlQueries addObject:@"CREATE TABLE IF NOT EXISTS PRICES(PRODUCT_ID INT NOT NULL REFERENCES SHOPS(SHOP_ID), SHOP_ID INT NOT NULL REFERENCES PRODUCTS(PRODUCT_ID),PRICE INT NOT NULL);"];
+    [sSqlQueries addObject:@"CREATE TABLE IF NOT EXISTS PRICES(PRODUCT_ID INT NOT NULL REFERENCES SHOPS(SHOP_ID), SHOP_ID INT NOT NULL REFERENCES PRODUCTS(PRODUCT_ID),PRICE DECIMAL(7,2) NOT NULL);"];
     
     
     char * errInfo ;
@@ -63,9 +61,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
 +(void) dropTables{
     //Get Temporary Directory
     NSString* dbPath = [CDatabase getDBPath];
-    
-    NSLog(@"Database path:%@",dbPath);
-    
+ 
     
     int result = sqlite3_open([dbPath UTF8String], &contactDB);
     
@@ -97,9 +93,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     
     //Get Temporary Directory
     NSString* dbPath = [CDatabase getDBPath];
-    
-    NSLog(@"Database path:%@",dbPath);
-    
+ 
     
     int result = sqlite3_open([dbPath UTF8String], &contactDB);
     
@@ -114,10 +108,10 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     [sSqlQueries addObject:@"INSERT INTO PRODUCTS VALUES (null, 'C');"];
     [sSqlQueries addObject:@"INSERT INTO PRODUCTS VALUES (null, 'F');"];
     [sSqlQueries addObject:@"INSERT INTO PRODUCTS VALUES (null, 'A');"];
-    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES (1, 1,10);"];
-    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES (2, 2,20);"];
-    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES (1, 1,15);"];
-    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES (1, 2,13);"];
+    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES (1, 1,10.123);"];
+    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES (2, 2,20.345);"];
+    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES (1, 1,15.567);"];
+    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES (1, 2,13.789);"];
 
     char * errInfo ;
     int i;
@@ -128,5 +122,40 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     }
     
 }
+
++(NSMutableArray*) getShopList
+{
+  NSMutableArray* arrShops = [[NSMutableArray alloc] init];
+    
+    //Get Temporary Directory
+    NSString* dbPath = [CDatabase getDBPath];
+    
+    
+    int result = sqlite3_open([dbPath UTF8String], &contactDB);
+    
+    if (SQLITE_OK != result) {
+        NSLog(@"myDB opening error");
+        return nil;
+    }
+    
+    const char *sSqlSelect = "SELECT SHOP_ID, NAME TEXT FROM SHOPS;";
+
+    sqlite3_stmt *selectStatement;
+    if(sqlite3_prepare_v2(contactDB, sSqlSelect, -1, &selectStatement, NULL) == SQLITE_OK) {
+        while(sqlite3_step(selectStatement) == SQLITE_ROW) {
+            CShop *cShop = [[CShop alloc] init];
+            cShop.iId=sqlite3_column_int(selectStatement, 0);
+            cShop.sName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 1)];
+            [arrShops addObject:cShop];
+        }
+    }
+
+    
+    sqlite3_close(contactDB);
+    
+    return arrShops;
+    
+}
+
 
 @end

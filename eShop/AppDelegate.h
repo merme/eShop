@@ -12,4 +12,12 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+
+//Returns the instance of AppDelegate, in that way the ViewController has access to this class
++(AppDelegate *) sharedAppDelegate;
+
+
+// Returns the internal array of timers
+-(NSArray *) getShopsList;
+
 @end

@@ -14,7 +14,7 @@
 		5A002D93185478BD00E324C2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A002D92185478BD00E324C2 /* main.m */; };
 		5A002D97185478BD00E324C2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A002D96185478BD00E324C2 /* AppDelegate.m */; };
 		5A002D9A185478BD00E324C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A002D98185478BD00E324C2 /* Main.storyboard */; };
-		5A002D9D185478BD00E324C2 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A002D9C185478BD00E324C2 /* FirstViewController.m */; };
+		5A002D9D185478BD00E324C2 /* ShopsListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A002D9C185478BD00E324C2 /* ShopsListVC.m */; };
 		5A002DA0185478BD00E324C2 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A002D9F185478BD00E324C2 /* SecondViewController.m */; };
 		5A002DA2185478BD00E324C2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A002DA1185478BD00E324C2 /* Images.xcassets */; };
 		5A002DA9185478BD00E324C2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A002DA8185478BD00E324C2 /* XCTest.framework */; };
@@ -27,6 +27,7 @@
 		5AAAAB361856515F00319E87 /* CDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AAAAB351856515F00319E87 /* CDatabase.m */; };
 		5AAAAB381856578600319E87 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AAAAB371856578600319E87 /* libsqlite3.0.dylib */; };
 		5AB6C5421858FA020009A1D6 /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5AB6C5411858FA020009A1D6 /* TODO.txt */; };
+		5AD3F755185A316600950BC1 /* ShopViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD3F754185A316600950BC1 /* ShopViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,8 +52,8 @@
 		5A002D95185478BD00E324C2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5A002D96185478BD00E324C2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5A002D99185478BD00E324C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		5A002D9B185478BD00E324C2 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		5A002D9C185478BD00E324C2 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		5A002D9B185478BD00E324C2 /* ShopsListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopsListVC.h; sourceTree = "<group>"; };
+		5A002D9C185478BD00E324C2 /* ShopsListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopsListVC.m; sourceTree = "<group>"; };
 		5A002D9E185478BD00E324C2 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		5A002D9F185478BD00E324C2 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		5A002DA1185478BD00E324C2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -70,6 +71,8 @@
 		5AAAAB351856515F00319E87 /* CDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDatabase.m; path = Database/CDatabase.m; sourceTree = "<group>"; };
 		5AAAAB371856578600319E87 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		5AB6C5411858FA020009A1D6 /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = SOURCE_ROOT; };
+		5AD3F753185A316600950BC1 /* ShopViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShopViewCell.h; path = ViewControllers/ShopViewCell.h; sourceTree = "<group>"; };
+		5AD3F754185A316600950BC1 /* ShopViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShopViewCell.m; path = ViewControllers/ShopViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,14 +135,13 @@
 		5A002D8C185478BD00E324C2 /* eShop */ = {
 			isa = PBXGroup;
 			children = (
+				5AD3F752185A25A800950BC1 /* ViewControllers */,
 				5AB6C5411858FA020009A1D6 /* TODO.txt */,
 				5AAAAB331856513700319E87 /* Database */,
 				5A002DBE1854791300E324C2 /* Model */,
 				5A002D95185478BD00E324C2 /* AppDelegate.h */,
 				5A002D96185478BD00E324C2 /* AppDelegate.m */,
 				5A002D98185478BD00E324C2 /* Main.storyboard */,
-				5A002D9B185478BD00E324C2 /* FirstViewController.h */,
-				5A002D9C185478BD00E324C2 /* FirstViewController.m */,
 				5A002D9E185478BD00E324C2 /* SecondViewController.h */,
 				5A002D9F185478BD00E324C2 /* SecondViewController.m */,
 				5A002DA1185478BD00E324C2 /* Images.xcassets */,
@@ -195,6 +197,17 @@
 				5AAAAB351856515F00319E87 /* CDatabase.m */,
 			);
 			name = Database;
+			sourceTree = "<group>";
+		};
+		5AD3F752185A25A800950BC1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5A002D9B185478BD00E324C2 /* ShopsListVC.h */,
+				5A002D9C185478BD00E324C2 /* ShopsListVC.m */,
+				5AD3F753185A316600950BC1 /* ShopViewCell.h */,
+				5AD3F754185A316600950BC1 /* ShopViewCell.m */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,8 +312,9 @@
 				5AAAAB361856515F00319E87 /* CDatabase.m in Sources */,
 				5A002DA0185478BD00E324C2 /* SecondViewController.m in Sources */,
 				5A002D97185478BD00E324C2 /* AppDelegate.m in Sources */,
-				5A002D9D185478BD00E324C2 /* FirstViewController.m in Sources */,
+				5A002D9D185478BD00E324C2 /* ShopsListVC.m in Sources */,
 				5A002DC718547CE300E324C2 /* CCoreManager.m in Sources */,
+				5AD3F755185A316600950BC1 /* ShopViewCell.m in Sources */,
 				5A002D93185478BD00E324C2 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

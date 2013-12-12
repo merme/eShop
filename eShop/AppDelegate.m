@@ -10,8 +10,33 @@
 
 #import "CDatabase.h"
 
-@implementation AppDelegate
+// Defining this object as a singleton View controllers can call its methods
+static AppDelegate *sharedInstance;
 
+@implementation AppDelegate{
+    
+}
+
+//Application routines:Begin
+-(id) init{
+    
+    if(sharedInstance){
+        NSLog(@"Error: You are creating a second AppDelegate!");
+    }
+    
+    self=[super init];
+    sharedInstance=self;
+    
+    
+    return self;
+}
+
+// Return an instance of this class, in that way the ViewController can access to this class
++(AppDelegate*) sharedAppDelegate{
+    return sharedInstance;
+}
+
+// UIApplicationDelegate interface: BEGIN
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
@@ -50,5 +75,15 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+// UIApplicationDelegate interface: END
+
+
+// Calls that deal with the model
+-(NSArray *) getShopsList{
+    
+    return [CDatabase getShopList];
+    
+}
+// Calls that deal with the model
 
 @end

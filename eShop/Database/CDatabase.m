@@ -33,7 +33,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     
     //Prepare array of commands ...
     NSMutableArray *sSqlQueries = [NSMutableArray array];
-    [sSqlQueries addObject:@"CREATE TABLE IF NOT EXISTS SHOPS( SHOP_ID INTEGER PRIMARY KEY, NAME TEXT UNIQUE NOT NULL);"]; // same with float values
+    [sSqlQueries addObject:@"CREATE TABLE IF NOT EXISTS SHOPS( SHOP_ID INTEGER PRIMARY KEY, NAME TEXT  NOT NULL,LOCATION TEXT);"]; // same with float values
     [sSqlQueries addObject:@"CREATE TABLE IF NOT EXISTS PRODUCTS(PRODUCT_ID INTEGER PRIMARY KEY, NAME TEXT UNIQUE NOT NULL);"];
     [sSqlQueries addObject:@"CREATE TABLE IF NOT EXISTS PRICES(PRODUCT_ID INT NOT NULL REFERENCES SHOPS(SHOP_ID), SHOP_ID INT NOT NULL REFERENCES PRODUCTS(PRODUCT_ID),PRICE DECIMAL(7,2) NOT NULL);"];
     
@@ -103,8 +103,13 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     }
     
     NSMutableArray *sSqlQueries = [NSMutableArray array];
-    [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES (null, 'M');"];
-    [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES (null, 'B');"];
+    [sSqlQueries addObject:@"BEGIN TRANSACTION;"];
+    [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES (null, 'Mercadona','Sant Andreu de la Barca');"];
+    [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES (null, 'Bon Preu','Palleja');"];
+    [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES (null, 'Condis','Palleja');"];
+    [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES (null, 'Bon Preu','Palleja');"];
+    [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES (null, 'Condis','Palleja-Maestro Falla');"];
+    [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES (null, 'Condis','Palleja-S. Isidro');"];
     [sSqlQueries addObject:@"INSERT INTO PRODUCTS VALUES (null, 'C');"];
     [sSqlQueries addObject:@"INSERT INTO PRODUCTS VALUES (null, 'F');"];
     [sSqlQueries addObject:@"INSERT INTO PRODUCTS VALUES (null, 'A');"];
@@ -112,7 +117,8 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     [sSqlQueries addObject:@"INSERT INTO PRICES VALUES (2, 2,20.345);"];
     [sSqlQueries addObject:@"INSERT INTO PRICES VALUES (1, 1,15.567);"];
     [sSqlQueries addObject:@"INSERT INTO PRICES VALUES (1, 2,13.789);"];
-
+    [sSqlQueries addObject:@"COMMIT;"];
+    
     char * errInfo ;
     int i;
     for (i = 0 ; i < [sSqlQueries count]; i = i + 1)
@@ -138,7 +144,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
         return nil;
     }
     
-    const char *sSqlSelect = "SELECT SHOP_ID, NAME TEXT FROM SHOPS;";
+    const char *sSqlSelect = "SELECT SHOP_ID, NAME, LOCATION FROM SHOPS;";
 
     sqlite3_stmt *selectStatement;
     if(sqlite3_prepare_v2(contactDB, sSqlSelect, -1, &selectStatement, NULL) == SQLITE_OK) {
@@ -146,6 +152,8 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
             CShop *cShop = [[CShop alloc] init];
             cShop.iId=sqlite3_column_int(selectStatement, 0);
             cShop.sName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 1)];
+            cShop.sLocation = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 2)];
+            
             [arrShops addObject:cShop];
         }
     }

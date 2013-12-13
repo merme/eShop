@@ -11,5 +11,6 @@
 @interface ShopViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
+@property (weak, nonatomic) IBOutlet UILabel *lblLocation;
 
 @end

@@ -11,6 +11,7 @@
 @implementation CShop
 
 @synthesize sName;
+@synthesize sLocation;
 
 -(id)initWithName:(NSString*)p_strName
 {

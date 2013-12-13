@@ -12,6 +12,7 @@
 
 @property int iId;
 @property (strong,nonatomic) NSString *sName;
+@property (strong,nonatomic) NSString *sLocation;
 
 
 -(id)initWithName:(NSString*)p_strName;

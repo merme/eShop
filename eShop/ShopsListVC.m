@@ -111,9 +111,7 @@ static ShopsListVC *sharedInstance;
     
     [self performSegueWithIdentifier:@"showPriceProducts" sender:self.view];
     
-    
-    //Force to close view (-> -(void) viewWillDisappear:(BOOL)animated)
-    [self.navigationController popViewControllerAnimated:YES];
+   
  
 }
 

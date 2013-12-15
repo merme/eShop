@@ -10,6 +10,7 @@
 #import "CProductPrice.h"
 #import "ShopPriceCell.h"
 #import "CCoreManager.h"
+#import "CShop.h"
 
 @interface ShopListPricesVC ()
 
@@ -17,8 +18,9 @@
 
 @implementation ShopListPricesVC
 
-//Array of timers
+
 @synthesize arrShopProductPrices;
+@synthesize cProductPrice;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -44,6 +46,10 @@
     
     //Check if the shop has any product to add in its list
     self.btnAdd.enabled=([CCoreManager getNumberShopNotExistingProducts]>0);
+    
+    //Set tittle text
+    CShop *cShop=[CCoreManager getActiveShop];
+    [self.barTop setTitle:[[NSString alloc] initWithFormat:@"%@ (%@)", cShop.sName,cShop.sLocation]];
     
 }
 
@@ -103,5 +109,7 @@
 }
 
 //end: Methods to implement for fulfill CollectionView Interface
+
+
 
 @end

@@ -10,6 +10,7 @@
 
 @interface CProductPrice : NSObject
 
+@property int iId;
 @property (strong,nonatomic) NSString *sName;
 @property float fPrice;
 

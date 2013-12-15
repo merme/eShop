@@ -7,13 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CProductPrice.h"
+
+
 
 @interface ShopListPricesVC : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
+
+
 @property (strong, nonatomic) IBOutlet UITableView *tbvShopProductPrices;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnAdd;
+@property (weak, nonatomic) IBOutlet UINavigationItem *barTop;
 
-//Array of timers
+
 @property NSArray *arrShopProductPrices;
+@property CProductPrice *cProductPrice;
+
+-(void) setProductPrice:(CProductPrice*)p_cProductPrice;
 
 @end

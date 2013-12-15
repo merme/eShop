@@ -182,7 +182,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     }
     
     
-    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT PRODUCT_NAME, PRICE FROM SHOPS,PRICES,PRODUCTS WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID=%d", p_cShop.iId];
+    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT PRODUCT_NAME, PRICE, PRODUCTS.PRODUCT_ID FROM SHOPS,PRICES,PRODUCTS WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID=%d", p_cShop.iId];
     //const char *sSqlSelect = "SELECT SHOP_ID, NAME, LOCATION FROM SHOPS;";
  
     
@@ -192,6 +192,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
             CProductPrice *cProductPrice = [[CProductPrice alloc] init];
             cProductPrice.sName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 0)];
             cProductPrice.fPrice = (float)sqlite3_column_double(selectStatement, 1);
+            cProductPrice.iId = sqlite3_column_int(selectStatement, 2);
             
              [arrShopPrices addObject:cProductPrice];
             
@@ -220,7 +221,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     }
     
     
-    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT PRODUCT_NAME FROM PRODUCTS WHERE NOT EXISTS( SELECT * FROM SHOPS,PRICES WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID=%d) ORDER BY PRODUCT_NAME", p_cShop.iId];
+    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT PRODUCT_NAME, PRODUCTS.PRODUCT_ID FROM PRODUCTS WHERE NOT EXISTS( SELECT * FROM SHOPS,PRICES WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID=%d) ORDER BY PRODUCT_NAME", p_cShop.iId];
    
     
     sqlite3_stmt *selectStatement;
@@ -228,7 +229,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
         while(sqlite3_step(selectStatement) == SQLITE_ROW) {
             CProductPrice *cProductPrice = [[CProductPrice alloc] init];
             cProductPrice.sName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 0)];
-            cProductPrice.fPrice = (float)sqlite3_column_double(selectStatement, 1);
+            cProductPrice.iId = (float)sqlite3_column_int(selectStatement, 1);
             
             [arrShopPrices addObject:cProductPrice];
             
@@ -277,5 +278,28 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     
     return [arrShopPrices count];
 }
+
++(void) insertProductPrice:(CProductPrice*)p_cProductPrice inShop:(CShop *)p_cShop{
+
+    //Get Temporary Directory
+    NSString* dbPath = [CDatabase getDBPath];
+    
+    
+    int result = sqlite3_open([dbPath UTF8String], &contactDB);
+    
+    if (SQLITE_OK != result) {
+        NSLog(@"myDB opening error");
+        return;
+    }
+    
+
+    NSString *sSqlSelect=[[NSString alloc] initWithFormat:@"INSERT INTO PRICES VALUES (%d, %d,%.2f)", p_cShop.iId,p_cProductPrice.iId,p_cProductPrice.fPrice];
+    
+    char * errInfo ;
+    result = sqlite3_exec(contactDB, [sSqlSelect cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);
+    if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
+
+}
+
 
 @end

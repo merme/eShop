@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CShop.h"
+#import "CProductPrice.h"
 
 
 @interface CCoreManager : NSObject{
@@ -25,9 +26,11 @@
 -(void) fillWithSampleData;
 
 +(void) setActiveShop:(CShop*) r_CShop;
++(CShop*) getActiveShop;
 +(NSMutableArray*) getShopPriceList;
 +(NSMutableArray*) getShopNotExistingProducts;
 +(int) getNumberShopNotExistingProducts;
++(void) insertProductPrice:(CProductPrice*)p_cProductPrice;
 
 
 

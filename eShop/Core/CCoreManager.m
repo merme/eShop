@@ -30,6 +30,16 @@ static CShop *cAtiveShop;
   cAtiveShop=r_CShop;
 }
 
++(CShop*) getActiveShop{
+    
+    //Check if there was an active shop
+    if(cAtiveShop==nil){
+        [NSException raise:@"No active shop" format:@"cAtiveshop is nul"];
+    }
+    
+    return cAtiveShop;
+}
+
 +(NSMutableArray*) getShopPriceList{
     
     //Check if there was an active shop
@@ -60,6 +70,16 @@ static CShop *cAtiveShop;
     
     return [CDatabase getNumberShopNotExistingProducts:cAtiveShop];
     
+}
+
++(void) insertProductPrice:(CProductPrice*)p_cProductPrice{
+    
+    CShop *cShop = [CCoreManager getActiveShop];
+    if(cAtiveShop==nil){
+        [NSException raise:@"No active shop" format:@"cAtiveshop is nul"];
+    }
+    
+    return [CDatabase insertProductPrice:p_cProductPrice inShop:cShop];
 }
 
 

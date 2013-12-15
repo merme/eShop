@@ -10,6 +10,7 @@
 
 @implementation CProductPrice
 
+@synthesize iId;
 @synthesize sName;
 @synthesize fPrice;
 

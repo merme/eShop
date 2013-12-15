@@ -28,6 +28,9 @@
 		5AAAAB381856578600319E87 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AAAAB371856578600319E87 /* libsqlite3.0.dylib */; };
 		5AB6C5421858FA020009A1D6 /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5AB6C5411858FA020009A1D6 /* TODO.txt */; };
 		5AD3F755185A316600950BC1 /* ShopViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD3F754185A316600950BC1 /* ShopViewCell.m */; };
+		5ADAAA96185DCC770080C816 /* CProductPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADAAA95185DCC770080C816 /* CProductPrice.m */; };
+		5ADAAA9B185DF2120080C816 /* ShopListPricesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADAAA9A185DF2120080C816 /* ShopListPricesVC.m */; };
+		5ADAAA9E185DF28F0080C816 /* ShopPriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADAAA9D185DF28F0080C816 /* ShopPriceCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,12 @@
 		5AB6C5411858FA020009A1D6 /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = SOURCE_ROOT; };
 		5AD3F753185A316600950BC1 /* ShopViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShopViewCell.h; path = ViewControllers/ShopViewCell.h; sourceTree = "<group>"; };
 		5AD3F754185A316600950BC1 /* ShopViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShopViewCell.m; path = ViewControllers/ShopViewCell.m; sourceTree = "<group>"; };
+		5ADAAA94185DCC770080C816 /* CProductPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CProductPrice.h; path = Core/CProductPrice.h; sourceTree = "<group>"; };
+		5ADAAA95185DCC770080C816 /* CProductPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CProductPrice.m; path = Core/CProductPrice.m; sourceTree = "<group>"; };
+		5ADAAA99185DF2120080C816 /* ShopListPricesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShopListPricesVC.h; path = ViewControllers/ShopListPricesVC.h; sourceTree = "<group>"; };
+		5ADAAA9A185DF2120080C816 /* ShopListPricesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShopListPricesVC.m; path = ViewControllers/ShopListPricesVC.m; sourceTree = "<group>"; };
+		5ADAAA9C185DF28F0080C816 /* ShopPriceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShopPriceCell.h; path = ViewControllers/ShopPriceCell.h; sourceTree = "<group>"; };
+		5ADAAA9D185DF28F0080C816 /* ShopPriceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShopPriceCell.m; path = ViewControllers/ShopPriceCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,10 +191,12 @@
 		5A002DBE1854791300E324C2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5A002DC218547C7E00E324C2 /* CShop.h */,
-				5A002DC318547C7E00E324C2 /* CShop.m */,
 				5A002DC518547CE300E324C2 /* CCoreManager.h */,
 				5A002DC618547CE300E324C2 /* CCoreManager.m */,
+				5A002DC218547C7E00E324C2 /* CShop.h */,
+				5A002DC318547C7E00E324C2 /* CShop.m */,
+				5ADAAA94185DCC770080C816 /* CProductPrice.h */,
+				5ADAAA95185DCC770080C816 /* CProductPrice.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -202,12 +213,32 @@
 		5AD3F752185A25A800950BC1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5ADAAA98185DF1A30080C816 /* ShopListPrices */,
+				5ADAAA97185DF18F0080C816 /* ShopList */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		5ADAAA97185DF18F0080C816 /* ShopList */ = {
+			isa = PBXGroup;
+			children = (
 				5A002D9B185478BD00E324C2 /* ShopsListVC.h */,
 				5A002D9C185478BD00E324C2 /* ShopsListVC.m */,
 				5AD3F753185A316600950BC1 /* ShopViewCell.h */,
 				5AD3F754185A316600950BC1 /* ShopViewCell.m */,
 			);
-			name = ViewControllers;
+			name = ShopList;
+			sourceTree = "<group>";
+		};
+		5ADAAA98185DF1A30080C816 /* ShopListPrices */ = {
+			isa = PBXGroup;
+			children = (
+				5ADAAA99185DF2120080C816 /* ShopListPricesVC.h */,
+				5ADAAA9A185DF2120080C816 /* ShopListPricesVC.m */,
+				5ADAAA9C185DF28F0080C816 /* ShopPriceCell.h */,
+				5ADAAA9D185DF28F0080C816 /* ShopPriceCell.m */,
+			);
+			name = ShopListPrices;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,10 +341,13 @@
 			files = (
 				5A002DC418547C7E00E324C2 /* CShop.m in Sources */,
 				5AAAAB361856515F00319E87 /* CDatabase.m in Sources */,
+				5ADAAA9B185DF2120080C816 /* ShopListPricesVC.m in Sources */,
 				5A002DA0185478BD00E324C2 /* SecondViewController.m in Sources */,
+				5ADAAA9E185DF28F0080C816 /* ShopPriceCell.m in Sources */,
 				5A002D97185478BD00E324C2 /* AppDelegate.m in Sources */,
 				5A002D9D185478BD00E324C2 /* ShopsListVC.m in Sources */,
 				5A002DC718547CE300E324C2 /* CCoreManager.m in Sources */,
+				5ADAAA96185DCC770080C816 /* CProductPrice.m in Sources */,
 				5AD3F755185A316600950BC1 /* ShopViewCell.m in Sources */,
 				5A002D93185478BD00E324C2 /* main.m in Sources */,
 			);

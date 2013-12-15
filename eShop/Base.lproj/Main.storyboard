@@ -16,6 +16,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HBf-wL-kAx">
+                                <rect key="frame" x="8" y="269" width="292" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="SegueShowPriceProducts">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="fLy-AV-ZAf" kind="modal" identifier="showPriceProducts" id="FEH-fs-2Ca"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="42K-cF-NQr">
                                 <rect key="frame" x="0.0" y="20" width="320" height="497"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -63,6 +73,79 @@
                 </scrollView>
             </objects>
             <point key="canvasLocation" x="671" y="-160"/>
+        </scene>
+        <!--Shop List PricesVC - Price list-->
+        <scene sceneID="Im4-5u-iDO">
+            <objects>
+                <tableViewController id="CRG-W9-Ghq" customClass="ShopListPricesVC" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="fK1-Ol-U1e">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellShopPriceId" id="4XG-Wo-NgV" customClass="ShopPriceCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4XG-Wo-NgV" id="MY7-Mo-RfN">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Product XYZ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ov-5U-L7m">
+                                            <rect key="frame" x="20" y="11" width="212" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LB9-bB-kaF">
+                                            <rect key="frame" x="240" y="7" width="75" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lblProductName" destination="6Ov-5U-L7m" id="Wz6-QF-gAF"/>
+                                    <outlet property="txtPrice" destination="LB9-bB-kaF" id="TQM-JI-48q"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Price list" id="fsU-dO-but">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="BVg-ZO-0h4">
+                            <connections>
+                                <segue destination="CZ4-MO-1fc" kind="modal" identifier="backFromListPriceByShop" id="lh5-Oz-3kE"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vJe-ol-6a3"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tbvShopProductPrices" destination="fK1-Ol-U1e" id="FPS-FL-bHK"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ye3-m6-YWN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1171" y="-860"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xgT-qL-WaD">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="fLy-AV-ZAf" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wG9-ss-0qG">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="CRG-W9-Ghq" kind="relationship" relationship="rootViewController" id="65e-g7-Uk7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wgF-V3-v4h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem systemItem="save" id="a8s-Da-ZTv"/>
+                <barButtonItem title="Back" id="z5M-pS-P3H"/>
+            </objects>
+            <point key="canvasLocation" x="1141" y="-171"/>
         </scene>
         <!--Second View Controller - Second-->
         <scene sceneID="ot8-2e-RuS">
@@ -137,4 +220,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="lh5-Oz-3kE"/>
+    </inferredMetricsTieBreakers>
 </document>

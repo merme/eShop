@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-
 #import <sqlite3.h>
+
+#import "CShop.h"
 
 @interface CDatabase : NSObject{
 
@@ -22,5 +23,7 @@
 +(void) dropTables;
 +(void) fillData;
 +(NSMutableArray*) getShopList;
++(NSMutableArray*) getShopPriceList:(CShop*)p_cShop;
+
 
 @end

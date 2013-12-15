@@ -14,6 +14,7 @@
     
     //Array of timers
     NSMutableArray *arrShops;
+    
 }
 
 //Array of timers
@@ -21,8 +22,9 @@
 
 -(void) addShop:(CShop*) r_CShop;
 -(NSArray*) listShop;
-
-
 -(void) fillWithSampleData;
+
++(void) setActiveShop:(CShop*) r_CShop;
++(NSMutableArray*) getShopPriceList;
 
 @end

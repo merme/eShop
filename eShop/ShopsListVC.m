@@ -10,6 +10,8 @@
 #import "AppDelegate.h"
 #import "ShopViewCell.h"
 #import "CShop.h"
+#import "CProductPrice.h"
+#import "CCoreManager.h"
 
 static ShopsListVC *sharedInstance;
 
@@ -79,21 +81,7 @@ static ShopsListVC *sharedInstance;
 
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-/*
-    static NSString *CellIdentifier = @"CellShopId";
-    
-    
-    ShopViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-                         
-    if (cell == nil) {
-        cell = [[ShopViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    
-    
-    CShop *currShop = [arrShops objectAtIndex:indexPath.row];
-    
-    [cell.lblName setText:[NSString stringWithFormat:@"%@",currShop.sName]];
-*/
+
     static NSString *CellIdentifier = @"CellShopId";
     
     
@@ -113,18 +101,36 @@ static ShopsListVC *sharedInstance;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    CShop* cCurrShop;
     
-    // Get the medicine name
-//    sMedicineName=[arrSampleMedicines objectAtIndex:indexPath.row];
-//    sMedicineNamePng=[arrSampleMedicinesPng objectAtIndex:indexPath.row];
+    // Get the current shop
+    cCurrShop = [arrShops objectAtIndex:indexPath.row];
+    
+    //Notify CoreManager which is the active shop
+    [CCoreManager setActiveShop:cCurrShop];
+    
+    [self performSegueWithIdentifier:@"showPriceProducts" sender:self.view];
     
     
     //Force to close view (-> -(void) viewWillDisappear:(BOOL)animated)
-//    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
  
 }
 
 //end: Methods to implement for fulfill CollectionView Interface
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"showPriceProducts"]){
+ /*
+        //Create a new prescription object
+        Prescription *prescription;
+        prescription = [[Prescription alloc] initWithName:txtName.text BoxUnits:[txtBoxUnits.text integerValue] UnitsTaken:[txtUnitsTaken.text integerValue] Dosis:tDosis Image:uiImageView.image];
+        
+        //Notify the model
+        AppDelegate *appDelegate = [AppDelegate sharedAppDelegate];
+        [appDelegate addPrescription:prescription];
+ */       
+    }
+}
 
 @end

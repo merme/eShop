@@ -1,0 +1,18 @@
+//
+//  ShopListPricesVC.h
+//  eShop
+//
+//  Created by JAVIER CALATRAVA LLAVERIA on 15/12/13.
+//  Copyright (c) 2013 JAVIER CALATRAVA LLAVERIA. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface ShopListPricesVC : UIViewController <UITableViewDataSource,UITableViewDelegate>
+
+@property (strong, nonatomic) IBOutlet UITableView *tbvShopProductPrices;
+
+//Array of timers
+@property NSArray *arrShopProductPrices;
+
+@end

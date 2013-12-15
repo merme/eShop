@@ -123,6 +123,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="btnAdd" destination="vJe-ol-6a3" id="AGN-cb-NA3"/>
                         <outlet property="tbvShopProductPrices" destination="fK1-Ol-U1e" id="FPS-FL-bHK"/>
                     </connections>
                 </tableViewController>

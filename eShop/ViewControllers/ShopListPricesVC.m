@@ -42,6 +42,9 @@
     //Request to Core manager for prices of current shop
     arrShopProductPrices=[CCoreManager getShopPriceList];
     
+    //Check if the shop has any product to add in its list
+    self.btnAdd.enabled=([CCoreManager getNumberShopNotExistingProducts]>0);
+    
 }
 
 - (void)didReceiveMemoryWarning

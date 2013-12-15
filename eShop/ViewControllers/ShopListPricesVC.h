@@ -11,6 +11,7 @@
 @interface ShopListPricesVC : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tbvShopProductPrices;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnAdd;
 
 //Array of timers
 @property NSArray *arrShopProductPrices;

@@ -1,7 +1,7 @@
 v Retrieve a shop list
 + Update a shop from the list
 + Remove a shop from the list
-+ Select all products given an Shop id
+v Select all products given an Shop id
 + Update a product prive from a Shop id
 + Remove a product from a Shop id
 + Retrieve a product list

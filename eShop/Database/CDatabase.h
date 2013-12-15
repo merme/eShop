@@ -24,6 +24,10 @@
 +(void) fillData;
 +(NSMutableArray*) getShopList;
 +(NSMutableArray*) getShopPriceList:(CShop*)p_cShop;
++(NSMutableArray*) getShopNotExistingProducts:(CShop*)p_cShop;
++(int) getNumberShopNotExistingProducts:(CShop*)p_cShop;
+
+
 
 
 @end

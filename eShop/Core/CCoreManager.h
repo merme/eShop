@@ -26,5 +26,9 @@
 
 +(void) setActiveShop:(CShop*) r_CShop;
 +(NSMutableArray*) getShopPriceList;
++(NSMutableArray*) getShopNotExistingProducts;
++(int) getNumberShopNotExistingProducts;
+
+
 
 @end

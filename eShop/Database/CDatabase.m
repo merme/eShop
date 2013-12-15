@@ -111,7 +111,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES (null, 'Bon Preu','Palleja');"];
     [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES (null, 'Condis','Palleja-Maestro Falla');"];
     [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES (null, 'Condis','Palleja-S. Isidro');"];
-    [sSqlQueries addObject:@"INSERT INTO PRODUCTS VALUES (null, 'Atún');"];
+    [sSqlQueries addObject:@"INSERT INTO PRODUCTS VALUES (null, 'Atun');"];
     [sSqlQueries addObject:@"INSERT INTO PRODUCTS VALUES (null, 'Avellanas');"];
     [sSqlQueries addObject:@"INSERT INTO PRODUCTS VALUES (null, 'Base pizza');"];
     [sSqlQueries addObject:@"INSERT INTO PRICES VALUES (1, 1,10.123);"];
@@ -204,5 +204,78 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     return arrShopPrices;
 }
 
++(NSMutableArray*) getShopNotExistingProducts:(CShop*)p_cShop{
+    
+    NSMutableArray* arrShopPrices = [[NSMutableArray alloc] init];
+    
+    //Get Temporary Directory
+    NSString* dbPath = [CDatabase getDBPath];
+    
+    
+    int result = sqlite3_open([dbPath UTF8String], &contactDB);
+    
+    if (SQLITE_OK != result) {
+        NSLog(@"myDB opening error");
+        return nil;
+    }
+    
+    
+    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT PRODUCT_NAME FROM PRODUCTS WHERE NOT EXISTS( SELECT * FROM SHOPS,PRICES WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID=%d) ORDER BY PRODUCT_NAME", p_cShop.iId];
+   
+    
+    sqlite3_stmt *selectStatement;
+    if(sqlite3_prepare_v2(contactDB, [sSqlSelect UTF8String], -1, &selectStatement, NULL) == SQLITE_OK) {
+        while(sqlite3_step(selectStatement) == SQLITE_ROW) {
+            CProductPrice *cProductPrice = [[CProductPrice alloc] init];
+            cProductPrice.sName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 0)];
+            cProductPrice.fPrice = (float)sqlite3_column_double(selectStatement, 1);
+            
+            [arrShopPrices addObject:cProductPrice];
+            
+        }
+    }
+    
+    
+    sqlite3_close(contactDB);
+    
+    return arrShopPrices;
+}
+
++(int) getNumberShopNotExistingProducts:(CShop*)p_cShop{
+        
+    NSMutableArray* arrShopPrices = [[NSMutableArray alloc] init];
+    
+    //Get Temporary Directory
+    NSString* dbPath = [CDatabase getDBPath];
+    
+    
+    int result = sqlite3_open([dbPath UTF8String], &contactDB);
+    
+    if (SQLITE_OK != result) {
+        NSLog(@"myDB opening error");
+        return 0;
+    }
+    
+    
+    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT PRODUCT_NAME FROM PRODUCTS WHERE NOT EXISTS( SELECT * FROM SHOPS,PRICES WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID=%d) ORDER BY PRODUCT_NAME", p_cShop.iId];
+    
+    
+    sqlite3_stmt *selectStatement;
+    if(sqlite3_prepare_v2(contactDB, [sSqlSelect UTF8String], -1, &selectStatement, NULL) == SQLITE_OK) {
+        while(sqlite3_step(selectStatement) == SQLITE_ROW) {
+            CProductPrice *cProductPrice = [[CProductPrice alloc] init];
+            cProductPrice.sName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 0)];
+            cProductPrice.fPrice = (float)sqlite3_column_double(selectStatement, 1);
+            
+            [arrShopPrices addObject:cProductPrice];
+            
+        }
+    }
+    
+    
+    sqlite3_close(contactDB);
+    
+    return [arrShopPrices count];
+}
 
 @end

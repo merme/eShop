@@ -10,6 +10,7 @@
 #import "CCoreManager.h"
 #import "CShop.h"
 #import "CCoreManager.h"
+#import "ShopListPricesVC.h"
 
 @interface AddProductToAShopVC ()
 
@@ -17,6 +18,7 @@
 
 @implementation AddProductToAShopVC
 
+@synthesize delegate;
 @synthesize arrShopPendingProducts;
 
 int iPickerViewRow=0;
@@ -89,11 +91,25 @@ int iPickerViewRow=0;
     
         //Request to CCoreManager to store new Product-Price
         [CCoreManager insertProductPrice:cProductPrice];
+        
+
     
    
         //Force to close view (-> -(void) viewWillDisappear:(BOOL)animated)
         [self.navigationController popViewControllerAnimated:YES];
     }
+}
+
+//Capture when Update navigation back key is pressed
+-(void) viewWillDisappear:(BOOL)animated {
+    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
+        // back button was pressed.  We know this is true because self is no longer
+        // in the navigation stack.
+    }
+    
+    //Refresh shop list view
+    [[ShopListPricesVC sharedShopListPricesVC] refreshShopProductPrices];
+    
 }
 
 - (IBAction)txtPriceEditingDidEnd:(id)sender {

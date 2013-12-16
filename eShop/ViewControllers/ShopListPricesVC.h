@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "CProductPrice.h"
+#import "AddProductToAShopVC.h"
+
 
 
 
@@ -23,6 +25,8 @@
 @property NSArray *arrShopProductPrices;
 @property CProductPrice *cProductPrice;
 
--(void) setProductPrice:(CProductPrice*)p_cProductPrice;
++(ShopListPricesVC *) sharedShopListPricesVC;
+
+-(void) refreshShopProductPrices;
 
 @end

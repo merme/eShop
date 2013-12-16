@@ -10,14 +10,16 @@
 #import "CProductPrice.h"
 #import "ShopPriceCell.h"
 #import "CCoreManager.h"
+#import "AddProductToAShopVC.h"
 #import "CShop.h"
+
+static ShopListPricesVC *sharedInstance;
 
 @interface ShopListPricesVC ()
 
 @end
 
 @implementation ShopListPricesVC
-
 
 @synthesize arrShopProductPrices;
 @synthesize cProductPrice;
@@ -28,6 +30,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+
     }
     return self;
 }
@@ -36,6 +39,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    sharedInstance=self;
     
     // This class implements DataSource and Delegate callbacks
     [self.tbvShopProductPrices setDataSource:self];
@@ -109,6 +114,43 @@
 }
 
 //end: Methods to implement for fulfill CollectionView Interface
+
+-(void) refreshShopProductPrices{
+    //Request to Core manager for prices of current shop
+    arrShopProductPrices=[CCoreManager getShopPriceList];
+    
+    //Refresh whole table
+    [self.tbvShopProductPrices reloadData];
+}
+/*
+-(void) viewDidAppear:(BOOL)animated{
+    //Refresh whole table
+    [self.tbvShopProductPrices reloadData];
+}
+*/
+// Return an instance of this class, in that way the ViewController can access to this class
++(ShopListPricesVC *) sharedShopListPricesVC{
+    return sharedInstance;
+}
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"addPendingProductPrice"]){
+        int i;
+        i=0;
+
+
+        /*
+         //Create a new prescription object
+         Prescription *prescription;
+         prescription = [[Prescription alloc] initWithName:txtName.text BoxUnits:[txtBoxUnits.text integerValue] UnitsTaken:[txtUnitsTaken.text integerValue] Dosis:tDosis Image:uiImageView.image];
+         
+         //Notify the model
+         AppDelegate *appDelegate = [AppDelegate sharedAppDelegate];
+         [appDelegate addPrescription:prescription];
+         */
+    }
+}
 
 
 

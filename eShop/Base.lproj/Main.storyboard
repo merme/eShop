@@ -203,7 +203,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="vJe-ol-6a3">
                             <connections>
-                                <segue destination="tiw-Ta-TEZ" kind="push" id="2SW-QE-dtL"/>
+                                <segue destination="tiw-Ta-TEZ" kind="push" identifier="addPendingProductPrice" id="2SW-QE-dtL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

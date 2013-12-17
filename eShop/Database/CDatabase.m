@@ -36,7 +36,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     NSMutableArray *sSqlQueries = [NSMutableArray array];
     [sSqlQueries addObject:@"CREATE TABLE IF NOT EXISTS SHOPS( SHOP_ID INTEGER PRIMARY KEY, SHOP_NAME TEXT  NOT NULL,LOCATION TEXT);"]; // same with float values
     [sSqlQueries addObject:@"CREATE TABLE IF NOT EXISTS PRODUCTS(PRODUCT_ID INTEGER PRIMARY KEY, PRODUCT_NAME TEXT UNIQUE NOT NULL);"];
-    [sSqlQueries addObject:@"CREATE TABLE IF NOT EXISTS PRICES(SHOP_ID INT NOT NULL REFERENCES SHOPS(SHOP_ID), PRODUCT_ID INT NOT NULL REFERENCES PRODUCTS(PRODUCT_ID),PRICE DECIMAL(7,2) NOT NULL);"];
+    [sSqlQueries addObject:@"CREATE TABLE IF NOT EXISTS PRICES(SHOP_ID INT NOT NULL REFERENCES SHOPS(SHOP_ID), PRODUCT_ID INT NOT NULL REFERENCES PRODUCTS(PRODUCT_ID),PRICE DECIMAL(7,2) NOT NULL, CATEGORY INT);"];
     
     
     char * errInfo ;
@@ -114,10 +114,13 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     [sSqlQueries addObject:@"INSERT INTO PRODUCTS VALUES (null, 'Atun');"];
     [sSqlQueries addObject:@"INSERT INTO PRODUCTS VALUES (null, 'Avellanas');"];
     [sSqlQueries addObject:@"INSERT INTO PRODUCTS VALUES (null, 'Base pizza');"];
-    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES (1, 1,10.123);"];
-    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES (2, 2,20.345);"];
-    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES (1, 3,15.567);"];
-    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES (1, 2,13.789);"];
+    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES (1, 1,10.123,3);"];
+    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES (2, 2,10,3);"];
+    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES (1, 3,15.567,3);"];
+    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES (1, 2,15,3);"];
+    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES (3, 2,21,3);"];
+    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES (4, 2,25,3);"];
+    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES (5, 2,30,3);"];
     [sSqlQueries addObject:@"COMMIT;"];
     
     char * errInfo ;
@@ -182,7 +185,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     }
     
     
-    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT PRODUCT_NAME, PRICE, PRODUCTS.PRODUCT_ID FROM SHOPS,PRICES,PRODUCTS WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID=%d", p_cShop.iId];
+    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT PRODUCT_NAME, PRICE, PRODUCTS.PRODUCT_ID, CATEGORY FROM SHOPS,PRICES,PRODUCTS WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID=%d", p_cShop.iId];
     //const char *sSqlSelect = "SELECT SHOP_ID, NAME, LOCATION FROM SHOPS;";
  
     
@@ -193,6 +196,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
             cProductPrice.sName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 0)];
             cProductPrice.fPrice = (float)sqlite3_column_double(selectStatement, 1);
             cProductPrice.iId = sqlite3_column_int(selectStatement, 2);
+            cProductPrice.tCategory = sqlite3_column_int(selectStatement, 3);
             
              [arrShopPrices addObject:cProductPrice];
             
@@ -293,12 +297,96 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     }
     
 
-    NSString *sSqlSelect=[[NSString alloc] initWithFormat:@"INSERT INTO PRICES VALUES (%d, %d,%.2f)", p_cShop.iId,p_cProductPrice.iId,p_cProductPrice.fPrice];
+    NSString *sSqlSelect=[[NSString alloc] initWithFormat:@"INSERT INTO PRICES VALUES (%d, %d,%.2f,%d)", p_cShop.iId,p_cProductPrice.iId,p_cProductPrice.fPrice,p_cProductPrice.tCategory];
     
     char * errInfo ;
     result = sqlite3_exec(contactDB, [sSqlSelect cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);
     if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
+    
+    
+    sqlite3_close(contactDB);
 
+    //Recategorize all the products with the same product_id
+    [CDatabase recategorizeProducts:p_cProductPrice];
+
+}
+
++(void) recategorizeProducts:(CProductPrice*)p_cProductPrice{
+    
+    //1st. Part Select all records of a given product
+    NSMutableArray* arrShopPrices = [[NSMutableArray alloc] init];
+    
+    //Get Temporary Directory
+    NSString* dbPath = [CDatabase getDBPath];
+    
+    
+    int result = sqlite3_open([dbPath UTF8String], &contactDB);
+    
+    if (SQLITE_OK != result) {
+        NSLog(@"myDB opening error");
+        return ;
+    }
+    
+    
+    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT PRICE,PRODUCT_ID, SHOP_ID, CATEGORY FROM PRICES WHERE PRICES.PRODUCT_ID=%d", p_cProductPrice.iId];
+    //const char *sSqlSelect = "SELECT SHOP_ID, NAME, LOCATION FROM SHOPS;";
+    
+    
+    sqlite3_stmt *selectStatement;
+    if(sqlite3_prepare_v2(contactDB, [sSqlSelect UTF8String], -1, &selectStatement, NULL) == SQLITE_OK) {
+        while(sqlite3_step(selectStatement) == SQLITE_ROW) {
+            CProductPrice *cProductPrice = [[CProductPrice alloc] init];
+            cProductPrice.fPrice = (float)sqlite3_column_double(selectStatement, 0);
+            cProductPrice.iId = sqlite3_column_int(selectStatement, 1);
+            cProductPrice.iShopId = sqlite3_column_int(selectStatement, 2);
+            cProductPrice.tCategory = sqlite3_column_int(selectStatement, 3);
+            
+            [arrShopPrices addObject:cProductPrice];
+        }
+    }
+    
+    sqlite3_close(contactDB);
+    
+    //Calculate the size of the 5-segment
+    CProductPrice *cProductPrice;
+    float fMin=MAXFLOAT;
+    float fMax=0;
+    for (cProductPrice in arrShopPrices) {
+        if(cProductPrice.fPrice<fMin) fMin=cProductPrice.fPrice;
+        if(cProductPrice.fPrice>fMax) fMax=cProductPrice.fPrice;
+    }
+    float f5Segment=(fMax-fMin)/5;
+    
+    //Recategorize Product-Price
+    for (cProductPrice in arrShopPrices) {
+        if(cProductPrice.fPrice>=fMin && cProductPrice.fPrice<(fMin+f5Segment)) cProductPrice.tCategory=VeryCheap;
+        else if(cProductPrice.fPrice>=(fMin+f5Segment) && cProductPrice.fPrice<(fMin+f5Segment*2)) cProductPrice.tCategory=Cheap;
+        else if(cProductPrice.fPrice>=(fMin+f5Segment*2) && cProductPrice.fPrice<(fMin+f5Segment*3)) cProductPrice.tCategory=Normal;
+        else if(cProductPrice.fPrice>=(fMin+f5Segment*3) && cProductPrice.fPrice<(fMin+f5Segment*4)) cProductPrice.tCategory=Expensive;
+        else cProductPrice.tCategory=VeryExpensive;
+    }
+    
+    //2nd. Update all records
+    result = sqlite3_open([dbPath UTF8String], &contactDB);
+    
+    if (SQLITE_OK != result) {
+        NSLog(@"myDB opening error");
+        return;
+    }
+    
+    
+    
+    //Recategorize Product-Price
+    for (cProductPrice in arrShopPrices) {
+    
+        NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"UPDATE PRICES SET CATEGORY=%d WHERE SHOP_ID=%d AND PRODUCT_ID=%d", cProductPrice.tCategory,cProductPrice.iShopId,p_cProductPrice.iId];
+        
+        char * errInfo ;
+        result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);
+        if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
+    }
+    
+    sqlite3_close(contactDB);
 }
 
 

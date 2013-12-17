@@ -9,9 +9,18 @@
 #import <Foundation/Foundation.h>
 
 @interface CProductPrice : NSObject
+typedef enum Category : NSUInteger {
+    VeryCheap,
+    Cheap,
+    Normal,
+    Expensive,
+    VeryExpensive
+} ShapeType;
 
 @property int iId;
 @property (strong,nonatomic) NSString *sName;
 @property float fPrice;
+@property (nonatomic) enum Category tCategory;
+@property int iShopId;
 
 @end

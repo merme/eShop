@@ -88,6 +88,7 @@ static ShopListPricesVC *sharedInstance;
     
     [cell.lblProductName setText:[NSString stringWithFormat:@"%@",currProductPrice.sName]];
     [cell.txtPrice setText:[NSString stringWithFormat:@"%f",currProductPrice.fPrice]];
+    [cell.lblCategory setText:[NSString stringWithFormat:@"%d",currProductPrice.tCategory]];
     
     return cell;
     

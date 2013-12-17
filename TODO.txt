@@ -3,7 +3,8 @@ v Retrieve a shop list
 + Remove a shop from the list
 v Select all products given an Shop id
 v Add a product in a Shop list.
-    * BUG! Force to refresh priceshop list after insertinga product-price
+    v BUG! Force to refresh priceshop list after insertinga product-price
++ Product category recalculation    
 + Update a product prive from a Shop id
 + Remove a product from a Shop id
 + Retrieve a product list

@@ -28,7 +28,7 @@
 +(NSMutableArray*) getShopNotExistingProducts:(CShop*)p_cShop;
 +(int) getNumberShopNotExistingProducts:(CShop*)p_cShop;
 +(void) insertProductPrice:(CProductPrice*)p_cProductPrice inShop:(CShop *)p_cShop;
-
++(void) recategorizeProducts:(CProductPrice*)p_cProductPrice;
 
 
 

@@ -13,5 +13,7 @@
 @synthesize iId;
 @synthesize sName;
 @synthesize fPrice;
+@synthesize tCategory;
+@synthesize iShopId;
 
 @end

@@ -10,6 +10,8 @@
 
 #import "CDatabase.h"
 
+#import "CProductPrice.h"
+
 // Defining this object as a singleton View controllers can call its methods
 static AppDelegate *sharedInstance;
 
@@ -44,6 +46,8 @@ static AppDelegate *sharedInstance;
     [CDatabase dropTables];
     [CDatabase createTables];
     [CDatabase fillData];
+    CProductPrice *c=[[CProductPrice alloc]init];
+
     NSMutableArray* ns=[CDatabase getShopList];
     
     return YES;

@@ -136,22 +136,16 @@ static ShopListPricesVC *sharedInstance;
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if([segue.identifier isEqualToString:@"addPendingProductPrice"]){
-        int i;
-        i=0;
+    if([segue.identifier isEqualToString:@"backFromDeleteShop"]){
+        
+        //Remove current shop
+        [CCoreManager deleteShop];
 
-
-        /*
-         //Create a new prescription object
-         Prescription *prescription;
-         prescription = [[Prescription alloc] initWithName:txtName.text BoxUnits:[txtBoxUnits.text integerValue] UnitsTaken:[txtUnitsTaken.text integerValue] Dosis:tDosis Image:uiImageView.image];
-         
-         //Notify the model
-         AppDelegate *appDelegate = [AppDelegate sharedAppDelegate];
-         [appDelegate addPrescription:prescription];
-         */
     }
+    
 }
+
+
 
 
 

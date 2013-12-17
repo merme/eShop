@@ -82,6 +82,16 @@ static CShop *cAtiveShop;
     return [CDatabase insertProductPrice:p_cProductPrice inShop:cShop];
 }
 
++(void) deleteShop{
+ 
+    CShop *cShop = [CCoreManager getActiveShop];
+    if(cAtiveShop==nil){
+        [NSException raise:@"No active shop" format:@"cAtiveshop is nul"];
+    }
+    
+    return [CDatabase deleteShop:cShop];
+}
+
 
 -(void) addShop:(CShop*) r_CShop
 {

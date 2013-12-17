@@ -131,4 +131,6 @@ static ShopsListVC *sharedInstance;
     }
 }
 
+
+
 @end

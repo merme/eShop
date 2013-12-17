@@ -1,6 +1,6 @@
 v Retrieve a shop list
-+ Update a shop from the list
-+ Remove a shop from the list
+o Update a shop from the list
+v Remove a shop from the list
 v Select all products given an Shop id
 v Add a product in a Shop list.
     v BUG! Force to refresh priceshop list after insertinga product-price

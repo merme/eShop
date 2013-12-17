@@ -76,7 +76,11 @@
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Item" id="Tc7-Am-cad"/>
+                                    <barButtonItem systemItem="trash" id="Tc7-Am-cad">
+                                        <connections>
+                                            <action selector="btnDeleteShop:" destination="CZ4-MO-1fc" id="6M3-oL-olc"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -88,7 +92,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qh2-T1-AhA" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="671" y="-160"/>
+            <point key="canvasLocation" x="662" y="-236"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="EDP-Je-lRN">
+            <objects>
+                <viewController id="Q4P-hf-aUS" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XPB-Ky-f8Q"/>
+                        <viewControllerLayoutGuide type="bottom" id="EwY-En-n6U"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="d2O-mb-Tdo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Jfn-YO-WEA"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1r4-wq-Xjb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1225" y="-1618"/>
         </scene>
         <!--Add Product ToA ShopVC-->
         <scene sceneID="6DG-fU-raA">
@@ -164,6 +187,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="fu5-aU-wie">
+                            <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <items>
+                                <barButtonItem systemItem="trash" id="43j-MC-Fxf">
+                                    <connections>
+                                        <action selector="btnDeleteShop:" destination="CRG-W9-Ghq" id="vaM-W2-tsd"/>
+                                        <segue destination="4ZA-wS-3sq" kind="modal" identifier="backFromDeleteShop" id="jBY-Yx-34K"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem systemItem="edit" id="eWv-PG-iGX">
+                                    <connections>
+                                        <segue destination="Q4P-hf-aUS" kind="push" identifier="editShop" id="pAg-GW-oyA"/>
+                                    </connections>
+                                </barButtonItem>
+                            </items>
+                        </toolbar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellShopPriceId" id="4XG-Wo-NgV" customClass="ShopPriceCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
@@ -215,7 +255,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="barTop" destination="fsU-dO-but" id="Gnk-bT-NG1"/>
                         <outlet property="btnAdd" destination="vJe-ol-6a3" id="AGN-cb-NA3"/>
@@ -376,6 +416,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="lh5-Oz-3kE"/>
+        <segue reference="jBY-Yx-34K"/>
         <segue reference="GfQ-jn-FaW"/>
     </inferredMetricsTieBreakers>
 </document>

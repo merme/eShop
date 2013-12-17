@@ -131,6 +131,8 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
         if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
     }
     
+    sqlite3_close(contactDB);
+    
 }
 
 +(NSMutableArray*) getShopList
@@ -387,6 +389,37 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     }
     
     sqlite3_close(contactDB);
+}
+
++(void) deleteShop:(CShop*)p_cShop{
+    
+    //Get Temporary Directory
+    NSString* dbPath = [CDatabase getDBPath];
+    
+    
+    int result = sqlite3_open([dbPath UTF8String], &contactDB);
+    
+    if (SQLITE_OK != result) {
+        NSLog(@"myDB opening error");
+        return;
+    }
+    
+    NSMutableArray *sSqlQueries = [NSMutableArray array];
+    [sSqlQueries addObject:@"BEGIN TRANSACTION;"];
+    [sSqlQueries addObject:[[NSString alloc] initWithFormat:@"DELETE FROM PRICES WHERE SHOP_ID=%d", p_cShop.iId]];
+    [sSqlQueries addObject:[[NSString alloc] initWithFormat:@"DELETE FROM SHOPS WHERE SHOP_ID=%d", p_cShop.iId]];
+    [sSqlQueries addObject:@"COMMIT;"];
+    
+    char * errInfo ;
+    int i;
+    for (i = 0 ; i < [sSqlQueries count]; i = i + 1)
+    {
+        result = sqlite3_exec(contactDB, [[sSqlQueries objectAtIndex:i] cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);
+        if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
+    }
+    
+    sqlite3_close(contactDB);
+    
 }
 
 

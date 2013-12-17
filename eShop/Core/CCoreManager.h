@@ -31,6 +31,7 @@
 +(NSMutableArray*) getShopNotExistingProducts;
 +(int) getNumberShopNotExistingProducts;
 +(void) insertProductPrice:(CProductPrice*)p_cProductPrice;
++(void) deleteShop;
 
 
 

@@ -30,6 +30,7 @@
 +(void) insertProductPrice:(CProductPrice*)p_cProductPrice inShop:(CShop *)p_cShop;
 +(void) recategorizeProducts:(CProductPrice*)p_cProductPrice;
 +(void) deleteShop:(CShop*)p_cShop;
++(void) updateShop:(CShop*)p_CShop;
 
 
 

@@ -92,6 +92,12 @@ static CShop *cAtiveShop;
     return [CDatabase deleteShop:cShop];
 }
 
++(void) updateShop:(CShop*) p_CShop{
+    
+    [CDatabase updateShop:p_CShop];
+    [CCoreManager setActiveShop:p_CShop];
+}
+
 
 -(void) addShop:(CShop*) r_CShop
 {

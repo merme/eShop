@@ -12,6 +12,7 @@
 #import "CCoreManager.h"
 #import "AddProductToAShopVC.h"
 #import "CShop.h"
+#import "ShopsListVC.h"
 
 static ShopListPricesVC *sharedInstance;
 
@@ -123,12 +124,8 @@ static ShopListPricesVC *sharedInstance;
     //Refresh whole table
     [self.tbvShopProductPrices reloadData];
 }
-/*
--(void) viewDidAppear:(BOOL)animated{
-    //Refresh whole table
-    [self.tbvShopProductPrices reloadData];
-}
-*/
+
+
 // Return an instance of this class, in that way the ViewController can access to this class
 +(ShopListPricesVC *) sharedShopListPricesVC{
     return sharedInstance;
@@ -140,6 +137,9 @@ static ShopListPricesVC *sharedInstance;
         
         //Remove current shop
         [CCoreManager deleteShop];
+        
+        //Refresh shop list view
+        [[ShopsListVC sharedViewController] refreshShopList];
 
     }
     

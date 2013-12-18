@@ -92,26 +92,77 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qh2-T1-AhA" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="662" y="-236"/>
+            <point key="canvasLocation" x="627" y="-222"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="EDP-Je-lRN">
+        <!--Edit ShopVC-->
+        <scene sceneID="dEN-fl-pJp">
             <objects>
-                <viewController id="Q4P-hf-aUS" sceneMemberID="viewController">
+                <viewController id="jxw-FB-o2Z" customClass="EditShopVC" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="XPB-Ky-f8Q"/>
-                        <viewControllerLayoutGuide type="bottom" id="EwY-En-n6U"/>
+                        <viewControllerLayoutGuide type="top" id="Qro-4j-lfF"/>
+                        <viewControllerLayoutGuide type="bottom" id="jRK-3j-lRW"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="d2O-mb-Tdo">
+                    <view key="view" contentMode="scaleToFill" id="PkU-Ax-rAM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yjK-v0-ZnJ">
+                                <rect key="frame" x="20" y="88" width="94" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sva-M1-EA8">
+                                <rect key="frame" x="101" y="84" width="204" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="ReturnKeyButton:" destination="jxw-FB-o2Z" eventType="editingDidEndOnExit" id="l6d-1G-z8y"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFn-xM-xaS">
+                                <rect key="frame" x="20" y="127" width="94" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KeA-cA-9Zh">
+                                <rect key="frame" x="101" y="123" width="204" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="ReturnKeyButton:" destination="jxw-FB-o2Z" eventType="editingDidEndOnExit" id="Xq6-hJ-jjZ"/>
+                                </connections>
+                            </textField>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gyz-N5-VCY">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem systemItem="save" id="S7p-fJ-ssr">
+                                        <connections>
+                                            <action selector="btnSave:" destination="jxw-FB-o2Z" id="RYE-d6-Xi9"/>
+                                            <segue destination="CZ4-MO-1fc" kind="modal" identifier="backFromEditSave" id="tNE-fx-fn3"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Jfn-YO-WEA"/>
+                    <navigationItem key="navigationItem" id="ynS-Xq-H9H"/>
+                    <connections>
+                        <outlet property="btnSave" destination="S7p-fJ-ssr" id="g6Q-Ad-qbj"/>
+                        <outlet property="lblLocation" destination="CFn-xM-xaS" id="uiU-eJ-eDb"/>
+                        <outlet property="lblName" destination="yjK-v0-ZnJ" id="AWs-OC-ohH"/>
+                        <outlet property="txtLocation" destination="KeA-cA-9Zh" id="8im-Ub-AU7"/>
+                        <outlet property="txtName" destination="sva-M1-EA8" id="stS-kG-lxn"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1r4-wq-Xjb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KGd-vx-WG1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1225" y="-1618"/>
+            <point key="canvasLocation" x="1587" y="-937"/>
         </scene>
         <!--Add Product ToA ShopVC-->
         <scene sceneID="6DG-fU-raA">
@@ -144,30 +195,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Er-9a-juL">
-                                <rect key="frame" x="0.0" y="385" width="314" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add product to shop">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="qyJ-Kq-IkU">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="Bdq-ve-0xb">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ueY-Yj-D0Q">
-                                <rect key="frame" x="233" y="5" width="71" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnSave:" destination="tiw-Ta-TEZ" eventType="touchUpInside" id="IM8-LO-hGF"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="Bdq-ve-0xb">
+                            <connections>
+                                <action selector="btnSave:" destination="tiw-Ta-TEZ" id="Ake-B1-gZo"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -177,7 +213,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LUz-RE-TfM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1725" y="-1370"/>
+            <point key="canvasLocation" x="2089" y="-230"/>
         </scene>
         <!--Shop List PricesVC - Price list-->
         <scene sceneID="Im4-5u-iDO">
@@ -194,12 +230,12 @@
                                 <barButtonItem systemItem="trash" id="43j-MC-Fxf">
                                     <connections>
                                         <action selector="btnDeleteShop:" destination="CRG-W9-Ghq" id="vaM-W2-tsd"/>
-                                        <segue destination="4ZA-wS-3sq" kind="modal" identifier="backFromDeleteShop" id="jBY-Yx-34K"/>
+                                        <segue destination="CZ4-MO-1fc" kind="modal" identifier="backFromDeleteShop" id="kkU-wo-iDO"/>
                                     </connections>
                                 </barButtonItem>
                                 <barButtonItem systemItem="edit" id="eWv-PG-iGX">
                                     <connections>
-                                        <segue destination="Q4P-hf-aUS" kind="push" identifier="editShop" id="pAg-GW-oyA"/>
+                                        <segue destination="jxw-FB-o2Z" kind="push" identifier="editShop" id="Pve-hW-SJ9"/>
                                     </connections>
                                 </barButtonItem>
                             </items>
@@ -264,7 +300,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ye3-m6-YWN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1171" y="-860"/>
+            <point key="canvasLocation" x="1587" y="-230"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xgT-qL-WaD">
@@ -281,7 +317,7 @@
                 <barButtonItem systemItem="save" id="a8s-Da-ZTv"/>
                 <barButtonItem title="Back" id="z5M-pS-P3H"/>
             </objects>
-            <point key="canvasLocation" x="1141" y="-171"/>
+            <point key="canvasLocation" x="1129" y="-222"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Vdk-Tk-gcO">
@@ -415,8 +451,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="lh5-Oz-3kE"/>
-        <segue reference="jBY-Yx-34K"/>
+        <segue reference="tNE-fx-fn3"/>
         <segue reference="GfQ-jn-FaW"/>
     </inferredMetricsTieBreakers>
 </document>

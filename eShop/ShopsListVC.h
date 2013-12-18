@@ -20,4 +20,6 @@
 //Returns the instance of AppDelegate, in that way the ViewController has access to this class
 +(ShopsListVC *) sharedViewController;
 
+-(void) refreshShopList;
+
 @end

@@ -393,6 +393,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
 
 +(void) deleteShop:(CShop*)p_cShop{
     
+    
     //Get Temporary Directory
     NSString* dbPath = [CDatabase getDBPath];
     
@@ -417,6 +418,29 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
         result = sqlite3_exec(contactDB, [[sSqlQueries objectAtIndex:i] cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);
         if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
     }
+    
+    sqlite3_close(contactDB);
+    
+}
+
++(void) updateShop:(CShop*)p_CShop{
+    
+    //Get Temporary Directory
+    NSString* dbPath = [CDatabase getDBPath];
+    
+    int result = sqlite3_open([dbPath UTF8String], &contactDB);
+    
+    if (SQLITE_OK != result) {
+        NSLog(@"myDB opening error");
+        return;
+    }
+    
+    //Recategorize Product-Price
+    NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"UPDATE SHOPS SET SHOP_NAME='%@', LOCATION='%@' WHERE SHOP_ID=%d ",p_CShop.sName ,p_CShop.sLocation,p_CShop.iId];
+        
+    char * errInfo ;
+    result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);
+    if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
     
     sqlite3_close(contactDB);
     

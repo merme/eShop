@@ -60,8 +60,7 @@ static ShopsListVC *sharedInstance;
     AppDelegate *appDelegate = [AppDelegate sharedAppDelegate];
     arrShops = [appDelegate getShopsList];
     
-    
-    NSLog(@"ss");
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -129,6 +128,15 @@ static ShopsListVC *sharedInstance;
         [appDelegate addPrescription:prescription];
  */       
     }
+}
+
+-(void) refreshShopList{
+    //Request to Core manager for prices of current shop
+    AppDelegate *appDelegate = [AppDelegate sharedAppDelegate];
+    arrShops = [appDelegate getShopsList];
+    
+    //Refresh whole table
+    [self.tbvShops reloadData];
 }
 
 

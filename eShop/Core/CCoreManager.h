@@ -32,7 +32,6 @@
 +(int) getNumberShopNotExistingProducts;
 +(void) insertProductPrice:(CProductPrice*)p_cProductPrice;
 +(void) deleteShop;
-
-
++(void) updateShop:(CShop*) p_CShop;
 
 @end

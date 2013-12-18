@@ -1,10 +1,10 @@
 v Retrieve a shop list
-o Update a shop from the list
+v Update a shop from the list
 v Remove a shop from the list
 v Select all products given an Shop id
 v Add a product in a Shop list.
     v BUG! Force to refresh priceshop list after insertinga product-price
-+ Product category recalculation    
+v Product category recalculation    
 + Update a product prive from a Shop id
 + Remove a product from a Shop id
 + Retrieve a product list

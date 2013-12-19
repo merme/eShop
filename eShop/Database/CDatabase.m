@@ -9,6 +9,7 @@
 #import "CDatabase.h"
 #import "CShop.h"
 #import "CProductPrice.h"
+#import "CProduct.h"
 
 @implementation CDatabase
 
@@ -135,7 +136,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     
 }
 
-+(NSMutableArray*) getShopList
++(NSMutableArray*) getShopsList
 {
   NSMutableArray* arrShops = [[NSMutableArray alloc] init];
     
@@ -445,6 +446,81 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     sqlite3_close(contactDB);
     
 }
+
++(NSMutableArray*) getProductsList
+{
+    NSMutableArray* arrProduct = [[NSMutableArray alloc] init];
+    
+    //Get Temporary Directory
+    NSString* dbPath = [CDatabase getDBPath];
+    
+    
+    int result = sqlite3_open([dbPath UTF8String], &contactDB);
+    
+    if (SQLITE_OK != result) {
+        NSLog(@"myDB opening error");
+        return nil;
+    }
+    
+    const char *sSqlSelect = "SELECT PRODUCT_ID, PRODUCT_NAME FROM PRODUCTS;";
+    
+    sqlite3_stmt *selectStatement;
+    if(sqlite3_prepare_v2(contactDB, sSqlSelect, -1, &selectStatement, NULL) == SQLITE_OK) {
+        while(sqlite3_step(selectStatement) == SQLITE_ROW) {
+            CProduct *cProduct = [[CProduct alloc] init];
+            cProduct.iId=sqlite3_column_int(selectStatement, 0);
+            cProduct.sName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 1)];
+            [arrProduct addObject:cProduct];
+        }
+    }
+    
+    
+    sqlite3_close(contactDB);
+    
+    return arrProduct;
+    
+}
+
++(NSMutableArray*) getProductShopList:(CProduct*)p_cProduct{
+    NSMutableArray* arrShopPrices = [[NSMutableArray alloc] init];
+    
+    //Get Temporary Directory
+    NSString* dbPath = [CDatabase getDBPath];
+    
+    
+    int result = sqlite3_open([dbPath UTF8String], &contactDB);
+    
+    if (SQLITE_OK != result) {
+        NSLog(@"myDB opening error");
+        return nil;
+    }
+    
+    
+    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT SHOP_NAME_NAME, PRICE, SHOPS.SHOP_ID, CATEGORY, SHOPS.LOCATION FROM SHOPS,PRICES,PRODUCTS WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND PRODUCTS.PRODUCT_ID=%d", p_cProduct.iId];
+
+    
+    sqlite3_stmt *selectStatement;
+    if(sqlite3_prepare_v2(contactDB, [sSqlSelect UTF8String], -1, &selectStatement, NULL) == SQLITE_OK) {
+        while(sqlite3_step(selectStatement) == SQLITE_ROW) {
+            CProductPrice *cProductPrice = [[CProductPrice alloc] init];
+            cProductPrice.sShopName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 0)];
+            cProductPrice.fPrice = (float)sqlite3_column_double(selectStatement, 1);
+            cProductPrice.iShopId = sqlite3_column_int(selectStatement, 2);
+            cProductPrice.tCategory = sqlite3_column_int(selectStatement, 3);
+            cProductPrice.sShopLocation = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 4)];
+            
+            [arrShopPrices addObject:cProductPrice];
+        }
+    }
+    
+    
+    sqlite3_close(contactDB);
+    
+    return arrShopPrices;
+    
+}
+
+
 
 
 @end

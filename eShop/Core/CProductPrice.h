@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CProduct.h"
 
-@interface CProductPrice : NSObject
+@interface CProductPrice : CProduct
 typedef enum Category : NSUInteger {
     VeryCheap,
     Cheap,
@@ -17,10 +18,12 @@ typedef enum Category : NSUInteger {
     VeryExpensive
 } ShapeType;
 
-@property int iId;
-@property (strong,nonatomic) NSString *sName;
+//@property int iId;
+//@property (strong,nonatomic) NSString *sName;
 @property float fPrice;
 @property (nonatomic) enum Category tCategory;
 @property int iShopId;
+@property NSString *sShopName;
+@property NSString *sShopLocation;
 
 @end

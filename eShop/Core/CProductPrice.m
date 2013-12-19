@@ -10,10 +10,12 @@
 
 @implementation CProductPrice
 
-@synthesize iId;
-@synthesize sName;
+//@synthesize iId;
+//@synthesize sName;
 @synthesize fPrice;
 @synthesize tCategory;
 @synthesize iShopId;
+@synthesize sShopName;
+@synthesize sShopLocation;
 
 @end

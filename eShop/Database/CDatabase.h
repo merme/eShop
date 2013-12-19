@@ -23,7 +23,8 @@
 +(void) createTables;
 +(void) dropTables;
 +(void) fillData;
-+(NSMutableArray*) getShopList;
+
++(NSMutableArray*) getShopsList;
 +(NSMutableArray*) getShopPriceList:(CShop*)p_cShop;
 +(NSMutableArray*) getShopNotExistingProducts:(CShop*)p_cShop;
 +(int) getNumberShopNotExistingProducts:(CShop*)p_cShop;
@@ -31,6 +32,9 @@
 +(void) recategorizeProducts:(CProductPrice*)p_cProductPrice;
 +(void) deleteShop:(CShop*)p_cShop;
 +(void) updateShop:(CShop*)p_CShop;
+
++(NSMutableArray*) getProductsList;
++(NSMutableArray*) getProductShopList:(CProduct*)p_cProduct;
 
 
 

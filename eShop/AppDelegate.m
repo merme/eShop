@@ -46,9 +46,7 @@ static AppDelegate *sharedInstance;
     [CDatabase dropTables];
     [CDatabase createTables];
     [CDatabase fillData];
-    CProductPrice *c=[[CProductPrice alloc]init];
 
-    NSMutableArray* ns=[CDatabase getShopList];
     
     return YES;
 }
@@ -82,12 +80,7 @@ static AppDelegate *sharedInstance;
 // UIApplicationDelegate interface: END
 
 
-// Calls that deal with the model
--(NSArray *) getShopsList{
-    
-    return [CDatabase getShopList];
-    
-}
+
 // Calls that deal with the model
 
 @end

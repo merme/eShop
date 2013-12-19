@@ -17,7 +17,5 @@
 +(AppDelegate *) sharedAppDelegate;
 
 
-// Returns the internal array of timers
--(NSArray *) getShopsList;
 
 @end

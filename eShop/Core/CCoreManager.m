@@ -9,8 +9,10 @@
 #import "CCoreManager.h"
 #import "CDatabase.h"
 #import "CShop.h"
+#import "CProduct.h"
 
 static CShop *cAtiveShop;
+static CProduct *cAtiveProduct;
 
 @implementation CCoreManager
 
@@ -20,6 +22,7 @@ static CShop *cAtiveShop;
     if ( self = [super init] ) {
         self.arrShops = [[NSMutableArray alloc]init];
         cAtiveShop=nil;
+        cAtiveProduct=nil;
     }
     return self;
 }
@@ -48,6 +51,10 @@ static CShop *cAtiveShop;
     }
     
     return [CDatabase getShopPriceList:cAtiveShop];
+}
+
++(NSMutableArray*) getShopsList{
+    return [CDatabase getShopsList];
 }
 
 +(NSMutableArray*) getShopNotExistingProducts{
@@ -107,19 +114,43 @@ static CShop *cAtiveShop;
     
 }
 
+
+
 -(NSArray*) listShop
 {
     return arrShops;
 }
 
 
-
--(void) fillWithSampleData{
-    [arrShops addObject:[[CShop alloc]initWithName:@"Mercadona"]];
-    [arrShops addObject:[[CShop alloc]initWithName:@"Bon Preu"]];
-    [arrShops addObject:[[CShop alloc]initWithName:@"Area de Guissona"]];
++(void) setActiveProduct:(CProduct*) r_CProduct{
     
-    
+    cAtiveProduct=r_CProduct;
 }
+
++(CProduct*) getActiveProduct{
+    
+    //Check if there was an active shop
+    if(cAtiveProduct==nil){
+        [NSException raise:@"No active Product" format:@"cProductZhop is nul"];
+    }
+    
+    return cAtiveProduct;
+}
+
++(NSMutableArray*) getProductsList{
+    return [CDatabase getProductsList];
+}
+
++(NSMutableArray*) getProductShopList{
+    
+    //Check if there was an active shop
+    if(cAtiveProduct==nil){
+        [NSException raise:@"No active Product" format:@"cProductZhop is nul"];
+    }
+    
+    return [CDatabase getProductShopList:cAtiveProduct];
+}
+
+
 
 @end

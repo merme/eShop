@@ -7,7 +7,7 @@
 //
 
 #import "ShopsListVC.h"
-#import "AppDelegate.h"
+//#import "AppDelegate.h"
 #import "ShopViewCell.h"
 #import "CShop.h"
 #import "CProductPrice.h"
@@ -57,8 +57,8 @@ static ShopsListVC *sharedInstance;
     
     
     //Request to AppDelegate list of avaliable shops
-    AppDelegate *appDelegate = [AppDelegate sharedAppDelegate];
-    arrShops = [appDelegate getShopsList];
+    //AppDelegate *appDelegate = [AppDelegate sharedAppDelegate];
+    arrShops = [CCoreManager getShopsList];
     
 
 }
@@ -132,8 +132,8 @@ static ShopsListVC *sharedInstance;
 
 -(void) refreshShopList{
     //Request to Core manager for prices of current shop
-    AppDelegate *appDelegate = [AppDelegate sharedAppDelegate];
-    arrShops = [appDelegate getShopsList];
+    //AppDelegate *appDelegate = [AppDelegate sharedAppDelegate];
+    arrShops = [CCoreManager getShopsList];
     
     //Refresh whole table
     [self.tbvShops reloadData];

@@ -34,8 +34,9 @@
 +(void) updateShop:(CShop*)p_CShop;
 
 +(NSMutableArray*) getProductsList;
-+(NSMutableArray*) getProductShopList:(CProduct*)p_cProduct;
-
++(NSMutableArray*) getProductPriceList:(CProduct*)p_cProduct;
++(NSMutableArray*) getProductNotExistingShop:(CProduct*)p_cProduct;
++(int) getNumberProductNotExistingShop:(CProduct*)p_cProduct;
 
 
 @end

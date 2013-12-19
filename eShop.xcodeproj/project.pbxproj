@@ -33,6 +33,9 @@
 		5ACD16F4186357D9003C83EA /* CProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACD16F3186357D9003C83EA /* CProduct.m */; };
 		5ACD16F8186360CA003C83EA /* ProductListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACD16F7186360CA003C83EA /* ProductListVC.m */; };
 		5ACD16FB186363BC003C83EA /* ProductViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACD16FA186363BC003C83EA /* ProductViewCell.m */; };
+		5ACD16FF18636AF2003C83EA /* AddShopToAProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACD16FE18636AF2003C83EA /* AddShopToAProduct.m */; };
+		5ACD17031863800C003C83EA /* ProductListPricesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACD17021863800C003C83EA /* ProductListPricesVC.m */; };
+		5ACD17061863804F003C83EA /* ProductPriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACD17051863804F003C83EA /* ProductPriceCell.m */; };
 		5AD3F755185A316600950BC1 /* ShopViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD3F754185A316600950BC1 /* ShopViewCell.m */; };
 		5ADAAA96185DCC770080C816 /* CProductPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADAAA95185DCC770080C816 /* CProductPrice.m */; };
 		5ADAAA9B185DF2120080C816 /* ShopListPricesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADAAA9A185DF2120080C816 /* ShopListPricesVC.m */; };
@@ -91,6 +94,12 @@
 		5ACD16F7186360CA003C83EA /* ProductListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductListVC.m; path = ViewControllers/ProductListVC.m; sourceTree = "<group>"; };
 		5ACD16F9186363BC003C83EA /* ProductViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductViewCell.h; path = ViewControllers/ProductViewCell.h; sourceTree = "<group>"; };
 		5ACD16FA186363BC003C83EA /* ProductViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductViewCell.m; path = ViewControllers/ProductViewCell.m; sourceTree = "<group>"; };
+		5ACD16FD18636AF2003C83EA /* AddShopToAProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddShopToAProduct.h; path = ViewControllers/AddShopToAProduct.h; sourceTree = "<group>"; };
+		5ACD16FE18636AF2003C83EA /* AddShopToAProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddShopToAProduct.m; path = ViewControllers/AddShopToAProduct.m; sourceTree = "<group>"; };
+		5ACD17011863800C003C83EA /* ProductListPricesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductListPricesVC.h; path = ViewControllers/ProductListPricesVC.h; sourceTree = "<group>"; };
+		5ACD17021863800C003C83EA /* ProductListPricesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductListPricesVC.m; path = ViewControllers/ProductListPricesVC.m; sourceTree = "<group>"; };
+		5ACD17041863804F003C83EA /* ProductPriceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductPriceCell.h; path = ViewControllers/ProductPriceCell.h; sourceTree = "<group>"; };
+		5ACD17051863804F003C83EA /* ProductPriceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductPriceCell.m; path = ViewControllers/ProductPriceCell.m; sourceTree = "<group>"; };
 		5AD3F753185A316600950BC1 /* ShopViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShopViewCell.h; path = ViewControllers/ShopViewCell.h; sourceTree = "<group>"; };
 		5AD3F754185A316600950BC1 /* ShopViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShopViewCell.m; path = ViewControllers/ShopViewCell.m; sourceTree = "<group>"; };
 		5ADAAA94185DCC770080C816 /* CProductPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CProductPrice.h; path = Core/CProductPrice.h; sourceTree = "<group>"; };
@@ -259,12 +268,34 @@
 			name = ProductList;
 			sourceTree = "<group>";
 		};
+		5ACD16FC18636A75003C83EA /* AddShopToAProduct */ = {
+			isa = PBXGroup;
+			children = (
+				5ACD16FD18636AF2003C83EA /* AddShopToAProduct.h */,
+				5ACD16FE18636AF2003C83EA /* AddShopToAProduct.m */,
+			);
+			name = AddShopToAProduct;
+			sourceTree = "<group>";
+		};
+		5ACD170018637F80003C83EA /* ProductListPrices */ = {
+			isa = PBXGroup;
+			children = (
+				5ACD17011863800C003C83EA /* ProductListPricesVC.h */,
+				5ACD17021863800C003C83EA /* ProductListPricesVC.m */,
+				5ACD17041863804F003C83EA /* ProductPriceCell.h */,
+				5ACD17051863804F003C83EA /* ProductPriceCell.m */,
+			);
+			name = ProductListPrices;
+			sourceTree = "<group>";
+		};
 		5AD3F752185A25A800950BC1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5ACD16FC18636A75003C83EA /* AddShopToAProduct */,
 				5ACD16F518636079003C83EA /* ProductList */,
 				5AA8D83C18621FDB0086C605 /* EditShop */,
 				5A8FFE94185E34E800155799 /* AddProductToAShop */,
+				5ACD170018637F80003C83EA /* ProductListPrices */,
 				5ADAAA98185DF1A30080C816 /* ShopListPrices */,
 				5ADAAA97185DF18F0080C816 /* ShopList */,
 			);
@@ -398,13 +429,16 @@
 				5ADAAA9B185DF2120080C816 /* ShopListPricesVC.m in Sources */,
 				5A002DA0185478BD00E324C2 /* SecondViewController.m in Sources */,
 				5ACD16F4186357D9003C83EA /* CProduct.m in Sources */,
+				5ACD17031863800C003C83EA /* ProductListPricesVC.m in Sources */,
 				5ADAAA9E185DF28F0080C816 /* ShopPriceCell.m in Sources */,
 				5A8FFE97185E353C00155799 /* AddProductToAShopVC.m in Sources */,
+				5ACD16FF18636AF2003C83EA /* AddShopToAProduct.m in Sources */,
 				5ACD16FB186363BC003C83EA /* ProductViewCell.m in Sources */,
 				5A002D97185478BD00E324C2 /* AppDelegate.m in Sources */,
 				5A002D9D185478BD00E324C2 /* ShopsListVC.m in Sources */,
 				5A002DC718547CE300E324C2 /* CCoreManager.m in Sources */,
 				5ADAAA96185DCC770080C816 /* CProductPrice.m in Sources */,
+				5ACD17061863804F003C83EA /* ProductPriceCell.m in Sources */,
 				5AD3F755185A316600950BC1 /* ShopViewCell.m in Sources */,
 				5ACD16F8186360CA003C83EA /* ProductListVC.m in Sources */,
 				5A002D93185478BD00E324C2 /* main.m in Sources */,

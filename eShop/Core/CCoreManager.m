@@ -137,19 +137,43 @@ static CProduct *cAtiveProduct;
     return cAtiveProduct;
 }
 
++(NSMutableArray*) getProductPriceList{
+    
+    //Check if there was an active shop
+    if(cAtiveProduct==nil){
+        [NSException raise:@"No active shop" format:@"cAtiveshop is nul"];
+    }
+    
+    return [CDatabase getProductPriceList:cAtiveProduct];
+}
+
 +(NSMutableArray*) getProductsList{
     return [CDatabase getProductsList];
 }
 
-+(NSMutableArray*) getProductShopList{
++(NSMutableArray*) getProductNotExistingShop{
     
     //Check if there was an active shop
     if(cAtiveProduct==nil){
-        [NSException raise:@"No active Product" format:@"cProductZhop is nul"];
+        [NSException raise:@"No active shop" format:@"cAtiveshop is nul"];
     }
     
-    return [CDatabase getProductShopList:cAtiveProduct];
+    return [CDatabase getProductNotExistingShop:cAtiveProduct];
+    
 }
+
++(int) getNumberProductNotExistingShop{
+    
+    //Check if there was an active shop
+    if(cAtiveProduct==nil){
+        [NSException raise:@"No active Product" format:@"cAtiveProduct is nul"];
+    }
+    
+    return [CDatabase getNumberProductNotExistingShop:cAtiveProduct];
+    
+}
+
+
 
 
 

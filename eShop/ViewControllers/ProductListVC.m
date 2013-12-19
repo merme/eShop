@@ -107,19 +107,18 @@ static ProductListVC *sharedInstance;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    /*
-    CShop* cCurrShop;
+    
+    CProduct* cCurrProducts;
     
     // Get the current shop
-    cCurrShop = [arrShops objectAtIndex:indexPath.row];
+    cCurrProducts = [arrProducts objectAtIndex:indexPath.row];
     
     //Notify CoreManager which is the active shop
-    [CCoreManager setActiveShop:cCurrShop];
+    [CCoreManager setActiveProduct:cCurrProducts];
     
-    [self performSegueWithIdentifier:@"showPriceProducts" sender:self.view];
+    [self performSegueWithIdentifier:@"showPriceShops" sender:self.view];
     
-    */
-    
+  
 }
 
 //end: Methods to implement for fulfill CollectionView Interface

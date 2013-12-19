@@ -7,10 +7,10 @@ v Add a product in a Shop list.
 v Product category recalculation    
 + Update a product prive from a Shop id
 + Remove a product from a Shop id
-+ Retrieve a product list
+v Retrieve a product list
 + Update a product from the list
 + Remove a product from the list
-+ Select all shops where is sold a Product id
+v Select all shops where is sold a Product id
 + Update a shop price from a Shop id
 + Remove a shop price from a Shop id
 + Calculate economic list

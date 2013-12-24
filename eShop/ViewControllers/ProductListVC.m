@@ -108,13 +108,13 @@ static ProductListVC *sharedInstance;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    CProduct* cCurrProducts;
+    CProduct* cCurrProduct;
     
     // Get the current shop
-    cCurrProducts = [arrProducts objectAtIndex:indexPath.row];
+    cCurrProduct = [arrProducts objectAtIndex:indexPath.row];
     
     //Notify CoreManager which is the active shop
-    [CCoreManager setActiveProduct:cCurrProducts];
+    [CCoreManager setActiveProduct:cCurrProduct];
     
     [self performSegueWithIdentifier:@"showPriceShops" sender:self.view];
     

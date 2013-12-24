@@ -40,8 +40,11 @@
 +(CProduct*) getActiveProduct;
 +(NSMutableArray*) getProductsList;
 +(NSMutableArray*) getProductPriceList;
-+(NSMutableArray*) getProductNotExistingProducts;
-+(int) getNumberProductNotExistingShop;
++(NSMutableArray*) getProductNotExistingShops;
++(int) getNumberProductNotExistingShops;
++(void) insertShopPrice:(CProductPrice*)p_cProductPrice;
++(void) deleteProduct;
++(void) updateProduct:(CProduct*) p_CProduct;
 
 
 @end

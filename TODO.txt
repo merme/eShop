@@ -11,6 +11,7 @@ v Retrieve a product list
 + Update a product from the list
 + Remove a product from the list
 v Select all shops where is sold a Product id
+v Add a shop price from a Shop id
 + Update a shop price from a Shop id
 + Remove a shop price from a Shop id
 + Calculate economic list

@@ -151,30 +151,52 @@ static CProduct *cAtiveProduct;
     return [CDatabase getProductsList];
 }
 
-+(NSMutableArray*) getProductNotExistingShop{
++(NSMutableArray*) getProductNotExistingShops{
     
     //Check if there was an active shop
     if(cAtiveProduct==nil){
         [NSException raise:@"No active shop" format:@"cAtiveshop is nul"];
     }
     
-    return [CDatabase getProductNotExistingShop:cAtiveProduct];
+    return [CDatabase getProductNotExistingShops:cAtiveProduct];
     
 }
 
-+(int) getNumberProductNotExistingShop{
++(int) getNumberProductNotExistingShops{
     
     //Check if there was an active shop
     if(cAtiveProduct==nil){
         [NSException raise:@"No active Product" format:@"cAtiveProduct is nul"];
     }
     
-    return [CDatabase getNumberProductNotExistingShop:cAtiveProduct];
+    return [CDatabase getNumberProductNotExistingShops:cAtiveProduct];
     
 }
 
++(void) insertShopPrice:(CProductPrice*)p_cProductPrice{
 
+    
+    if(cAtiveProduct==nil){
+        [NSException raise:@"No active shop" format:@"cAtiveshop is nul"];
+    }
 
+    return [CDatabase insertShopPrice:p_cProductPrice inProduct:cAtiveProduct];
+}
+
++(void) deleteProduct{
+
+    if(cAtiveProduct==nil){
+        [NSException raise:@"No active shop" format:@"cAtiveshop is nul"];
+    }
+    
+    return [CDatabase deleteProduct:cAtiveProduct];
+}
+
++(void) updateProduct:(CProduct *)p_CProduct{
+    
+    [CDatabase updateProduct:p_CProduct];
+    [CCoreManager setActiveProduct:p_CProduct];
+}
 
 
 @end

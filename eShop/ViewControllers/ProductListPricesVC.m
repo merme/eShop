@@ -47,7 +47,7 @@ static ProductListPricesVC *sharedInstance;
     arrProductShopPrices=[CCoreManager getProductPriceList];
     
     //Check if the shop has any product to add in its list
-    self.btnAdd.enabled=([CCoreManager getNumberProductNotExistingShop]>0);
+    self.btnAdd.enabled=([CCoreManager getNumberProductNotExistingShops]>0);
     
     //Set tittle text
     CProduct *cProduct=[CCoreManager getActiveProduct];
@@ -114,7 +114,7 @@ static ProductListPricesVC *sharedInstance;
 
 -(void) refreshProductShopPrices{
     //Request to Core manager for prices of current shop
-    arrProductShopPrices=[CCoreManager getShopPriceList];
+    arrProductShopPrices=[CCoreManager getProductPriceList];
     
     //Refresh whole table
     [self.tbvProductShopPrices reloadData];
@@ -128,10 +128,10 @@ static ProductListPricesVC *sharedInstance;
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if([segue.identifier isEqualToString:@"backFromDeleteShop"]){
+    if([segue.identifier isEqualToString:@"backFromDeleteProduct"]){
         
         //Remove current shop
-        [CCoreManager deleteShop];
+        [CCoreManager deleteProduct];
         
         //Refresh shop list view
         [[ProductListVC sharedViewController] refreshProductList];

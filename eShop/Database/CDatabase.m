@@ -523,7 +523,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     
 }
 
-+(NSMutableArray*) getProductNotExistingShop:(CProduct*)p_cProduct{
++(NSMutableArray*) getProductNotExistingShops:(CProduct*)p_cProduct{
 
     NSMutableArray* arrProductPrices = [[NSMutableArray alloc] init];
     
@@ -542,7 +542,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT PRODUCT_NAME, PRODUCTS.PRODUCT_ID FROM PRODUCTS WHERE NOT EXISTS( SELECT * FROM SHOPS,PRICES WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID=%d) ORDER BY PRODUCT_NAME", p_cShop.iId];
   */
     
-    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT SHOP_NAME, SHOPS.SHOP_ID FROM SHOPS WHERE NOT EXISTS( SELECT * FROM PRODUCTS,PRICES WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND PRODUCTS.PRODUCT_ID=%d) ORDER BY SHOP_NAME", p_cProduct.iId];
+    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT SHOP_NAME, SHOPS.SHOP_ID, LOCATION FROM SHOPS WHERE NOT EXISTS( SELECT * FROM PRODUCTS,PRICES WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND PRODUCTS.PRODUCT_ID=%d) ORDER BY SHOP_NAME", p_cProduct.iId];
     
     
     sqlite3_stmt *selectStatement;
@@ -551,6 +551,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
             CProductPrice *cProductPrice = [[CProductPrice alloc] init];
             cProductPrice.sShopName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 0)];
             cProductPrice.iShopId = (float)sqlite3_column_int(selectStatement, 1);
+            cProductPrice.sShopLocation = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 2)];
             
             [arrProductPrices addObject:cProductPrice];
             
@@ -564,9 +565,92 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
 
 }
 
-+(int) getNumberProductNotExistingShop:(CProduct*)p_cProduct{
++(int) getNumberProductNotExistingShops:(CProduct*)p_cProduct{
     
-    return [[CDatabase getProductNotExistingShop:p_cProduct] count];
+    return [[CDatabase getProductNotExistingShops:p_cProduct] count];
+}
+
++(void) insertShopPrice:(CProductPrice*)p_cProductPrice inProduct:(CProduct *)p_cProduct{
+    //Get Temporary Directory
+    NSString* dbPath = [CDatabase getDBPath];
+    
+    NSLog(@"%@",dbPath);
+    
+    
+    int result = sqlite3_open([dbPath UTF8String], &contactDB);
+    
+    if (SQLITE_OK != result) {
+        NSLog(@"myDB opening error");
+        return;
+    }
+    
+    
+    NSString *sSqlSelect=[[NSString alloc] initWithFormat:@"INSERT INTO PRICES VALUES (%d, %d,%.2f,%d)", p_cProductPrice.iShopId,p_cProduct.iId,p_cProductPrice.fPrice,p_cProductPrice.tCategory];
+    
+    char * errInfo ;
+    result = sqlite3_exec(contactDB, [sSqlSelect cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);
+    if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
+    
+    
+    sqlite3_close(contactDB);
+    
+    //Recategorize all the products with the same product_id
+    [CDatabase recategorizeProducts:p_cProductPrice];
+}
+
++(void) deleteProduct:(CProduct *)p_cProduct{
+    
+    
+    //Get Temporary Directory
+    NSString* dbPath = [CDatabase getDBPath];
+    
+    
+    int result = sqlite3_open([dbPath UTF8String], &contactDB);
+    
+    if (SQLITE_OK != result) {
+        NSLog(@"myDB opening error");
+        return;
+    }
+    
+    NSMutableArray *sSqlQueries = [NSMutableArray array];
+    [sSqlQueries addObject:@"BEGIN TRANSACTION;"];
+    [sSqlQueries addObject:[[NSString alloc] initWithFormat:@"DELETE FROM PRICES WHERE PRODUCT_ID=%d", p_cProduct.iId]];
+    [sSqlQueries addObject:[[NSString alloc] initWithFormat:@"DELETE FROM PRODUCTS WHERE PRODUCT_ID=%d", p_cProduct.iId]];
+    [sSqlQueries addObject:@"COMMIT;"];
+    
+    char * errInfo ;
+    int i;
+    for (i = 0 ; i < [sSqlQueries count]; i = i + 1)
+    {
+        result = sqlite3_exec(contactDB, [[sSqlQueries objectAtIndex:i] cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);
+        if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
+    }
+    
+    sqlite3_close(contactDB);
+    
+}
+
++(void) updateProduct:(CProduct *)p_CProduct{
+    
+    //Get Temporary Directory
+    NSString* dbPath = [CDatabase getDBPath];
+    
+    int result = sqlite3_open([dbPath UTF8String], &contactDB);
+    
+    if (SQLITE_OK != result) {
+        NSLog(@"myDB opening error");
+        return;
+    }
+    
+    //Recategorize Product-Price
+    NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"UPDATE PRODUCTS SET SHOP_NAME='%@' WHERE PRODUCT_ID=%d ",p_CProduct.sName ,p_CProduct.iId];
+    
+    char * errInfo ;
+    result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);
+    if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
+    
+    sqlite3_close(contactDB);
+    
 }
 
 @end

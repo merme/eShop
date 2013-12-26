@@ -127,7 +127,7 @@ static ProductListVC *sharedInstance;
 -(void) refreshProductList{
     //Request to Core manager for prices of current shop
    // AppDelegate *appDelegate = [AppDelegate sharedAppDelegate];
-    arrProducts = [CCoreManager getShopsList];
+    arrProducts = [CCoreManager getProductsList];
     
     //Refresh whole table
     [self.tbvProducts reloadData];

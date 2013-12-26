@@ -837,7 +837,7 @@
                   symbolName = "+[CDatabase deleteShop:]"
                   moduleName = "eShop"
                   urlString = "file:///Users/javiercalatravallaveria/Dropbox/eShop/eShop/Database/CDatabase.m"
-                  timestampString = "409590686.361881"
+                  timestampString = "409747765.564078"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "426"
@@ -851,7 +851,7 @@
                   symbolName = "+[CDatabase deleteShop:]"
                   moduleName = "eShop"
                   urlString = "file:///Users/javiercalatravallaveria/Dropbox/eShop/eShop/Database/CDatabase.m"
-                  timestampString = "409590686.363252"
+                  timestampString = "409747765.564326"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "426"
@@ -1455,7 +1455,7 @@
                   symbolName = "-[CCoreManager arrShops]"
                   moduleName = "eShop"
                   urlString = "file:///Users/javiercalatravallaveria/Dropbox/eShop/eShop/Core/CCoreManager.h"
-                  timestampString = "409590686.367764"
+                  timestampString = "409747765.566178"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "23"
@@ -1469,7 +1469,7 @@
                   symbolName = "-[CCoreManager setArrShops:]"
                   moduleName = "eShop"
                   urlString = "file:///Users/javiercalatravallaveria/Dropbox/eShop/eShop/Core/CCoreManager.h"
-                  timestampString = "409590686.368087"
+                  timestampString = "409747765.566421"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "23"
@@ -1669,6 +1669,116 @@
             endingLineNumber = "535"
             landmarkName = "+getProductNotExistingShops:"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "eShop/ViewControllers/EditProductVC.h"
+            timestampString = "409740003.560845"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "txtName"
+            landmarkType = "19">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[EditProductVC txtName]"
+                  moduleName = "eShop"
+                  urlString = "file:///Users/javiercalatravallaveria/Dropbox/eShop/eShop/ViewControllers/EditProductVC.h"
+                  timestampString = "409740516.099482"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[EditProductVC setTxtName:]"
+                  moduleName = "eShop"
+                  urlString = "file:///Users/javiercalatravallaveria/Dropbox/eShop/eShop/ViewControllers/EditProductVC.h"
+                  timestampString = "409740516.099789"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "31">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "eShop/ViewControllers/EditProductVC.m"
+            timestampString = "409746603.452824"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "-prepareForSegue:sender:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "eShop/ViewControllers/ProductListVC.m"
+            timestampString = "409743125.021351"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "-refreshProductList"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "eShop/ViewControllers/EditShopVC.m"
+            timestampString = "409743673.445891"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "-ReturnKeyButton:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "eShop/ViewControllers/EditProductVC.h"
+            timestampString = "409747400.849174"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "-ReturnKeyButton:"
+            landmarkType = "4">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

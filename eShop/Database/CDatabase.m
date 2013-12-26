@@ -643,7 +643,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     }
     
     //Recategorize Product-Price
-    NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"UPDATE PRODUCTS SET SHOP_NAME='%@' WHERE PRODUCT_ID=%d ",p_CProduct.sName ,p_CProduct.iId];
+    NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"UPDATE PRODUCTS SET PRODUCT_NAME='%@' WHERE PRODUCT_ID=%d ",p_CProduct.sName ,p_CProduct.iId];
     
     char * errInfo ;
     result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);

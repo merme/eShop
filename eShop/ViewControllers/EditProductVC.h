@@ -10,4 +10,11 @@
 
 @interface EditProductVC : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *lblName;
+@property (weak, nonatomic) IBOutlet UITextField *txtName;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnSave;
+
+-(IBAction)ReturnKeyButton:(id)sender;
+ 
 @end

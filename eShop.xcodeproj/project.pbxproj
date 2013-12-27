@@ -30,6 +30,7 @@
 		5AAAAB361856515F00319E87 /* CDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AAAAB351856515F00319E87 /* CDatabase.m */; };
 		5AAAAB381856578600319E87 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AAAAB371856578600319E87 /* libsqlite3.0.dylib */; };
 		5AB6C5421858FA020009A1D6 /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5AB6C5411858FA020009A1D6 /* TODO.txt */; };
+		5ABA7A08186D698500883EA2 /* SetupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABA7A07186D698500883EA2 /* SetupVC.m */; };
 		5ACD16F4186357D9003C83EA /* CProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACD16F3186357D9003C83EA /* CProduct.m */; };
 		5ACD16F8186360CA003C83EA /* ProductListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACD16F7186360CA003C83EA /* ProductListVC.m */; };
 		5ACD16FB186363BC003C83EA /* ProductViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACD16FA186363BC003C83EA /* ProductViewCell.m */; };
@@ -89,6 +90,8 @@
 		5AAAAB351856515F00319E87 /* CDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDatabase.m; path = Database/CDatabase.m; sourceTree = "<group>"; };
 		5AAAAB371856578600319E87 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		5AB6C5411858FA020009A1D6 /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = SOURCE_ROOT; };
+		5ABA7A06186D698500883EA2 /* SetupVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetupVC.h; path = ViewControllers/SetupVC.h; sourceTree = "<group>"; };
+		5ABA7A07186D698500883EA2 /* SetupVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetupVC.m; path = ViewControllers/SetupVC.m; sourceTree = "<group>"; };
 		5ACD16F2186357D9003C83EA /* CProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CProduct.h; path = Core/CProduct.h; sourceTree = "<group>"; };
 		5ACD16F3186357D9003C83EA /* CProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CProduct.m; path = Core/CProduct.m; sourceTree = "<group>"; };
 		5ACD16F6186360CA003C83EA /* ProductListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductListVC.h; path = ViewControllers/ProductListVC.h; sourceTree = "<group>"; };
@@ -260,6 +263,15 @@
 			name = Database;
 			sourceTree = "<group>";
 		};
+		5ABA7A05186D696200883EA2 /* Setup */ = {
+			isa = PBXGroup;
+			children = (
+				5ABA7A06186D698500883EA2 /* SetupVC.h */,
+				5ABA7A07186D698500883EA2 /* SetupVC.m */,
+			);
+			name = Setup;
+			sourceTree = "<group>";
+		};
 		5ACD16F518636079003C83EA /* ProductList */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +306,7 @@
 		5AD3F752185A25A800950BC1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5ABA7A05186D696200883EA2 /* Setup */,
 				5ACD16FC18636A75003C83EA /* AddShopToAProduct */,
 				5ACD16F518636079003C83EA /* ProductList */,
 				5ADCBEB8186C1F710085920E /* EditProduct */,
@@ -456,6 +469,7 @@
 				5AD3F755185A316600950BC1 /* ShopViewCell.m in Sources */,
 				5ACD16F8186360CA003C83EA /* ProductListVC.m in Sources */,
 				5A002D93185478BD00E324C2 /* main.m in Sources */,
+				5ABA7A08186D698500883EA2 /* SetupVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

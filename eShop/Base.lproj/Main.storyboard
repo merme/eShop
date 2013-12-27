@@ -311,7 +311,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="DrP-ka-Ofi">
-                            <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="130" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
                                 <barButtonItem systemItem="trash" id="djy-m5-6Vy">
@@ -329,7 +329,7 @@
                         </toolbar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellProductPriceId" id="pBf-TD-4QJ" customClass="ProductPriceCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pBf-TD-4QJ" id="Zko-Xg-e3Y">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -546,14 +546,19 @@
                                 <rect key="frame" x="5" y="519" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="View1" id="esN-ls-ci0">
+                                    <barButtonItem title="Shops" id="esN-ls-ci0">
                                         <connections>
                                             <segue destination="CZ4-MO-1fc" kind="modal" id="3ID-na-iIE"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="View2" id="vsl-1h-Dsi">
+                                    <barButtonItem title="Prod." id="vsl-1h-Dsi">
                                         <connections>
                                             <segue destination="QUy-BD-bpt" kind="modal" id="GfQ-jn-FaW"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Setup" id="rVA-uh-yQs">
+                                        <connections>
+                                            <segue destination="mKl-RF-6ZR" kind="modal" identifier="backFromSetup" id="vNL-ON-xjP"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -565,6 +570,54 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbI-CQ-xO6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="83" y="247"/>
+        </scene>
+        <!--SetupVC-->
+        <scene sceneID="5O2-Ax-XQd">
+            <objects>
+                <viewController id="mKl-RF-6ZR" customClass="SetupVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="u1s-hA-Ywy"/>
+                        <viewControllerLayoutGuide type="bottom" id="6CK-LJ-PsO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Eu1-d8-jSZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wHQ-wi-uZr">
+                                <rect key="frame" x="137" y="177" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Reset">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnResetDB:" destination="mKl-RF-6ZR" eventType="touchUpInside" id="CpX-YN-xCl"/>
+                                </connections>
+                            </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EDa-ju-J3U">
+                                <rect key="frame" x="0.0" y="17" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="hXN-mH-4bX">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" id="lqt-a6-fGA">
+                                            <connections>
+                                                <segue destination="4ZA-wS-3sq" kind="modal" id="4L7-Gm-Vhk"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Fp7-o9-c4h"/>
+                    <connections>
+                        <outlet property="btnBack" destination="lqt-a6-fGA" id="gO1-oN-AwZ"/>
+                        <outlet property="btnCleanDB" destination="wHQ-wi-uZr" id="Ue0-me-Gbu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xs0-eR-WJ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="110" y="970"/>
         </scene>
         <!--Product ListVC - Second-->
         <scene sceneID="ot8-2e-RuS">
@@ -711,8 +764,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="7eI-Ih-0zZ"/>
-        <segue reference="PMP-ia-J5N"/>
-        <segue reference="kkU-wo-iDO"/>
+        <segue reference="4L7-Gm-Vhk"/>
+        <segue reference="3ID-na-iIE"/>
+        <segue reference="GfQ-jn-FaW"/>
     </inferredMetricsTieBreakers>
 </document>

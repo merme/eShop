@@ -317,6 +317,7 @@
                                 <barButtonItem systemItem="trash" id="djy-m5-6Vy">
                                     <connections>
                                         <action selector="btnDeleteShop:" destination="CRG-W9-Ghq" id="BgS-wC-olc"/>
+                                        <segue destination="QUy-BD-bpt" kind="modal" identifier="backFromDeleteProduct" id="PMP-ia-J5N"/>
                                     </connections>
                                 </barButtonItem>
                                 <barButtonItem systemItem="edit" id="ufO-Mt-OTb">
@@ -434,6 +435,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Kpe-zd-B2J"/>
                     <connections>
                         <outlet property="btnSave" destination="w7R-ET-y7k" id="r1c-a2-atM"/>
                         <outlet property="lblName" destination="Y2G-zs-jno" id="KHT-jC-bVQ"/>
@@ -442,7 +444,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WNo-0c-rkG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1587" y="1170"/>
+            <point key="canvasLocation" x="1636" y="1215"/>
         </scene>
         <!--Add Shop ToA ProductVC-->
         <scene sceneID="tOE-5w-Y04">
@@ -509,7 +511,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nzh-a1-toa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1143" y="498"/>
+            <point key="canvasLocation" x="1122" y="1074"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xgT-qL-WaD">
@@ -526,7 +528,7 @@
                 <barButtonItem systemItem="save" id="a8s-Da-ZTv"/>
                 <barButtonItem title="Back" id="z5M-pS-P3H"/>
             </objects>
-            <point key="canvasLocation" x="1160" y="-230"/>
+            <point key="canvasLocation" x="1112" y="-230"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Vdk-Tk-gcO">
@@ -710,7 +712,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="7eI-Ih-0zZ"/>
-        <segue reference="YvU-FI-YcG"/>
-        <segue reference="tNE-fx-fn3"/>
+        <segue reference="PMP-ia-J5N"/>
+        <segue reference="kkU-wo-iDO"/>
     </inferredMetricsTieBreakers>
 </document>

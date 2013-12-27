@@ -9,7 +9,7 @@ v Product category recalculation
 + Remove a product from a Shop id
 v Retrieve a product list
 v Update a product from the list
-+ Remove a product from the list
+v Remove a product from the list
 v Select all shops where is sold a Product id
 v Add a shop price from a Shop id
 + Update a shop price from a Shop id

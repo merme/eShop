@@ -10,4 +10,10 @@
 
 @interface AddShop : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *lblName;
+@property (weak, nonatomic) IBOutlet UITextField *txtName;
+@property (weak, nonatomic) IBOutlet UILabel *lblLocation;
+@property (weak, nonatomic) IBOutlet UITextField *txtLocation;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnBack;
+
 @end

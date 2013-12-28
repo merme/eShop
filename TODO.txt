@@ -16,3 +16,6 @@ v Add a shop price from a Shop id
 + Remove a shop price from a Shop id
 + Calculate economic list
 v Add a setup screen
+v Add Product
+v Add Shop
+BUG missing picker in product edit screeen

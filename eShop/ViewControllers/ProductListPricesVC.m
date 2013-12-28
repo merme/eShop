@@ -52,6 +52,7 @@ static ProductListPricesVC *sharedInstance;
     //Set tittle text
     CProduct *cProduct=[CCoreManager getActiveProduct];
     [self.barTop setTitle:[[NSString alloc] initWithFormat:@"%@", cProduct.sName]];
+    [self.btnAdd setTitle:NSLocalizedString(@"SHOP_PRICE", nil)];
 }
 
 - (void)didReceiveMemoryWarning

@@ -25,12 +25,14 @@
 		5A002DC418547C7E00E324C2 /* CShop.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A002DC318547C7E00E324C2 /* CShop.m */; };
 		5A002DC718547CE300E324C2 /* CCoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A002DC618547CE300E324C2 /* CCoreManager.m */; };
 		5A8FFE97185E353C00155799 /* AddProductToAShopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8FFE96185E353C00155799 /* AddProductToAShopVC.m */; };
+		5AA88EF7186EBB4100E80D90 /* AddShop.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA88EF6186EBB4100E80D90 /* AddShop.m */; };
 		5AA8D83F1862200C0086C605 /* EditShopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA8D83E1862200C0086C605 /* EditShopVC.m */; };
 		5AA8D841186226BA0086C605 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5AA8D840186226BA0086C605 /* Localizable.strings */; };
 		5AAAAB361856515F00319E87 /* CDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AAAAB351856515F00319E87 /* CDatabase.m */; };
 		5AAAAB381856578600319E87 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AAAAB371856578600319E87 /* libsqlite3.0.dylib */; };
 		5AB6C5421858FA020009A1D6 /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5AB6C5411858FA020009A1D6 /* TODO.txt */; };
 		5ABA7A08186D698500883EA2 /* SetupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABA7A07186D698500883EA2 /* SetupVC.m */; };
+		5ABA7A0C186D71D200883EA2 /* AddProductVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABA7A0B186D71D200883EA2 /* AddProductVC.m */; };
 		5ACD16F4186357D9003C83EA /* CProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACD16F3186357D9003C83EA /* CProduct.m */; };
 		5ACD16F8186360CA003C83EA /* ProductListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACD16F7186360CA003C83EA /* ProductListVC.m */; };
 		5ACD16FB186363BC003C83EA /* ProductViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACD16FA186363BC003C83EA /* ProductViewCell.m */; };
@@ -82,6 +84,8 @@
 		5A002DC618547CE300E324C2 /* CCoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCoreManager.m; path = Core/CCoreManager.m; sourceTree = "<group>"; };
 		5A8FFE95185E353C00155799 /* AddProductToAShopVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddProductToAShopVC.h; path = ViewControllers/AddProductToAShopVC.h; sourceTree = "<group>"; };
 		5A8FFE96185E353C00155799 /* AddProductToAShopVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddProductToAShopVC.m; path = ViewControllers/AddProductToAShopVC.m; sourceTree = "<group>"; };
+		5AA88EF5186EBB4100E80D90 /* AddShop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddShop.h; path = ViewControllers/AddShop.h; sourceTree = "<group>"; };
+		5AA88EF6186EBB4100E80D90 /* AddShop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddShop.m; path = ViewControllers/AddShop.m; sourceTree = "<group>"; };
 		5AA8D83D1862200C0086C605 /* EditShopVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditShopVC.h; path = ViewControllers/EditShopVC.h; sourceTree = "<group>"; };
 		5AA8D83E1862200C0086C605 /* EditShopVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditShopVC.m; path = ViewControllers/EditShopVC.m; sourceTree = "<group>"; };
 		5AA8D840186226BA0086C605 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -92,6 +96,8 @@
 		5AB6C5411858FA020009A1D6 /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = SOURCE_ROOT; };
 		5ABA7A06186D698500883EA2 /* SetupVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetupVC.h; path = ViewControllers/SetupVC.h; sourceTree = "<group>"; };
 		5ABA7A07186D698500883EA2 /* SetupVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetupVC.m; path = ViewControllers/SetupVC.m; sourceTree = "<group>"; };
+		5ABA7A0A186D71D200883EA2 /* AddProductVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddProductVC.h; path = ViewControllers/AddProductVC.h; sourceTree = "<group>"; };
+		5ABA7A0B186D71D200883EA2 /* AddProductVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddProductVC.m; path = ViewControllers/AddProductVC.m; sourceTree = "<group>"; };
 		5ACD16F2186357D9003C83EA /* CProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CProduct.h; path = Core/CProduct.h; sourceTree = "<group>"; };
 		5ACD16F3186357D9003C83EA /* CProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CProduct.m; path = Core/CProduct.m; sourceTree = "<group>"; };
 		5ACD16F6186360CA003C83EA /* ProductListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductListVC.h; path = ViewControllers/ProductListVC.h; sourceTree = "<group>"; };
@@ -245,6 +251,15 @@
 			name = AddProductToAShop;
 			sourceTree = "<group>";
 		};
+		5AA88EF4186EBAFE00E80D90 /* AddShop */ = {
+			isa = PBXGroup;
+			children = (
+				5AA88EF5186EBB4100E80D90 /* AddShop.h */,
+				5AA88EF6186EBB4100E80D90 /* AddShop.m */,
+			);
+			name = AddShop;
+			sourceTree = "<group>";
+		};
 		5AA8D83C18621FDB0086C605 /* EditShop */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +285,15 @@
 				5ABA7A07186D698500883EA2 /* SetupVC.m */,
 			);
 			name = Setup;
+			sourceTree = "<group>";
+		};
+		5ABA7A09186D703900883EA2 /* AddProduct */ = {
+			isa = PBXGroup;
+			children = (
+				5ABA7A0A186D71D200883EA2 /* AddProductVC.h */,
+				5ABA7A0B186D71D200883EA2 /* AddProductVC.m */,
+			);
+			name = AddProduct;
 			sourceTree = "<group>";
 		};
 		5ACD16F518636079003C83EA /* ProductList */ = {
@@ -306,6 +330,8 @@
 		5AD3F752185A25A800950BC1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5AA88EF4186EBAFE00E80D90 /* AddShop */,
+				5ABA7A09186D703900883EA2 /* AddProduct */,
 				5ABA7A05186D696200883EA2 /* Setup */,
 				5ACD16FC18636A75003C83EA /* AddShopToAProduct */,
 				5ACD16F518636079003C83EA /* ProductList */,
@@ -461,8 +487,10 @@
 				5A8FFE97185E353C00155799 /* AddProductToAShopVC.m in Sources */,
 				5ACD16FF18636AF2003C83EA /* AddShopToAProductVC.m in Sources */,
 				5ACD16FB186363BC003C83EA /* ProductViewCell.m in Sources */,
+				5AA88EF7186EBB4100E80D90 /* AddShop.m in Sources */,
 				5A002D97185478BD00E324C2 /* AppDelegate.m in Sources */,
 				5A002D9D185478BD00E324C2 /* ShopsListVC.m in Sources */,
+				5ABA7A0C186D71D200883EA2 /* AddProductVC.m in Sources */,
 				5A002DC718547CE300E324C2 /* CCoreManager.m in Sources */,
 				5ADAAA96185DCC770080C816 /* CProductPrice.m in Sources */,
 				5ACD17061863804F003C83EA /* ProductPriceCell.m in Sources */,

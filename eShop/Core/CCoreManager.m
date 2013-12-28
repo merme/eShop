@@ -106,6 +106,12 @@ static CProduct *cAtiveProduct;
 }
 
 
++(void) addShop:(CShop*) p_CShop{
+    
+    [CDatabase addShop:p_CShop];
+}
+
+/*
 -(void) addShop:(CShop*) r_CShop
 {
    
@@ -113,7 +119,7 @@ static CProduct *cAtiveProduct;
     [arrShops addObject:r_CShop];
     
 }
-
+*/
 
 
 -(NSArray*) listShop
@@ -196,6 +202,12 @@ static CProduct *cAtiveProduct;
     
     [CDatabase updateProduct:p_CProduct];
     [CCoreManager setActiveProduct:p_CProduct];
+}
+
++(void) addProduct:(CProduct*) p_CProduct{
+    
+    [CDatabase addProduct:p_CProduct];
+    
 }
 
 

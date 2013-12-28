@@ -35,6 +35,8 @@
 +(void) insertProductPrice:(CProductPrice*)p_cProductPrice;
 +(void) deleteShop;
 +(void) updateShop:(CShop*) p_CShop;
++(void) addShop:(CShop*) p_CShop;
+
 
 +(void) setActiveProduct:(CProduct*) p_CProduct;
 +(CProduct*) getActiveProduct;
@@ -45,6 +47,7 @@
 +(void) insertShopPrice:(CProductPrice*)p_cProductPrice;
 +(void) deleteProduct;
 +(void) updateProduct:(CProduct*) p_CProduct;
++(void) addProduct:(CProduct*) p_CProduct;
 
 
 @end

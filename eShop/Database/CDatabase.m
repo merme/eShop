@@ -36,7 +36,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     //Prepare array of commands ...
     NSMutableArray *sSqlQueries = [NSMutableArray array];
     [sSqlQueries addObject:@"CREATE TABLE IF NOT EXISTS SHOPS( SHOP_ID INTEGER PRIMARY KEY, SHOP_NAME TEXT  NOT NULL,LOCATION TEXT);"]; // same with float values
-    [sSqlQueries addObject:@"CREATE TABLE IF NOT EXISTS PRODUCTS(PRODUCT_ID INTEGER PRIMARY KEY, PRODUCT_NAME TEXT UNIQUE NOT NULL);"];
+    [sSqlQueries addObject:@"CREATE TABLE IF NOT EXISTS PRODUCTS(PRODUCT_ID INTEGER PRIMARY KEY, PRODUCT_NAME TEXT UNIQUE NOT NULL,PRICE_TYPE INTEGER NOT NULL);"];
     [sSqlQueries addObject:@"CREATE TABLE IF NOT EXISTS PRICES(SHOP_ID INT NOT NULL REFERENCES SHOPS(SHOP_ID), PRODUCT_ID INT NOT NULL REFERENCES PRODUCTS(PRODUCT_ID),PRICE DECIMAL(7,2) NOT NULL, CATEGORY INT);"];
     
     
@@ -112,9 +112,9 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES (null, 'Bon Preu','Palleja');"];
     [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES (null, 'Condis','Palleja-Maestro Falla');"];
     [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES (null, 'Condis','Palleja-S. Isidro');"];
-    [sSqlQueries addObject:@"INSERT INTO PRODUCTS VALUES (null, 'Atun');"];
-    [sSqlQueries addObject:@"INSERT INTO PRODUCTS VALUES (null, 'Avellanas');"];
-    [sSqlQueries addObject:@"INSERT INTO PRODUCTS VALUES (null, 'Base pizza');"];
+    [sSqlQueries addObject:@"INSERT INTO PRODUCTS VALUES (null, 'Atun',0);"];
+    [sSqlQueries addObject:@"INSERT INTO PRODUCTS VALUES (null, 'Avellanas',1);"];
+    [sSqlQueries addObject:@"INSERT INTO PRODUCTS VALUES (null, 'Base pizza',2);"];
     [sSqlQueries addObject:@"INSERT INTO PRICES VALUES (1, 1,10.123,3);"];
     [sSqlQueries addObject:@"INSERT INTO PRICES VALUES (2, 2,10,3);"];
     [sSqlQueries addObject:@"INSERT INTO PRICES VALUES (1, 3,15.567,3);"];
@@ -450,6 +450,31 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     
 }
 
+
++(void) addShop:(CShop *)p_CShop{
+    
+    //Get Temporary Directory
+    NSString* dbPath = [CDatabase getDBPath];
+    
+    int result = sqlite3_open([dbPath UTF8String], &contactDB);
+    
+    if (SQLITE_OK != result) {
+        NSLog(@"myDB opening error");
+        return;
+    }
+    
+    //Recategorize Product-Price
+    NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"INSERT INTO SHOPS VALUES (null,'%@','%@');",p_CShop.sName ,p_CShop.sLocation];
+    
+    char * errInfo ;
+    result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);
+    if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
+    
+    sqlite3_close(contactDB);
+    
+}
+
+
 +(NSMutableArray*) getProductsList
 {
     NSMutableArray* arrProduct = [[NSMutableArray alloc] init];
@@ -644,6 +669,29 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     
     //Recategorize Product-Price
     NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"UPDATE PRODUCTS SET PRODUCT_NAME='%@' WHERE PRODUCT_ID=%d ",p_CProduct.sName ,p_CProduct.iId];
+    
+    char * errInfo ;
+    result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);
+    if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
+    
+    sqlite3_close(contactDB);
+    
+}
+
++(void) addProduct:(CProduct*)p_CProduct{
+    
+    //Get Temporary Directory
+    NSString* dbPath = [CDatabase getDBPath];
+    
+    int result = sqlite3_open([dbPath UTF8String], &contactDB);
+    
+    if (SQLITE_OK != result) {
+        NSLog(@"myDB opening error");
+        return;
+    }
+    
+    //Recategorize Product-Price
+    NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"INSERT INTO PRODUCTS VALUES (null,'%@',%d);",p_CProduct.sName ,p_CProduct.tPriceType];
     
     char * errInfo ;
     result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);

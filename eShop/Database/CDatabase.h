@@ -32,6 +32,7 @@
 +(void) recategorizeProducts:(CProductPrice*)p_cProductPrice;
 +(void) deleteShop:(CShop*)p_cShop;
 +(void) updateShop:(CShop*)p_CShop;
++(void) addShop:(CShop*)p_CShop;
 
 +(NSMutableArray*) getProductsList;
 +(NSMutableArray*) getProductPriceList:(CProduct*)p_cProduct;
@@ -40,6 +41,7 @@
 +(void) insertShopPrice:(CProductPrice*)p_cProductPrice inProduct:(CProduct *)p_cProduct;
 +(void) deleteProduct:(CProduct*)p_cProduct;
 +(void) updateProduct:(CProduct*)p_CProduct;
++(void) addProduct:(CProduct*)p_CProduct;
 
 
 @end

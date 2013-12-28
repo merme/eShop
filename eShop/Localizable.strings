@@ -10,4 +10,17 @@
 "LOCATION"="Location:";
 "NAME"="Name:";
 "SAVE"="Save";
+"SHOP_PRICE"="+Shop";
 "RESET_DB"="Reset data";
+
+"UNIT"="Unit";
+"KILO"="1 Kilogram (Kg)";
+"250GR"="250 (g)";
+"100GR"="100 (g)";
+"LITER"="1 Liter (l)";
+"250CL"="250 (cl)";
+"100CL"="100 (cl)";
+"POUND"="1 Pound (lb)";
+"OUNCE"="1 Ounze (Oz)";
+"GALLON"="1 Gallon (gal)";
+

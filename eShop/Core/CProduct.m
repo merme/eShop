@@ -12,5 +12,6 @@
 
 @synthesize iId;
 @synthesize sName;
+@synthesize tPriceType;
 
 @end

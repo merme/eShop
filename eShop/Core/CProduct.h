@@ -8,7 +8,25 @@
 
 #import <Foundation/Foundation.h>
 
+#define PRICE_TYPES[NSArray arrayWithObjects:NSLocalizedString(@"UNIT", nil),NSLocalizedString(@"KILO", nil),NSLocalizedString(@"250GR", nil),NSLocalizedString(@"100GR", nil),NSLocalizedString(@"LITER", nil),NSLocalizedString(@"250CL", nil),NSLocalizedString(@"100CL", nil),NSLocalizedString(@"POUND", nil),NSLocalizedString(@"OUNCE", nil),NSLocalizedString(@"GALLON", nil),nil]
+
 @interface CProduct : NSObject
+
+typedef enum Price : NSUInteger {
+    PriceUnit,
+    Price1Kilo,
+    Price250Gr,
+    Price100Gr,
+    Price1Liter,
+    Price250Cl,
+    Price100Cl,
+    PricePound,
+    PriceOnce,
+    PriceGallon
+} PriceType;
+
+
+@property (nonatomic) enum Price tPriceType;
 
 @property int iId;
 @property (strong,nonatomic) NSString *sName;

@@ -42,11 +42,10 @@ static AppDelegate *sharedInstance;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
- /*
+
     [CDatabase dropTables];
     [CDatabase createTables];
     [CDatabase fillData];
-*/
     
     return YES;
 }

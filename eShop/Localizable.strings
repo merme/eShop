@@ -9,6 +9,7 @@
 "BACK"="Back";
 "LOCATION"="Location:";
 "NAME"="Name:";
+"PRODUCT_PRICE"="+Prod.";
 "SAVE"="Save";
 "SHOP_PRICE"="+Shop";
 "RESET_DB"="Reset data";

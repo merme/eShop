@@ -430,10 +430,16 @@
                                 <segue destination="CZ4-MO-1fc" kind="modal" identifier="backFromListPriceByShop" id="lh5-Oz-3kE"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="khS-l0-Fl6">
+                            <connections>
+                                <segue destination="F2w-gn-pt9" kind="push" identifier="addPendingProductPrice" id="hhC-l5-mkI"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="barTop" destination="fsU-dO-but" id="Gnk-bT-NG1"/>
+                        <outlet property="btnAdd" destination="khS-l0-Fl6" id="D3H-Pj-qK5"/>
                         <outlet property="tbvShopProductPrices" destination="fK1-Ol-U1e" id="FPS-FL-bHK"/>
                     </connections>
                 </tableViewController>
@@ -913,8 +919,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="YvU-FI-YcG"/>
-        <segue reference="qhD-FO-lTt"/>
+        <segue reference="PMP-ia-J5N"/>
+        <segue reference="lh5-Oz-3kE"/>
         <segue reference="n5p-g4-lcn"/>
     </inferredMetricsTieBreakers>
 </document>

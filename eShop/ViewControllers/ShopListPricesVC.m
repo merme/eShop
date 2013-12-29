@@ -52,6 +52,7 @@ static ShopListPricesVC *sharedInstance;
     
     //Check if the shop has any product to add in its list
     self.btnAdd.enabled=([CCoreManager getNumberShopNotExistingProducts]>0);
+    [self.btnAdd setTitle:NSLocalizedString(@"PRODUCT_PRICE", nil)];
     
     //Set tittle text
     CShop *cShop=[CCoreManager getActiveShop];

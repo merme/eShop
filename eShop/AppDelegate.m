@@ -43,13 +43,40 @@ static AppDelegate *sharedInstance;
 {
     // Override point for customization after application launch.
 
+
+        
+        if(![CDatabase existsDB]){
+            // Create tables
+            [CDatabase createTables];
+            // Ask if user wants sample data
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LOOK_OUT", nil)
+                message:NSLocalizedString(@"NO_SHOPS_PRODUCTS", nil)
+                delegate:self
+                cancelButtonTitle:NSLocalizedString(@"NO", nil)
+                otherButtonTitles:NSLocalizedString(@"YES", nil), nil];
+            [message show];
+            
+        }
+
+    
+
+    /*
     [CDatabase dropTables];
     [CDatabase createTables];
     [CDatabase fillData];
-    
+    */
     return YES;
 }
-							
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    if([title isEqualToString:NSLocalizedString(@"YES", nil)])
+    {
+       [CDatabase fillData];
+    }
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

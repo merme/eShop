@@ -15,6 +15,47 @@
 
 static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
 
+
++(void) initializeDB{
+    
+    if(![CDatabase existsDB]){
+        // Create tables
+        [CDatabase createTables];
+        // Ask if user wants sample data
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Hello World!"
+                                                          message:@"This is your first UIAlertview message."
+                                                         delegate:self
+                                                cancelButtonTitle:@"Button 1"
+                                                otherButtonTitles:@"Button 2", @"Button 3", nil];
+        [message show];
+        
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    if([title isEqualToString:@"Button 1"])
+    {
+        NSLog(@"Button 1 was selected.");
+    }
+    else if([title isEqualToString:@"Button 2"])
+    {
+        NSLog(@"Button 2 was selected.");
+    }
+    else if([title isEqualToString:@"Button 3"])
+    {
+        NSLog(@"Button 3 was selected.");
+    }
+}
+
++(BOOL) existsDB{
+    NSString *sDBFilename=[CDatabase getDBPath];
+    
+    return [[NSFileManager defaultManager] fileExistsAtPath:sDBFilename];
+}
+
+
 +(NSString *)getDBPath {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory , NSUserDomainMask, YES);
 	NSString *documentsDir = [paths objectAtIndex:0];

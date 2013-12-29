@@ -8,11 +8,15 @@
 
 "BACK"="Back";
 "LOCATION"="Location:";
+"LOOK_OUT"="Look out";
 "NAME"="Name:";
+"NO"="No";
 "PRODUCT_PRICE"="+Prod.";
 "SAVE"="Save";
 "SHOP_PRICE"="+Shop";
 "RESET_DB"="Reset data";
+"NO_SHOPS_PRODUCTS"="There are no products nor shops. Fill with sample data.";
+"YES"="Yes";
 
 "UNIT"="Unit";
 "KILO"="1 Kilogram (Kg)";

@@ -12,13 +12,14 @@
 #import "CShop.h"
 #import "CProductPrice.h"
 
-@interface CDatabase : NSObject{
+@interface CDatabase : UIViewController <UIAlertViewDelegate>{
 
 
     NSString *sDBPath;
 }
 
-
++(void) initializeDB;
++(BOOL) existsDB;
 +(NSString *)getDBPath;
 +(void) createTables;
 +(void) dropTables;

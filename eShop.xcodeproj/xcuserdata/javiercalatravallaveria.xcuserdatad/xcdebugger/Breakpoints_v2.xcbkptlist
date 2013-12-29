@@ -24,11 +24,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/AppDelegate.m"
-            timestampString = "409867296.710257"
+            timestampString = "410010502.075547"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "-applicationWillResignActive:"
             landmarkType = "5">
          </BreakpointContent>
@@ -36,7 +36,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/Database/CDatabase.m"
@@ -56,11 +56,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/Database/CDatabase.m"
-            timestampString = "409167151.481853"
+            timestampString = "410007778.04975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "+createTables"
             landmarkType = "5">
          </BreakpointContent>
@@ -72,11 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/AppDelegate.m"
-            timestampString = "409867296.710257"
+            timestampString = "410009655.237501"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "-application:didFinishLaunchingWithOptions:"
             landmarkType = "5">
          </BreakpointContent>
@@ -200,11 +200,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/Database/CDatabase.m"
-            timestampString = "409167151.481853"
+            timestampString = "410007778.04975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
             landmarkName = "+getShopsList"
             landmarkType = "5">
          </BreakpointContent>
@@ -264,11 +264,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/AppDelegate.m"
-            timestampString = "409007442.451765"
+            timestampString = "410009655.237501"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "-application:didFinishLaunchingWithOptions:"
             landmarkType = "5">
          </BreakpointContent>
@@ -296,11 +296,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/Database/CDatabase.m"
-            timestampString = "409167151.481853"
+            timestampString = "410007778.04975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "+getShopsList"
             landmarkType = "5">
          </BreakpointContent>
@@ -376,11 +376,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/Database/CDatabase.m"
-            timestampString = "409167151.481853"
+            timestampString = "410007778.04975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
             landmarkName = "+getShopPriceList:"
             landmarkType = "5">
          </BreakpointContent>
@@ -424,11 +424,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/Database/CDatabase.m"
-            timestampString = "409167151.481853"
+            timestampString = "410007778.04975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
             landmarkName = "+getShopPriceList:"
             landmarkType = "5">
          </BreakpointContent>
@@ -440,11 +440,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/Database/CDatabase.m"
-            timestampString = "409167151.481853"
+            timestampString = "410007778.04975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
             landmarkName = "+getShopPriceList:"
             landmarkType = "5">
          </BreakpointContent>
@@ -520,11 +520,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/Database/CDatabase.m"
-            timestampString = "409167151.481853"
+            timestampString = "410007778.04975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
             landmarkName = "+getShopNotExistingProducts:"
             landmarkType = "5">
          </BreakpointContent>
@@ -568,11 +568,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/Database/CDatabase.m"
-            timestampString = "409167151.481853"
+            timestampString = "410007778.04975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
             landmarkName = "+getShopNotExistingProducts:"
             landmarkType = "5">
          </BreakpointContent>
@@ -712,11 +712,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/Database/CDatabase.m"
-            timestampString = "409184386.825075"
+            timestampString = "410007778.04975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "337"
-            endingLineNumber = "337"
+            startingLineNumber = "378"
+            endingLineNumber = "378"
             landmarkName = "+recategorizeProducts:"
             landmarkType = "5">
          </BreakpointContent>
@@ -728,11 +728,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/Database/CDatabase.m"
-            timestampString = "409184386.825075"
+            timestampString = "410007778.04975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "354"
-            endingLineNumber = "354"
+            startingLineNumber = "395"
+            endingLineNumber = "395"
             landmarkName = "+recategorizeProducts:"
             landmarkType = "5">
          </BreakpointContent>
@@ -744,11 +744,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/Database/CDatabase.m"
-            timestampString = "409184386.825075"
+            timestampString = "410007778.04975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "364"
-            endingLineNumber = "364"
+            startingLineNumber = "405"
+            endingLineNumber = "405"
             landmarkName = "+recategorizeProducts:"
             landmarkType = "5">
          </BreakpointContent>
@@ -760,11 +760,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/Database/CDatabase.m"
-            timestampString = "409184386.825075"
+            timestampString = "410007778.04975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "386"
-            endingLineNumber = "386"
+            startingLineNumber = "427"
+            endingLineNumber = "427"
             landmarkName = "+recategorizeProducts:"
             landmarkType = "5">
             <Locations>
@@ -802,15 +802,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/Database/CDatabase.m"
-            timestampString = "409184386.825075"
+            timestampString = "410007778.04975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "412"
-            endingLineNumber = "412"
+            startingLineNumber = "453"
+            endingLineNumber = "453"
             landmarkName = "+deleteShop:"
             landmarkType = "5">
          </BreakpointContent>
@@ -818,45 +818,45 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/Database/CDatabase.m"
-            timestampString = "409184386.825075"
+            timestampString = "410007778.04975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "426"
-            endingLineNumber = "426"
+            startingLineNumber = "467"
+            endingLineNumber = "467"
             landmarkName = "+deleteShop:"
             landmarkType = "5">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "+[CDatabase deleteShop:]"
                   moduleName = "eShop"
                   urlString = "file:///Users/javiercalatravallaveria/Dropbox/eShop/eShop/Database/CDatabase.m"
-                  timestampString = "410002612.986628"
+                  timestampString = "410005623.770728"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "426"
                   endingLineNumber = "426"
-                  offsetFromSymbolStart = "869">
+                  offsetFromSymbolStart = "942">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "+[CDatabase deleteShop:]"
                   moduleName = "eShop"
                   urlString = "file:///Users/javiercalatravallaveria/Dropbox/eShop/eShop/Database/CDatabase.m"
-                  timestampString = "410002612.987031"
+                  timestampString = "410005623.770956"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "426"
                   endingLineNumber = "426"
-                  offsetFromSymbolStart = "958">
+                  offsetFromSymbolStart = "994">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -880,15 +880,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/Database/CDatabase.m"
-            timestampString = "409184386.825075"
+            timestampString = "410007778.04975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "402"
-            endingLineNumber = "402"
+            startingLineNumber = "443"
+            endingLineNumber = "443"
             landmarkName = "+deleteShop:"
             landmarkType = "5">
          </BreakpointContent>
@@ -962,11 +962,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/Database/CDatabase.m"
-            timestampString = "409184386.825075"
+            timestampString = "410007778.04975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "433"
-            endingLineNumber = "433"
+            startingLineNumber = "474"
+            endingLineNumber = "474"
             landmarkName = "+updateShop:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1090,11 +1090,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/Database/CDatabase.m"
-            timestampString = "409926110.96969"
+            timestampString = "410007778.04975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "507"
-            endingLineNumber = "507"
+            startingLineNumber = "548"
+            endingLineNumber = "548"
             landmarkName = "+getProductsList"
             landmarkType = "5">
          </BreakpointContent>
@@ -1234,11 +1234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/Database/CDatabase.m"
-            timestampString = "409926110.96969"
+            timestampString = "410007778.04975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "596"
-            endingLineNumber = "596"
+            startingLineNumber = "637"
+            endingLineNumber = "637"
             landmarkName = "+getNumberProductNotExistingShops:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1250,11 +1250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/Database/CDatabase.m"
-            timestampString = "409926110.96969"
+            timestampString = "410007778.04975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "560"
-            endingLineNumber = "560"
+            startingLineNumber = "601"
+            endingLineNumber = "601"
             landmarkName = "+getProductNotExistingShops:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1298,11 +1298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/Database/CDatabase.m"
-            timestampString = "409926110.96969"
+            timestampString = "410007778.04975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "546"
-            endingLineNumber = "546"
+            startingLineNumber = "587"
+            endingLineNumber = "587"
             landmarkName = "+getProductPriceList:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1426,11 +1426,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/Database/CDatabase.m"
-            timestampString = "409926110.96969"
+            timestampString = "410007778.04975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "590"
-            endingLineNumber = "590"
+            startingLineNumber = "631"
+            endingLineNumber = "631"
             landmarkName = "+getProductNotExistingShops:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1455,7 +1455,7 @@
                   symbolName = "-[CCoreManager arrShops]"
                   moduleName = "eShop"
                   urlString = "file:///Users/javiercalatravallaveria/Dropbox/eShop/eShop/Core/CCoreManager.h"
-                  timestampString = "410002612.990459"
+                  timestampString = "410012797.700809"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "23"
@@ -1469,7 +1469,7 @@
                   symbolName = "-[CCoreManager setArrShops:]"
                   moduleName = "eShop"
                   urlString = "file:///Users/javiercalatravallaveria/Dropbox/eShop/eShop/Core/CCoreManager.h"
-                  timestampString = "410002612.990793"
+                  timestampString = "410012797.70099"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "23"
@@ -1630,11 +1630,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/Database/CDatabase.m"
-            timestampString = "409926110.96969"
+            timestampString = "410007778.04975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "604"
-            endingLineNumber = "604"
+            startingLineNumber = "645"
+            endingLineNumber = "645"
             landmarkName = "+insertShopPrice:inProduct:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1646,11 +1646,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/Database/CDatabase.m"
-            timestampString = "409926110.96969"
+            timestampString = "410007778.04975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "603"
-            endingLineNumber = "603"
+            startingLineNumber = "644"
+            endingLineNumber = "644"
             landmarkName = "+insertShopPrice:inProduct:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1662,11 +1662,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/Database/CDatabase.m"
-            timestampString = "409926110.96969"
+            timestampString = "410007778.04975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "561"
-            endingLineNumber = "561"
+            startingLineNumber = "602"
+            endingLineNumber = "602"
             landmarkName = "+getProductNotExistingShops:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1804,11 +1804,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/Database/CDatabase.m"
-            timestampString = "409926110.96969"
+            timestampString = "410007778.04975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "685"
-            endingLineNumber = "685"
+            startingLineNumber = "726"
+            endingLineNumber = "726"
             landmarkName = "+addProduct:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2006,15 +2006,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/Database/CDatabase.m"
-            timestampString = "409926110.96969"
+            timestampString = "410007778.04975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "687"
-            endingLineNumber = "687"
+            startingLineNumber = "728"
+            endingLineNumber = "728"
             landmarkName = "+addProduct:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2138,12 +2138,188 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/Database/CDatabase.m"
-            timestampString = "410002125.441024"
+            timestampString = "410007778.04975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "247"
-            endingLineNumber = "247"
+            startingLineNumber = "288"
+            endingLineNumber = "288"
             landmarkName = "+getShopNotExistingProducts:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "eShop/Database/CDatabase.m"
+            timestampString = "410007778.04975"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "444"
+            endingLineNumber = "444"
+            landmarkName = "+deleteShop:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "eShop/Database/CDatabase.m"
+            timestampString = "410007685.174449"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "-alertView:clickedButtonAtIndex:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "eShop/AppDelegate.m"
+            timestampString = "410007769.773735"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "-application:didFinishLaunchingWithOptions:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "eShop/Database/CDatabase.m"
+            timestampString = "410007849.996088"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "+initializeDB"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "eShop/Database/CDatabase.m"
+            timestampString = "410008316.609638"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "+existsDB"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "eShop/Database/CDatabase.m"
+            timestampString = "410008318.526392"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "+getDBPath"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "eShop/Database/CDatabase.m"
+            timestampString = "410008625.410117"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "-alertView:clickedButtonAtIndex:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "eShop/Database/CDatabase.m"
+            timestampString = "410008626.867529"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "-alertView:clickedButtonAtIndex:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "eShop/Database/CDatabase.m"
+            timestampString = "410008628.24482"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "-alertView:clickedButtonAtIndex:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "eShop/Database/CDatabase.m"
+            timestampString = "410008630.247408"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "-alertView:clickedButtonAtIndex:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "eShop/AppDelegate.m"
+            timestampString = "410009666.331039"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "-alertView:clickedButtonAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -18,4 +18,4 @@ v Add a shop price from a Shop id
 v Add a setup screen
 v Add Product
 v Add Shop
-BUG missing picker in product edit screeen
+v BUG missing picker in product edit screen

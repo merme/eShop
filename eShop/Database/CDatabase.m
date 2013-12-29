@@ -490,7 +490,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
         return nil;
     }
     
-    const char *sSqlSelect = "SELECT PRODUCT_ID, PRODUCT_NAME FROM PRODUCTS;";
+    const char *sSqlSelect = "SELECT PRODUCT_ID, PRODUCT_NAME, PRICE_TYPE FROM PRODUCTS;";
     
     sqlite3_stmt *selectStatement;
     if(sqlite3_prepare_v2(contactDB, sSqlSelect, -1, &selectStatement, NULL) == SQLITE_OK) {
@@ -498,6 +498,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
             CProduct *cProduct = [[CProduct alloc] init];
             cProduct.iId=sqlite3_column_int(selectStatement, 0);
             cProduct.sName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 1)];
+            cProduct.tPriceType=sqlite3_column_int(selectStatement, 2);
             [arrProduct addObject:cProduct];
         }
     }
@@ -599,7 +600,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     //Get Temporary Directory
     NSString* dbPath = [CDatabase getDBPath];
     
-    NSLog(@"%@",dbPath);
+
     
     
     int result = sqlite3_open([dbPath UTF8String], &contactDB);
@@ -666,9 +667,9 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
         NSLog(@"myDB opening error");
         return;
     }
-    
+
     //Recategorize Product-Price
-    NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"UPDATE PRODUCTS SET PRODUCT_NAME='%@' WHERE PRODUCT_ID=%d ",p_CProduct.sName ,p_CProduct.iId];
+    NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"UPDATE PRODUCTS SET PRODUCT_NAME='%@',PRICE_TYPE=%d WHERE PRODUCT_ID=%d ",p_CProduct.sName,p_CProduct.tPriceType ,p_CProduct.iId];
     
     char * errInfo ;
     result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);
@@ -682,6 +683,8 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     
     //Get Temporary Directory
     NSString* dbPath = [CDatabase getDBPath];
+    
+        NSLog(@"%@",dbPath);
     
     int result = sqlite3_open([dbPath UTF8String], &contactDB);
     

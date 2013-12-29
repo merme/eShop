@@ -8,13 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EditProductVC : UIViewController
+@interface EditProductVC : UIViewController<UIPickerViewDataSource,UIPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet UITextField *txtName;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnSave;
+@property (weak, nonatomic) IBOutlet UIPickerView *pckTypePrice;
 
+@property NSArray *arrPriceType;
 
 -(IBAction)ReturnKeyButton:(id)sender;
 

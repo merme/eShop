@@ -86,8 +86,13 @@ int iPickerShopViewRow=0;
     if([[self.txtPrice text] length]>0){
         //Get the current cProductPrice
         CProductPrice *cProductPrice =[arrProductPendingShops objectAtIndex:iPickerShopViewRow];
-
-        cProductPrice.fPrice= [[self.txtPrice text] floatValue];
+        
+        
+        //Look out only "." is accecpted as decimal in db, not "," comma
+        NSString *sPrice =[self.txtPrice text];
+        sPrice = [sPrice stringByReplacingOccurrencesOfString:@","
+                                             withString:@"."];
+        cProductPrice.fPrice= [sPrice floatValue];
         
         //Request to CCoreManager to store new Product-Price
         [CCoreManager insertShopPrice:cProductPrice];

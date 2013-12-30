@@ -30,6 +30,7 @@
 +(NSMutableArray*) getShopNotExistingProducts:(CShop*)p_cShop;
 +(int) getNumberShopNotExistingProducts:(CShop*)p_cShop;
 +(void) insertProductPrice:(CProductPrice*)p_cProductPrice inShop:(CShop *)p_cShop;
++(void) updateProductPrice:(CProductPrice*)p_cProductPrice inShop:(CShop *)p_cShop;
 +(void) recategorizeProducts:(CProductPrice*)p_cProductPrice;
 +(void) deleteShop:(CShop*)p_cShop;
 +(void) updateShop:(CShop*)p_CShop;
@@ -40,6 +41,7 @@
 +(NSMutableArray*) getProductNotExistingShops:(CProduct*)p_cProduct;
 +(int) getNumberProductNotExistingShops:(CProduct*)p_cProduct;
 +(void) insertShopPrice:(CProductPrice*)p_cProductPrice inProduct:(CProduct *)p_cProduct;
++(void) updateShopPrice:(CProductPrice*)p_cProductPrice inProduct:(CProduct *)p_cProduct;
 +(void) deleteProduct:(CProduct*)p_cProduct;
 +(void) updateProduct:(CProduct*)p_CProduct;
 +(void) addProduct:(CProduct*)p_CProduct;

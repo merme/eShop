@@ -13,6 +13,7 @@
 #import "ProductListVC.h"
 
 static ProductListPricesVC *sharedInstance;
+static CProductPrice *m_currProductPrice;
 
 @interface ProductListPricesVC ()
 
@@ -53,6 +54,9 @@ static ProductListPricesVC *sharedInstance;
     CProduct *cProduct=[CCoreManager getActiveProduct];
     [self.barTop setTitle:[[NSString alloc] initWithFormat:@"%@", cProduct.sName]];
     [self.btnAdd setTitle:NSLocalizedString(@"SHOP_PRICE", nil)];
+    
+    //Initialize current ProductPrice
+    m_currProductPrice=nil;
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,31 +88,32 @@ static ProductListPricesVC *sharedInstance;
     CProductPrice *currProductPrice = [arrProductShopPrices objectAtIndex:indexPath.row];
     
     [cell.lblShopName setText:[NSString stringWithFormat:@"%@",currProductPrice.sShopName]];
-    [cell.txtPrice setText:[NSString stringWithFormat:@"%f",currProductPrice.fPrice]];
-    [cell.lblCategory setText:[NSString stringWithFormat:@"%d",currProductPrice.tCategory]];
+    [cell.lblCategory setText:[NSString stringWithFormat:@"%d",currProductPrice.tCategory]];    
+    [cell.txtPrice setText:[NSString stringWithFormat:@"%0.2f",currProductPrice.fPrice]];
+    [cell.lblPrice setText:[NSString stringWithFormat:@"%0.2f",currProductPrice.fPrice]];
+    
+    cell.txtPrice.hidden=!(m_currProductPrice!=nil && m_currProductPrice==currProductPrice);
+    cell.lblPrice.hidden=!cell.txtPrice.hidden;
+    cell.btnPrice.hidden=cell.txtPrice.hidden;
     
     return cell;
     
 }
 
+- (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    m_currProductPrice=nil;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    /*
-     CShop* cCurrShop;
-     
-     // Get the current shop
-     cCurrShop = [arrShops objectAtIndex:indexPath.row];
-     
-     //Notify CoreManager which is the active shop
-     [CCoreManager setActiveShop:cCurrShop];
-     
-     //    sMedicineName=[arrSampleMedicines objectAtIndex:indexPath.row];
-     //    sMedicineNamePng=[arrSampleMedicinesPng objectAtIndex:indexPath.row];
-     
-     
-     //Force to close view (-> -(void) viewWillDisappear:(BOOL)animated)
-     [self.navigationController popViewControllerAnimated:YES];
-     */
+    //Set the current product price
+    m_currProductPrice=[arrProductShopPrices objectAtIndex:indexPath.row];
+    
+    [self.tbvProductShopPrices reloadData];
+    
+
 }
 
 //end: Methods to implement for fulfill CollectionView Interface
@@ -137,6 +142,21 @@ static ProductListPricesVC *sharedInstance;
         //Refresh shop list view
         [[ProductListVC sharedViewController] refreshProductList];
         
+    }
+    
+}
+
++(void) setNewShopProductPrice:(NSString*)p_sPrice{
+    
+    if(m_currProductPrice!=nil){
+        
+        //Look out only "." is accecpted as decimal in db, not "," comma
+        NSString *sPrice =p_sPrice;
+        sPrice = [sPrice stringByReplacingOccurrencesOfString:@","
+                                                   withString:@"."];
+        m_currProductPrice.fPrice= [sPrice floatValue];
+        
+        [CCoreManager updateShopPrice:m_currProductPrice];
     }
     
 }

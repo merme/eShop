@@ -7,6 +7,7 @@
 //
 
 #import "ShopPriceCell.h"
+#import "ShopListPricesVC.h"
 
 @implementation ShopPriceCell
 
@@ -15,6 +16,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+       
     }
     return self;
 }
@@ -24,6 +26,33 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+    
 }
+
+
+- (IBAction)didEndOnExit:(id)sender {
+
+    [sender resignFirstResponder];
+}
+
+- (IBAction)editngDidEnd:(id)sender {
+
+ //   [ShopListPricesVC setNewProductShopPrice:self.txtPrice.text];
+    [sender resignFirstResponder];
+}
+
+- (IBAction)touchUpOutside:(id)sender {
+    [sender resignFirstResponder];
+
+}
+- (IBAction)btnConfirmPrice:(id)sender {
+    [ShopListPricesVC setNewProductShopPrice:self.txtPrice.text];
+    [[ShopListPricesVC sharedShopListPricesVC] refreshShopProductPrices];
+    [sender resignFirstResponder];
+}
+
+
+
+
 
 @end

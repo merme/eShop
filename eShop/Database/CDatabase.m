@@ -358,6 +358,37 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
 
 }
 
++(void) updateProductPrice:(CProductPrice*)p_cProductPrice inShop:(CShop *)p_cShop{
+    
+    //Get Temporary Directory
+    NSString* dbPath = [CDatabase getDBPath];
+    
+    
+    int result = sqlite3_open([dbPath UTF8String], &contactDB);
+    
+    if (SQLITE_OK != result) {
+        NSLog(@"myDB opening error");
+        return;
+    }
+    
+    
+    
+    NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"UPDATE PRICES SET PRICE=%0.2f WHERE SHOP_ID=%d AND PRODUCT_ID=%d", p_cProductPrice.fPrice,p_cShop.iId,p_cProductPrice.iId];
+    
+    
+    
+    char * errInfo ;
+    result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);
+    if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
+    
+    
+    sqlite3_close(contactDB);
+    
+    //Recategorize all the products with the same product_id
+    [CDatabase recategorizeProducts:p_cProductPrice];
+    
+}
+
 +(void) recategorizeProducts:(CProductPrice*)p_cProductPrice{
     
     //1st. Part Select all records of a given product
@@ -664,6 +695,37 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     //Recategorize all the products with the same product_id
     [CDatabase recategorizeProducts:p_cProductPrice];
 }
+
++(void) updateShopPrice:(CProductPrice*)p_cProductPrice inProduct:(CProduct *)p_cProduct{
+    //Get Temporary Directory
+    NSString* dbPath = [CDatabase getDBPath];
+    
+    
+    
+    
+    int result = sqlite3_open([dbPath UTF8String], &contactDB);
+    
+    if (SQLITE_OK != result) {
+        NSLog(@"myDB opening error");
+        return;
+    }
+    
+
+    NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"UPDATE PRICES SET PRICE=%0.2f WHERE SHOP_ID=%d AND PRODUCT_ID=%d", p_cProductPrice.fPrice,p_cProductPrice.iShopId,p_cProduct.iId];
+    
+    
+    char * errInfo ;
+    result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);
+    if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
+    
+    
+    sqlite3_close(contactDB);
+    
+    //Recategorize all the products with the same product_id
+    [CDatabase recategorizeProducts:p_cProductPrice];
+}
+
+
 
 +(void) deleteProduct:(CProduct *)p_cProduct{
     

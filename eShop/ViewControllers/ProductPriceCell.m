@@ -7,6 +7,7 @@
 //
 
 #import "ProductPriceCell.h"
+#import "ProductListPricesVC.h"
 
 @implementation ProductPriceCell
 
@@ -24,6 +25,12 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (IBAction)btnConfirmPrice:(id)sender {
+    [ProductListPricesVC setNewShopProductPrice:self.txtPrice.text];
+    [[ProductListPricesVC sharedProductListPricesVC] refreshProductShopPrices];
+    [sender resignFirstResponder];
 }
 
 @end

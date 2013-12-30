@@ -27,6 +27,10 @@
 
 +(ShopListPricesVC *) sharedShopListPricesVC;
 
++(void) setNewProductShopPrice:(NSString*)p_sPrice;
+
+
+
 -(void) refreshShopProductPrices;
 
 @end

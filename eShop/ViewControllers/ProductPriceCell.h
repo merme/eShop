@@ -12,5 +12,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblShopName;
 @property (weak, nonatomic) IBOutlet UILabel *lblCategory;
 @property (weak, nonatomic) IBOutlet UITextField *txtPrice;
+@property (weak, nonatomic) IBOutlet UIButton *btnPrice;
+@property (weak, nonatomic) IBOutlet UILabel *lblPrice;
 
 @end

@@ -89,6 +89,16 @@ static CProduct *cAtiveProduct;
     return [CDatabase insertProductPrice:p_cProductPrice inShop:cShop];
 }
 
++(void) updateProductPrice:(CProductPrice*)p_cProductPrice{
+    
+    CShop *cShop = [CCoreManager getActiveShop];
+    if(cAtiveShop==nil){
+        [NSException raise:@"No active shop" format:@"cAtiveshop is nul"];
+    }
+    
+    return [CDatabase updateProductPrice:p_cProductPrice inShop:cShop];
+}
+
 +(void) deleteShop{
  
     CShop *cShop = [CCoreManager getActiveShop];
@@ -187,6 +197,16 @@ static CProduct *cAtiveProduct;
     }
 
     return [CDatabase insertShopPrice:p_cProductPrice inProduct:cAtiveProduct];
+}
+
++(void) updateShopPrice:(CProductPrice*)p_cProductPrice{
+    
+    
+    if(cAtiveProduct==nil){
+        [NSException raise:@"No active shop" format:@"cAtiveshop is nul"];
+    }
+    
+    return [CDatabase updateShopPrice:p_cProductPrice inProduct:cAtiveProduct];
 }
 
 +(void) deleteProduct{

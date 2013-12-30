@@ -21,7 +21,7 @@ v Add Shop
 v BUG missing picker in product edit screen
 v At the begining check if exists DB if not create an empty one and ask if the user wants sample data.
 v BUG After entering any decimal price, substitute "," comma by "." point.
-* BUG Edit prices. After setting new value price is not updated in the database.
+v BUG Edit prices. After setting new value price is not updated in the database.
 * BUG Recategorize after adding or updating a price.
 * BUG Show price type when you add a shop to a product
 * BUG Show price type when you add a product to a shop

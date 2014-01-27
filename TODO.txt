@@ -23,6 +23,12 @@ v At the begining check if exists DB if not create an empty one and ask if the u
 v BUG After entering any decimal price, substitute "," comma by "." point.
 v BUG Edit prices. After setting new value price is not updated in the database.
 * BUG Recategorize after adding or updating a price.
+    v Updating
+    * Adding
+* BUG Add 500g and 33cl
+* BUG Order product and shops alphabetically
+* BUG Do not allow horizontal position
+* BUG When you have to enter a price it has to appear the description of the product
 * BUG Show price type when you add a shop to a product
 * BUG Show price type when you add a product to a shop
 * BUG if there are no shops ther should have to appear as message box that informs about that
@@ -30,3 +36,5 @@ v BUG Edit prices. After setting new value price is not updated in the database.
 * BUG order product list alphabetically
 * BUG order shop list alphabetically
 * BUG database do not work with texts with accentuation.
+* BUG Recategorize fails when there is a only a product
+* BUG Is not possible remove a Shop from a product shop list

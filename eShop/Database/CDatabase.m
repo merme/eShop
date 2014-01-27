@@ -229,7 +229,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     }
     
     
-    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT PRODUCT_NAME, PRICE, PRODUCTS.PRODUCT_ID, CATEGORY FROM SHOPS,PRICES,PRODUCTS WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID=%d", p_cShop.iId];
+    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT PRODUCT_NAME, PRICE, PRODUCTS.PRODUCT_ID, CATEGORY, SHOPS.SHOP_ID FROM SHOPS,PRICES,PRODUCTS WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID=%d", p_cShop.iId];
     //const char *sSqlSelect = "SELECT SHOP_ID, NAME, LOCATION FROM SHOPS;";
  
     
@@ -241,6 +241,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
             cProductPrice.fPrice = (float)sqlite3_column_double(selectStatement, 1);
             cProductPrice.iId = sqlite3_column_int(selectStatement, 2);
             cProductPrice.tCategory = sqlite3_column_int(selectStatement, 3);
+            cProductPrice.iShopId = sqlite3_column_int(selectStatement, 4);
             
              [arrShopPrices addObject:cProductPrice];
             
@@ -278,6 +279,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
             CProductPrice *cProductPrice = [[CProductPrice alloc] init];
             cProductPrice.sName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 0)];
             cProductPrice.iId = (float)sqlite3_column_int(selectStatement, 1);
+            cProductPrice.iShopId=p_cShop.iId;
             
             [arrShopPrices addObject:cProductPrice];
             
@@ -425,25 +427,50 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     
     sqlite3_close(contactDB);
     
-    //Calculate the size of the 5-segment
     CProductPrice *cProductPrice;
-    float fMin=MAXFLOAT;
-    float fMax=0;
-    for (cProductPrice in arrShopPrices) {
-        if(cProductPrice.fPrice<fMin) fMin=cProductPrice.fPrice;
-        if(cProductPrice.fPrice>fMax) fMax=cProductPrice.fPrice;
-    }
-    float f5Segment=(fMax-fMin)/5;
+    CProductPrice *cProductPriceNext;
     
-    //Recategorize Product-Price
-    for (cProductPrice in arrShopPrices) {
-        if(cProductPrice.fPrice>=fMin && cProductPrice.fPrice<(fMin+f5Segment)) cProductPrice.tCategory=VeryCheap;
-        else if(cProductPrice.fPrice>=(fMin+f5Segment) && cProductPrice.fPrice<(fMin+f5Segment*2)) cProductPrice.tCategory=Cheap;
-        else if(cProductPrice.fPrice>=(fMin+f5Segment*2) && cProductPrice.fPrice<(fMin+f5Segment*3)) cProductPrice.tCategory=Normal;
-        else if(cProductPrice.fPrice>=(fMin+f5Segment*3) && cProductPrice.fPrice<(fMin+f5Segment*4)) cProductPrice.tCategory=Expensive;
-        else cProductPrice.tCategory=VeryExpensive;
+    if([arrShopPrices count]==1){
+       cProductPrice =[arrShopPrices objectAtIndex:0];
+       cProductPrice.tCategory=Normal;
     }
+    else if([arrShopPrices count]==2){
+        cProductPrice =[arrShopPrices objectAtIndex:0];
+        cProductPriceNext =[arrShopPrices objectAtIndex:1];
+        
+        if(cProductPrice.fPrice<cProductPriceNext.fPrice){
+            cProductPrice.tCategory=VeryCheap;
+            cProductPriceNext.tCategory=VeryExpensive;
+        }
+        else if(cProductPrice.fPrice>cProductPriceNext.fPrice){
+            cProductPrice.tCategory=VeryExpensive;
+            cProductPriceNext.tCategory=VeryCheap;
+        }
+        else{
+            cProductPrice.tCategory=Normal;
+            cProductPriceNext.tCategory=Normal;
+        }
+    }
+    else if([arrShopPrices count]>2){
+        //Calculate the size of the 5-segment
     
+        float fMin=MAXFLOAT;
+        float fMax=0;
+        for (cProductPrice in arrShopPrices) {
+            if(cProductPrice.fPrice<fMin) fMin=cProductPrice.fPrice;
+            if(cProductPrice.fPrice>fMax) fMax=cProductPrice.fPrice;
+        }
+        float f5Segment=(fMax-fMin)/5;
+    
+        //Recategorize Product-Price
+        for (cProductPrice in arrShopPrices) {
+            if(cProductPrice.fPrice>=fMin && cProductPrice.fPrice<(fMin+f5Segment)) cProductPrice.tCategory=VeryCheap;
+            else if(cProductPrice.fPrice>=(fMin+f5Segment) && cProductPrice.fPrice<(fMin+f5Segment*2)) cProductPrice.tCategory=Cheap;
+            else if(cProductPrice.fPrice>=(fMin+f5Segment*2) && cProductPrice.fPrice<(fMin+f5Segment*3)) cProductPrice.tCategory=Normal;
+            else if(cProductPrice.fPrice>=(fMin+f5Segment*3) && cProductPrice.fPrice<   (fMin+f5Segment*4)) cProductPrice.tCategory=Expensive;
+            else cProductPrice.tCategory=VeryExpensive;
+        }
+    }
     //2nd. Update all records
     result = sqlite3_open([dbPath UTF8String], &contactDB);
     
@@ -597,7 +624,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     }
     
     
-    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT SHOP_NAME, PRICE, SHOPS.SHOP_ID, CATEGORY, SHOPS.LOCATION FROM SHOPS,PRICES,PRODUCTS WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND PRODUCTS.PRODUCT_ID=%d", p_cProduct.iId];
+    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT SHOP_NAME, PRICE, SHOPS.SHOP_ID, CATEGORY, SHOPS.LOCATION, PRODUCTS.PRODUCT_ID FROM SHOPS,PRICES,PRODUCTS WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND PRODUCTS.PRODUCT_ID=%d", p_cProduct.iId];
 
     
     sqlite3_stmt *selectStatement;
@@ -609,6 +636,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
             cProductPrice.iShopId = sqlite3_column_int(selectStatement, 2);
             cProductPrice.tCategory = sqlite3_column_int(selectStatement, 3);
             cProductPrice.sShopLocation = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 4)];
+            cProductPrice.iId = sqlite3_column_int(selectStatement, 5);
             
             [arrShopPrices addObject:cProductPrice];
         }
@@ -640,7 +668,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT PRODUCT_NAME, PRODUCTS.PRODUCT_ID FROM PRODUCTS WHERE NOT EXISTS( SELECT * FROM SHOPS,PRICES WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID=%d) ORDER BY PRODUCT_NAME", p_cShop.iId];
   */
     
-    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT SHOP_NAME, SHOPS.SHOP_ID, LOCATION FROM SHOPS WHERE NOT EXISTS( SELECT * FROM PRODUCTS,PRICES WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND PRODUCTS.PRODUCT_ID=%d) ORDER BY SHOP_NAME", p_cProduct.iId];
+    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT SHOP_NAME, SHOPS.SHOP_ID, LOCATION,PRODUCTS.PRODUCT_ID FROM SHOPS WHERE NOT EXISTS( SELECT * FROM PRODUCTS,PRICES WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND PRODUCTS.PRODUCT_ID=%d) ORDER BY SHOP_NAME", p_cProduct.iId];
     
     
     sqlite3_stmt *selectStatement;
@@ -650,6 +678,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
             cProductPrice.sShopName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 0)];
             cProductPrice.iShopId = (float)sqlite3_column_int(selectStatement, 1);
             cProductPrice.sShopLocation = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 2)];
+            cProductPrice.iId=sqlite3_column_int(selectStatement, 3);
             
             [arrProductPrices addObject:cProductPrice];
             

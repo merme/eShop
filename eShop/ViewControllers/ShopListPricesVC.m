@@ -100,7 +100,7 @@ int iCurrProductPrice=-1;
     [cell.txtPrice setText:[NSString stringWithFormat:@"%0.2f",currProductPrice.fPrice]];
     [cell.lblPrice setText:[NSString stringWithFormat:@"%0.2f",currProductPrice.fPrice]];
    
-    [cell.lblCategory setText:[NSString stringWithFormat:@"%d",currProductPrice.tCategory]];
+    [cell.lblCategory setText:[NSString stringWithFormat:@"%lu",currProductPrice.tCategory]];
     
     /*
     if(m_currProductPrice!=nil && m_currProductPrice==currProductPrice){
@@ -132,7 +132,7 @@ int iCurrProductPrice=-1;
     [self.tbvShopProductPrices reloadData];
 
     
-     NSLog(@"Row (%d)", indexPath.row);
+     NSLog(@"Row (%ld)", (long)indexPath.row);
     
 }
 

@@ -192,7 +192,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
         return nil;
     }
     
-    const char *sSqlSelect = "SELECT SHOP_ID, SHOP_NAME, LOCATION FROM SHOPS;";
+    const char *sSqlSelect = "SELECT SHOP_ID, SHOP_NAME, LOCATION FROM SHOPS ORDER BY SHOP_NAME;";
 
     sqlite3_stmt *selectStatement;
     if(sqlite3_prepare_v2(contactDB, sSqlSelect, -1, &selectStatement, NULL) == SQLITE_OK) {
@@ -589,7 +589,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
         return nil;
     }
     
-    const char *sSqlSelect = "SELECT PRODUCT_ID, PRODUCT_NAME, PRICE_TYPE FROM PRODUCTS;";
+    const char *sSqlSelect = "SELECT PRODUCT_ID, PRODUCT_NAME, PRICE_TYPE FROM PRODUCTS ORDER BY PRODUCT_NAME;";
     
     sqlite3_stmt *selectStatement;
     if(sqlite3_prepare_v2(contactDB, sSqlSelect, -1, &selectStatement, NULL) == SQLITE_OK) {

@@ -22,9 +22,9 @@ v BUG missing picker in product edit screen
 v At the begining check if exists DB if not create an empty one and ask if the user wants sample data.
 v BUG After entering any decimal price, substitute "," comma by "." point.
 v BUG Edit prices. After setting new value price is not updated in the database.
-* BUG Recategorize after adding or updating a price.
+v BUG Recategorize after adding or updating a price.
     v Updating
-    * Adding
+    v Adding
 * BUG Add 500g and 33cl
 * BUG Order product and shops alphabetically
 * BUG Do not allow horizontal position
@@ -33,8 +33,8 @@ v BUG Edit prices. After setting new value price is not updated in the database.
 * BUG Show price type when you add a product to a shop
 * BUG if there are no shops ther should have to appear as message box that informs about that
 * BUG if there are no products ther should have to appear as message box that informs about that
-* BUG order product list alphabetically
-* BUG order shop list alphabetically
+v BUG order product list alphabetically
+v BUG order shop list alphabetically
 v BUG database do not work with texts with accentuation.
 * BUG Recategorize fails when there is a only a product
 * BUG Is not possible remove a Shop from a product shop list

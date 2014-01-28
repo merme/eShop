@@ -85,7 +85,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     int i;
     for (i = 0 ; i < [sSqlQueries count]; i = i + 1)
     {
-        result = sqlite3_exec(contactDB, [[sSqlQueries objectAtIndex:i] cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);
+        result = sqlite3_exec(contactDB, [[sSqlQueries objectAtIndex:i] cStringUsingEncoding:NSUTF8StringEncoding], nil, nil, &errInfo);
         if (SQLITE_OK != result){
             NSLog(@"Error in Shops Table (%s)", errInfo);
             return;
@@ -125,7 +125,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     int i;
     for (i = 0 ; i < [sSqlQueries count]; i = i + 1)
     {
-        result = sqlite3_exec(contactDB, [[sSqlQueries objectAtIndex:i] cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);
+        result = sqlite3_exec(contactDB, [[sSqlQueries objectAtIndex:i] cStringUsingEncoding:NSUTF8StringEncoding], nil, nil, &errInfo);
         if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);        
     }
     
@@ -153,7 +153,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES (null, 'Bon Preu','Palleja');"];
     [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES (null, 'Condis','Palleja-Maestro Falla');"];
     [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES (null, 'Condis','Palleja-S. Isidro');"];
-    [sSqlQueries addObject:@"INSERT INTO PRODUCTS VALUES (null, 'Atun',0);"];
+    [sSqlQueries addObject:@"INSERT INTO PRODUCTS VALUES (null, 'Atún',0);"];
     [sSqlQueries addObject:@"INSERT INTO PRODUCTS VALUES (null, 'Avellanas',1);"];
     [sSqlQueries addObject:@"INSERT INTO PRODUCTS VALUES (null, 'Base pizza',2);"];
     [sSqlQueries addObject:@"INSERT INTO PRICES VALUES (1, 1,10.123,3);"];
@@ -169,7 +169,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     int i;
     for (i = 0 ; i < [sSqlQueries count]; i = i + 1)
     {
-        result = sqlite3_exec(contactDB, [[sSqlQueries objectAtIndex:i] cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);
+        result = sqlite3_exec(contactDB, [[sSqlQueries objectAtIndex:i] cStringUsingEncoding:NSUTF8StringEncoding], nil, nil, &errInfo);
         if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
     }
     
@@ -349,7 +349,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     NSString *sSqlSelect=[[NSString alloc] initWithFormat:@"INSERT INTO PRICES VALUES (%d, %d,%.2f,%d)", p_cShop.iId,p_cProductPrice.iId,p_cProductPrice.fPrice,p_cProductPrice.tCategory];
     
     char * errInfo ;
-    result = sqlite3_exec(contactDB, [sSqlSelect cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);
+    result = sqlite3_exec(contactDB, [sSqlSelect cStringUsingEncoding:NSUTF8StringEncoding], nil, nil, &errInfo);
     if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
     
     
@@ -380,7 +380,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     
     
     char * errInfo ;
-    result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);
+    result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSUTF8StringEncoding], nil, nil, &errInfo);
     if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
     
     
@@ -487,7 +487,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
         NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"UPDATE PRICES SET CATEGORY=%d WHERE SHOP_ID=%d AND PRODUCT_ID=%d", cProductPrice.tCategory,cProductPrice.iShopId,p_cProductPrice.iId];
         
         char * errInfo ;
-        result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);
+        result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSUTF8StringEncoding], nil, nil, &errInfo);
         if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
     }
     
@@ -518,7 +518,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     int i;
     for (i = 0 ; i < [sSqlQueries count]; i = i + 1)
     {
-        result = sqlite3_exec(contactDB, [[sSqlQueries objectAtIndex:i] cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);
+        result = sqlite3_exec(contactDB, [[sSqlQueries objectAtIndex:i] cStringUsingEncoding:NSUTF8StringEncoding], nil, nil, &errInfo);
         if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
     }
     
@@ -542,7 +542,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"UPDATE SHOPS SET SHOP_NAME='%@', LOCATION='%@' WHERE SHOP_ID=%d ",p_CShop.sName ,p_CShop.sLocation,p_CShop.iId];
         
     char * errInfo ;
-    result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);
+    result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSUTF8StringEncoding], nil, nil, &errInfo);
     if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
     
     sqlite3_close(contactDB);
@@ -566,7 +566,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"INSERT INTO SHOPS VALUES (null,'%@','%@');",p_CShop.sName ,p_CShop.sLocation];
     
     char * errInfo ;
-    result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);
+    result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSUTF8StringEncoding], nil, nil, &errInfo);
     if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
     
     sqlite3_close(contactDB);
@@ -715,7 +715,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     NSString *sSqlSelect=[[NSString alloc] initWithFormat:@"INSERT INTO PRICES VALUES (%d, %d,%.2f,%d)", p_cProductPrice.iShopId,p_cProduct.iId,p_cProductPrice.fPrice,p_cProductPrice.tCategory];
     
     char * errInfo ;
-    result = sqlite3_exec(contactDB, [sSqlSelect cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);
+    result = sqlite3_exec(contactDB, [sSqlSelect cStringUsingEncoding:NSUTF8StringEncoding], nil, nil, &errInfo);
     if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
     
     
@@ -744,7 +744,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     
     
     char * errInfo ;
-    result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);
+    result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSUTF8StringEncoding], nil, nil, &errInfo);
     if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
     
     
@@ -780,7 +780,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     int i;
     for (i = 0 ; i < [sSqlQueries count]; i = i + 1)
     {
-        result = sqlite3_exec(contactDB, [[sSqlQueries objectAtIndex:i] cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);
+        result = sqlite3_exec(contactDB, [[sSqlQueries objectAtIndex:i] cStringUsingEncoding:NSUTF8StringEncoding], nil, nil, &errInfo);
         if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
     }
     
@@ -804,7 +804,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"UPDATE PRODUCTS SET PRODUCT_NAME='%@',PRICE_TYPE=%d WHERE PRODUCT_ID=%d ",p_CProduct.sName,p_CProduct.tPriceType ,p_CProduct.iId];
     
     char * errInfo ;
-    result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);
+    result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSUTF8StringEncoding], nil, nil, &errInfo);
     if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
     
     sqlite3_close(contactDB);
@@ -829,7 +829,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"INSERT INTO PRODUCTS VALUES (null,'%@',%d);",p_CProduct.sName ,p_CProduct.tPriceType];
     
     char * errInfo ;
-    result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSASCIIStringEncoding], nil, nil, &errInfo);
+    result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSUTF8StringEncoding], nil, nil, &errInfo);
     if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
     
     sqlite3_close(contactDB);

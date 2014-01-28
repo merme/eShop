@@ -25,9 +25,9 @@ v BUG Edit prices. After setting new value price is not updated in the database.
 v BUG Recategorize after adding or updating a price.
     v Updating
     v Adding
-* BUG Add 500g and 33cl
-* BUG Order product and shops alphabetically
-* BUG Do not allow horizontal position
+v BUG Add 500g and 33cl
+v BUG Order product and shops alphabetically
+v BUG Do not allow horizontal position
 * BUG When you have to enter a price it has to appear the description of the product
 * BUG Show price type when you add a shop to a product
 * BUG Show price type when you add a product to a shop

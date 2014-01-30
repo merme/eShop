@@ -26,6 +26,11 @@
 		5A002DC718547CE300E324C2 /* CCoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A002DC618547CE300E324C2 /* CCoreManager.m */; };
 		5A8FFE97185E353C00155799 /* AddProductToAShopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8FFE96185E353C00155799 /* AddProductToAShopVC.m */; };
 		5AA88EF7186EBB4100E80D90 /* AddShop.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA88EF6186EBB4100E80D90 /* AddShop.m */; };
+		5AA8994718985A5A005A813F /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA8994618985A5A005A813F /* libGoogleAnalyticsServices.a */; };
+		5AA8994918985AF1005A813F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA8994818985AF1005A813F /* CFNetwork.framework */; };
+		5AA8994B18985BD8005A813F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA8994A18985BD8005A813F /* SystemConfiguration.framework */; };
+		5AA8994D18985BEB005A813F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA8994C18985BEB005A813F /* AVFoundation.framework */; };
+		5AA8994F18985C01005A813F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA8994E18985C01005A813F /* CoreData.framework */; };
 		5AA8D83F1862200C0086C605 /* EditShopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA8D83E1862200C0086C605 /* EditShopVC.m */; };
 		5AA8D841186226BA0086C605 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5AA8D840186226BA0086C605 /* Localizable.strings */; };
 		5AAAAB361856515F00319E87 /* CDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AAAAB351856515F00319E87 /* CDatabase.m */; };
@@ -86,6 +91,17 @@
 		5A8FFE96185E353C00155799 /* AddProductToAShopVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddProductToAShopVC.m; path = ViewControllers/AddProductToAShopVC.m; sourceTree = "<group>"; };
 		5AA88EF5186EBB4100E80D90 /* AddShop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddShop.h; path = ViewControllers/AddShop.h; sourceTree = "<group>"; };
 		5AA88EF6186EBB4100E80D90 /* AddShop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddShop.m; path = ViewControllers/AddShop.m; sourceTree = "<group>"; };
+		5AA8993E189858FB005A813F /* GAI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		5AA8993F189858FB005A813F /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		5AA89940189858FB005A813F /* GAIFields.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		5AA89941189858FB005A813F /* GAILogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		5AA89942189858FB005A813F /* GAITrackedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		5AA89943189858FB005A813F /* GAITracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		5AA8994618985A5A005A813F /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		5AA8994818985AF1005A813F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		5AA8994A18985BD8005A813F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		5AA8994C18985BEB005A813F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		5AA8994E18985C01005A813F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		5AA8D83D1862200C0086C605 /* EditShopVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditShopVC.h; path = ViewControllers/EditShopVC.h; sourceTree = "<group>"; };
 		5AA8D83E1862200C0086C605 /* EditShopVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditShopVC.m; path = ViewControllers/EditShopVC.m; sourceTree = "<group>"; };
 		5AA8D840186226BA0086C605 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -127,9 +143,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AA8994F18985C01005A813F /* CoreData.framework in Frameworks */,
+				5AA8994D18985BEB005A813F /* AVFoundation.framework in Frameworks */,
+				5AA8994B18985BD8005A813F /* SystemConfiguration.framework in Frameworks */,
+				5AA8994918985AF1005A813F /* CFNetwork.framework in Frameworks */,
 				5AAAAB381856578600319E87 /* libsqlite3.0.dylib in Frameworks */,
 				5A002D89185478BD00E324C2 /* CoreGraphics.framework in Frameworks */,
 				5A002D8B185478BD00E324C2 /* UIKit.framework in Frameworks */,
+				5AA8994718985A5A005A813F /* libGoogleAnalyticsServices.a in Frameworks */,
 				5A002D87185478BD00E324C2 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -169,6 +190,10 @@
 		5A002D85185478BD00E324C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5AA8994E18985C01005A813F /* CoreData.framework */,
+				5AA8994C18985BEB005A813F /* AVFoundation.framework */,
+				5AA8994A18985BD8005A813F /* SystemConfiguration.framework */,
+				5AA8994818985AF1005A813F /* CFNetwork.framework */,
 				5AAAAB371856578600319E87 /* libsqlite3.0.dylib */,
 				5AAAAB311856507F00319E87 /* libsqlite3.dylib */,
 				5A002D86185478BD00E324C2 /* Foundation.framework */,
@@ -182,6 +207,7 @@
 		5A002D8C185478BD00E324C2 /* eShop */ = {
 			isa = PBXGroup;
 			children = (
+				5AA8993D189858D0005A813F /* Google Analytics */,
 				5AD3F752185A25A800950BC1 /* ViewControllers */,
 				5AB6C5411858FA020009A1D6 /* TODO.txt */,
 				5AAAAB331856513700319E87 /* Database */,
@@ -258,6 +284,20 @@
 				5AA88EF6186EBB4100E80D90 /* AddShop.m */,
 			);
 			name = AddShop;
+			sourceTree = "<group>";
+		};
+		5AA8993D189858D0005A813F /* Google Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				5AA8994618985A5A005A813F /* libGoogleAnalyticsServices.a */,
+				5AA8993E189858FB005A813F /* GAI.h */,
+				5AA8993F189858FB005A813F /* GAIDictionaryBuilder.h */,
+				5AA89940189858FB005A813F /* GAIFields.h */,
+				5AA89941189858FB005A813F /* GAILogger.h */,
+				5AA89942189858FB005A813F /* GAITrackedViewController.h */,
+				5AA89943189858FB005A813F /* GAITracker.h */,
+			);
+			name = "Google Analytics";
 			sourceTree = "<group>";
 		};
 		5AA8D83C18621FDB0086C605 /* EditShop */ = {
@@ -580,7 +620,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -613,7 +653,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -627,7 +667,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "eShop/eShop-Prefix.pch";
 				INFOPLIST_FILE = "eShop/eShop-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/javiercalatravallaveria/Dropbox/eShop/eShop,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos7.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -640,7 +685,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "eShop/eShop-Prefix.pch";
 				INFOPLIST_FILE = "eShop/eShop-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/javiercalatravallaveria/Dropbox/eShop/eShop,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos7.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -28,6 +28,7 @@ v BUG Recategorize after adding or updating a price.
 v BUG Add 500g and 33cl
 v BUG Order product and shops alphabetically
 v BUG Do not allow horizontal position
+* Add Metrics
 * BUG When you have to enter a price it has to appear the description of the product
 * BUG Show price type when you add a shop to a product
 * BUG Show price type when you add a product to a shop
@@ -38,3 +39,4 @@ v BUG order shop list alphabetically
 v BUG database do not work with texts with accentuation.
 v BUG +Shop option is not working
 * BUG Is not possible remove a Shop from a product shop list
+v Added google analytics

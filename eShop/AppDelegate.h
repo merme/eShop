@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GAI.h"
+
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) id<GAITracker> tracker;
 
 
 //Returns the instance of AppDelegate, in that way the ViewController has access to this class

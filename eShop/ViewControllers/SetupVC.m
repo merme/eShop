@@ -8,6 +8,10 @@
 
 #import "SetupVC.h"
 #import "CDatabase.h"
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
 
 @interface SetupVC ()
 
@@ -32,6 +36,16 @@
     // Set label tags
     [self.btnBack setTitle:NSLocalizedString(@"BACK", nil)];
     [self.btnCleanDB setTitle:NSLocalizedString(@"RESET_DB", nil) forState:UIControlStateNormal];
+    
+    
+    // This screen name value will remain set on the tracker and sent with
+    // hits until it is set to a new value or to nil.
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName
+                                       value:@"Setup Screen"];
+    
+    // Send the screen view.
+    [[GAI sharedInstance].defaultTracker
+     send:[[GAIDictionaryBuilder createAppView] build]];
 
 }
 
@@ -47,5 +61,7 @@
    // [CDatabase fillData];
 
 }
+
+
 
 @end

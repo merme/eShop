@@ -7,13 +7,20 @@
 //
 
 #import "AppDelegate.h"
-
 #import "CDatabase.h"
-
 #import "CProductPrice.h"
+
+static NSString *const kGaPropertyId = @"UA-43230251-3"; // Placeholder property ID.
+static NSString *const kTrackingPreferenceKey = @"allowTracking";
+static BOOL const kGaDryRun = NO;
+static int const kGaDispatchPeriod = 30;
+
+
 
 // Defining this object as a singleton View controllers can call its methods
 static AppDelegate *sharedInstance;
+
+
 
 @implementation AppDelegate{
     
@@ -59,12 +66,29 @@ static AppDelegate *sharedInstance;
         }
 
     
+/*
+    //Google Analytics stuff:BEGIN
+    // Optional: automatically send uncaught exceptions to Google Analytics.
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+ 
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    [GAI sharedInstance].dispatchInterval = 20;
+    
+    // Optional: set Logger to VERBOSE for debug information.
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    
+    // Initialize tracker.
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-43230251-3"];
+    //Google Analytics stuff:END
+*/
+ 
+    
+    // Do other work for customization after application launch
+    // then initialize Google Analytics.
+    [self initializeGoogleAnalytics];
+    
 
-    /*
-    [CDatabase dropTables];
-    [CDatabase createTables];
-    [CDatabase fillData];
-    */
+    
     return YES;
 }
 
@@ -106,6 +130,12 @@ static AppDelegate *sharedInstance;
 // UIApplicationDelegate interface: END
 
 
+- (void)initializeGoogleAnalytics{
+    
+    [[GAI sharedInstance] setDispatchInterval:kGaDispatchPeriod];
+    [[GAI sharedInstance] setDryRun:kGaDryRun];
+    self.tracker = [[GAI sharedInstance] trackerWithTrackingId:kGaPropertyId];
+}
 
 // Calls that deal with the model
 

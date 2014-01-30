@@ -44,6 +44,11 @@ int iPickerShopViewRow=0;
     //Setting callbacks for picker view
     [self.pckPendingProducts setDataSource:self];
     [self.pckPendingProducts setDelegate:self];
+    
+    //Setting label texts
+    [self.lblSelectShop setText:NSLocalizedString(@"SELECT_SHOP", nil)];
+    
+
 }
 
 - (void)didReceiveMemoryWarning

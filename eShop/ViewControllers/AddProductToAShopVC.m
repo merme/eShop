@@ -20,6 +20,7 @@
 
 @synthesize delegate;
 @synthesize arrShopPendingProducts;
+@synthesize arrPriceType;
 
 int iPickerViewRow=0;
 
@@ -44,6 +45,17 @@ int iPickerViewRow=0;
     [self.pckPendingProducts setDataSource:self];
     [self.pckPendingProducts setDelegate:self];
     
+    //Setting label texts
+    [self.lblPrice setText:NSLocalizedString(@"PRICE", nil)];
+    [self.lblSelectProduct setText:NSLocalizedString(@"SELECT_PRODUCT", nil)];
+    
+    //Initialize price type array
+    arrPriceType=PRICE_TYPES;
+    CProductPrice *cProductPrice =[arrShopPendingProducts objectAtIndex:0];
+    /*
+    [self.lblUnits setText:[[NSString alloc]initWithFormat:@"%@: %@", NSLocalizedString(@"UNITS", nil),arrPriceType[cProductPrice.tPriceType]]];
+    */
+    [self.lblUnits setText:[[NSString alloc]initWithFormat:@"%@",arrPriceType[cProductPrice.tPriceType]]];
     
 }
 
@@ -76,6 +88,10 @@ int iPickerViewRow=0;
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row   inComponent:(NSInteger)component
 {
     iPickerViewRow=row;
+    
+    CProductPrice *cProductPrice =[arrShopPendingProducts objectAtIndex:row];
+    
+    [self.lblUnits setText:[[NSString alloc]initWithFormat:@"%@",arrPriceType[cProductPrice.tPriceType]]];
 }
 
 //Picker vier interface methods: END

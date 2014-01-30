@@ -11,11 +11,15 @@
 "LOOK_OUT"="Look out";
 "NAME"="Name:";
 "NO"="No";
+"PRICE"="Price";
 "PRODUCT_PRICE"="+Prod.";
 "SAVE"="Save";
+"SELECT_PRODUCT"="Select product:";
+"SELECT_SHOP"="Select shop:";
 "SHOP_PRICE"="+Shop";
 "RESET_DB"="Reset data";
 "NO_SHOPS_PRODUCTS"="There are no products nor shops. Fill with sample data.";
+"UNITS"="Units";
 "YES"="Yes";
 
 "UNIT"="Unit";

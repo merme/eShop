@@ -21,6 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UIPickerView *pckPendingProducts;
 @property (weak, nonatomic) IBOutlet UITextField *txtPrice;
+@property (weak, nonatomic) IBOutlet UILabel *lblSelectShop;
 
 @property NSArray *arrProductPendingShops;
 

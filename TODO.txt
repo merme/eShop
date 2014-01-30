@@ -29,7 +29,7 @@ v BUG Add 500g and 33cl
 v BUG Order product and shops alphabetically
 v BUG Do not allow horizontal position
 * Add Metrics
-* BUG When you have to enter a price it has to appear the description of the product
+v BUG When you have to enter a price it has to appear the description of the product
 * BUG Show price type when you add a shop to a product
 * BUG Show price type when you add a product to a shop
 * BUG if there are no shops ther should have to appear as message box that informs about that

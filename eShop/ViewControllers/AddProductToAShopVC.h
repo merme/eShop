@@ -20,8 +20,12 @@
 
 @property (weak, nonatomic) IBOutlet UIPickerView *pckPendingProducts;
 @property (weak, nonatomic) IBOutlet UITextField *txtPrice;
+@property (weak, nonatomic) IBOutlet UILabel *lblPrice;
+@property (weak, nonatomic) IBOutlet UILabel *lblUnits;
+@property (weak, nonatomic) IBOutlet UILabel *lblSelectProduct;
 
 @property NSArray *arrShopPendingProducts;
+@property NSArray *arrPriceType;
 
 
 @end

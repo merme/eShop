@@ -1367,6 +1367,36 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "13"
             endingLineNumber = "13">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CCoreManager arrShops]"
+                  moduleName = "eShop"
+                  urlString = "file:///Users/javiercalatravallaveria/Dropbox/eShop/eShop/Core/CCoreManager.h"
+                  timestampString = "412874917.736609"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CCoreManager setArrShops:]"
+                  moduleName = "eShop"
+                  urlString = "file:///Users/javiercalatravallaveria/Dropbox/eShop/eShop/Core/CCoreManager.h"
+                  timestampString = "412874917.736864"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "31">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2571,12 +2601,12 @@
                   symbolName = "+[CDatabase updateProductPrice:inShop:]"
                   moduleName = "eShop"
                   urlString = "file:///Users/javiercalatravallaveria/Dropbox/eShop/eShop/Database/CDatabase.m"
-                  timestampString = "412815452.62245"
+                  timestampString = "412874917.750657"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "391"
                   endingLineNumber = "391"
-                  offsetFromSymbolStart = "596">
+                  offsetFromSymbolStart = "594">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -2585,12 +2615,12 @@
                   symbolName = "+[CDatabase updateProductPrice:inShop:]"
                   moduleName = "eShop"
                   urlString = "file:///Users/javiercalatravallaveria/Dropbox/eShop/eShop/Database/CDatabase.m"
-                  timestampString = "412815452.622625"
+                  timestampString = "412874917.751083"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "391"
                   endingLineNumber = "391"
-                  offsetFromSymbolStart = "660">
+                  offsetFromSymbolStart = "698">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -2665,12 +2695,12 @@
                   symbolName = "+[CDatabase insertProductPrice:inShop:]"
                   moduleName = "eShop"
                   urlString = "file:///Users/javiercalatravallaveria/Dropbox/eShop/eShop/Database/CDatabase.m"
-                  timestampString = "412815452.623175"
+                  timestampString = "412874917.752623"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "360"
                   endingLineNumber = "360"
-                  offsetFromSymbolStart = "634">
+                  offsetFromSymbolStart = "628">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -2679,12 +2709,12 @@
                   symbolName = "+[CDatabase insertProductPrice:inShop:]"
                   moduleName = "eShop"
                   urlString = "file:///Users/javiercalatravallaveria/Dropbox/eShop/eShop/Database/CDatabase.m"
-                  timestampString = "412815452.623345"
+                  timestampString = "412874917.753033"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "360"
                   endingLineNumber = "360"
-                  offsetFromSymbolStart = "698">
+                  offsetFromSymbolStart = "732">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -2711,12 +2741,12 @@
                   symbolName = "+[CDatabase insertShopPrice:inProduct:]"
                   moduleName = "eShop"
                   urlString = "file:///Users/javiercalatravallaveria/Dropbox/eShop/eShop/Database/CDatabase.m"
-                  timestampString = "412815452.623514"
+                  timestampString = "412874917.753608"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "726"
                   endingLineNumber = "726"
-                  offsetFromSymbolStart = "648">
+                  offsetFromSymbolStart = "628">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -2725,12 +2755,12 @@
                   symbolName = "+[CDatabase insertShopPrice:inProduct:]"
                   moduleName = "eShop"
                   urlString = "file:///Users/javiercalatravallaveria/Dropbox/eShop/eShop/Database/CDatabase.m"
-                  timestampString = "412815452.623666"
+                  timestampString = "412874917.754072"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "726"
                   endingLineNumber = "726"
-                  offsetFromSymbolStart = "712">
+                  offsetFromSymbolStart = "732">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -2757,12 +2787,12 @@
                   symbolName = "+[CDatabase updateShopPrice:inProduct:]"
                   moduleName = "eShop"
                   urlString = "file:///Users/javiercalatravallaveria/Dropbox/eShop/eShop/Database/CDatabase.m"
-                  timestampString = "412815452.623831"
+                  timestampString = "412874917.754712"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "755"
                   endingLineNumber = "755"
-                  offsetFromSymbolStart = "614">
+                  offsetFromSymbolStart = "594">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -2771,12 +2801,12 @@
                   symbolName = "+[CDatabase updateShopPrice:inProduct:]"
                   moduleName = "eShop"
                   urlString = "file:///Users/javiercalatravallaveria/Dropbox/eShop/eShop/Database/CDatabase.m"
-                  timestampString = "412815452.623988"
+                  timestampString = "412874917.755184"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "755"
                   endingLineNumber = "755"
-                  offsetFromSymbolStart = "678">
+                  offsetFromSymbolStart = "698">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -2921,7 +2951,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "23"
             endingLineNumber = "23"
-            landmarkName = "lblProductName2"
+            landmarkName = "lblPrice"
             landmarkType = "19">
          </BreakpointContent>
       </BreakpointProxy>

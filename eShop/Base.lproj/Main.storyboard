@@ -729,10 +729,10 @@
             </objects>
             <point key="canvasLocation" x="1112" y="-230"/>
         </scene>
-        <!--View Controller-->
+        <!--Second View Controller-->
         <scene sceneID="Vdk-Tk-gcO">
             <objects>
-                <viewController id="4ZA-wS-3sq" sceneMemberID="viewController">
+                <viewController id="4ZA-wS-3sq" customClass="SecondViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1PC-Fs-UlT"/>
                         <viewControllerLayoutGuide type="bottom" id="xkW-t0-ncZ"/>
@@ -745,26 +745,37 @@
                                 <rect key="frame" x="5" y="519" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Shops" id="esN-ls-ci0">
+                                    <barButtonItem image="Shop_btn" id="esN-ls-ci0">
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="CZ4-MO-1fc" kind="modal" id="3ID-na-iIE"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Prod." id="vsl-1h-Dsi">
+                                    <barButtonItem image="Trolley_btn" id="vsl-1h-Dsi">
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <segue destination="QUy-BD-bpt" kind="modal" id="GfQ-jn-FaW"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Setup" id="rVA-uh-yQs">
+                                    <barButtonItem image="Gears_btn" id="rVA-uh-yQs">
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <segue destination="mKl-RF-6ZR" kind="modal" identifier="backFromSetup" id="vNL-ON-xjP"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4UY-Pf-j3m">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="bview" destination="4UY-Pf-j3m" id="HRK-q4-mql"/>
+                        <outlet property="view" destination="Cj0-du-Xpl" id="Rzb-yP-GQt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbI-CQ-xO6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -978,7 +989,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
+        <image name="Gears_btn" width="45" height="45"/>
+        <image name="Shop_btn" width="45" height="45"/>
+        <image name="Trolley_btn" width="45" height="45"/>
+        <image name="first" width="48" height="48"/>
         <image name="second" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -987,8 +1001,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="tNE-fx-fn3"/>
-        <segue reference="GfQ-jn-FaW"/>
+        <segue reference="3ID-na-iIE"/>
         <segue reference="4L7-Gm-Vhk"/>
+        <segue reference="GfQ-jn-FaW"/>
     </inferredMetricsTieBreakers>
 </document>

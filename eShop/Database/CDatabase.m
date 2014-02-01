@@ -366,7 +366,6 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     //Get Temporary Directory
     NSString* dbPath = [CDatabase getDBPath];
     
-    
     int result = sqlite3_open([dbPath UTF8String], &contactDB);
     
     if (SQLITE_OK != result) {
@@ -374,11 +373,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
         return;
     }
     
-    
-    
     NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"UPDATE PRICES SET PRICE=%0.2f WHERE SHOP_ID='%@' AND PRODUCT_ID=%d", p_cProductPrice.fPrice,p_cShop.sId,p_cProductPrice.iId];
-    
-    
     
     char * errInfo ;
     result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSUTF8StringEncoding], nil, nil, &errInfo);
@@ -390,6 +385,30 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     //Recategorize all the products with the same product_id
     [CDatabase recategorizeProducts:p_cProductPrice];
     
+}
+
++(void) deleteProductPrice:(CProductPrice*)p_cProductPrice{
+    //Get Temporary Directory
+    NSString* dbPath = [CDatabase getDBPath];
+    
+    int result = sqlite3_open([dbPath UTF8String], &contactDB);
+    
+    if (SQLITE_OK != result) {
+        NSLog(@"myDB opening error");
+        return;
+    }
+    
+    NSString *sSqlDelete=[[NSString alloc] initWithFormat:@"DELETE FROM PRICES WHERE  SHOP_ID='%@' AND PRODUCT_ID=%d", p_cProductPrice.sShopId,p_cProductPrice.iId];
+    
+    char * errInfo ;
+    result = sqlite3_exec(contactDB, [sSqlDelete cStringUsingEncoding:NSUTF8StringEncoding], nil, nil, &errInfo);
+    if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
+    
+    
+    sqlite3_close(contactDB);
+    
+    //Recategorize all the products with the same product_id
+    [CDatabase recategorizeProducts:p_cProductPrice];
 }
 
 +(void) recategorizeProducts:(CProductPrice*)p_cProductPrice{

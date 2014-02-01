@@ -99,6 +99,11 @@ static CProduct *cAtiveProduct;
     return [CDatabase updateProductPrice:p_cProductPrice inShop:cShop];
 }
 
++(void) deleteProductPrice:(CProductPrice*)p_cProductPrice{
+    
+      return [CDatabase deleteProductPrice:p_cProductPrice];
+}
+
 +(void) deleteShop{
  
     CShop *cShop = [CCoreManager getActiveShop];

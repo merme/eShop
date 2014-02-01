@@ -377,6 +377,18 @@
                                         <segue destination="jxw-FB-o2Z" kind="push" identifier="editShop" id="Pve-hW-SJ9"/>
                                     </connections>
                                 </barButtonItem>
+                                <barButtonItem image="AddProdShop_btn" id="khS-l0-Fl6">
+                                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <connections>
+                                        <segue destination="F2w-gn-pt9" kind="push" identifier="addPendingProductPrice" id="hhC-l5-mkI"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem image="DelProdShop_btn" id="JvG-2X-zid">
+                                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <connections>
+                                        <action selector="btnDeleteProductPrice:" destination="CRG-W9-Ghq" id="Ot9-vf-UV5"/>
+                                    </connections>
+                                </barButtonItem>
                             </items>
                         </toolbar>
                         <prototypes>
@@ -419,10 +431,10 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5JD-iw-nwl">
-                                            <rect key="frame" x="296" y="8" width="24" height="26"/>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5JD-iw-nwl">
+                                            <rect key="frame" x="296" y="-10" width="43" height="60"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="C">
+                                            <state key="normal" title="C" image="Confirm_btn">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -448,16 +460,14 @@
                                 <segue destination="CZ4-MO-1fc" kind="modal" identifier="backFromListPriceByShop" id="lh5-Oz-3kE"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="khS-l0-Fl6">
-                            <connections>
-                                <segue destination="F2w-gn-pt9" kind="push" identifier="addPendingProductPrice" id="hhC-l5-mkI"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="barTop" destination="fsU-dO-but" id="Gnk-bT-NG1"/>
                         <outlet property="btnAdd" destination="khS-l0-Fl6" id="D3H-Pj-qK5"/>
+                        <outlet property="btnDel" destination="JvG-2X-zid" id="nXL-lr-YW0"/>
+                        <outlet property="btnDelShop" destination="43j-MC-Fxf" id="Jzh-D6-mrp"/>
+                        <outlet property="btnEditShop" destination="eWv-PG-iGX" id="uZT-x9-oaO"/>
                         <outlet property="tbvShopProductPrices" destination="fK1-Ol-U1e" id="FPS-FL-bHK"/>
                     </connections>
                 </tableViewController>
@@ -962,13 +972,15 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c21-B1-BPE">
                                 <rect key="frame" x="36" y="60" width="264" height="164"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Nyp-sm-lKF">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="MDY-OP-bpa">
+                        <barButtonItem key="rightBarButtonItem" image="Save_btn" style="plain" id="MDY-OP-bpa">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="btnSave:" destination="F2w-gn-pt9" id="XB6-Ig-RFX"/>
                             </connections>
@@ -988,6 +1000,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AddProdShop_btn" width="45" height="45"/>
+        <image name="Confirm_btn" width="20" height="30"/>
+        <image name="DelProdShop_btn" width="45" height="45"/>
         <image name="Del_btn" width="45" height="45"/>
         <image name="Edit_btn" width="45" height="45"/>
         <image name="Gears_btn" width="45" height="45"/>
@@ -1006,6 +1021,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="GfQ-jn-FaW"/>
         <segue reference="n5p-g4-lcn"/>
-        <segue reference="tNE-fx-fn3"/>
+        <segue reference="lh5-Oz-3kE"/>
     </inferredMetricsTieBreakers>
 </document>

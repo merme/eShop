@@ -66,6 +66,10 @@ int iCurrProductPrice=-1;
     self.btnAdd.enabled=([CCoreManager getNumberShopNotExistingProducts]>0);
     [self.btnAdd setTitle:NSLocalizedString(@"PRODUCT_PRICE", nil)];
     
+    
+    //Disable delete product button
+    self.btnDel.enabled=NO;
+    
     //Set tittle text
     CShop *cShop=[CCoreManager getActiveShop];
     [self.barTop setTitle:[[NSString alloc] initWithFormat:@"%@ (%@)", cShop.sName,cShop.sLocation]];
@@ -119,6 +123,11 @@ int iCurrProductPrice=-1;
     cell.txtPrice.hidden=!(m_currProductPrice!=nil && m_currProductPrice==currProductPrice);
     cell.lblPrice.hidden=!cell.txtPrice.hidden;
     cell.btnPrice.hidden=cell.txtPrice.hidden;
+   
+    self.btnDel.enabled=!cell.txtPrice.hidden;
+    self.btnAdd.enabled=!self.btnDel.enabled;
+    self.btnDelShop.enabled=!self.btnDel.enabled;
+    self.btnEditShop.enabled=!self.btnDel.enabled;
     
     return cell;
     
@@ -191,6 +200,26 @@ int iCurrProductPrice=-1;
     
 }
 
+- (IBAction)btnDeleteProductPrice:(id)sender {
+  
+    if(m_currProductPrice!=nil){
+        
+        //Remove current shop
+        [CCoreManager deleteProductPrice:m_currProductPrice];
+        
+        //Refresh shop list view
+        m_currProductPrice=nil;
+        
+        //Request to Core manager for prices of current shop
+        arrShopProductPrices=[CCoreManager getShopPriceList];
+        
+        //Refresh whole table
+        [self.tbvShopProductPrices reloadData];
+
+    }
+ 
+    
+}
 
 
 @end

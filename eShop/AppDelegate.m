@@ -65,22 +65,6 @@ static AppDelegate *sharedInstance;
             
         }
 
-    
-/*
-    //Google Analytics stuff:BEGIN
-    // Optional: automatically send uncaught exceptions to Google Analytics.
-    [GAI sharedInstance].trackUncaughtExceptions = YES;
- 
-    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
-    [GAI sharedInstance].dispatchInterval = 20;
-    
-    // Optional: set Logger to VERBOSE for debug information.
-    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
-    
-    // Initialize tracker.
-    [[GAI sharedInstance] trackerWithTrackingId:@"UA-43230251-3"];
-    //Google Analytics stuff:END
-*/
  
     
     // Do other work for customization after application launch

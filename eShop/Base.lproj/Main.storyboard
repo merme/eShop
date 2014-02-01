@@ -103,11 +103,6 @@
                                                 <segue destination="4ZA-wS-3sq" kind="modal" id="n5p-g4-lcn"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="nLW-Os-WsI">
-                                            <connections>
-                                                <segue destination="afK-uk-kga" kind="modal" identifier="addShop" id="VBx-ck-cAy"/>
-                                            </connections>
-                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -122,7 +117,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="42K-cF-NQr">
-                                <rect key="frame" x="0.0" y="44" width="320" height="473"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -158,9 +153,10 @@
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem systemItem="trash" id="Tc7-Am-cad">
+                                    <barButtonItem image="ShopAdd_btn" id="nLW-Os-WsI">
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <action selector="btnDeleteShop:" destination="CZ4-MO-1fc" id="6M3-oL-olc"/>
+                                            <segue destination="afK-uk-kga" kind="modal" identifier="addShop" id="VBx-ck-cAy"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -286,7 +282,8 @@
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem systemItem="save" id="S7p-fJ-ssr">
+                                    <barButtonItem image="Save_btn" id="S7p-fJ-ssr">
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="btnSave:" destination="jxw-FB-o2Z" id="RYE-d6-Xi9"/>
                                             <segue destination="CZ4-MO-1fc" kind="modal" identifier="backFromEditSave" id="tNE-fx-fn3"/>
@@ -364,16 +361,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="fu5-aU-wie">
-                            <rect key="frame" x="0.0" y="130" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
-                                <barButtonItem systemItem="trash" id="43j-MC-Fxf">
+                                <barButtonItem image="Del_btn" id="43j-MC-Fxf">
+                                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <connections>
                                         <action selector="btnDeleteShop:" destination="CRG-W9-Ghq" id="vaM-W2-tsd"/>
                                         <segue destination="CZ4-MO-1fc" kind="modal" identifier="backFromDeleteShop" id="kkU-wo-iDO"/>
                                     </connections>
                                 </barButtonItem>
-                                <barButtonItem systemItem="edit" id="eWv-PG-iGX">
+                                <barButtonItem image="Edit_btn" id="eWv-PG-iGX">
+                                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <connections>
                                         <segue destination="jxw-FB-o2Z" kind="push" identifier="editShop" id="Pve-hW-SJ9"/>
                                     </connections>
@@ -382,7 +381,7 @@
                         </toolbar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellShopPriceId" id="4XG-Wo-NgV" customClass="ShopPriceCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4XG-Wo-NgV" id="MY7-Mo-RfN">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -989,7 +988,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Del_btn" width="45" height="45"/>
+        <image name="Edit_btn" width="45" height="45"/>
         <image name="Gears_btn" width="45" height="45"/>
+        <image name="Save_btn" width="45" height="45"/>
+        <image name="ShopAdd_btn" width="45" height="45"/>
         <image name="Shop_btn" width="45" height="45"/>
         <image name="Trolley_btn" width="45" height="45"/>
         <image name="first" width="48" height="48"/>
@@ -1001,8 +1004,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="3ID-na-iIE"/>
-        <segue reference="4L7-Gm-Vhk"/>
         <segue reference="GfQ-jn-FaW"/>
+        <segue reference="n5p-g4-lcn"/>
+        <segue reference="tNE-fx-fn3"/>
     </inferredMetricsTieBreakers>
 </document>

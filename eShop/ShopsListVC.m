@@ -54,6 +54,16 @@ static ShopsListVC *sharedInstance;
     // This class implements DataSource and Delegate callbacks
     [self.tbvShops setDataSource:self];
     [self.tbvShops setDelegate:self];
+    // Assign our own backgroud for the view
+/*    UIView* bview = [[UIView alloc] init];
+    bview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"common_bgt.png"]];
+    [self.tbvShops setBackgroundView:bview];
+  */
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"common_bgt.png"]];
+    self.tbvShops.backgroundColor = background;
+    
+    //self.tbvShops.backgroundView = tempImageView;
+
     
     
     //Request to AppDelegate list of avaliable shops

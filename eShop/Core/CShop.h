@@ -10,7 +10,7 @@
 
 @interface CShop : NSObject <NSCoding>
 
-@property int iId;
+@property NSString *sId;
 @property (strong,nonatomic) NSString *sName;
 @property (strong,nonatomic) NSString *sLocation;
 

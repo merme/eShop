@@ -22,7 +22,7 @@ typedef enum Category : NSUInteger {
 //@property (strong,nonatomic) NSString *sName;
 @property float fPrice;
 @property (nonatomic) enum Category tCategory;
-@property int iShopId;
+@property NSString *sShopId;
 @property NSString *sShopName;
 @property NSString *sShopLocation;
 

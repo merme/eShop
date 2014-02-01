@@ -58,7 +58,7 @@
 - (IBAction)btnResetDB:(id)sender {
     [CDatabase dropTables];
     [CDatabase createTables];
-   // [CDatabase fillData];
+    //[CDatabase fillData];
 
 }
 

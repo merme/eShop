@@ -14,7 +14,7 @@
 //@synthesize sName;
 @synthesize fPrice;
 @synthesize tCategory;
-@synthesize iShopId;
+@synthesize sShopId;
 @synthesize sShopName;
 @synthesize sShopLocation;
 

@@ -51,6 +51,13 @@ int iCurrProductPrice=-1;
     // This class implements DataSource and Delegate callbacks
     [self.tbvShopProductPrices setDataSource:self];
     [self.tbvShopProductPrices setDelegate:self];
+   /* UIView* bview = [[UIView alloc] init];
+    bview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"common_bgt.png"]];
+    [self.tbvShopProductPrices setBackgroundView:bview];
+    */		
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"common_bg.png"]];
+    self.tbvShopProductPrices.backgroundColor = background;
+    
     
     //Request to Core manager for prices of current shop
     arrShopProductPrices=[CCoreManager getShopPriceList];

@@ -12,6 +12,7 @@
 
 @synthesize sName;
 @synthesize sLocation;
+@synthesize dPicture;
 
 -(id)initWithName:(NSString*)p_strName
 {

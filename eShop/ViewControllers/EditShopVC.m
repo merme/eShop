@@ -36,10 +36,25 @@
     [self.lblLocation setText:NSLocalizedString(@"LOCATION", nil)];
     [self.btnSave setTitle:NSLocalizedString(@"SAVE", nil)];
     
+    
+    
     CShop *cShop = [CCoreManager getActiveShop];
     [self.txtName setText:cShop.sName];
     [self.txtLocation setText:cShop.sLocation];
     
+    [self.lblId setText:[NSString stringWithFormat:@"%@: %@",NSLocalizedString(@"FISCAL_ID", nil),cShop.sId]];
+    
+    
+    if(cShop.dPicture!=nil){
+        self.uiImageView.image= [UIImage imageWithData:cShop.dPicture ];
+        
+    }
+     
+    
+    
+    
+    // Assign our own backgroud for the view
+    self.bview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"common_bg.png"]];
 }
 
 - (void)didReceiveMemoryWarning

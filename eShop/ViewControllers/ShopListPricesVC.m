@@ -237,6 +237,9 @@ int iCurrProductPrice=-1;
         
         //Refresh whole table
         [self.tbvShopProductPrices reloadData];
+        
+        //Update button status
+        [self toggleButtons];
 
     }
  

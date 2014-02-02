@@ -13,6 +13,7 @@
 @property NSString *sId;
 @property (strong,nonatomic) NSString *sName;
 @property (strong,nonatomic) NSString *sLocation;
+@property (strong,nonatomic) NSData *dPicture;
 
 
 -(id)initWithName:(NSString*)p_strName;

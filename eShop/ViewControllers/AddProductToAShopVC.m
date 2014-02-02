@@ -21,6 +21,7 @@
 @synthesize delegate;
 @synthesize arrShopPendingProducts;
 @synthesize arrPriceType;
+@synthesize singleTap;
 
 int iPickerViewRow=0;
 
@@ -57,7 +58,29 @@ int iPickerViewRow=0;
     */
     [self.lblUnits setText:[[NSString alloc]initWithFormat:@"%@",arrPriceType[cProductPrice.tPriceType]]];
     
+    // Assign our own backgroud for the view
+    self.bview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"common_bg.png"]];
+    
+    //Initialize image
+    self.bPicture=FALSE;
+    
+    //For hidding keyboar
+    self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    
+    
 }
+
+// Selector method for hiding keyboard:BEGIN
+-(void)handleSingleTap:(UITapGestureRecognizer *)sender{
+    
+    [self.view removeGestureRecognizer:singleTap];
+    [self.txtPrice resignFirstResponder];
+    
+}
+- (IBAction)btnPriceEditingDidBegin:(id)sender {
+        [self.view addGestureRecognizer:singleTap];
+}
+// Selector method for hiding keyboard:END
 
 - (void)didReceiveMemoryWarning
 {
@@ -110,6 +133,14 @@ int iPickerViewRow=0;
                                                    withString:@"."];
         cProductPrice.fPrice= [sPrice floatValue];
         
+        //Set the image
+        if(!self.bPicture){
+            cProductPrice.dPicture=UIImagePNGRepresentation(self.uiImageView.image);
+        }
+        else{
+            cProductPrice.dPicture=nil;
+        }
+        
         //Request to CCoreManager to store new Product-Price
         [CCoreManager insertProductPrice:cProductPrice];
         
@@ -136,6 +167,56 @@ int iPickerViewRow=0;
 - (IBAction)txtPriceEditingDidEnd:(id)sender {
     NSLog(@"txtPriceEditingDidEnd");
 }
+
+//Camera and picture album:BEGIN
+//http://www.appcoda.com/ios-programming-camera-iphone-app/
+- (IBAction)btnTakePhoto:(id)sender  {
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+    
+}
+
+
+- (IBAction)btnSelectPhoto:(id)sender {
+    
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+    
+}
+
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    self.uiImageView.image = chosenImage;
+   /*
+    //Manage save button status
+    if (!btnSave.enabled){
+        //Enable Save button if the value is different from previous one
+        btnSave.enabled=TRUE;
+    }
+    */
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+//Camera and picture album:END
 
 
 @end

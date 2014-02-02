@@ -76,9 +76,9 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     
     //Prepare array of commands ...
     NSMutableArray *sSqlQueries = [NSMutableArray array];
-    [sSqlQueries addObject:@"CREATE TABLE IF NOT EXISTS SHOPS( SHOP_ID TEXT PRIMARY KEY, SHOP_NAME TEXT  NOT NULL,LOCATION TEXT);"]; // same with float values
+    [sSqlQueries addObject:@"CREATE TABLE IF NOT EXISTS SHOPS( SHOP_ID TEXT PRIMARY KEY, SHOP_NAME TEXT  NOT NULL,LOCATION TEXT,PICTURE BLOB);"]; // same with float values
     [sSqlQueries addObject:@"CREATE TABLE IF NOT EXISTS PRODUCTS(PRODUCT_ID INTEGER PRIMARY KEY, PRODUCT_NAME TEXT UNIQUE NOT NULL,PRICE_TYPE INTEGER NOT NULL);"];
-    [sSqlQueries addObject:@"CREATE TABLE IF NOT EXISTS PRICES(SHOP_ID TEXT NOT NULL REFERENCES SHOPS(SHOP_ID), PRODUCT_ID INT NOT NULL REFERENCES PRODUCTS(PRODUCT_ID),PRICE DECIMAL(7,2) NOT NULL, CATEGORY INT);"];
+    [sSqlQueries addObject:@"CREATE TABLE IF NOT EXISTS PRICES(SHOP_ID TEXT NOT NULL REFERENCES SHOPS(SHOP_ID), PRODUCT_ID INT NOT NULL REFERENCES PRODUCTS(PRODUCT_ID),PRICE DECIMAL(7,2) NOT NULL, CATEGORY INT, PICTURE BLOB);"];
     
     
     char * errInfo ;
@@ -147,22 +147,22 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     
     NSMutableArray *sSqlQueries = [NSMutableArray array];
     [sSqlQueries addObject:@"BEGIN TRANSACTION;"];
-    [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES ('111111A', 'Mercadona','Sant Andreu de la Barca');"];
-    [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES ('222222B', 'Bon Preu','Palleja');"];
-    [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES ('333333C', 'Condis','Palleja');"];
-    [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES ('444444D', 'Bon Preu','Palleja');"];
-    [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES ('555555E', 'Condis','Palleja-Maestro Falla');"];
-    [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES ('666666F', 'Condis','Palleja-S. Isidro');"];
+    [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES ('111111A', 'Mercadona','Sant Andreu de la Barca',null);"];
+    [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES ('222222B', 'Bon Preu','Palleja',null);"];
+    [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES ('333333C', 'Condis','Palleja',null);"];
+    [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES ('444444D', 'Bon Preu','Palleja',null);"];
+    [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES ('555555E', 'Condis','Palleja-Maestro Falla',null);"];
+    [sSqlQueries addObject:@"INSERT INTO SHOPS VALUES ('666666F', 'Condis','Palleja-S. Isidro',null);"];
     [sSqlQueries addObject:@"INSERT INTO PRODUCTS VALUES (null, 'Atún',0);"];
     [sSqlQueries addObject:@"INSERT INTO PRODUCTS VALUES (null, 'Avellanas',1);"];
     [sSqlQueries addObject:@"INSERT INTO PRODUCTS VALUES (null, 'Base pizza',2);"];
-    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES ('111111A', 1,10.123,3);"];
-    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES ('222222B', 2,10,3);"];
-    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES ('111111A', 3,15.567,3);"];
-    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES ('111111A', 2,15,3);"];
-    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES ('333333C', 2,21,3);"];
-    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES ('444444D', 2,25,3);"];
-    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES ('666666F', 2,30,3);"];
+    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES ('111111A', 1,10.123,3,null);"];
+    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES ('222222B', 2,10,3,null);"];
+    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES ('111111A', 3,15.567,3,null);"];
+    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES ('111111A', 2,15,3,null);"];
+    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES ('333333C', 2,21,3,null);"];
+    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES ('444444D', 2,25,3,null);"];
+    [sSqlQueries addObject:@"INSERT INTO PRICES VALUES ('666666F', 2,30,3,null);"];
     [sSqlQueries addObject:@"COMMIT;"];
     
     char * errInfo ;
@@ -192,7 +192,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
         return nil;
     }
     
-    const char *sSqlSelect = "SELECT SHOP_ID, SHOP_NAME, LOCATION FROM SHOPS ORDER BY SHOP_NAME;";
+    const char *sSqlSelect = "SELECT SHOP_ID, SHOP_NAME, LOCATION, PICTURE FROM SHOPS ORDER BY SHOP_NAME;";
 
     sqlite3_stmt *selectStatement;
     if(sqlite3_prepare_v2(contactDB, sSqlSelect, -1, &selectStatement, NULL) == SQLITE_OK) {
@@ -201,6 +201,8 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
             cShop.sId=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 0)];
             cShop.sName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 1)];
             cShop.sLocation = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 2)];
+            int length = sqlite3_column_bytes(selectStatement, 3);
+            cShop.dPicture = [NSData dataWithBytes:sqlite3_column_blob(selectStatement, 3) length:length];
             
             [arrShops addObject:cShop];
         }
@@ -229,7 +231,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     }
     
     
-    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT PRODUCT_NAME, PRICE, PRODUCTS.PRODUCT_ID, CATEGORY, SHOPS.SHOP_ID FROM SHOPS,PRICES,PRODUCTS WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID='%@' ORDER BY PRODUCT_NAME", p_cShop.sId];
+    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT PRODUCT_NAME, PRICE, PRODUCTS.PRODUCT_ID, CATEGORY, SHOPS.SHOP_ID, PRICES.PICTURE FROM SHOPS,PRICES,PRODUCTS WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID='%@' ORDER BY PRODUCT_NAME", p_cShop.sId];
     //const char *sSqlSelect = "SELECT SHOP_ID, NAME, LOCATION FROM SHOPS;";
  
     
@@ -242,6 +244,9 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
             cProductPrice.iId = sqlite3_column_int(selectStatement, 2);
             cProductPrice.tCategory = sqlite3_column_int(selectStatement, 3);
             cProductPrice.sShopId = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 4)];
+            int length = sqlite3_column_bytes(selectStatement, 5);
+            cProductPrice.dPicture = [NSData dataWithBytes:sqlite3_column_blob(selectStatement, 5) length:length];
+
             
              [arrShopPrices addObject:cProductPrice];
             
@@ -346,8 +351,14 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
         return;
     }
     
-
-    NSString *sSqlSelect=[[NSString alloc] initWithFormat:@"INSERT INTO PRICES VALUES ('%@', %d,%.2f,%d)", p_cShop.sId,p_cProductPrice.iId,p_cProductPrice.fPrice,p_cProductPrice.tCategory];
+    NSString *sSqlSelect;
+    
+    if(p_cProductPrice.dPicture==nil){
+        sSqlSelect=[[NSString alloc] initWithFormat:@"INSERT INTO PRICES VALUES ('%@', %d,%.2f,%d,null)", p_cShop.sId,p_cProductPrice.iId,p_cProductPrice.fPrice,p_cProductPrice.tCategory];
+    }
+    else{
+        sSqlSelect=[[NSString alloc] initWithFormat:@"INSERT INTO PRICES VALUES ('%@', %d,%.2f,%d,'%@')", p_cShop.sId,p_cProductPrice.iId,p_cProductPrice.fPrice,p_cProductPrice.tCategory,p_cProductPrice.dPicture];
+    }
     
     char * errInfo ;
     result = sqlite3_exec(contactDB, [sSqlSelect cStringUsingEncoding:NSUTF8StringEncoding], nil, nil, &errInfo);
@@ -583,14 +594,48 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     }
     
     //Recategorize Product-Price
-    NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"INSERT INTO SHOPS VALUES ('%@','%@','%@');",p_CShop.sId,p_CShop.sName ,p_CShop.sLocation];
+    NSString *sSqlUpdate;
     
-    char * errInfo ;
-    result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSUTF8StringEncoding], nil, nil, &errInfo);
-    if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
+    if(p_CShop.dPicture!=nil){
+       sSqlUpdate=[[NSString alloc] initWithFormat:@"INSERT INTO SHOPS VALUES ('%@','%@','%@','%@');",p_CShop.sId,p_CShop.sName ,p_CShop.sLocation,p_CShop.dPicture];
+   /*
+       [sSqlQueries addObject:@"CREATE TABLE IF NOT EXISTS SHOPS( SHOP_ID TEXT PRIMARY KEY, SHOP_NAME TEXT  NOT NULL,LOCATION TEXT,PICTURE BLOB);"];
+    */
+        // Construct the query and empty prepared statement.
+        const char *sql = "INSERT INTO `SHOPS` (`SHOP_ID`, `SHOP_NAME`, `LOCATION`, `PICTURE`) VALUES (?, ?, ?, ?)";
+        sqlite3_stmt *statement;
+        
+        // Prepare the data to bind.
+        
+       //http://stackoverflow.com/questions/5039343/save-image-data-to-sqlite-database-in-iphone
+        if( sqlite3_prepare_v2(contactDB, sql, -1, &statement, NULL) == SQLITE_OK )
+        {
+            sqlite3_bind_text(statement, 1, [p_CShop.sId UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 2, [p_CShop.sName UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 3, [p_CShop.sLocation UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_blob(statement, 4, [p_CShop.dPicture bytes], [p_CShop.dPicture length], SQLITE_TRANSIENT);
+            sqlite3_step(statement);
+        }
+        else NSLog( @"SaveBody: Failed from sqlite3_prepare_v2. Error is:  %s", sqlite3_errmsg(contactDB) );
+        
+        // Finalize and close database.
+        sqlite3_finalize(statement);
+        
+        
+        
+    }
+    else{
+         sSqlUpdate=[[NSString alloc] initWithFormat:@"INSERT INTO SHOPS VALUES ('%@','%@','%@',null);",p_CShop.sId,p_CShop.sName ,p_CShop.sLocation];
+        
+        char * errInfo ;
+        result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSUTF8StringEncoding], nil, nil, &errInfo);
+        if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
+        
+
+    }
     
+
     sqlite3_close(contactDB);
-    
 }
 
 

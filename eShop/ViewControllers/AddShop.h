@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddShop : UIViewController
+@interface AddShop : UIViewController <UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet UITextField *txtName;
@@ -19,5 +19,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblId;
 @property (weak, nonatomic) IBOutlet UIImageView *bview;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnSave;
+@property (weak, nonatomic) IBOutlet UIImageView *uiImageView;
+@property (strong, nonatomic) UITapGestureRecognizer *singleTap;
+
+@property bool bPicture;
 
 @end

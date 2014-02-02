@@ -13,5 +13,6 @@
 @synthesize iId;
 @synthesize sName;
 @synthesize tPriceType;
+@synthesize dPicture;
 
 @end

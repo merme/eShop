@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @protocol ModalViewDelegate;
 
-@interface AddProductToAShopVC : UIViewController <UIPickerViewDataSource,UIPickerViewDelegate>{
+@interface AddProductToAShopVC : UIViewController <UIPickerViewDataSource,UIPickerViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
     
     id<ModalViewDelegate> delegate;
     
@@ -23,6 +23,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblPrice;
 @property (weak, nonatomic) IBOutlet UILabel *lblUnits;
 @property (weak, nonatomic) IBOutlet UILabel *lblSelectProduct;
+@property (weak, nonatomic) IBOutlet UIImageView *bview;
+@property (weak, nonatomic) IBOutlet UIImageView *uiImageView;
+@property (strong, nonatomic) IBOutlet UIView *vLocalView;
+@property (strong, nonatomic) UITapGestureRecognizer *singleTap;
+@property bool bPicture;
 
 @property NSArray *arrShopPendingProducts;
 @property NSArray *arrPriceType;

@@ -66,9 +66,12 @@ int iCurrProductPrice=-1;
     self.btnAdd.enabled=([CCoreManager getNumberShopNotExistingProducts]>0);
     [self.btnAdd setTitle:NSLocalizedString(@"PRODUCT_PRICE", nil)];
     
+
     
     //Disable delete product button
     self.btnDel.enabled=NO;
+    
+    
     
     //Set tittle text
     CShop *cShop=[CCoreManager getActiveShop];
@@ -76,6 +79,22 @@ int iCurrProductPrice=-1;
     
     //Initialize current ProductPrice
     m_currProductPrice=nil;
+    
+    if([arrShopProductPrices count]==0 && !self.btnAdd.enabled){
+        UIAlertView* mes=[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ATTENTION",nil)
+            message:NSLocalizedString(@"NO_PRODUCTS",nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles: nil];
+        
+        [mes show];
+        
+    }
+    else{
+        if(!self.btnAdd.enabled){
+            UIAlertView* mes=[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ATTENTION",nil)
+                message:NSLocalizedString(@"ALL_PRODUCTS",nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles: nil];
+            
+            [mes show];
+        }
+    }
     
 }
 

@@ -6,12 +6,14 @@
   Copyright (c) 2013 JAVIER CALATRAVA LLAVERIA. All rights reserved.
 */
 
+"ATTENTION"="Attention!";
 "BACK"="Back";
 "FISCAL_ID"="Fiscal Id:";
 "LOCATION"="Location:";
 "LOOK_OUT"="Look out";
 "NAME"="Name:";
 "NO"="No";
+"OK"="Ok";
 "PRICE"="Price";
 "PRODUCT_PRICE"="+Prod.";
 "SAVE"="Save";
@@ -20,6 +22,8 @@
 "SHOP_PRICE"="+Shop";
 "RESET_DB"="Reset data";
 "NO_SHOPS_PRODUCTS"="There are no products nor shops. Fill with sample data.";
+"NO_PRODUCTS"="There are no products defined, in that case go to main screen and add some products.";
+"ALL_PRODUCTS"="This suppermarket has all the existing products assigned.";
 "UNITS"="Units";
 "YES"="Yes";
 

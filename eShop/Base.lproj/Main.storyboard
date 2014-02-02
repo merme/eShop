@@ -77,6 +77,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="txtIdDidEndOnExit:" destination="afK-uk-kga" eventType="editingDidEndOnExit" id="YUg-no-pEK"/>
+                                    <action selector="txtIdEditingDidEnd:" destination="afK-uk-kga" eventType="editingDidEnd" id="aYg-iP-qex"/>
+                                </connections>
                             </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iRv-Mo-NyT">
                                 <rect key="frame" x="0.0" y="262" width="320" height="44"/>
@@ -95,6 +99,7 @@
                     </view>
                     <connections>
                         <outlet property="btnBack" destination="AcK-kq-bLX" id="Yeh-rm-Kwp"/>
+                        <outlet property="btnSave" destination="CgY-Vc-kKS" id="vVb-CY-DY0"/>
                         <outlet property="bview" destination="C9o-p8-7KZ" id="cIC-mC-lmF"/>
                         <outlet property="lblId" destination="CeM-qH-7wY" id="Fit-qO-xQK"/>
                         <outlet property="lblLocation" destination="R64-gJ-qOa" id="DL9-nN-Bib"/>

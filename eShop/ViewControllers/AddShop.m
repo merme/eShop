@@ -40,6 +40,9 @@
     [self.lblLocation setText:NSLocalizedString(@"LOCATION", nil)];
     [self.lblId setText:NSLocalizedString(@"FISCAL_ID", nil)];
     
+    //Disable save button
+    self.btnSave.enabled=NO;
+    
     // Assign our own backgroud for the view
     self.bview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"common_bg.png"]];
 }
@@ -74,6 +77,19 @@
 
 //Picker vier interface methods: END
 - (IBAction)ReturnKeyButton:(id)sender {
+    [sender resignFirstResponder];
+}
+- (IBAction)txtIdEditingDidEnd:(id)sender {
+    
+    self.btnSave.enabled= ([self.txtId.text length]>0);
+    
+    // Hide keyboard
+    [sender resignFirstResponder];
+}
+- (IBAction)txtIdDidEndOnExit:(id)sender {
+    self.btnSave.enabled= ([self.txtId.text length]>0);
+    
+    // Hide keyboard
     [sender resignFirstResponder];
 }
 @end

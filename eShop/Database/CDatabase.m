@@ -583,7 +583,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     }
     
     //Recategorize Product-Price
-    NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"INSERT INTO SHOPS VALUES (null,'%@','%@');",p_CShop.sName ,p_CShop.sLocation];
+    NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"INSERT INTO SHOPS VALUES ('%@','%@','%@');",p_CShop.sId,p_CShop.sName ,p_CShop.sLocation];
     
     char * errInfo ;
     result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSUTF8StringEncoding], nil, nil, &errInfo);

@@ -38,6 +38,10 @@
     [self.btnBack setTitle:NSLocalizedString(@"BACK", nil)];
     [self.lblName setText:NSLocalizedString(@"NAME", nil)];
     [self.lblLocation setText:NSLocalizedString(@"LOCATION", nil)];
+    [self.lblId setText:NSLocalizedString(@"FISCAL_ID", nil)];
+    
+    // Assign our own backgroud for the view
+    self.bview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"common_bg.png"]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,6 +56,7 @@
            [[self.txtLocation text] length]>0){
             
             CShop *cShop = [[CShop alloc]init];
+            cShop.sId=[self.txtId text];
             cShop.sName= [self.txtName text];
             cShop.sLocation= [self.txtLocation text];
             

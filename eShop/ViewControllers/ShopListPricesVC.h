@@ -29,11 +29,9 @@
 @property CProductPrice *cProductPrice;
 
 +(ShopListPricesVC *) sharedShopListPricesVC;
-
 +(void) setNewProductShopPrice:(NSString*)p_sPrice;
-
-
-
 -(void) refreshShopProductPrices;
+-(void) toggleButtons;
+
 
 @end

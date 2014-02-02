@@ -124,10 +124,6 @@ int iCurrProductPrice=-1;
     cell.lblPrice.hidden=!cell.txtPrice.hidden;
     cell.btnPrice.hidden=cell.txtPrice.hidden;
    
-    self.btnDel.enabled=!cell.txtPrice.hidden;
-    self.btnAdd.enabled=!self.btnDel.enabled;
-    self.btnDelShop.enabled=!self.btnDel.enabled;
-    self.btnEditShop.enabled=!self.btnDel.enabled;
     
     return cell;
     
@@ -144,6 +140,9 @@ int iCurrProductPrice=-1;
     
     //Set the current product price
     m_currProductPrice=[arrShopProductPrices objectAtIndex:indexPath.row];
+    
+    //Update button status
+    [self toggleButtons];
   
     [self.tbvShopProductPrices reloadData];
 
@@ -163,6 +162,10 @@ int iCurrProductPrice=-1;
     
     //Refresh whole table
     [self.tbvShopProductPrices reloadData];
+    
+    //Update button status
+    [self toggleButtons];
+    
 }
 
 
@@ -221,5 +224,12 @@ int iCurrProductPrice=-1;
     
 }
 
+-(void) toggleButtons{
+    
+    self.btnDel.enabled=(m_currProductPrice!=nil);
+    self.btnAdd.enabled=!self.btnDel.enabled;
+    self.btnDelShop.enabled=!self.btnDel.enabled;
+    self.btnEditShop.enabled=!self.btnDel.enabled;
+}
 
 @end

@@ -48,6 +48,8 @@
 		5ACD16FF18636AF2003C83EA /* AddShopToAProductVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACD16FE18636AF2003C83EA /* AddShopToAProductVC.m */; };
 		5ACD17031863800C003C83EA /* ProductListPricesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACD17021863800C003C83EA /* ProductListPricesVC.m */; };
 		5ACD17061863804F003C83EA /* ProductPriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACD17051863804F003C83EA /* ProductPriceCell.m */; };
+		5ACF79E318A01A3000B514B9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ACF79E218A01A3000B514B9 /* QuartzCore.framework */; };
+		5ACF79E818A01CA400B514B9 /* BarCodeReaderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACF79E718A01CA400B514B9 /* BarCodeReaderVC.m */; };
 		5AD3F755185A316600950BC1 /* ShopViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD3F754185A316600950BC1 /* ShopViewCell.m */; };
 		5ADAAA96185DCC770080C816 /* CProductPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADAAA95185DCC770080C816 /* CProductPrice.m */; };
 		5ADAAA9B185DF2120080C816 /* ShopListPricesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADAAA9A185DF2120080C816 /* ShopListPricesVC.m */; };
@@ -134,6 +136,9 @@
 		5ACD17021863800C003C83EA /* ProductListPricesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductListPricesVC.m; path = ViewControllers/ProductListPricesVC.m; sourceTree = "<group>"; };
 		5ACD17041863804F003C83EA /* ProductPriceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductPriceCell.h; path = ViewControllers/ProductPriceCell.h; sourceTree = "<group>"; };
 		5ACD17051863804F003C83EA /* ProductPriceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductPriceCell.m; path = ViewControllers/ProductPriceCell.m; sourceTree = "<group>"; };
+		5ACF79E218A01A3000B514B9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5ACF79E618A01CA400B514B9 /* BarCodeReaderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BarCodeReaderVC.h; path = ViewControllers/BarCodeReaderVC.h; sourceTree = "<group>"; };
+		5ACF79E718A01CA400B514B9 /* BarCodeReaderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BarCodeReaderVC.m; path = ViewControllers/BarCodeReaderVC.m; sourceTree = "<group>"; };
 		5AD3F753185A316600950BC1 /* ShopViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShopViewCell.h; path = ViewControllers/ShopViewCell.h; sourceTree = "<group>"; };
 		5AD3F754185A316600950BC1 /* ShopViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShopViewCell.m; path = ViewControllers/ShopViewCell.m; sourceTree = "<group>"; };
 		5ADAAA94185DCC770080C816 /* CProductPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CProductPrice.h; path = Core/CProductPrice.h; sourceTree = "<group>"; };
@@ -151,6 +156,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ACF79E318A01A3000B514B9 /* QuartzCore.framework in Frameworks */,
 				5AA8994F18985C01005A813F /* CoreData.framework in Frameworks */,
 				5AA8994D18985BEB005A813F /* AVFoundation.framework in Frameworks */,
 				5AA8994B18985BD8005A813F /* SystemConfiguration.framework in Frameworks */,
@@ -198,6 +204,7 @@
 		5A002D85185478BD00E324C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5ACF79E218A01A3000B514B9 /* QuartzCore.framework */,
 				5AA8994E18985C01005A813F /* CoreData.framework */,
 				5AA8994C18985BEB005A813F /* AVFoundation.framework */,
 				5AA8994A18985BD8005A813F /* SystemConfiguration.framework */,
@@ -215,6 +222,7 @@
 		5A002D8C185478BD00E324C2 /* eShop */ = {
 			isa = PBXGroup;
 			children = (
+				5ACF79E418A01AC000B514B9 /* BarCodeReader */,
 				5AC11A23189C1CA5005084C8 /* Images */,
 				5AA8993D189858D0005A813F /* Google Analytics */,
 				5AD3F752185A25A800950BC1 /* ViewControllers */,
@@ -387,9 +395,26 @@
 			name = ProductListPrices;
 			sourceTree = "<group>";
 		};
+		5ACF79E418A01AC000B514B9 /* BarCodeReader */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = BarCodeReader;
+			sourceTree = "<group>";
+		};
+		5ACF79E518A01C6600B514B9 /* BarCodeReader */ = {
+			isa = PBXGroup;
+			children = (
+				5ACF79E618A01CA400B514B9 /* BarCodeReaderVC.h */,
+				5ACF79E718A01CA400B514B9 /* BarCodeReaderVC.m */,
+			);
+			name = BarCodeReader;
+			sourceTree = "<group>";
+		};
 		5AD3F752185A25A800950BC1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5ACF79E518A01C6600B514B9 /* BarCodeReader */,
 				5AA88EF4186EBAFE00E80D90 /* AddShop */,
 				5ABA7A09186D703900883EA2 /* AddProduct */,
 				5ABA7A05186D696200883EA2 /* Setup */,
@@ -547,6 +572,7 @@
 				5ACD16F4186357D9003C83EA /* CProduct.m in Sources */,
 				5ADCBEBB186C1FA80085920E /* EditProductVC.m in Sources */,
 				5ACD17031863800C003C83EA /* ProductListPricesVC.m in Sources */,
+				5ACF79E818A01CA400B514B9 /* BarCodeReaderVC.m in Sources */,
 				5ADAAA9E185DF28F0080C816 /* ShopPriceCell.m in Sources */,
 				5A8FFE97185E353C00155799 /* AddProductToAShopVC.m in Sources */,
 				5ACD16FF18636AF2003C83EA /* AddShopToAProductVC.m in Sources */,

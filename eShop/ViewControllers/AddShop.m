@@ -17,7 +17,7 @@
 
 @end
 
-
+static NSString* sBarCode;
 
 @implementation AddShop
 
@@ -77,8 +77,6 @@
 - (IBAction)btnEditingDidBegin:(id)sender {
      [self.view addGestureRecognizer:singleTap];
 }
-
-
 // Selector method for hiding keyboard:END
 
 
@@ -135,6 +133,8 @@
     // Hide keyboard
     [sender resignFirstResponder];
 }
+
+
 
 //Camera and picture album:BEGIN
 //http://www.appcoda.com/ios-programming-camera-iphone-app/

@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *uiImageView;
 @property (strong, nonatomic) UITapGestureRecognizer *singleTap;
 
+
+
 @property bool bPicture;
 
 @end

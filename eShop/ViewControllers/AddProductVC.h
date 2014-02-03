@@ -18,9 +18,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblBarCode;
 @property (weak, nonatomic) IBOutlet UIImageView *bview;
 @property (weak, nonatomic) IBOutlet UILabel *lblComparationUnit;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnSave;
 
 
 @property NSArray *arrPriceType;
 
+-(void) setBarCode:(NSString*)p_sBarCode;
 
 @end

@@ -254,6 +254,7 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="ReturnKeyButton:" destination="avp-Fs-KJR" eventType="editingDidEndOnExit" id="bHu-3P-LEt"/>
+                                    <action selector="btnTextNameEditingDidEnd:" destination="avp-Fs-KJR" eventType="editingDidEnd" id="j94-Zr-cZV"/>
                                 </connections>
                             </textField>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gIE-hX-p1n">
@@ -291,17 +292,20 @@
                                 </items>
                             </toolbar>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7X-7W-Amv">
-                                <rect key="frame" x="20" y="80" width="107" height="21"/>
+                                <rect key="frame" x="20" y="74" width="85" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dwe-ZT-A1h">
-                                <rect key="frame" x="135" y="71" width="123" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dwe-ZT-A1h">
+                                <rect key="frame" x="104" y="71" width="154" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <connections>
+                                    <action selector="btnTextEditingDidEnd:" destination="avp-Fs-KJR" eventType="editingDidEnd" id="w39-Lt-kBb"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;Comparation unit>" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JgP-XC-FcH">
                                 <rect key="frame" x="0.0" y="150" width="320" height="21"/>
@@ -309,12 +313,24 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="98I-9v-2FH">
+                                <rect key="frame" x="266" y="71" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="BarCode_btn">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnBarCode:" destination="avp-Fs-KJR" eventType="touchUpInside" id="0Pa-MP-3mv"/>
+                                    <segue destination="iwg-0f-1VO" kind="modal" identifier="readBarCode" id="6yx-Ej-pVF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="dCA-MK-Jbc"/>
                     <connections>
                         <outlet property="btnBack" destination="og6-Us-WMz" id="IXd-kK-c5W"/>
+                        <outlet property="btnSave" destination="hQ6-zR-7j5" id="Bx5-Jy-C8f"/>
                         <outlet property="bview" destination="vJ7-0C-qBU" id="3B2-fP-d1r"/>
                         <outlet property="lblBarCode" destination="T7X-7W-Amv" id="Gyk-nH-YcW"/>
                         <outlet property="lblComparationUnit" destination="JgP-XC-FcH" id="XEC-gy-pP0"/>
@@ -327,6 +343,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4bD-i5-J1A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="653" y="1336"/>
+        </scene>
+        <!--Bar Code ReaderVC-->
+        <scene sceneID="huu-sw-0ZA">
+            <objects>
+                <viewController id="iwg-0f-1VO" customClass="BarCodeReaderVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3bq-No-ynk"/>
+                        <viewControllerLayoutGuide type="bottom" id="CxP-ok-0B1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ici-FD-oyv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WjB-TO-BBM">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="ppU-Jx-yFs">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" id="JBK-yO-kAz"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bg6-y9-q70">
+                                <rect key="frame" x="14" y="269" width="292" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="SegueAddProduct">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="avp-Fs-KJR" kind="modal" identifier="backFromReadBarCode" id="SOj-N2-yUP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="es8-rI-ShY"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Me6-IO-KRo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1432" y="1336"/>
         </scene>
         <!--Edit ShopVC-->
         <scene sceneID="dEN-fl-pJp">
@@ -474,7 +530,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="fu5-aU-wie">
-                            <rect key="frame" x="0.0" y="130" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
                                 <barButtonItem image="Del_btn" id="43j-MC-Fxf">
@@ -506,7 +562,7 @@
                         </toolbar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellShopPriceId" id="4XG-Wo-NgV" customClass="ShopPriceCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4XG-Wo-NgV" id="MY7-Mo-RfN">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -1135,6 +1191,7 @@
     </scenes>
     <resources>
         <image name="AddProdShop_btn" width="45" height="45"/>
+        <image name="BarCode_btn" width="45" height="45"/>
         <image name="Camera_btn" width="45" height="45"/>
         <image name="CatalogProd_btn" width="45" height="45"/>
         <image name="CatalogShop_btn" width="45" height="45"/>
@@ -1157,8 +1214,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="tNE-fx-fn3"/>
-        <segue reference="ayA-Hb-AoD"/>
-        <segue reference="7eI-Ih-0zZ"/>
+        <segue reference="qhD-FO-lTt"/>
+        <segue reference="n5p-g4-lcn"/>
+        <segue reference="Qaf-fu-ZBi"/>
+        <segue reference="SOj-N2-yUP"/>
     </inferredMetricsTieBreakers>
 </document>

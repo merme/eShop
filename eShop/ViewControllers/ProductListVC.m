@@ -68,6 +68,9 @@ static ProductListVC *sharedInstance;
     //AppDelegate *appDelegate = [AppDelegate sharedAppDelegate];
     arrProducts = [CCoreManager getProductsList];
     
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"common_bgt.png"]];
+    self.tbvProducts.backgroundColor = background;
+    
     
 }
 

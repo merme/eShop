@@ -101,7 +101,7 @@ static ShopsListVC *sharedInstance;
     
     CShop *currShop = [arrShops objectAtIndex:indexPath.row];
     
-    [cell.lblName setText:[NSString stringWithFormat:@"%@",currShop.sName]];
+    [cell.lblName setText:[NSString stringWithFormat:@"%@ (%@)",currShop.sName,currShop.sId]];
     [cell.lblLocation setText:[NSString stringWithFormat:@"%@",currShop.sLocation]];
     
     return cell;

@@ -325,6 +325,7 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="ReturnKeyButton:" destination="jxw-FB-o2Z" eventType="editingDidEndOnExit" id="l6d-1G-z8y"/>
+                                    <action selector="txtNameEditingDidBeing:" destination="jxw-FB-o2Z" eventType="editingDidEnd" id="TXv-aN-yAs"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFn-xM-xaS">
@@ -340,6 +341,7 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="ReturnKeyButton:" destination="jxw-FB-o2Z" eventType="editingDidEndOnExit" id="Xq6-hJ-jjZ"/>
+                                    <action selector="txtNameEditingDidBeing:" destination="jxw-FB-o2Z" eventType="editingDidEnd" id="M3Y-tz-Sbh"/>
                                 </connections>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zW6-7H-btf">
@@ -1119,8 +1121,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="GfQ-jn-FaW"/>
-        <segue reference="n5p-g4-lcn"/>
         <segue reference="tNE-fx-fn3"/>
+        <segue reference="n5p-g4-lcn"/>
+        <segue reference="GfQ-jn-FaW"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -17,6 +17,8 @@
 
 @implementation EditShopVC
 
+@synthesize singleTap;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -42,10 +44,10 @@
     [self.txtName setText:cShop.sName];
     [self.txtLocation setText:cShop.sLocation];
     
-    [self.lblId setText:[NSString stringWithFormat:@"%@: %@",NSLocalizedString(@"FISCAL_ID", nil),cShop.sId]];
+    [self.lblId setText:[NSString stringWithFormat:@"%@:  %@",NSLocalizedString(@"FISCAL_ID", nil),cShop.sId]];
     
     
-    if(cShop.dPicture!=nil){
+    if([cShop.dPicture length]>0){
         self.uiImageView.image= [UIImage imageWithData:cShop.dPicture ];
         
     }
@@ -55,7 +57,27 @@
     
     // Assign our own backgroud for the view
     self.bview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"common_bg.png"]];
+    //For hidding keyboar
+    self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    
+    
 }
+
+// Selector method for hiding keyboard:BEGIN
+-(void)handleSingleTap:(UITapGestureRecognizer *)sender{
+    
+    [self.view removeGestureRecognizer:singleTap];
+    [self.txtName resignFirstResponder];
+    [self.txtLocation resignFirstResponder];
+    
+}
+
+- (IBAction)txtNameEditingDidBeing:(id)sender {
+    [self.view addGestureRecognizer:singleTap];
+}
+
+// Selector method for hiding keyboard:END
+
 
 - (void)didReceiveMemoryWarning
 {

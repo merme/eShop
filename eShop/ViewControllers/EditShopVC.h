@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *bview;
 @property (weak, nonatomic) IBOutlet UILabel *lblId;
 @property (weak, nonatomic) IBOutlet UIImageView *uiImageView;
+@property (strong, nonatomic) UITapGestureRecognizer *singleTap;
 
 
 @end

@@ -23,6 +23,7 @@ static NSString* sBarCode;
 int iPickerPriceTypeRow=0;
 
 @synthesize arrPriceType;
+@synthesize singleTap;
 
 
 
@@ -64,6 +65,23 @@ int iPickerPriceTypeRow=0;
     self.bview.backgroundColor = background;
     
     [self validateForm];
+    //For hidding keyboar
+    self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    
+    
+}
+
+// Selector method for hiding keyboard:BEGIN
+-(void)handleSingleTap:(UITapGestureRecognizer *)sender{
+    
+    [self.view removeGestureRecognizer:singleTap];
+    [self.txtName resignFirstResponder];
+    [self.txtBarCode resignFirstResponder];
+}
+
+
+- (IBAction)btnEditingDidBegin:(id)sender {
+    [self.view addGestureRecognizer:singleTap];
 }
 
 - (void)didReceiveMemoryWarning
@@ -90,9 +108,7 @@ int iPickerPriceTypeRow=0;
     [self validateForm];
 }
 
-- (IBAction)btnTextNameEditingDidEnd:(id)sender {
-     [self validateForm];
-}
+
 
 
 -(void) validateForm{

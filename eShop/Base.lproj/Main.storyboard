@@ -253,8 +253,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="ReturnKeyButton:" destination="avp-Fs-KJR" eventType="editingDidEndOnExit" id="bHu-3P-LEt"/>
-                                    <action selector="btnTextNameEditingDidEnd:" destination="avp-Fs-KJR" eventType="editingDidEnd" id="j94-Zr-cZV"/>
+                                    <action selector="btnEditingDidBegin:" destination="avp-Fs-KJR" eventType="editingDidBegin" id="00g-f8-dtL"/>
+                                    <action selector="btnTextEditingDidEnd:" destination="avp-Fs-KJR" eventType="editingDidEnd" id="enk-fE-EDU"/>
                                 </connections>
                             </textField>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gIE-hX-p1n">
@@ -304,6 +304,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <connections>
+                                    <action selector="btnEditingDidBegin:" destination="avp-Fs-KJR" eventType="editingDidBegin" id="4rG-Yi-Pv6"/>
                                     <action selector="btnTextEditingDidEnd:" destination="avp-Fs-KJR" eventType="editingDidEnd" id="w39-Lt-kBb"/>
                                 </connections>
                             </textField>

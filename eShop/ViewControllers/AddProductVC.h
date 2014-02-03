@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *bview;
 @property (weak, nonatomic) IBOutlet UILabel *lblComparationUnit;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnSave;
+@property (strong, nonatomic) UITapGestureRecognizer *singleTap;
 
 
 @property NSArray *arrPriceType;

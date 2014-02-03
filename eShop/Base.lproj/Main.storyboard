@@ -237,14 +237,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vJ7-0C-qBU">
+                                <rect key="frame" x="0.0" y="59" width="320" height="465"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ech-UA-l4F">
-                                <rect key="frame" x="20" y="74" width="85" height="21"/>
+                                <rect key="frame" x="20" y="116" width="85" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4OF-BV-9mQ">
-                                <rect key="frame" x="91" y="70" width="201" height="30"/>
+                                <rect key="frame" x="91" y="112" width="201" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -262,26 +266,61 @@
                                                 <segue destination="QUy-BD-bpt" kind="modal" identifier="backFromAddProduct" id="ayA-Hb-AoD"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="hQ6-zR-7j5">
-                                            <connections>
-                                                <segue destination="QUy-BD-bpt" kind="modal" identifier="backFromAddProductSave" id="Qaf-fu-ZBi"/>
-                                            </connections>
-                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x2P-jC-sff">
-                                <rect key="frame" x="0.0" y="119" width="320" height="162"/>
+                                <rect key="frame" x="0.0" y="154" width="320" height="162"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VDw-Wr-g3d">
+                                <rect key="frame" x="69" y="344" width="189" height="157"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="djU-e7-RFE">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem image="Save_btn" id="hQ6-zR-7j5">
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="QUy-BD-bpt" kind="modal" identifier="backFromAddProductSave" id="Qaf-fu-ZBi"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7X-7W-Amv">
+                                <rect key="frame" x="20" y="80" width="107" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dwe-ZT-A1h">
+                                <rect key="frame" x="135" y="71" width="123" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;Comparation unit>" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JgP-XC-FcH">
+                                <rect key="frame" x="0.0" y="150" width="320" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="dCA-MK-Jbc"/>
                     <connections>
                         <outlet property="btnBack" destination="og6-Us-WMz" id="IXd-kK-c5W"/>
+                        <outlet property="bview" destination="vJ7-0C-qBU" id="3B2-fP-d1r"/>
+                        <outlet property="lblBarCode" destination="T7X-7W-Amv" id="Gyk-nH-YcW"/>
+                        <outlet property="lblComparationUnit" destination="JgP-XC-FcH" id="XEC-gy-pP0"/>
                         <outlet property="lblName" destination="ech-UA-l4F" id="Lcd-7z-N6a"/>
                         <outlet property="pckPriceType" destination="x2P-jC-sff" id="sUf-XQ-Cbr"/>
+                        <outlet property="txtBarCode" destination="dwe-ZT-A1h" id="OJG-RM-o7n"/>
                         <outlet property="txtName" destination="4OF-BV-9mQ" id="L22-tS-8Mc"/>
                     </connections>
                 </viewController>
@@ -1119,7 +1158,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="tNE-fx-fn3"/>
-        <segue reference="GfQ-jn-FaW"/>
+        <segue reference="ayA-Hb-AoD"/>
         <segue reference="7eI-Ih-0zZ"/>
     </inferredMetricsTieBreakers>
 </document>

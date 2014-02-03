@@ -14,6 +14,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtName;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnBack;
 @property (weak, nonatomic) IBOutlet UIPickerView *pckPriceType;
+@property (weak, nonatomic) IBOutlet UITextField *txtBarCode;
+@property (weak, nonatomic) IBOutlet UILabel *lblBarCode;
+@property (weak, nonatomic) IBOutlet UIImageView *bview;
+@property (weak, nonatomic) IBOutlet UILabel *lblComparationUnit;
 
 
 @property NSArray *arrPriceType;

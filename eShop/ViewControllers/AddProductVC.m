@@ -49,6 +49,14 @@ int iPickerPriceTypeRow=0;
     // Set label tags
     [self.btnBack setTitle:NSLocalizedString(@"BACK", nil)];
     [self.lblName setText:NSLocalizedString(@"NAME", nil)];
+    [self.lblBarCode setText:NSLocalizedString(@"BAR_CODE", nil)];
+    [self.lblComparationUnit setText:NSLocalizedString(@"COMP_UNIT", nil)];
+
+    
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"common_bgt.png"]];
+    self.bview.backgroundColor = background;
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

@@ -8,6 +8,8 @@
 
 "ATTENTION"="Attention!";
 "BACK"="Back";
+"BAR_CODE"="Bar code:";
+"COMP_UNIT"="Comparation unit";
 "FISCAL_ID"="Fiscal Id:";
 "LOCATION"="Location:";
 "LOOK_OUT"="Look out";

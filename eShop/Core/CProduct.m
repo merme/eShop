@@ -10,7 +10,7 @@
 
 @implementation CProduct
 
-@synthesize iId;
+@synthesize sId;
 @synthesize sName;
 @synthesize tPriceType;
 @synthesize dPicture;

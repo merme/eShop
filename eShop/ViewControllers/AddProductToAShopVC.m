@@ -124,7 +124,7 @@ int iPickerViewRow=0;
     if([[self.txtPrice text] length]>0){
         //Get the current cProductPrice
         CProductPrice *cProductPrice =[arrShopPendingProducts objectAtIndex:iPickerViewRow];
-        cProductPrice.iId = cProductPrice.iId;
+        cProductPrice.sId = cProductPrice.sId;
         cProductPrice.sName = cProductPrice.sName;
         
         //Look out only "." is accecpted as decimal in db, not "," comma

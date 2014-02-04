@@ -30,7 +30,7 @@ typedef enum Price : NSUInteger {
 
 @property (nonatomic) enum Price tPriceType;
 
-@property int iId;
+@property (strong,nonatomic) NSString *sId;
 @property (strong,nonatomic) NSString *sName;
 @property (strong,nonatomic) NSData *dPicture;
 

@@ -289,6 +289,18 @@
                                             <segue destination="QUy-BD-bpt" kind="modal" identifier="backFromAddProductSave" id="Qaf-fu-ZBi"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem image="Camera_btn" id="sE0-rc-gKJ">
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="btnTakePhoto:" destination="avp-Fs-KJR" id="qL6-Bi-9JF"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem image="CatalogProd_btn" id="Ggj-tl-tSi">
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="btnSelectPhoto:" destination="avp-Fs-KJR" id="lzr-PI-rqd"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7X-7W-Amv">
@@ -339,6 +351,7 @@
                         <outlet property="pckPriceType" destination="x2P-jC-sff" id="sUf-XQ-Cbr"/>
                         <outlet property="txtBarCode" destination="dwe-ZT-A1h" id="OJG-RM-o7n"/>
                         <outlet property="txtName" destination="4OF-BV-9mQ" id="L22-tS-8Mc"/>
+                        <outlet property="uiImageView" destination="VDw-Wr-g3d" id="0St-r4-abz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4bD-i5-J1A" userLabel="First Responder" sceneMemberID="firstResponder"/>

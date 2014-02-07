@@ -43,3 +43,4 @@ v Added google analytics
 v Add Shop picture
 + Check if a shop exists before insert
 + Check if a product exists before insert
++ Add Google analytics on every screen

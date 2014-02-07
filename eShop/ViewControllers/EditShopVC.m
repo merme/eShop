@@ -43,10 +43,7 @@
     CShop *cShop = [CCoreManager getActiveShop];
     [self.txtName setText:cShop.sName];
     [self.txtLocation setText:cShop.sLocation];
-    
     [self.lblId setText:[NSString stringWithFormat:@"%@  %@",NSLocalizedString(@"FISCAL_ID", nil),cShop.sId]];
-    
-    
     if([cShop.dPicture length]>0){
         self.uiImageView.image= [UIImage imageWithData:cShop.dPicture ];
         

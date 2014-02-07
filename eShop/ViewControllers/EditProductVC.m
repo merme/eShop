@@ -23,6 +23,7 @@
 @implementation EditProductVC
 
 @synthesize arrPriceType;
+@synthesize singleTap;
 
 int iPickerPriceTypeOnEditRow=0;
 
@@ -52,13 +53,38 @@ int iPickerPriceTypeOnEditRow=0;
     CProduct *cProduct = [CCoreManager getActiveProduct];
     [self.txtName setText:cProduct.sName];
     [self.txtName.delegate self];
+    [self.lblBarCode setText:[NSString stringWithFormat:@"%@  %@",NSLocalizedString(@"BAR_CODE", nil),cProduct.sId]];
+    if([cProduct.dPicture length]>0){
+        self.uiImageView.image= [UIImage imageWithData:cProduct.dPicture ];
+        
+    }
+    
+    // Assign our own backgroud for the view
+    self.bview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"common_bg.png"]];
     
     //Setting callbacks for picker view
     [self.pckTypePrice setDataSource:self];
     [self.pckTypePrice setDelegate:self];
     [self.pckTypePrice selectRow:cProduct.tPriceType inComponent:0 animated:YES];
     
-   }
+    //For hidding keyboar
+    self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    
+    
+}
+
+// Selector method for hiding keyboard:BEGIN
+-(void)handleSingleTap:(UITapGestureRecognizer *)sender{
+    
+    [self.view removeGestureRecognizer:singleTap];
+    [self.txtName resignFirstResponder];
+
+    
+}
+- (IBAction)txtEditingDidBegin:(id)sender {
+        [self.view addGestureRecognizer:singleTap];
+}
+// Selector method for hiding keyboard:END
 
 - (void)didReceiveMemoryWarning
 {

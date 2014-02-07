@@ -55,6 +55,10 @@ static CProductPrice *m_currProductPrice;
     [self.barTop setTitle:[[NSString alloc] initWithFormat:@"%@", cProduct.sName]];
     [self.btnAdd setTitle:NSLocalizedString(@"SHOP_PRICE", nil)];
     
+    //Set table background
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"common_bg.png"]];
+    self.tbvProductShopPrices.backgroundColor = background;
+    
     //Initialize current ProductPrice
     m_currProductPrice=nil;
 }

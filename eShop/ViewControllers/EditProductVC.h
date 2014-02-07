@@ -12,9 +12,15 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet UITextField *txtName;
+@property (weak, nonatomic) IBOutlet UIImageView *uiImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *bview;
 
+
+@property (weak, nonatomic) IBOutlet UILabel *lblBarCode;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnSave;
 @property (weak, nonatomic) IBOutlet UIPickerView *pckTypePrice;
+
+@property (strong, nonatomic) UITapGestureRecognizer *singleTap;
 
 @property NSArray *arrPriceType;
 

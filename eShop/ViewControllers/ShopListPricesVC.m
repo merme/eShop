@@ -70,7 +70,24 @@ int iCurrProductPrice=-1;
     
     //Disable delete product button
     self.btnDel.enabled=NO;
+    //Update button status
+    [self toggleButtons];
     
+    if([arrShopProductPrices count]==0 && !self.btnAdd.enabled){
+        UIAlertView* mes=[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ATTENTION",nil)
+                                                    message:NSLocalizedString(@"NO_PRODUCTS",nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles: nil];
+        
+        [mes show];
+        
+    }
+    else{
+        if(!self.btnAdd.enabled){
+            UIAlertView* mes=[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ATTENTION",nil)
+                                                        message:NSLocalizedString(@"ALL_PRODUCTS",nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles: nil];
+            
+            [mes show];
+        }
+    }
     
     
     //Set tittle text
@@ -80,21 +97,6 @@ int iCurrProductPrice=-1;
     //Initialize current ProductPrice
     m_currProductPrice=nil;
     
-    if([arrShopProductPrices count]==0 && !self.btnAdd.enabled){
-        UIAlertView* mes=[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ATTENTION",nil)
-            message:NSLocalizedString(@"NO_PRODUCTS",nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles: nil];
-        
-        [mes show];
-        
-    }
-    else{
-        if(!self.btnAdd.enabled){
-            UIAlertView* mes=[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ATTENTION",nil)
-                message:NSLocalizedString(@"ALL_PRODUCTS",nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles: nil];
-            
-            [mes show];
-        }
-    }
     
 }
 
@@ -185,6 +187,22 @@ int iCurrProductPrice=-1;
     //Update button status
     [self toggleButtons];
     
+    if([arrShopProductPrices count]==0 && !self.btnAdd.enabled){
+        UIAlertView* mes=[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ATTENTION",nil)
+                                                    message:NSLocalizedString(@"NO_PRODUCTS",nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles: nil];
+        
+        [mes show];
+        
+    }
+    else{
+        if(!self.btnAdd.enabled){
+            UIAlertView* mes=[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ATTENTION",nil)
+                                                        message:NSLocalizedString(@"ALL_PRODUCTS",nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles: nil];
+            
+            [mes show];
+        }
+    }
+    
 }
 
 
@@ -249,9 +267,12 @@ int iCurrProductPrice=-1;
 -(void) toggleButtons{
     
     self.btnDel.enabled=(m_currProductPrice!=nil);
-    self.btnAdd.enabled=!self.btnDel.enabled;
+    self.btnAdd.enabled=!self.btnDel.enabled && ([CCoreManager getNumberShopNotExistingProducts]!=0);;
     self.btnDelShop.enabled=!self.btnDel.enabled;
     self.btnEditShop.enabled=!self.btnDel.enabled;
+    
+    
+
 }
 
 @end

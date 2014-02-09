@@ -21,6 +21,7 @@
 
 @synthesize delegate;
 @synthesize arrProductPendingShops;
+@synthesize singleTap;
 
 int iPickerShopViewRow=0;
 
@@ -48,8 +49,43 @@ int iPickerShopViewRow=0;
     //Setting label texts
     [self.lblSelectShop setText:NSLocalizedString(@"SELECT_SHOP", nil)];
     
-
+    // Assign our own backgroud for the view
+    self.bview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"common_bg.png"]];
+    
+    //For hidding keyboar
+    self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    
+    //Validate form
+    self.btnSave.enabled=NO;
+    
 }
+
+// Selector method for hiding keyboard:BEGIN
+-(void)handleSingleTap:(UITapGestureRecognizer *)sender{
+    
+    [self.view removeGestureRecognizer:singleTap];
+    [self.txtPrice resignFirstResponder];
+    
+    //Validate form
+    [self validateForm];
+    
+}
+- (IBAction)txtPriceEditingDidBegin:(id)sender {
+        [self.view addGestureRecognizer:singleTap];
+}
+// Selector method for hiding keyboard:END
+
+- (IBAction)txtPriceEditingDidEnd:(id)sender {
+    //Validate form
+    [self validateForm];
+}
+
+
+-(void) validateForm{
+    //Check if the shop has any product to add in its list
+    self.btnSave.enabled=([self.txtPrice text]>0);
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -75,6 +111,15 @@ int iPickerShopViewRow=0;
     CProductPrice *cProductPrice= [arrProductPendingShops objectAtIndex:row];
     
     NSString *S=[[NSString alloc] initWithFormat:@"%@ - %@", cProductPrice.sShopName,cProductPrice.sShopLocation];
+    
+    if([cProductPrice.dPicture length]>0){
+        self.uiImageView.image= [UIImage imageWithData:cProductPrice.dPicture ];
+        self.uiImageView.hidden=NO;
+    }
+    else{
+        self.uiImageView.hidden=YES;
+        
+    }
     
     return S;
 }

@@ -23,6 +23,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtPrice;
 @property (weak, nonatomic) IBOutlet UILabel *lblSelectShop;
 @property (weak, nonatomic) IBOutlet UIImageView *uiImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *bview;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnSave;
+@property (strong, nonatomic) UITapGestureRecognizer *singleTap;
 
 @property NSArray *arrProductPendingShops;
 

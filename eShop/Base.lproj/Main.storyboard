@@ -544,7 +544,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="fu5-aU-wie">
-                            <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="130" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
                                 <barButtonItem image="Del_btn" id="43j-MC-Fxf">
@@ -576,7 +576,7 @@
                         </toolbar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellShopPriceId" id="4XG-Wo-NgV" customClass="ShopPriceCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4XG-Wo-NgV" id="MY7-Mo-RfN">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -673,7 +673,6 @@
                                 <barButtonItem image="Del_btn" id="djy-m5-6Vy">
                                     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <connections>
-                                        <action selector="btnDeleteShop:" destination="CRG-W9-Ghq" id="BgS-wC-olc"/>
                                         <segue destination="QUy-BD-bpt" kind="modal" identifier="backFromDeleteProduct" id="PMP-ia-J5N"/>
                                     </connections>
                                 </barButtonItem>
@@ -685,9 +684,15 @@
                                 </barButtonItem>
                                 <barButtonItem image="ShopAdd_btn" id="6Nh-qt-NJX">
                                     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <connections>
+                                        <segue destination="N4v-7c-MLZ" kind="push" identifier="addPendingShopPrice" id="Rus-cK-OVI"/>
+                                    </connections>
                                 </barButtonItem>
                                 <barButtonItem image="ShopDel_btn" id="qyp-xb-Wkp">
                                     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <connections>
+                                        <action selector="btnDeleteShopPrice:" destination="xFg-NA-dw3" id="tZs-n6-JUB"/>
+                                    </connections>
                                 </barButtonItem>
                             </items>
                         </toolbar>
@@ -760,16 +765,14 @@
                                 <segue destination="QUy-BD-bpt" kind="modal" identifier="backFromListPriceByShop" id="8En-Jx-qk4"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="mBB-LP-ZD0">
-                            <connections>
-                                <segue destination="N4v-7c-MLZ" kind="push" identifier="addPendingShopPrice" id="Y3f-fM-BSE"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="barTop" destination="SmA-Gj-pS8" id="UAz-LS-9sa"/>
-                        <outlet property="btnAdd" destination="mBB-LP-ZD0" id="0TO-gj-k0W"/>
+                        <outlet property="btnAdd" destination="6Nh-qt-NJX" id="jUt-K7-6gS"/>
+                        <outlet property="btnDel" destination="qyp-xb-Wkp" id="X6Q-87-3Lz"/>
+                        <outlet property="btnDelProduct" destination="djy-m5-6Vy" id="xsy-LV-yPY"/>
+                        <outlet property="btnEditProduct" destination="ufO-Mt-OTb" id="pZJ-ou-cpx"/>
                         <outlet property="tbvProductShopPrices" destination="QPi-XX-2E5" id="tRR-pB-Eix"/>
                     </connections>
                 </tableViewController>
@@ -867,35 +870,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BBh-XQ-mjr">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rjj-rE-fyA">
-                                <rect key="frame" x="0.0" y="381" width="320" height="162"/>
+                                <rect key="frame" x="0.0" y="136" width="320" height="162"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hhk-vO-Vhy">
-                                <rect key="frame" x="179" y="298" width="97" height="30"/>
+                                <rect key="frame" x="179" y="77" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
+                                    <action selector="txtPriceEditingDidBegin:" destination="N4v-7c-MLZ" eventType="editingDidBegin" id="8us-lb-gH3"/>
                                     <action selector="txtPriceEditingDidEnd:" destination="F2w-gn-pt9" eventType="editingDidEnd" id="9yK-mv-p0I"/>
+                                    <action selector="txtPriceEditingDidEnd:" destination="N4v-7c-MLZ" eventType="editingDidEnd" id="C8r-7x-JVq"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4H-Gc-aaM">
-                                <rect key="frame" x="57" y="302" width="64" height="21"/>
+                                <rect key="frame" x="57" y="81" width="64" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;Select shop>" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4J4-hW-fMs">
-                                <rect key="frame" x="0.0" y="364" width="320" height="22"/>
+                                <rect key="frame" x="0.0" y="119" width="320" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yus-RV-RZG">
-                                <rect key="frame" x="33" y="96" width="272" height="158"/>
+                                <rect key="frame" x="26" y="306" width="272" height="158"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v3w-QX-l2f">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem image="Save_btn" id="7QC-Kb-XNb">
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="btnSave:" destination="N4v-7c-MLZ" id="CF7-fE-Gt5"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -909,6 +930,8 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="btnSave" destination="7QC-Kb-XNb" id="yRw-5Z-1Ei"/>
+                        <outlet property="bview" destination="BBh-XQ-mjr" id="FgT-Fa-HWM"/>
                         <outlet property="lblSelectShop" destination="4J4-hW-fMs" id="oTg-SF-263"/>
                         <outlet property="pckPendingProducts" destination="Rjj-rE-fyA" id="EN3-8Z-cSr"/>
                         <outlet property="txtPrice" destination="hhk-vO-Vhy" id="Egs-l8-qli"/>
@@ -1258,9 +1281,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="SOj-N2-yUP"/>
-        <segue reference="tNE-fx-fn3"/>
-        <segue reference="n5p-g4-lcn"/>
         <segue reference="PMP-ia-J5N"/>
+        <segue reference="6TK-Y2-1HA"/>
+        <segue reference="7eI-Ih-0zZ"/>
+        <segue reference="lh5-Oz-3kE"/>
     </inferredMetricsTieBreakers>
 </document>

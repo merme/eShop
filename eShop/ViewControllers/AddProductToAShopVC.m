@@ -61,8 +61,6 @@ int iPickerViewRow=0;
     // Assign our own backgroud for the view
     self.bview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"common_bg.png"]];
     
-    //Initialize image
-    self.bPicture=FALSE;
     
     //For hidding keyboar
     self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
@@ -132,21 +130,11 @@ int iPickerViewRow=0;
         sPrice = [sPrice stringByReplacingOccurrencesOfString:@","
                                                    withString:@"."];
         cProductPrice.fPrice= [sPrice floatValue];
-        
-        //Set the image
-        if(!self.bPicture){
-            cProductPrice.dPicture=UIImagePNGRepresentation(self.uiImageView.image);
-        }
-        else{
-            cProductPrice.dPicture=nil;
-        }
-        
+                
         //Request to CCoreManager to store new Product-Price
         [CCoreManager insertProductPrice:cProductPrice];
         
 
-    
-   
         //Force to close view (-> -(void) viewWillDisappear:(BOOL)animated)
         [self.navigationController popViewControllerAnimated:YES];
     }

@@ -50,6 +50,27 @@ static CProductPrice *m_currProductPrice;
     //Check if the shop has any product to add in its list
     self.btnAdd.enabled=([CCoreManager getNumberProductNotExistingShops]>0);
     
+    //Disable delete product button
+    self.btnDel.enabled=NO;
+    //Update button status
+    [self toggleButtons];
+    
+    if([arrProductShopPrices count]==0 && !self.btnAdd.enabled){
+        UIAlertView* mes=[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ATTENTION",nil)
+                                                    message:NSLocalizedString(@"NO_SHOPS",nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles: nil];
+        
+        [mes show];
+        
+    }
+    else{
+        if(!self.btnAdd.enabled){
+            UIAlertView* mes=[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ATTENTION",nil)
+                                                        message:NSLocalizedString(@"ALL_SHOPS",nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles: nil];
+            
+            [mes show];
+        }
+    }
+    
     //Set tittle text
     CProduct *cProduct=[CCoreManager getActiveProduct];
     [self.barTop setTitle:[[NSString alloc] initWithFormat:@"%@", cProduct.sName]];
@@ -61,6 +82,8 @@ static CProductPrice *m_currProductPrice;
     
     //Initialize current ProductPrice
     m_currProductPrice=nil;
+    
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,6 +91,29 @@ static CProductPrice *m_currProductPrice;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (IBAction)btnDeleteShopPrice:(id)sender {
+    if(m_currProductPrice!=nil){
+        
+        //Remove current shop
+        [CCoreManager deleteProductPrice:m_currProductPrice];
+        
+        //Refresh shop list view
+        m_currProductPrice=nil;
+        
+        //Request to Core manager for prices of current shop
+        arrProductShopPrices=[CCoreManager getProductPriceList];
+        
+        //Refresh whole table
+        [self.tbvProductShopPrices reloadData];
+        
+        //Update button status
+        [self toggleButtons];
+        
+    }
+}
+
+
 
 // BEGIN: Methods to implement for fulfill CollectionView Interface
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{
@@ -106,14 +152,18 @@ static CProductPrice *m_currProductPrice;
 
 - (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
+    //Set the current product price
     m_currProductPrice=nil;
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //Set the current product price
     m_currProductPrice=[arrProductShopPrices objectAtIndex:indexPath.row];
+    
+    //Update button status
+    [self toggleButtons];
     
     [self.tbvProductShopPrices reloadData];
     
@@ -123,11 +173,34 @@ static CProductPrice *m_currProductPrice;
 //end: Methods to implement for fulfill CollectionView Interface
 
 -(void) refreshProductShopPrices{
+    
+    m_currProductPrice=nil;
+    
     //Request to Core manager for prices of current shop
     arrProductShopPrices=[CCoreManager getProductPriceList];
     
     //Refresh whole table
     [self.tbvProductShopPrices reloadData];
+    
+    //Update button status
+    [self toggleButtons];
+    
+    if([arrProductShopPrices count]==0 && !self.btnAdd.enabled){
+        UIAlertView* mes=[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ATTENTION",nil)
+                                                    message:NSLocalizedString(@"NO_SHOPS",nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles: nil];
+        
+        [mes show];
+        
+    }
+    else{
+        if(!self.btnAdd.enabled){
+            UIAlertView* mes=[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ATTENTION",nil)
+                                                        message:NSLocalizedString(@"ALL_SHOPS",nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles: nil];
+            
+            [mes show];
+        }
+    }
+
 }
 
 
@@ -163,6 +236,14 @@ static CProductPrice *m_currProductPrice;
         [CCoreManager updateShopPrice:m_currProductPrice];
     }
     
+}
+
+-(void) toggleButtons{
+    
+    self.btnDel.enabled=(m_currProductPrice!=nil);
+    self.btnAdd.enabled=!self.btnDel.enabled && ([CCoreManager getNumberProductNotExistingShops]!=0);;
+    self.btnDelProduct.enabled=!self.btnDel.enabled;
+    self.btnEditProduct.enabled=!self.btnDel.enabled;
 }
 
 @end

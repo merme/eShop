@@ -62,9 +62,8 @@ static ShopsListVC *sharedInstance;
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"common_bgt.png"]];
     self.tbvShops.backgroundColor = background;
     
-    //self.tbvShops.backgroundView = tempImageView;
-
-    
+    //Set tittle text
+    [self.barTop setTitle:NSLocalizedString(@"SHOP_LIST", nil)];
     
     //Request to AppDelegate list of avaliable shops
     //AppDelegate *appDelegate = [AppDelegate sharedAppDelegate];
@@ -103,6 +102,11 @@ static ShopsListVC *sharedInstance;
     
     [cell.lblName setText:[NSString stringWithFormat:@"%@ (%@)",currShop.sName,currShop.sId]];
     [cell.lblLocation setText:[NSString stringWithFormat:@"%@",currShop.sLocation]];
+    
+    
+    if([currShop.dPicture length]>0){
+        cell.imgShopPict.image= [UIImage imageWithData:currShop.dPicture ];
+    }
     
     return cell;
 

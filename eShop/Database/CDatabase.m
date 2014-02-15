@@ -202,7 +202,8 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
             cShop.sName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 1)];
             cShop.sLocation = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 2)];
             int length = sqlite3_column_bytes(selectStatement, 3);
-            cShop.dPicture = [NSData dataWithBytes:sqlite3_column_blob(selectStatement, 3) length:length];
+            if(length>0)
+                cShop.dPicture = [NSData dataWithBytes:sqlite3_column_blob(selectStatement, 3) length:length];
             
             [arrShops addObject:cShop];
         }

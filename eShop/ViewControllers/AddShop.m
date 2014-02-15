@@ -57,6 +57,9 @@ static NSString* sBarCode;
     
     //For hidding keyboar
     self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    
+    //Set tittle text
+    [self.barTop setTitle:NSLocalizedString(@"ADD_SHOP", nil)];
 
     
     //Check form
@@ -91,8 +94,6 @@ static NSString* sBarCode;
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([segue.identifier isEqualToString:@"backFromAddShopSave"]){
-        if([[self.txtName text] length]>0 &&
-           [[self.txtLocation text] length]>0){
             
             CShop *cShop = [[CShop alloc]init];
             cShop.sId=[self.txtId text];
@@ -112,7 +113,7 @@ static NSString* sBarCode;
             
             //Force to close view (-> -(void) viewWillDisappear:(BOOL)animated)
             [self.navigationController popViewControllerAnimated:YES];
-        }
+        
     }
     
     //Refresh shop list view

@@ -6,6 +6,7 @@
   Copyright (c) 2013 JAVIER CALATRAVA LLAVERIA. All rights reserved.
 */
 
+"ADD_SHOP"="Add a new shop";
 "ATTENTION"="Attention!";
 "BACK"="Back";
 "BAR_CODE"="Bar code:";
@@ -21,6 +22,7 @@
 "SAVE"="Save";
 "SELECT_PRODUCT"="Select product:";
 "SELECT_SHOP"="Select shop:";
+"SHOP_LIST"="Supermarket list";
 "SHOP_PRICE"="+Shop";
 "CLEAN_DB"="Remove all data";
 "RESTORE_DB"="Restore sample data";

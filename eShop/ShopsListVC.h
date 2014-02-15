@@ -12,6 +12,7 @@
 
 
 @property (weak, nonatomic) IBOutlet UITableView *tbvShops;
+@property (weak, nonatomic) IBOutlet UINavigationItem *barTop;
 
 
 //Array of timers

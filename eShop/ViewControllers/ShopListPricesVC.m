@@ -80,14 +80,7 @@ int iCurrProductPrice=-1;
         [mes show];
         
     }
-    else{
-        if(!self.btnAdd.enabled){
-            UIAlertView* mes=[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ATTENTION",nil)
-                                                        message:NSLocalizedString(@"ALL_PRODUCTS",nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles: nil];
-            
-            [mes show];
-        }
-    }
+
     
     
     //Set tittle text
@@ -194,14 +187,6 @@ int iCurrProductPrice=-1;
         [mes show];
         
     }
-    else{
-        if(!self.btnAdd.enabled){
-            UIAlertView* mes=[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ATTENTION",nil)
-                                                        message:NSLocalizedString(@"ALL_PRODUCTS",nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles: nil];
-            
-            [mes show];
-        }
-    }
     
 }
 
@@ -215,6 +200,7 @@ int iCurrProductPrice=-1;
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([segue.identifier isEqualToString:@"backFromDeleteShop"]){
         
+    
         //Remove current shop
         [CCoreManager deleteShop];
         
@@ -224,6 +210,8 @@ int iCurrProductPrice=-1;
     }
     
 }
+
+
 
 +(void) setNewProductShopPrice:(NSString*)p_sPrice{
     
@@ -241,7 +229,7 @@ int iCurrProductPrice=-1;
 }
 
 - (IBAction)btnDeleteProductPrice:(id)sender {
-  
+    
     if(m_currProductPrice!=nil){
         
         //Remove current shop
@@ -260,9 +248,12 @@ int iCurrProductPrice=-1;
         [self toggleButtons];
 
     }
- 
     
 }
+
+
+
+
 
 -(void) toggleButtons{
     

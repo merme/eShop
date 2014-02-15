@@ -250,13 +250,13 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ech-UA-l4F">
-                                <rect key="frame" x="20" y="116" width="85" height="21"/>
+                                <rect key="frame" x="15" y="149" width="85" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4OF-BV-9mQ">
-                                <rect key="frame" x="91" y="112" width="201" height="30"/>
+                                <rect key="frame" x="86" y="145" width="227" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -271,6 +271,7 @@
                                 <items>
                                     <navigationItem title="Title" id="9J5-ba-Cwm">
                                         <barButtonItem key="leftBarButtonItem" title="Item" id="og6-Us-WMz">
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
                                                 <segue destination="QUy-BD-bpt" kind="modal" identifier="backFromAddProduct" id="ayA-Hb-AoD"/>
                                             </connections>
@@ -278,14 +279,13 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x2P-jC-sff">
-                                <rect key="frame" x="0.0" y="154" width="320" height="162"/>
+                            <pickerView hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x2P-jC-sff">
+                                <rect key="frame" x="0.0" y="188" width="320" height="162"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VDw-Wr-g3d">
-                                <rect key="frame" x="69" y="344" width="189" height="157"/>
+                                <rect key="frame" x="0.0" y="252" width="320" height="272"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="djU-e7-RFE">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
@@ -312,14 +312,14 @@
                                 </items>
                             </toolbar>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7X-7W-Amv">
-                                <rect key="frame" x="20" y="74" width="85" height="23"/>
+                                <rect key="frame" x="15" y="98" width="85" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dwe-ZT-A1h">
-                                <rect key="frame" x="104" y="71" width="154" height="30"/>
+                                <rect key="frame" x="90" y="95" width="145" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -328,14 +328,14 @@
                                     <action selector="btnTextEditingDidEnd:" destination="avp-Fs-KJR" eventType="editingDidEnd" id="w39-Lt-kBb"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;Comparation unit>" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JgP-XC-FcH">
-                                <rect key="frame" x="0.0" y="150" width="320" height="21"/>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;Comparation unit>" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JgP-XC-FcH">
+                                <rect key="frame" x="0.0" y="198" width="307" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="98I-9v-2FH">
-                                <rect key="frame" x="266" y="71" width="46" height="30"/>
+                                <rect key="frame" x="261" y="95" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="BarCode_btn">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -996,7 +996,7 @@
                                             <segue destination="CZ4-MO-1fc" kind="modal" id="3ID-na-iIE"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem image="Trolley_btn" id="vsl-1h-Dsi">
+                                    <barButtonItem image="Prod_btn" id="vsl-1h-Dsi">
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <segue destination="QUy-BD-bpt" kind="modal" id="GfQ-jn-FaW"/>
@@ -1162,7 +1162,7 @@
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem image="ProdAdd_btn" id="REQ-ta-15y">
+                                    <barButtonItem image="AddProdShop_btn" id="REQ-ta-15y">
                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="avp-Fs-KJR" kind="modal" identifier="addProduct" id="6TK-Y2-1HA"/>
@@ -1289,12 +1289,11 @@
         <image name="Del_btn" width="45" height="45"/>
         <image name="Edit_btn" width="45" height="45"/>
         <image name="Gears_btn" width="45" height="45"/>
-        <image name="ProdAdd_btn" width="45" height="45"/>
+        <image name="Prod_btn" width="45" height="45"/>
         <image name="Save_btn" width="45" height="45"/>
         <image name="ShopAdd_btn" width="45" height="45"/>
         <image name="ShopDel_btn" width="45" height="45"/>
         <image name="Shop_btn" width="45" height="45"/>
-        <image name="Trolley_btn" width="45" height="45"/>
         <image name="first" width="48" height="48"/>
         <image name="second" width="30" height="30"/>
     </resources>
@@ -1305,8 +1304,8 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="GfQ-jn-FaW"/>
-        <segue reference="n5p-g4-lcn"/>
-        <segue reference="tNE-fx-fn3"/>
+        <segue reference="7eI-Ih-0zZ"/>
+        <segue reference="3ID-na-iIE"/>
         <segue reference="6TK-Y2-1HA"/>
     </inferredMetricsTieBreakers>
 </document>

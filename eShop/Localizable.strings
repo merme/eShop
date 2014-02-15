@@ -7,6 +7,7 @@
 */
 
 "ADD_SHOP"="Add a new shop";
+"DELETE_SHOP?"="Do you want delete this supermarket?";
 "ATTENTION"="Attention!";
 "BACK"="Back";
 "BAR_CODE"="Bar code:";

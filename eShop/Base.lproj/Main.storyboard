@@ -82,7 +82,7 @@
                                 <connections>
                                     <action selector="btnEditingDidBegin:" destination="afK-uk-kga" eventType="editingDidBegin" id="XlX-M6-fAc"/>
                                     <action selector="txtIdDidEndOnExit:" destination="afK-uk-kga" eventType="editingDidEndOnExit" id="YUg-no-pEK"/>
-                                    <action selector="txtIdEditingDidEnd:" destination="afK-uk-kga" eventType="editingDidEnd" id="aYg-iP-qex"/>
+                                    <action selector="txtIdEditingDidEnd:" destination="afK-uk-kga" eventType="editingDidEnd" id="618-OO-JDX"/>
                                 </connections>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y3R-ah-9GW">
@@ -544,7 +544,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="fu5-aU-wie">
-                            <rect key="frame" x="0.0" y="130" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
                                 <barButtonItem image="Del_btn" id="43j-MC-Fxf">
@@ -576,7 +576,7 @@
                         </toolbar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellShopPriceId" id="4XG-Wo-NgV" customClass="ShopPriceCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4XG-Wo-NgV" id="MY7-Mo-RfN">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -667,7 +667,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="DrP-ka-Ofi">
-                            <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="130" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
                                 <barButtonItem image="Del_btn" id="djy-m5-6Vy">
@@ -698,7 +698,7 @@
                         </toolbar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellProductPriceId" id="pBf-TD-4QJ" customClass="ProductPriceCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pBf-TD-4QJ" id="Zko-Xg-e3Y">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -712,7 +712,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UTx-oN-2QL">
-                                            <rect key="frame" x="240" y="7" width="60" height="30"/>
+                                            <rect key="frame" x="236" y="7" width="60" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -725,15 +725,14 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="98a-EF-d8e">
-                                            <rect key="frame" x="297" y="9" width="33" height="30"/>
+                                            <rect key="frame" x="293" y="4" width="33" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="Confirm_btn">
                                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="btnConfirmPrice:" destination="4XG-Wo-NgV" eventType="touchUpInside" id="kK9-2h-wah"/>
-                                                <action selector="btnConfirmPrice:" destination="pBf-TD-4QJ" eventType="touchUpInside" id="nBN-IU-oT6"/>
+                                                <action selector="btnConfirmPrice:" destination="pBf-TD-4QJ" eventType="touchUpInside" id="uSC-G5-sPo"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDr-jS-KZV">
@@ -921,13 +920,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="mUU-Nu-Yvv">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="iZ4-Py-XcP">
-                            <connections>
-                                <action selector="btnSave:" destination="N4v-7c-MLZ" id="tTx-Zb-mok"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="mUU-Nu-Yvv"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="btnSave" destination="7QC-Kb-XNb" id="yRw-5Z-1Ei"/>
@@ -1038,14 +1031,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bJ3-dc-LuJ">
+                                <rect key="frame" x="0.0" y="61" width="335" height="507"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wHQ-wi-uZr">
-                                <rect key="frame" x="137" y="177" width="46" height="30"/>
+                                <rect key="frame" x="35" y="177" width="265" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Reset">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="btnResetDB:" destination="mKl-RF-6ZR" eventType="touchUpInside" id="CpX-YN-xCl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bvl-qw-8YI">
+                                <rect key="frame" x="35" y="269" width="257" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Reset">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnResetDB:" destination="mKl-RF-6ZR" eventType="touchUpInside" id="1hT-kX-jqR"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EDa-ju-J3U">
@@ -1061,6 +1068,13 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bRH-Gc-uLs">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Item" id="NA1-2X-gBG"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -1068,6 +1082,8 @@
                     <connections>
                         <outlet property="btnBack" destination="lqt-a6-fGA" id="gO1-oN-AwZ"/>
                         <outlet property="btnCleanDB" destination="wHQ-wi-uZr" id="Ue0-me-Gbu"/>
+                        <outlet property="btnRestoreDB" destination="Bvl-qw-8YI" id="9nI-us-ZXw"/>
+                        <outlet property="bview" destination="bJ3-dc-LuJ" id="n72-dz-Kez"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xs0-eR-WJ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1281,9 +1297,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="PMP-ia-J5N"/>
+        <segue reference="GfQ-jn-FaW"/>
+        <segue reference="4L7-Gm-Vhk"/>
         <segue reference="6TK-Y2-1HA"/>
-        <segue reference="7eI-Ih-0zZ"/>
-        <segue reference="lh5-Oz-3kE"/>
+        <segue reference="qhD-FO-lTt"/>
     </inferredMetricsTieBreakers>
 </document>

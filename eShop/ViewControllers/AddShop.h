@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CShop.h"
 
 @interface AddShop : UIViewController <UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
@@ -21,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnSave;
 @property (weak, nonatomic) IBOutlet UIImageView *uiImageView;
 @property (strong, nonatomic) UITapGestureRecognizer *singleTap;
+
 
 
 

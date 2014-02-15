@@ -38,6 +38,7 @@
 +(void) deleteShop;
 +(void) updateShop:(CShop*) p_CShop;
 +(void) addShop:(CShop*) p_CShop;
++(CShop*) getShopById:(CShop*) p_CShop;
 
 
 

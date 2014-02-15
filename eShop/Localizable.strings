@@ -22,7 +22,9 @@
 "SELECT_PRODUCT"="Select product:";
 "SELECT_SHOP"="Select shop:";
 "SHOP_PRICE"="+Shop";
-"RESET_DB"="Reset data";
+"CLEAN_DB"="Remove all data";
+"RESTORE_DB"="Restore sample data";
+"SHOPS_EXISTS"="%@(%@) placed at %@ exists";
 "NO_SHOPS_PRODUCTS"="There are no products nor shops. Fill with sample data.";
 "NO_PRODUCTS"="There are no products defined, in that case go to main screen and add some products.";
 "ALL_PRODUCTS"="This suppermarket has all the existing products assigned.";

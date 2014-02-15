@@ -35,14 +35,17 @@
     
     // Set label tags
     [self.btnBack setTitle:NSLocalizedString(@"BACK", nil)];
-    [self.btnCleanDB setTitle:NSLocalizedString(@"RESET_DB", nil) forState:UIControlStateNormal];
+    [self.btnCleanDB setTitle:NSLocalizedString(@"CLEAN_DB", nil) forState:UIControlStateNormal];
+    [self.btnRestoreDB setTitle:NSLocalizedString(@"RESTORE_DB", nil) forState:UIControlStateNormal];
     
+    // Do any additional setup after loading the view, typically from a nib.
+    // Assign our own backgroud for the view
+    self.bview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"common_bg.png"]];
     
     // This screen name value will remain set on the tracker and sent with
     // hits until it is set to a new value or to nil.
     [[GAI sharedInstance].defaultTracker set:kGAIScreenName
                                        value:@"Setup Screen"];
-    
     // Send the screen view.
     [[GAI sharedInstance].defaultTracker
      send:[[GAIDictionaryBuilder createAppView] build]];

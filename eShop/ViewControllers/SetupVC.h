@@ -11,5 +11,7 @@
 @interface SetupVC : UIViewController
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnBack;
 @property (weak, nonatomic) IBOutlet UIButton *btnCleanDB;
+@property (weak, nonatomic) IBOutlet UIButton *btnRestoreDB;
+@property (weak, nonatomic) IBOutlet UIImageView *bview;
 
 @end

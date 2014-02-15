@@ -24,6 +24,7 @@ static NSString* sBarCode;
 @synthesize singleTap;
 
 
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -56,6 +57,10 @@ static NSString* sBarCode;
     
     //For hidding keyboar
     self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+
+    
+    //Check form
+    [self validateForm];
     
     
 }
@@ -69,9 +74,7 @@ static NSString* sBarCode;
     [self.txtId resignFirstResponder];
     
 }
-- (IBAction)btnPriceEditingDidBegin:(id)sender {
-   
-}
+
 
 
 - (IBAction)btnEditingDidBegin:(id)sender {
@@ -120,21 +123,50 @@ static NSString* sBarCode;
 - (IBAction)ReturnKeyButton:(id)sender {
     [sender resignFirstResponder];
 }
+
+
 - (IBAction)txtIdEditingDidEnd:(id)sender {
-    
-    self.btnSave.enabled= ([self.txtId.text length]>0);
+    //self.btnSave.enabled= ([self.txtId.text length]>0);
+    [self validateForm];
     
     // Hide keyboard
     [sender resignFirstResponder];
 }
 - (IBAction)txtIdDidEndOnExit:(id)sender {
-    self.btnSave.enabled= ([self.txtId.text length]>0);
+    //self.btnSave.enabled= ([self.txtId.text length]>0);
+    [self validateForm];
     
     // Hide keyboard
     [sender resignFirstResponder];
 }
 
+-(void) validateForm{
 
+    CShop *cShopFound=nil;
+    
+    if ([self.txtId.text length]>0){
+        CShop *cShopToFind = [[CShop alloc]init];
+        cShopToFind.sId=self.txtId.text;
+        cShopFound=[CCoreManager getShopById:cShopToFind];
+        
+        if(cShopFound!=nil){
+            UIAlertView* mes=[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ATTENTION",nil)
+                message:[NSString stringWithFormat:NSLocalizedString(@"SHOPS_EXISTS", nil),cShopFound.sName,cShopFound.sId,cShopFound.sLocation] delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles: nil];
+            
+            [mes show];
+        
+
+        
+        }
+        
+        
+        
+        
+    }
+    
+    self.btnSave.enabled=  ([self.txtId.text length]>0) && cShopFound==nil;
+    
+}
 
 //Camera and picture album:BEGIN
 //http://www.appcoda.com/ios-programming-camera-iphone-app/

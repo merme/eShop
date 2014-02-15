@@ -632,6 +632,49 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
 }
 
 
++(CShop*) getShopById:(CShop*) p_CShop{
+    
+    //Get Temporary Directory
+    NSString* dbPath = [CDatabase getDBPath];
+    
+    
+    int result = sqlite3_open([dbPath UTF8String], &contactDB);
+    
+    if (SQLITE_OK != result) {
+        NSLog(@"myDB opening error");
+        return nil;
+    }
+    
+    
+    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT SHOP_ID, SHOP_NAME, LOCATION, PICTURE FROM SHOPS WHERE SHOP_ID='%@'", p_CShop.sId];
+    
+    
+    CShop *cShopFound=nil;
+    
+    sqlite3_stmt *selectStatement;
+    if(sqlite3_prepare_v2(contactDB, [sSqlSelect UTF8String], -1, &selectStatement, NULL) == SQLITE_OK) {
+        while(sqlite3_step(selectStatement) == SQLITE_ROW) {
+            cShopFound = [[CShop alloc] init];
+            cShopFound.sId = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 0)];
+            cShopFound.sName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 1)];
+            cShopFound.sLocation = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 2)];
+            cShopFound.sId=p_CShop.sId;
+            int length = sqlite3_column_bytes(selectStatement, 3);
+            cShopFound.dPicture = [NSData dataWithBytes:sqlite3_column_blob(selectStatement, 3) length:length];
+            
+        }
+    }
+    
+    
+    sqlite3_close(contactDB);
+    
+    return cShopFound;
+
+}
+
+
+
+
 +(NSMutableArray*) getProductsList
 {
     NSMutableArray* arrProduct = [[NSMutableArray alloc] init];
@@ -799,7 +842,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     }
     
 
-    NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"UPDATE PRICES SET PRICE=%0.2f WHERE SHOP_ID=%@ AND PRODUCT_ID='%@'", p_cProductPrice.fPrice,p_cProductPrice.sShopId,p_cProduct.sId];
+    NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"UPDATE PRICES SET PRICE=%0.2f WHERE SHOP_ID='%@' AND PRODUCT_ID='%@'", p_cProductPrice.fPrice,p_cProductPrice.sShopId,p_cProduct.sId];
     
     
     char * errInfo ;

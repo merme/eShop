@@ -126,15 +126,12 @@ static CProduct *cAtiveProduct;
     [CDatabase addShop:p_CShop];
 }
 
-/*
--(void) addShop:(CShop*) r_CShop
-{
-   
-    //Insert new prescription
-    [arrShops addObject:r_CShop];
++(CShop*) getShopById:(CShop*) p_CShop{
+    
+    return [CDatabase getShopById:p_CShop];
     
 }
-*/
+
 
 
 -(NSArray*) listShop

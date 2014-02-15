@@ -34,6 +34,8 @@
 +(void) deleteShop:(CShop*)p_cShop;
 +(void) updateShop:(CShop*)p_CShop;
 +(void) addShop:(CShop*)p_CShop;
++(CShop*) getShopById:(CShop*) p_CShop;
+
 
 +(void) deleteProductPrice:(CProductPrice*)p_cProductPrice;
 +(void) recategorizeProducts:(CProductPrice*)p_cProductPrice;

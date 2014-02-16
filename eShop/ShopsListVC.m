@@ -107,6 +107,10 @@ static ShopsListVC *sharedInstance;
     if([currShop.dPicture length]>0){
         cell.imgShopPict.image= [UIImage imageWithData:currShop.dPicture ];
     }
+    else{
+        cell.imgShopPict.image= [UIImage imageNamed:@"NoPictSM"];
+        
+    }
     
     return cell;
 
@@ -122,7 +126,7 @@ static ShopsListVC *sharedInstance;
     //Notify CoreManager which is the active shop
     [CCoreManager setActiveShop:cCurrShop];
     
-    [self performSegueWithIdentifier:@"showPriceProducts" sender:self.view];
+    [self performSegueWithIdentifier:@"showPriceProducts2" sender:self.view];
     
    
  
@@ -131,7 +135,7 @@ static ShopsListVC *sharedInstance;
 //end: Methods to implement for fulfill CollectionView Interface
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if([segue.identifier isEqualToString:@"showPriceProducts"]){
+    if([segue.identifier isEqualToString:@"showPriceProducts2"]){
  /*
         //Create a new prescription object
         Prescription *prescription;

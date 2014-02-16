@@ -37,6 +37,8 @@
     [self.lblName setText:NSLocalizedString(@"NAME", nil)];
     [self.lblLocation setText:NSLocalizedString(@"LOCATION", nil)];
     [self.btnSave setTitle:NSLocalizedString(@"SAVE", nil)];
+    [self.barTop setTitle:NSLocalizedString(@"EDIT_SHOP", nil)];
+    [self.btnBack setTitle:NSLocalizedString(@"BACK", nil)];
     
     
     
@@ -48,9 +50,8 @@
         self.uiImageView.image= [UIImage imageWithData:cShop.dPicture ];
         
     }
-     
     
-    
+   
     
     // Assign our own backgroud for the view
     self.bview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"common_bg.png"]];
@@ -82,8 +83,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-- (IBAction)btnSave:(id)sender {
+- (IBAction)btnSaveProduct:(id)sender {
     if([[self.txtName text] length]>0 &&
        [[self.txtLocation text] length]>0){
         
@@ -96,8 +96,11 @@
         
         //Force to close view (-> -(void) viewWillDisappear:(BOOL)animated)
         [self.navigationController popViewControllerAnimated:YES];
+        
+        [self performSegueWithIdentifier:@"backFromEdit" sender:sender];
     }
 }
+
 
 //Capture when Update navigation back key is pressed
 -(void) viewWillDisappear:(BOOL)animated {
@@ -108,12 +111,13 @@
  
 
     //Refresh shop list view
-    //[[ShopsListVC sharedViewController] refreshShopList];
+    [[ShopsListVC sharedViewController] refreshShopList];
     
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([segue.identifier isEqualToString:@"backFromEditSave"]){
+        /*
         if([[self.txtName text] length]>0 &&
            [[self.txtLocation text] length]>0){
             
@@ -127,6 +131,7 @@
             //Force to close view (-> -(void) viewWillDisappear:(BOOL)animated)
             [self.navigationController popViewControllerAnimated:YES];
         }
+         */
     }
     
     

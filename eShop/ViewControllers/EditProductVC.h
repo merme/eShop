@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblBarCode;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnSave;
 @property (weak, nonatomic) IBOutlet UIPickerView *pckTypePrice;
+@property (weak, nonatomic) IBOutlet UINavigationItem *barTop;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnBack;
 
 @property (strong, nonatomic) UITapGestureRecognizer *singleTap;
 

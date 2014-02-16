@@ -27,6 +27,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *uiImageView;
 @property (strong, nonatomic) IBOutlet UIView *vLocalView;
 @property (strong, nonatomic) UITapGestureRecognizer *singleTap;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnSave;
+@property (weak, nonatomic) IBOutlet UINavigationItem *barTop;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnBack;
 
 
 @property NSArray *arrShopPendingProducts;

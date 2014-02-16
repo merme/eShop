@@ -119,7 +119,7 @@ static ProductListVC *sharedInstance;
     //Notify CoreManager which is the active shop
     [CCoreManager setActiveProduct:cCurrProduct];
     
-    [self performSegueWithIdentifier:@"showPriceShops" sender:self.view];
+    [self performSegueWithIdentifier:@"showPriceShops2" sender:self.view];
     
   
 }

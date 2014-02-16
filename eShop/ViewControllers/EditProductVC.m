@@ -49,6 +49,9 @@ int iPickerPriceTypeOnEditRow=0;
     // Set label tags
     [self.lblName setText:NSLocalizedString(@"NAME", nil)];
     [self.btnSave setTitle:NSLocalizedString(@"SAVE", nil)];
+    [self.btnBack setTitle:NSLocalizedString(@"BACK", nil)];
+    [self.barTop setTitle:NSLocalizedString(@"ADD_PROD", nil)];
+    
     
     CProduct *cProduct = [CCoreManager getActiveProduct];
     [self.txtName setText:cProduct.sName];
@@ -106,14 +109,14 @@ int iPickerPriceTypeOnEditRow=0;
         //Force to close view (-> -(void) viewWillDisappear:(BOOL)animated)
         [self.navigationController popViewControllerAnimated:YES];
         
-        [self performSegueWithIdentifier:@"backFromEditProductSave" sender:sender];
+        [self performSegueWithIdentifier:@"backFromEditProduct" sender:sender];
     }
 }
 
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if([segue.identifier isEqualToString:@"backFromEditProductSave"]){
+    if([segue.identifier isEqualToString:@"backFromEditProductSave"]){/*
         if([[self.txtName text] length]>0 ){
             
             CProduct *cProduct = [CCoreManager getActiveProduct];
@@ -126,7 +129,7 @@ int iPickerPriceTypeOnEditRow=0;
             //Force to close view (-> -(void) viewWillDisappear:(BOOL)animated)
             [self.navigationController popViewControllerAnimated:YES];
             
-        }
+        }*/
     }
     
     

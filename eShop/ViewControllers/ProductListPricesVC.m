@@ -23,6 +23,7 @@ static CProductPrice *m_currProductPrice;
 
 @synthesize arrProductShopPrices;
 @synthesize cProductPrice;
+@synthesize singleTap;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -52,8 +53,7 @@ static CProductPrice *m_currProductPrice;
     
     //Disable delete product button
     self.btnDel.enabled=NO;
-    //Update button status
-    [self toggleButtons];
+
     
     if([arrProductShopPrices count]==0 && !self.btnAdd.enabled){
         UIAlertView* mes=[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ATTENTION",nil)
@@ -62,29 +62,39 @@ static CProductPrice *m_currProductPrice;
         [mes show];
         
     }
-    else{
-        if(!self.btnAdd.enabled){
-            UIAlertView* mes=[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ATTENTION",nil)
-                                                        message:NSLocalizedString(@"ALL_SHOPS",nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles: nil];
-            
-            [mes show];
-        }
-    }
     
     //Set tittle text
     CProduct *cProduct=[CCoreManager getActiveProduct];
     [self.barTop setTitle:[[NSString alloc] initWithFormat:@"%@", cProduct.sName]];
     [self.btnAdd setTitle:NSLocalizedString(@"SHOP_PRICE", nil)];
+    [self.btnBack setTitle:NSLocalizedString(@"BACK", nil)];
+    
     
     //Set table background
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"common_bg.png"]];
     self.tbvProductShopPrices.backgroundColor = background;
+
+
+    //For hidding keyboar
+    self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    
     
     //Initialize current ProductPrice
     m_currProductPrice=nil;
-    
-
+    //Update button status
+    [self toggleButtons];
 }
+
+// Selector method for hiding keyboard:BEGIN
+-(void)handleSingleTap:(UITapGestureRecognizer *)sender{
+    
+    [self.view removeGestureRecognizer:singleTap];
+
+    [self refreshProductShopPrices];
+    
+}
+
+// Selector method for hiding keyboard:END
 
 - (void)didReceiveMemoryWarning
 {
@@ -142,12 +152,37 @@ static CProductPrice *m_currProductPrice;
     [cell.txtPrice setText:[NSString stringWithFormat:@"%0.2f",currProductPrice.fPrice]];
     [cell.lblPrice setText:[NSString stringWithFormat:@"%0.2f",currProductPrice.fPrice]];
     
+    switch(currProductPrice.tCategory){
+        case VeryExpensive:
+            cell.imgCategory.image=  [UIImage imageNamed:@"VeryExpensive"];
+            break;
+        case Expensive:
+            cell.imgCategory.image=  [UIImage imageNamed:@"Expensive"];
+            break;
+        case Normal:
+            cell.imgCategory.image=  [UIImage imageNamed:@"Normal"];
+            break;
+        case Cheap:
+            cell.imgCategory.image=  [UIImage imageNamed:@"Cheap"];
+            break;
+        case VeryCheap:
+            cell.imgCategory.image=  [UIImage imageNamed:@"VeryCheap"];
+            break;
+    }
+    
+    if([currProductPrice.dPicture length]>0){
+        cell.imgShop.image= [UIImage imageWithData:currProductPrice.dPicture ];
+    }
+    else{
+        cell.imgShop.image= [UIImage imageNamed:@"NoPictSM"];
+    }
+    
     cell.txtPrice.hidden=!(m_currProductPrice!=nil && m_currProductPrice==currProductPrice);
     cell.lblPrice.hidden=!cell.txtPrice.hidden;
     cell.btnPrice.hidden=cell.txtPrice.hidden;
+    cell.imgCategory.hidden=!cell.txtPrice.hidden;
     
     return cell;
-    
 }
 
 - (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -31,6 +31,7 @@ int iCurrProductPrice=-1;
 @synthesize cProductPrice;
 
 
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -65,13 +66,11 @@ int iCurrProductPrice=-1;
     //Check if the shop has any product to add in its list
     self.btnAdd.enabled=([CCoreManager getNumberShopNotExistingProducts]>0);
     [self.btnAdd setTitle:NSLocalizedString(@"PRODUCT_PRICE", nil)];
-    
-
+    [self.btnBack setTitle:NSLocalizedString(@"BACK", nil)];
     
     //Disable delete product button
     self.btnDel.enabled=NO;
-    //Update button status
-    [self toggleButtons];
+
     
     if([arrShopProductPrices count]==0 && !self.btnAdd.enabled){
         UIAlertView* mes=[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ATTENTION",nil)
@@ -89,6 +88,9 @@ int iCurrProductPrice=-1;
     
     //Initialize current ProductPrice
     m_currProductPrice=nil;
+    
+    //Update button status
+    [self toggleButtons];
     
     
 }
@@ -127,16 +129,38 @@ int iCurrProductPrice=-1;
    
     [cell.lblCategory setText:[NSString stringWithFormat:@"%lu",currProductPrice.tCategory]];
     
-    /*
-    if(m_currProductPrice!=nil && m_currProductPrice==currProductPrice){
-             cell.txtPrice.hidden=NO;
-    }else{
-            cell.txtPrice.hidden=YES;
+    
+    switch(currProductPrice.tCategory){
+        case VeryExpensive:
+            cell.imgCategory.image=  [UIImage imageNamed:@"VeryExpensive"];
+            break;
+        case Expensive:
+            cell.imgCategory.image=  [UIImage imageNamed:@"Expensive"];
+            break;
+        case Normal:
+            cell.imgCategory.image=  [UIImage imageNamed:@"Normal"];
+            break;
+        case Cheap:
+            cell.imgCategory.image=  [UIImage imageNamed:@"Cheap"];
+            break;
+        case VeryCheap:
+            cell.imgCategory.image=  [UIImage imageNamed:@"VeryCheap"];
+            break;
     }
-    */
+    
+    
+    if([currProductPrice.dPicture length]>0){
+         cell.imgProdPict.image= [UIImage imageWithData:currProductPrice.dPicture ];
+    }
+    else{
+        cell.imgProdPict.image= [UIImage imageNamed:@"NoPict"];
+    
+    }
+    
     cell.txtPrice.hidden=!(m_currProductPrice!=nil && m_currProductPrice==currProductPrice);
     cell.lblPrice.hidden=!cell.txtPrice.hidden;
     cell.btnPrice.hidden=cell.txtPrice.hidden;
+    cell.imgCategory.hidden=!cell.txtPrice.hidden;
    
     
     return cell;

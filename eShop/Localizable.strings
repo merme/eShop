@@ -7,11 +7,14 @@
 */
 
 "ADD_SHOP"="Add a new shop";
+"ADD_PROD"="Add a new product";
+"ADD_PRODUCT"="Add a product";
 "DELETE_SHOP?"="Do you want delete this supermarket?";
 "ATTENTION"="Attention!";
 "BACK"="Back";
 "BAR_CODE"="Bar code:";
 "COMP_UNIT"="Comparation unit";
+"EDIT_SHOP"="Edit supermarket";
 "FISCAL_ID"="Fiscal Id:";
 "LOCATION"="Location:";
 "LOOK_OUT"="Look out";

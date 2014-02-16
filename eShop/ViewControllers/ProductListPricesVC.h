@@ -10,7 +10,7 @@
 
 #import "CProductPrice.h"
 
-@interface ProductListPricesVC :  UITableViewController <UITableViewDataSource,UITableViewDelegate>
+@interface ProductListPricesVC :  UIViewController <UITableViewDataSource,UITableViewDelegate>
 
 #import "CProductPrice.h"
 
@@ -20,6 +20,9 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnDel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnDelProduct;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnEditProduct;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnBack;
+
+@property (strong, nonatomic) UITapGestureRecognizer *singleTap;
 
 
 @property NSArray *arrProductShopPrices;

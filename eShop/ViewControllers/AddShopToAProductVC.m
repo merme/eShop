@@ -48,12 +48,20 @@ int iPickerShopViewRow=0;
     
     //Setting label texts
     [self.lblSelectShop setText:NSLocalizedString(@"SELECT_SHOP", nil)];
+    [self.btnBack setTitle:NSLocalizedString(@"BACK", nil)];
+    [self.barTop setTitle:NSLocalizedString(@"ADD_SHOP", nil)];
     
     // Assign our own backgroud for the view
     self.bview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"common_bg.png"]];
     
     //For hidding keyboar
     self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    
+    //Initialize shop image, if necessary
+    CProductPrice *cProductPrice =[arrProductPendingShops objectAtIndex:0];
+    if([cProductPrice.dPicture length]>0){
+        self.uiImageView.image= [UIImage imageWithData:cProductPrice.dPicture ];
+    }
     
     //Validate form
     self.btnSave.enabled=NO;
@@ -127,6 +135,17 @@ int iPickerShopViewRow=0;
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row   inComponent:(NSInteger)component
 {
     iPickerShopViewRow=row;
+    
+    CProductPrice *cProductPrice =[arrProductPendingShops objectAtIndex:row];
+    
+    if([cProductPrice.dPicture length]>0){
+        self.uiImageView.hidden=NO;
+        self.uiImageView.image= [UIImage imageWithData:cProductPrice.dPicture ];
+    }
+    else{
+        self.uiImageView.hidden=YES;
+    }
+    
 }
 
 //Picker vier interface methods: END
@@ -150,6 +169,14 @@ int iPickerShopViewRow=0;
         
         //Force to close view (-> -(void) viewWillDisappear:(BOOL)animated)
         [self.navigationController popViewControllerAnimated:YES];
+        
+        //Refresh shop list view
+        [[ProductListPricesVC sharedProductListPricesVC] refreshProductShopPrices];
+        
+        
+        [self performSegueWithIdentifier:@"backFromAddShop" sender:sender];
+ 
+
     }
 }
 

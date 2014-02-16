@@ -14,5 +14,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtPrice;
 @property (weak, nonatomic) IBOutlet UIButton *btnPrice;
 @property (weak, nonatomic) IBOutlet UILabel *lblPrice;
+@property (weak, nonatomic) IBOutlet UIImageView *imgCategory;
+@property (weak, nonatomic) IBOutlet UIImageView *imgShop;
+
 
 @end

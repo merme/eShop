@@ -19,10 +19,14 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tbvShopProductPrices;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnAdd;
-@property (weak, nonatomic) IBOutlet UINavigationItem *barTop;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnBack;
+
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnDel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnDelShop;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnEditShop;
+@property (weak, nonatomic) IBOutlet UINavigationItem *barTop;
+
+
 
 
 @property NSArray *arrShopProductPrices;

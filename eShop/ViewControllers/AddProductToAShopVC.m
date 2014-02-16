@@ -49,6 +49,9 @@ int iPickerViewRow=0;
     //Setting label texts
     [self.lblPrice setText:NSLocalizedString(@"PRICE", nil)];
     [self.lblSelectProduct setText:NSLocalizedString(@"SELECT_PRODUCT", nil)];
+    [self.btnBack setTitle:NSLocalizedString(@"BACK", nil)];
+    [self.barTop setTitle:NSLocalizedString(@"ADD_PRODUCT", nil)];
+    
     
     //Initialize price type array
     arrPriceType=PRICE_TYPES;
@@ -58,12 +61,19 @@ int iPickerViewRow=0;
     */
     [self.lblUnits setText:[[NSString alloc]initWithFormat:@"%@",arrPriceType[cProductPrice.tPriceType]]];
     
+    if([cProductPrice.dPicture length]>0){
+        self.uiImageView.image= [UIImage imageWithData:cProductPrice.dPicture ];
+    }
+    
     // Assign our own backgroud for the view
     self.bview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"common_bg.png"]];
     
     
     //For hidding keyboar
     self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    
+    //Validate form
+    [self validateForm];
     
     
 }
@@ -73,6 +83,8 @@ int iPickerViewRow=0;
     
     [self.view removeGestureRecognizer:singleTap];
     [self.txtPrice resignFirstResponder];
+    
+    [self validateForm];
     
 }
 - (IBAction)btnPriceEditingDidBegin:(id)sender {
@@ -112,10 +124,45 @@ int iPickerViewRow=0;
     
     CProductPrice *cProductPrice =[arrShopPendingProducts objectAtIndex:row];
     
+    if([cProductPrice.dPicture length]>0){
+        self.uiImageView.hidden=NO;
+        self.uiImageView.image= [UIImage imageWithData:cProductPrice.dPicture ];
+    }
+    else{
+        self.uiImageView.hidden=YES;
+    }
+    
+    
     [self.lblUnits setText:[[NSString alloc]initWithFormat:@"%@",arrPriceType[cProductPrice.tPriceType]]];
 }
 
 //Picker vier interface methods: END
+- (IBAction)btnSaveProductPrice:(id)sender {
+    
+    if([[self.txtPrice text] length]>0){
+        //Get the current cProductPrice
+        CProductPrice *cProductPrice =[arrShopPendingProducts objectAtIndex:iPickerViewRow];
+        cProductPrice.sId = cProductPrice.sId;
+        cProductPrice.sName = cProductPrice.sName;
+        
+        //Look out only "." is accecpted as decimal in db, not "," comma
+        NSString *sPrice =[self.txtPrice text];
+        sPrice = [sPrice stringByReplacingOccurrencesOfString:@","
+                                                   withString:@"."];
+        cProductPrice.fPrice= [sPrice floatValue];
+        
+        //Request to CCoreManager to store new Product-Price
+        [CCoreManager insertProductPrice:cProductPrice];
+        
+        
+        //Force to close view (-> -(void) viewWillDisappear:(BOOL)animated)
+        [self.navigationController popViewControllerAnimated:YES];
+        
+        //Refresh shop list view
+        [[ShopListPricesVC sharedShopListPricesVC] refreshShopProductPrices];
+    }
+}
+
 
 - (IBAction)btnSave:(id)sender {
     
@@ -137,8 +184,49 @@ int iPickerViewRow=0;
 
         //Force to close view (-> -(void) viewWillDisappear:(BOOL)animated)
         [self.navigationController popViewControllerAnimated:YES];
+        
+        //Refresh shop list view
+        [[ShopListPricesVC sharedShopListPricesVC] refreshShopProductPrices];
+        
+        
+         [self performSegueWithIdentifier:@"backFromAddProductToShop" sender:sender];
     }
 }
+
+
+
+/*
+ 
+ [self performSegueWithIdentifier:@"backFromEditProductSave" sender:sender];
+ }
+ }
+ 
+ 
+ 
+ -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+ if([segue.identifier isEqualToString:@"backFromEditProductSave"]){
+ if([[self.txtName text] length]>0 ){
+ 
+ CProduct *cProduct = [CCoreManager getActiveProduct];
+ cProduct.sName= [self.txtName text];
+ cProduct.tPriceType =iPickerPriceTypeOnEditRow;
+ 
+ //Request to CCoreManager to store new Product-Price
+ [CCoreManager updateProduct:cProduct];
+ 
+ //Force to close view (-> -(void) viewWillDisappear:(BOOL)animated)
+ [self.navigationController popViewControllerAnimated:YES];
+ 
+ }
+ }
+ 
+ 
+ //Refresh shop list view
+ [[ProductListVC sharedViewController] refreshProductList];
+ }
+ 
+ 
+ */
 
 //Capture when Update navigation back key is pressed
 -(void) viewWillDisappear:(BOOL)animated {
@@ -154,6 +242,14 @@ int iPickerViewRow=0;
 
 - (IBAction)txtPriceEditingDidEnd:(id)sender {
     NSLog(@"txtPriceEditingDidEnd");
+}
+
+-(void) validateForm{
+    
+
+    
+    self.btnSave.enabled=  ([self.txtPrice.text length]>0) ;
+    
 }
 
 //Camera and picture album:BEGIN

@@ -232,7 +232,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     }
     
     
-    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT PRODUCT_NAME, PRICE, PRODUCTS.PRODUCT_ID, CATEGORY, SHOPS.SHOP_ID FROM SHOPS,PRICES,PRODUCTS WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID='%@' ORDER BY PRODUCT_NAME", p_cShop.sId];
+    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT PRODUCT_NAME, PRICE, PRODUCTS.PRODUCT_ID, CATEGORY, SHOPS.SHOP_ID,PRODUCTS.PICTURE FROM SHOPS,PRICES,PRODUCTS WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID='%@' ORDER BY PRODUCT_NAME", p_cShop.sId];
     //const char *sSqlSelect = "SELECT SHOP_ID, NAME, LOCATION FROM SHOPS;";
  
     
@@ -245,9 +245,9 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
             cProductPrice.sId = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 2)];
             cProductPrice.tCategory = sqlite3_column_int(selectStatement, 3);
             cProductPrice.sShopId = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 4)];
-
-
-            
+            int length = sqlite3_column_bytes(selectStatement, 5);
+            if(length>0)
+                cProductPrice.dPicture = [NSData dataWithBytes:sqlite3_column_blob(selectStatement, 5) length:length];            
              [arrShopPrices addObject:cProductPrice];
             
         }
@@ -275,7 +275,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     }
     
 
-    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT PRODUCT_NAME, PRODUCTS.PRODUCT_ID,PRICE_TYPE FROM PRODUCTS WHERE NOT EXISTS( SELECT * FROM SHOPS,PRICES WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID='%@') ORDER BY PRODUCT_NAME", p_cShop.sId];
+    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT PRODUCT_NAME, PRODUCTS.PRODUCT_ID,PRICE_TYPE,PRODUCTS.PICTURE FROM PRODUCTS WHERE NOT EXISTS( SELECT * FROM SHOPS,PRICES WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID='%@') ORDER BY PRODUCT_NAME", p_cShop.sId];
    
     
     sqlite3_stmt *selectStatement;
@@ -286,6 +286,9 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
             cProductPrice.sId = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 1)];
             cProductPrice.tPriceType = sqlite3_column_int(selectStatement, 2);
             cProductPrice.sShopId=p_cShop.sId;
+            int length = sqlite3_column_bytes(selectStatement, 3);
+            if(length>0)
+                cProductPrice.dPicture = [NSData dataWithBytes:sqlite3_column_blob(selectStatement, 3) length:length];
             
             [arrShopPrices addObject:cProductPrice];
             
@@ -728,7 +731,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     }
     
     
-    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT SHOP_NAME, PRICE, SHOPS.SHOP_ID, CATEGORY, SHOPS.LOCATION, PRODUCTS.PRODUCT_ID FROM SHOPS,PRICES,PRODUCTS WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND PRODUCTS.PRODUCT_ID='%@' ORDER BY SHOP_NAME", p_cProduct.sId];
+    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT SHOP_NAME, PRICE, SHOPS.SHOP_ID, CATEGORY, SHOPS.LOCATION, PRODUCTS.PRODUCT_ID,SHOPS.PICTURE FROM SHOPS,PRICES,PRODUCTS WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND PRODUCTS.PRODUCT_ID='%@' ORDER BY SHOP_NAME", p_cProduct.sId];
 
     
     sqlite3_stmt *selectStatement;
@@ -741,6 +744,9 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
             cProductPrice.tCategory = sqlite3_column_int(selectStatement, 3);
             cProductPrice.sShopLocation = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 4)];
             cProductPrice.sId = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 5)];
+            int length = sqlite3_column_bytes(selectStatement, 6);
+            if(length>0)
+                cProductPrice.dPicture = [NSData dataWithBytes:sqlite3_column_blob(selectStatement, 6) length:length];
             [arrShopPrices addObject:cProductPrice];
         }
     }
@@ -771,7 +777,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT PRODUCT_NAME, PRODUCTS.PRODUCT_ID FROM PRODUCTS WHERE NOT EXISTS( SELECT * FROM SHOPS,PRICES WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID=%d) ORDER BY PRODUCT_NAME", p_cShop.iId];
   */
     
-    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT SHOP_NAME, SHOPS.SHOP_ID, LOCATION FROM SHOPS WHERE NOT EXISTS( SELECT * FROM PRODUCTS,PRICES WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND PRODUCTS.PRODUCT_ID='%@') ORDER BY SHOP_NAME", p_cProduct.sId];
+    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT SHOP_NAME, SHOPS.SHOP_ID, LOCATION, SHOPS.PICTURE FROM SHOPS WHERE NOT EXISTS( SELECT * FROM PRODUCTS,PRICES WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND PRODUCTS.PRODUCT_ID='%@') ORDER BY SHOP_NAME", p_cProduct.sId];
     
     
     sqlite3_stmt *selectStatement;
@@ -782,6 +788,9 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
             cProductPrice.sShopId = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 1)];
             cProductPrice.sShopLocation = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 2)];
             cProductPrice.sId=p_cProduct.sId;
+            int length = sqlite3_column_bytes(selectStatement, 3);
+            if(length>0)
+                cProductPrice.dPicture = [NSData dataWithBytes:sqlite3_column_blob(selectStatement, 3) length:length];
             
             [arrProductPrices addObject:cProductPrice];
             

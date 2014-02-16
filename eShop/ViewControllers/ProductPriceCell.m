@@ -11,6 +11,8 @@
 
 @implementation ProductPriceCell
 
+
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -20,6 +22,9 @@
     return self;
 }
 
+
+
+// Selector method for hiding keyboard:END
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];

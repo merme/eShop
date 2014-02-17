@@ -63,7 +63,6 @@ int iPickerPriceTypeOnEditRow=0;
         
     }
     
-    
     //Initialize image
     self.bPicture=FALSE;
     

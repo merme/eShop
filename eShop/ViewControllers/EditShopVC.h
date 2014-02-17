@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EditShopVC : UIViewController
+@interface EditShopVC : UIViewController <UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet UITextField *txtName;
 @property (weak, nonatomic) IBOutlet UIImageView *bview;
@@ -24,5 +25,6 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnBack;
 @property (weak, nonatomic) IBOutlet UINavigationItem *barTop;
 
+@property bool bPicture;
 
 @end

@@ -522,7 +522,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C6D-Cb-Sow" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1215" y="1272"/>
+            <point key="canvasLocation" x="1348" y="498"/>
         </scene>
         <!--Bar Code ReaderVC-->
         <scene sceneID="huu-sw-0ZA">
@@ -717,6 +717,18 @@
                                             <action selector="btnSaveProduct:" destination="jxw-FB-o2Z" id="Cmc-Pl-eFC"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem image="Camera_btn" id="njd-hE-Lnu">
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="btnTakePhoto:" destination="jxw-FB-o2Z" id="Ekz-wu-e7g"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem image="CatalogShop_btn" id="lRE-Xr-bh4">
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="btnSelectPhoto:" destination="jxw-FB-o2Z" id="lFJ-fl-jRm"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8dt-1H-cKn">
@@ -752,127 +764,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KGd-vx-WG1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2080" y="-222"/>
-        </scene>
-        <!--Product List PricesVC - Price list-->
-        <scene sceneID="W0C-4i-FKu">
-            <objects>
-                <tableViewController id="xFg-NA-dw3" customClass="ProductListPricesVC" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="QPi-XX-2E5">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="DrP-ka-Ofi">
-                            <rect key="frame" x="0.0" y="66" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                            <items>
-                                <barButtonItem image="Del_btn" id="djy-m5-6Vy">
-                                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <connections>
-                                        <segue destination="QUy-BD-bpt" kind="modal" identifier="backFromDeleteProduct" id="PMP-ia-J5N"/>
-                                    </connections>
-                                </barButtonItem>
-                                <barButtonItem image="Edit_btn" id="ufO-Mt-OTb">
-                                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <connections>
-                                        <segue destination="bnS-cm-DVs" kind="push" identifier="editProduct" id="WQI-oX-rYZ"/>
-                                    </connections>
-                                </barButtonItem>
-                                <barButtonItem image="ShopAdd_btn" id="6Nh-qt-NJX">
-                                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <connections>
-                                        <segue destination="N4v-7c-MLZ" kind="push" identifier="addPendingShopPrice" id="Rus-cK-OVI"/>
-                                    </connections>
-                                </barButtonItem>
-                                <barButtonItem image="ShopDel_btn" id="qyp-xb-Wkp">
-                                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <connections>
-                                        <action selector="btnDeleteShopPrice:" destination="xFg-NA-dw3" id="tZs-n6-JUB"/>
-                                    </connections>
-                                </barButtonItem>
-                            </items>
-                        </toolbar>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellProductPriceId" id="pBf-TD-4QJ" customClass="ProductPriceCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pBf-TD-4QJ" id="Zko-Xg-e3Y">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Shop XYZ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIH-wX-cig">
-                                            <rect key="frame" x="20" y="11" width="153" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UTx-oN-2QL">
-                                            <rect key="frame" x="236" y="7" width="60" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
-                                        </textField>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUb-1t-jqy">
-                                            <rect key="frame" x="190" y="11" width="42" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="98a-EF-d8e">
-                                            <rect key="frame" x="293" y="4" width="33" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" image="Confirm_btn">
-                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="btnConfirmPrice:" destination="pBf-TD-4QJ" eventType="touchUpInside" id="uSC-G5-sPo"/>
-                                            </connections>
-                                        </button>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDr-jS-KZV">
-                                            <rect key="frame" x="240" y="7" width="60" height="28"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="btnPrice" destination="98a-EF-d8e" id="V2H-Yc-zGo"/>
-                                    <outlet property="lblCategory" destination="xUb-1t-jqy" id="E37-Rm-kQp"/>
-                                    <outlet property="lblPrice" destination="aDr-jS-KZV" id="yOU-Ab-cjP"/>
-                                    <outlet property="lblShopName" destination="WIH-wX-cig" id="SiY-aP-Bo7"/>
-                                    <outlet property="txtPrice" destination="UTx-oN-2QL" id="In8-77-4w0"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="xFg-NA-dw3" id="fV4-sq-TIk"/>
-                            <outlet property="delegate" destination="xFg-NA-dw3" id="8fT-BM-Bzs"/>
-                        </connections>
-                    </tableView>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Price list" id="SmA-Gj-pS8">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="XPy-47-bDJ">
-                            <connections>
-                                <segue destination="QUy-BD-bpt" kind="modal" identifier="backFromListPriceByShop" id="8En-Jx-qk4"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="barTop" destination="SmA-Gj-pS8" id="UAz-LS-9sa"/>
-                        <outlet property="btnAdd" destination="6Nh-qt-NJX" id="jUt-K7-6gS"/>
-                        <outlet property="btnDel" destination="qyp-xb-Wkp" id="X6Q-87-3Lz"/>
-                        <outlet property="btnDelProduct" destination="djy-m5-6Vy" id="xsy-LV-yPY"/>
-                        <outlet property="btnEditProduct" destination="ufO-Mt-OTb" id="pZJ-ou-cpx"/>
-                        <outlet property="tbvProductShopPrices" destination="QPi-XX-2E5" id="tRR-pB-Eix"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="j3c-ba-H1K" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1587" y="498"/>
         </scene>
         <!--Edit ProductVC-->
         <scene sceneID="uds-ix-ZZT">
@@ -1071,21 +962,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Sb-iC-glq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2070" y="498"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="8ZW-eb-SO2">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="spK-fo-efN" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wy5-0T-1sG">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="xFg-NA-dw3" kind="relationship" relationship="rootViewController" id="Jgw-vz-WF6"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Nzh-a1-toa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1112" y="506"/>
         </scene>
         <!--Shop List PricesVC-->
         <scene sceneID="jVW-Iq-3QD">
@@ -1377,9 +1253,6 @@
                                 <state key="normal" title="SegueShowPriceShops">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="spK-fo-efN" kind="modal" identifier="showPriceShops" id="pmS-Yb-L1r"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KU9-QJ-mPb">
                                 <rect key="frame" x="14" y="269" width="292" height="30"/>
@@ -1486,13 +1359,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="CSJ-0v-GhB"/>
-        <segue reference="qhD-FO-lTt"/>
+        <segue reference="fIA-GK-bpf"/>
+        <segue reference="6TK-Y2-1HA"/>
         <segue reference="ODi-BZ-8r7"/>
         <segue reference="oH7-7f-DFF"/>
-        <segue reference="qLM-Ms-9Ws"/>
-        <segue reference="bqC-9d-fhJ"/>
-        <segue reference="7eI-Ih-0zZ"/>
-        <segue reference="6TK-Y2-1HA"/>
+        <segue reference="n5p-g4-lcn"/>
+        <segue reference="qhD-FO-lTt"/>
     </inferredMetricsTieBreakers>
 </document>

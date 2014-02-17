@@ -18,6 +18,7 @@
 @implementation EditShopVC
 
 @synthesize singleTap;
+@synthesize bPicture;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -51,6 +52,8 @@
         
     }
     
+    //Initialize image
+    self.bPicture=FALSE;
    
     
     // Assign our own backgroud for the view
@@ -90,6 +93,14 @@
         CShop *cShop = [CCoreManager getActiveShop];
         cShop.sName= [self.txtName text];
         cShop.sLocation=[self.txtLocation text];
+        
+        //Set the image
+        if(self.bPicture){
+            cShop.dPicture=UIImagePNGRepresentation(self.uiImageView.image);
+        }
+        else{
+            cShop.dPicture=nil;
+        }
         
         //Request to CCoreManager to store new Product-Price
         [CCoreManager updateShop:cShop];
@@ -142,5 +153,59 @@
 -(IBAction)ReturnKeyButton:(id)sender{
     [sender resignFirstResponder];
 }
+
+//Camera and picture album:BEGIN
+//http://www.appcoda.com/ios-programming-camera-iphone-app/
+- (IBAction)btnTakePhoto:(id)sender  {
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+    
+}
+
+
+- (IBAction)btnSelectPhoto:(id)sender {
+    
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+    
+}
+
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    self.uiImageView.image = chosenImage;
+    
+    self.bPicture=TRUE;
+    /*
+     //Manage save button status
+     if (!btnSave.enabled){
+     //Enable Save button if the value is different from previous one
+     btnSave.enabled=TRUE;
+     }
+     */
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+//Camera and picture album:END
+
+
 
 @end

@@ -567,14 +567,37 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
         NSLog(@"myDB opening error");
         return;
     }
-    
-    //Recategorize Product-Price
-    NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"UPDATE SHOPS SET SHOP_NAME='%@', LOCATION='%@' WHERE SHOP_ID='%@' ",p_CShop.sName ,p_CShop.sLocation,p_CShop.sId];
+ 
+    if(p_CShop.dPicture!=nil){
+        // Construct the query and empty prepared statement.
+        //const char *sql = "INSERT INTO `PRODUCTS` (`PRODUCT_ID`, `PRODUCT_NAME`, `PRICE_TYPE`, `PICTURE`) VALUES (?, ?, ?, ?)";
+        NSString *sql = [[NSString alloc] initWithFormat:@"UPDATE SHOPS SET `SHOP_NAME`=?,`LOCATION`=?, `PICTURE`=? WHERE SHOP_ID='%@' ",p_CShop.sId];
+        sqlite3_stmt *statement;
         
-    char * errInfo ;
-    result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSUTF8StringEncoding], nil, nil, &errInfo);
-    if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
-    
+        // Prepare the data to bind.
+        
+        //http://stackoverflow.com/questions/5039343/save-image-data-to-sqlite-database-in-iphone
+        if( sqlite3_prepare_v2(contactDB, [sql UTF8String], -1, &statement, NULL) == SQLITE_OK )
+        {
+            sqlite3_bind_text(statement, 1, [p_CShop.sName UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 2, [p_CShop.sLocation UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_blob(statement, 3, [p_CShop.dPicture bytes], [p_CShop.dPicture length], SQLITE_TRANSIENT);
+            sqlite3_step(statement);
+        }
+        else NSLog( @"SaveBody: Failed from sqlite3_prepare_v2. Error is:  %s", sqlite3_errmsg(contactDB) );
+        
+        // Finalize and close database.
+        sqlite3_finalize(statement);
+    }
+    else{
+        //Recategorize Product-Price
+        NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"UPDATE SHOPS SET SHOP_NAME='%@', LOCATION='%@' WHERE SHOP_ID='%@' ",p_CShop.sName ,p_CShop.sLocation,p_CShop.sId];
+        
+        char * errInfo ;
+        result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSUTF8StringEncoding], nil, nil, &errInfo);
+        if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
+    }
+
     sqlite3_close(contactDB);
     
 }
@@ -591,7 +614,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
         NSLog(@"myDB opening error");
         return;
     }
-    
+
     //Recategorize Product-Price
     NSString *sSqlUpdate;
     

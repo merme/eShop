@@ -104,6 +104,14 @@ static ProductListVC *sharedInstance;
     
     [cell.lblName setText:[NSString stringWithFormat:@"%@",currProduct.sName]];
     
+    if([currProduct.dPicture length]>0){
+        cell.imgProd.image= [UIImage imageWithData:currProduct.dPicture ];
+    }
+    else{
+        cell.imgProd.image= [UIImage imageNamed:@"NoPict"];
+        
+    }
+    
     return cell;
     
 }

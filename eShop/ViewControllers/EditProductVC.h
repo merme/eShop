@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EditProductVC : UIViewController<UIPickerViewDataSource,UIPickerViewDelegate>
+@interface EditProductVC : UIViewController<UIPickerViewDataSource,UIPickerViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet UITextField *txtName;
@@ -23,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnBack;
 
 @property (strong, nonatomic) UITapGestureRecognizer *singleTap;
+
+@property bool bPicture;
 
 @property NSArray *arrPriceType;
 

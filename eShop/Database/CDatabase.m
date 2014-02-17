@@ -912,13 +912,40 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
         return;
     }
 
-    //Recategorize Product-Price
-    NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"UPDATE PRODUCTS SET PRODUCT_NAME='%@',PRICE_TYPE=%d WHERE PRODUCT_ID='%@' ",p_CProduct.sName,p_CProduct.tPriceType ,p_CProduct.sId];
     
-    char * errInfo ;
-    result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSUTF8StringEncoding], nil, nil, &errInfo);
-    if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
+    if(p_CProduct.dPicture!=nil){
+            // Construct the query and empty prepared statement.
+            //const char *sql = "INSERT INTO `PRODUCTS` (`PRODUCT_ID`, `PRODUCT_NAME`, `PRICE_TYPE`, `PICTURE`) VALUES (?, ?, ?, ?)";
+            NSString *sql = [[NSString alloc] initWithFormat:@"UPDATE PRODUCTS SET `PRODUCT_NAME`=?,`PRICE_TYPE`=?, `PICTURE`=? WHERE PRODUCT_ID='%@' ",p_CProduct.sId];
+            sqlite3_stmt *statement;
+            
+            // Prepare the data to bind.
+            
+            //http://stackoverflow.com/questions/5039343/save-image-data-to-sqlite-database-in-iphone
+            if( sqlite3_prepare_v2(contactDB, [sql UTF8String], -1, &statement, NULL) == SQLITE_OK )
+            {
+                sqlite3_bind_text(statement, 1, [p_CProduct.sName UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_int(statement, 2, p_CProduct.tPriceType );
+                sqlite3_bind_blob(statement, 3, [p_CProduct.dPicture bytes], [p_CProduct.dPicture length], SQLITE_TRANSIENT);
+                sqlite3_step(statement);
+            }
+            else NSLog( @"SaveBody: Failed from sqlite3_prepare_v2. Error is:  %s", sqlite3_errmsg(contactDB) );
+            
+            // Finalize and close database.
+            sqlite3_finalize(statement);
+            
+            
+            
+    }
+    else{
+        //Recategorize Product-Price
+        NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"UPDATE PRODUCTS SET PRODUCT_NAME='%@',PRICE_TYPE=%d WHERE PRODUCT_ID='%@' ",p_CProduct.sName,p_CProduct.tPriceType ,p_CProduct.sId];
     
+        char * errInfo ;
+        result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSUTF8StringEncoding], nil, nil, &errInfo);
+        if (SQLITE_OK != result) NSLog(@"Error in Shops Table (%s)", errInfo);
+    }
+
     sqlite3_close(contactDB);
     
 }

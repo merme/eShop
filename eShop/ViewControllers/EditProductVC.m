@@ -24,6 +24,7 @@
 
 @synthesize arrPriceType;
 @synthesize singleTap;
+@synthesize bPicture;
 
 int iPickerPriceTypeOnEditRow=0;
 
@@ -61,6 +62,10 @@ int iPickerPriceTypeOnEditRow=0;
         self.uiImageView.image= [UIImage imageWithData:cProduct.dPicture ];
         
     }
+    
+    
+    //Initialize image
+    self.bPicture=FALSE;
     
     // Assign our own backgroud for the view
     self.bview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"common_bg.png"]];
@@ -102,6 +107,14 @@ int iPickerPriceTypeOnEditRow=0;
         CProduct *cProduct = [CCoreManager getActiveProduct];
         cProduct.sName= [self.txtName text];
         cProduct.tPriceType =iPickerPriceTypeOnEditRow;
+        
+        //Set the image
+        if(self.bPicture){
+            cProduct.dPicture=UIImagePNGRepresentation(self.uiImageView.image);
+        }
+        else{
+            cProduct.dPicture=nil;
+        }
         
         //Request to CCoreManager to store new Product-Price
         [CCoreManager updateProduct:cProduct];
@@ -189,6 +202,58 @@ int iPickerPriceTypeOnEditRow=0;
     [sender resignFirstResponder];
 }
 
+
+//Camera and picture album:BEGIN
+//http://www.appcoda.com/ios-programming-camera-iphone-app/
+- (IBAction)btnTakePhoto:(id)sender  {
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+    
+}
+
+
+- (IBAction)btnSelectPhoto:(id)sender {
+    
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+    
+}
+
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    self.uiImageView.image = chosenImage;
+    
+    self.bPicture=TRUE;
+    /*
+     //Manage save button status
+     if (!btnSave.enabled){
+     //Enable Save button if the value is different from previous one
+     btnSave.enabled=TRUE;
+     }
+     */
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+//Camera and picture album:END
 
 
 

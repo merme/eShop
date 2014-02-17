@@ -1367,36 +1367,6 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "13"
             endingLineNumber = "13">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[CCoreManager arrShops]"
-                  moduleName = "eShop"
-                  urlString = "file:///Users/javiercalatravallaveria/Dropbox/eShop/eShop/Core/CCoreManager.h"
-                  timestampString = "414361885.200499"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[CCoreManager setArrShops:]"
-                  moduleName = "eShop"
-                  urlString = "file:///Users/javiercalatravallaveria/Dropbox/eShop/eShop/Core/CCoreManager.h"
-                  timestampString = "414361885.200762"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
-                  offsetFromSymbolStart = "31">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1708,11 +1678,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/ViewControllers/ProductListPricesVC.m"
-            timestampString = "414265513.424269"
+            timestampString = "414368694.623049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2442,11 +2412,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/ViewControllers/ProductListPricesVC.m"
-            timestampString = "414265513.424269"
+            timestampString = "414368694.623049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "263"
-            endingLineNumber = "263"
+            startingLineNumber = "264"
+            endingLineNumber = "264"
             landmarkName = "+setNewShopProductPrice:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2474,11 +2444,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/ViewControllers/ProductListPricesVC.m"
-            timestampString = "414265513.424269"
+            timestampString = "414368694.623049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
             landmarkName = "+setNewShopProductPrice:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2552,11 +2522,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/ViewControllers/ProductListPricesVC.m"
-            timestampString = "414265513.424269"
+            timestampString = "414368694.623049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
             landmarkName = "-refreshProductShopPrices"
             landmarkType = "5">
          </BreakpointContent>
@@ -2568,11 +2538,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/ViewControllers/ProductListPricesVC.m"
-            timestampString = "414265513.424269"
+            timestampString = "414368694.623049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3512,11 +3482,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/ViewControllers/ProductListPricesVC.m"
-            timestampString = "414265513.424269"
+            timestampString = "414368694.623049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "279"
-            endingLineNumber = "279"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
             landmarkName = "-toggleButtons"
             landmarkType = "5">
          </BreakpointContent>
@@ -4328,7 +4298,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/ViewControllers/ProductListPricesVC.m"
-            timestampString = "414265513.424269"
+            timestampString = "414368694.623049"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
+            landmarkName = "-tableView:didUnhighlightRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "eShop/ViewControllers/ProductListPricesVC.m"
+            timestampString = "414368694.623049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "192"
@@ -4344,27 +4330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/ViewControllers/ProductListPricesVC.m"
-            timestampString = "414265513.424269"
+            timestampString = "414368694.623049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
-            landmarkName = "-tableView:didUnhighlightRowAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "eShop/ViewControllers/ProductListPricesVC.m"
-            timestampString = "414265513.424269"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
             landmarkName = "-refreshProductShopPrices"
             landmarkType = "5">
          </BreakpointContent>
@@ -4376,11 +4346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/ViewControllers/ProductListPricesVC.m"
-            timestampString = "414265513.424269"
+            timestampString = "414368694.623049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
             landmarkName = "-toggleButtons"
             landmarkType = "5">
          </BreakpointContent>
@@ -4440,11 +4410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/ViewControllers/ProductListPricesVC.m"
-            timestampString = "414265513.424269"
+            timestampString = "414368694.623049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "252"
-            endingLineNumber = "252"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4472,11 +4442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eShop/ViewControllers/ProductListPricesVC.m"
-            timestampString = "414265513.424269"
+            timestampString = "414368694.623049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4782,6 +4752,38 @@
             startingLineNumber = "1073"
             endingLineNumber = "1073"
             landmarkName = "+getProductsMinList"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "eShop/ViewControllers/SetupVC.m"
+            timestampString = "414367791.238209"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "-btnResetDB:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "eShop/ViewControllers/SetupVC.m"
+            timestampString = "414367791.238209"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "-btnRestoresSampleDB:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

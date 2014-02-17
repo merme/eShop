@@ -34,13 +34,16 @@
 	// Do any additional setup after loading the view.
     
     // Set label tags
-    [self.btnBack setTitle:NSLocalizedString(@"BACK", nil)];
-    [self.btnCleanDB setTitle:NSLocalizedString(@"CLEAN_DB", nil) forState:UIControlStateNormal];
+    [self.btnBack setTitle:NSLocalizedString(@"BACK", nil) forState:UIControlStateNormal];    [self.btnCleanDB setTitle:NSLocalizedString(@"CLEAN_DB", nil) forState:UIControlStateNormal];
     [self.btnRestoreDB setTitle:NSLocalizedString(@"RESTORE_DB", nil) forState:UIControlStateNormal];
+
     
     // Do any additional setup after loading the view, typically from a nib.
     // Assign our own backgroud for the view
     self.bview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"common_bg.png"]];
+    
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"common_bgt.png"]];
+    self.tbvSetup.backgroundColor = background;
     
     // This screen name value will remain set on the tracker and sent with
     // hits until it is set to a new value or to nil.
@@ -50,6 +53,9 @@
     [[GAI sharedInstance].defaultTracker
      send:[[GAIDictionaryBuilder createAppView] build]];
 
+}
+- (IBAction)btnBackButtonSegue:(id)sender {
+    [self performSegueWithIdentifier:@"backFromSetup" sender:self.view];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,10 +67,23 @@
 - (IBAction)btnResetDB:(id)sender {
     [CDatabase dropTables];
     [CDatabase createTables];
-    //[CDatabase fillData];
+    
+    [self performSegueWithIdentifier:@"backFromSetup" sender:self.view];
 
 }
 
+- (IBAction)btnRestoresSampleDB:(id)sender {
+    [CDatabase dropTables];
+    [CDatabase createTables];
+    [CDatabase fillData];
+    
+    
+    [self performSegueWithIdentifier:@"backFromSetup" sender:self.view];
+}
+
+- (IBAction)btnBack:(id)sender {
+    [self performSegueWithIdentifier:@"backFromSetup" sender:self.view];
+}
 
 
 @end

@@ -443,10 +443,16 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Shop XYZ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gy7-3i-1k4">
-                                                    <rect key="frame" x="68" y="11" width="153" height="21"/>
+                                                    <rect key="frame" x="68" y="2" width="153" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oes-wx-Kws">
+                                                    <rect key="frame" x="68" y="20" width="153" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -458,6 +464,7 @@
                                             <outlet property="imgShop" destination="XRg-sc-D8s" id="piy-oh-pxD"/>
                                             <outlet property="lblCategory" destination="6Pc-qm-rn0" id="slm-T5-4h9"/>
                                             <outlet property="lblPrice" destination="hvF-bN-3ES" id="Ang-vU-vXr"/>
+                                            <outlet property="lblShopLocation" destination="oes-wx-Kws" id="K01-Wp-Ehr"/>
                                             <outlet property="lblShopName" destination="Gy7-3i-1k4" id="eCO-5g-BVT"/>
                                             <outlet property="txtPrice" destination="Bop-Mv-gDc" id="jM3-d2-atb"/>
                                         </connections>
@@ -1191,13 +1198,13 @@
                                     <barButtonItem image="Gears_btn" id="rVA-uh-yQs">
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="mKl-RF-6ZR" kind="modal" identifier="backFromSetup" id="vNL-ON-xjP"/>
+                                            <segue destination="kQG-IR-wJy" kind="modal" id="kqW-Gz-gRk"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="888-hQ-px6">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Title" id="iyz-EW-vHu"/>
@@ -1215,6 +1222,134 @@
             <point key="canvasLocation" x="83" y="247"/>
         </scene>
         <!--SetupVC-->
+        <scene sceneID="geq-WC-ZIf">
+            <objects>
+                <tableViewController id="kQG-IR-wJy" customClass="SetupVC" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Enp-yd-f5g">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <sections>
+                            <tableViewSection id="GHh-HX-UYm">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="PHK-81-g7w">
+                                        <rect key="frame" x="0.0" y="35" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PHK-81-g7w" id="fCs-ia-9up">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wHQ-wi-uZr">
+                                                    <rect key="frame" x="0.0" y="7" width="319" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Reset">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="btnResetDB:" destination="mKl-RF-6ZR" eventType="touchUpInside" id="3df-ep-g46"/>
+                                                        <action selector="btnResetDB:" destination="kQG-IR-wJy" eventType="touchUpInside" id="veQ-Xr-yJs"/>
+                                                    </connections>
+                                                </button>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CleanDB" translatesAutoresizingMaskIntoConstraints="NO" id="kjG-rh-nVB">
+                                                    <rect key="frame" x="6" y="4" width="40" height="39"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.92156862750000001" green="0.90980392160000001" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="QT6-GB-nP5">
+                                        <rect key="frame" x="0.0" y="79" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QT6-GB-nP5" id="tbe-pe-4w4">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bvl-qw-8YI">
+                                                    <rect key="frame" x="0.0" y="7" width="319" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Reset">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="btnResetDB:" destination="mKl-RF-6ZR" eventType="touchUpInside" id="1hT-kX-jqR"/>
+                                                        <action selector="btnRestoresSampleDB:" destination="mKl-RF-6ZR" eventType="touchUpInside" id="NRk-kk-ZFq"/>
+                                                        <action selector="btnRestoresSampleDB:" destination="kQG-IR-wJy" eventType="touchUpInside" id="hNP-ij-ip6"/>
+                                                    </connections>
+                                                </button>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="RestoreDB" translatesAutoresizingMaskIntoConstraints="NO" id="rrV-nT-aRM">
+                                                    <rect key="frame" x="6" y="2" width="40" height="39"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.92156862750000001" green="0.90980392160000001" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="OEc-Ib-N11">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="JbD-2g-gOX">
+                                        <rect key="frame" x="0.0" y="143" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JbD-2g-gOX" id="tWf-Zb-0wk">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O3d-5r-taj">
+                                                    <rect key="frame" x="0.0" y="7" width="319" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Reset">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="btnBack:" destination="kQG-IR-wJy" eventType="touchUpInside" id="lSF-Af-SSI"/>
+                                                        <action selector="btnResetDB:" destination="kQG-IR-wJy" eventType="touchUpInside" id="AZo-zG-eiy"/>
+                                                        <action selector="btnResetDB:" destination="mKl-RF-6ZR" eventType="touchUpInside" id="zyR-cC-FZr"/>
+                                                    </connections>
+                                                </button>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Back_btn" translatesAutoresizingMaskIntoConstraints="NO" id="Y9w-JF-7ek">
+                                                    <rect key="frame" x="6" y="4" width="40" height="39"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.92156862750000001" green="0.90980392160000001" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="kQG-IR-wJy" id="5o7-u6-JAk"/>
+                            <outlet property="delegate" destination="kQG-IR-wJy" id="Vxr-vt-3Oa"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="btnBack" destination="O3d-5r-taj" id="fdb-sX-hOb"/>
+                        <outlet property="btnCleanDB" destination="wHQ-wi-uZr" id="GHA-Wq-umU"/>
+                        <outlet property="btnRestoreDB" destination="Bvl-qw-8YI" id="aXf-pY-9zd"/>
+                        <outlet property="tbvSetup" destination="Enp-yd-f5g" id="UDT-AE-XDI"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zKM-SF-bzy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rIe-yE-TwO">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <segue destination="4ZA-wS-3sq" kind="modal" identifier="backFromSetup" id="dsY-ff-owF"/>
+                    </connections>
+                </button>
+            </objects>
+            <point key="canvasLocation" x="-450" y="1380"/>
+        </scene>
+        <!--SetupVC-->
         <scene sceneID="5O2-Ax-XQd">
             <objects>
                 <viewController id="mKl-RF-6ZR" customClass="SetupVC" sceneMemberID="viewController">
@@ -1222,63 +1357,15 @@
                         <viewControllerLayoutGuide type="top" id="u1s-hA-Ywy"/>
                         <viewControllerLayoutGuide type="bottom" id="6CK-LJ-PsO"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Eu1-d8-jSZ">
+                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" id="jTw-Q1-WST">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bJ3-dc-LuJ">
-                                <rect key="frame" x="0.0" y="61" width="335" height="507"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wHQ-wi-uZr">
-                                <rect key="frame" x="35" y="177" width="265" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Reset">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnResetDB:" destination="mKl-RF-6ZR" eventType="touchUpInside" id="CpX-YN-xCl"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bvl-qw-8YI">
-                                <rect key="frame" x="35" y="269" width="257" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Reset">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnResetDB:" destination="mKl-RF-6ZR" eventType="touchUpInside" id="1hT-kX-jqR"/>
-                                </connections>
-                            </button>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EDa-ju-J3U">
-                                <rect key="frame" x="0.0" y="17" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Title" id="hXN-mH-4bX">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" id="lqt-a6-fGA">
-                                            <connections>
-                                                <segue destination="4ZA-wS-3sq" kind="modal" id="4L7-Gm-Vhk"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bRH-Gc-uLs">
-                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem title="Item" id="NA1-2X-gBG"/>
-                                </items>
-                            </toolbar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </scrollView>
                     <navigationItem key="navigationItem" id="Fp7-o9-c4h"/>
                     <connections>
-                        <outlet property="btnBack" destination="lqt-a6-fGA" id="gO1-oN-AwZ"/>
                         <outlet property="btnCleanDB" destination="wHQ-wi-uZr" id="Ue0-me-Gbu"/>
                         <outlet property="btnRestoreDB" destination="Bvl-qw-8YI" id="9nI-us-ZXw"/>
-                        <outlet property="bview" destination="bJ3-dc-LuJ" id="n72-dz-Kez"/>
+                        <outlet property="tbvSetup" destination="Enp-yd-f5g" id="7sy-aQ-Qyf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xs0-eR-WJ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1386,16 +1473,19 @@
     </scenes>
     <resources>
         <image name="AddProdShop_btn" width="45" height="45"/>
+        <image name="Back_btn" width="90" height="90"/>
         <image name="BarCode_btn" width="45" height="45"/>
         <image name="Camera_btn" width="45" height="45"/>
         <image name="CatalogProd_btn" width="45" height="45"/>
         <image name="CatalogShop_btn" width="45" height="45"/>
+        <image name="CleanDB" width="45" height="45"/>
         <image name="Confirm_btn" width="20" height="30"/>
         <image name="DelProdShop_btn" width="45" height="45"/>
         <image name="Del_btn" width="45" height="45"/>
         <image name="Edit_btn" width="45" height="45"/>
         <image name="Gears_btn" width="45" height="45"/>
         <image name="Prod_btn" width="45" height="45"/>
+        <image name="RestoreDB" width="45" height="45"/>
         <image name="Save_btn" width="45" height="45"/>
         <image name="ShopAdd_btn" width="45" height="45"/>
         <image name="ShopDel_btn" width="45" height="45"/>
@@ -1409,11 +1499,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="6TK-Y2-1HA"/>
-        <segue reference="GfQ-jn-FaW"/>
-        <segue reference="n5p-g4-lcn"/>
+        <segue reference="dsY-ff-owF"/>
         <segue reference="3ID-na-iIE"/>
         <segue reference="CSJ-0v-GhB"/>
-        <segue reference="oH7-7f-DFF"/>
+        <segue reference="jiG-OJ-jYS"/>
+        <segue reference="ODi-BZ-8r7"/>
+        <segue reference="6TK-Y2-1HA"/>
     </inferredMetricsTieBreakers>
 </document>

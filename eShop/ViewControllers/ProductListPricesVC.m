@@ -147,7 +147,8 @@ static CProductPrice *m_currProductPrice;
     
     CProductPrice *currProductPrice = [arrProductShopPrices objectAtIndex:indexPath.row];
     
-    [cell.lblShopName setText:[NSString stringWithFormat:@"%@",currProductPrice.sShopName]];
+    [cell.lblShopName setText:[NSString stringWithFormat:@"%@ ",currProductPrice.sShopName]];
+    [cell.lblShopLocation setText:[NSString stringWithFormat:@"%@ ",currProductPrice.sShopLocation]];
     [cell.lblCategory setText:[NSString stringWithFormat:@"%d",currProductPrice.tCategory]];    
     [cell.txtPrice setText:[NSString stringWithFormat:@"%0.2f",currProductPrice.fPrice]];
     [cell.lblPrice setText:[NSString stringWithFormat:@"%0.2f",currProductPrice.fPrice]];

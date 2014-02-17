@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SetupVC : UIViewController
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnBack;
+@interface SetupVC : UITableViewController
+@property (weak, nonatomic) IBOutlet UIButton *btnBack;
+
 @property (weak, nonatomic) IBOutlet UIButton *btnCleanDB;
 @property (weak, nonatomic) IBOutlet UIButton *btnRestoreDB;
 @property (weak, nonatomic) IBOutlet UIImageView *bview;
+@property (weak, nonatomic) IBOutlet UITableView *tbvSetup;
+
 
 @end

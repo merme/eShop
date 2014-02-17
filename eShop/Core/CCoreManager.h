@@ -40,8 +40,6 @@
 +(void) addShop:(CShop*) p_CShop;
 +(CShop*) getShopById:(CShop*) p_CShop;
 
-
-
 +(void) setActiveProduct:(CProduct*) p_CProduct;
 +(CProduct*) getActiveProduct;
 +(NSMutableArray*) getProductsList;
@@ -54,5 +52,7 @@
 +(void) updateProduct:(CProduct*) p_CProduct;
 +(void) addProduct:(CProduct*) p_CProduct;
 
+
++(NSMutableArray*) getProductsMinList;
 
 @end

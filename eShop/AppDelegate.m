@@ -49,7 +49,7 @@ static AppDelegate *sharedInstance;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-
+    //[CDatabase printFilename];
 
         
         if(![CDatabase existsDB]){

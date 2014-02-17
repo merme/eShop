@@ -19,6 +19,7 @@
 }
 
 +(void) initializeDB;
++(void) printFilename;
 +(BOOL) existsDB;
 +(NSString *)getDBPath;
 +(void) createTables;
@@ -36,7 +37,6 @@
 +(void) addShop:(CShop*)p_CShop;
 +(CShop*) getShopById:(CShop*) p_CShop;
 
-
 +(void) deleteProductPrice:(CProductPrice*)p_cProductPrice;
 +(void) recategorizeProducts:(CProductPrice*)p_cProductPrice;
 
@@ -50,6 +50,9 @@
 +(void) deleteProduct:(CProduct*)p_cProduct;
 +(void) updateProduct:(CProduct*)p_CProduct;
 +(void) addProduct:(CProduct*)p_CProduct;
+
++(NSMutableArray*) getProductsMinList;
+
 
 
 @end

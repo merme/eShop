@@ -18,6 +18,7 @@
 "FISCAL_ID"="Fiscal Id:";
 "LOCATION"="Location:";
 "LOOK_OUT"="Look out";
+"MIN_PROD_LIST"="Minimal Product Price List";
 "NAME"="Name:";
 "NO"="No";
 "OK"="Ok";

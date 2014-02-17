@@ -15,7 +15,7 @@
 		5A002D97185478BD00E324C2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A002D96185478BD00E324C2 /* AppDelegate.m */; };
 		5A002D9A185478BD00E324C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A002D98185478BD00E324C2 /* Main.storyboard */; };
 		5A002D9D185478BD00E324C2 /* ShopsListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A002D9C185478BD00E324C2 /* ShopsListVC.m */; };
-		5A002DA0185478BD00E324C2 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A002D9F185478BD00E324C2 /* SecondViewController.m */; };
+		5A002DA0185478BD00E324C2 /* MinPriceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A002D9F185478BD00E324C2 /* MinPriceList.m */; };
 		5A002DA2185478BD00E324C2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A002DA1185478BD00E324C2 /* Images.xcassets */; };
 		5A002DA9185478BD00E324C2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A002DA8185478BD00E324C2 /* XCTest.framework */; };
 		5A002DAA185478BD00E324C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A002D86185478BD00E324C2 /* Foundation.framework */; };
@@ -55,6 +55,7 @@
 		5ADAAA9B185DF2120080C816 /* ShopListPricesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADAAA9A185DF2120080C816 /* ShopListPricesVC.m */; };
 		5ADAAA9E185DF28F0080C816 /* ShopPriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADAAA9D185DF28F0080C816 /* ShopPriceCell.m */; };
 		5ADCBEBB186C1FA80085920E /* EditProductVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADCBEBA186C1FA80085920E /* EditProductVC.m */; };
+		5AE4C5A218B29A95000A361D /* MinPriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE4C5A118B29A95000A361D /* MinPriceCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,8 +82,8 @@
 		5A002D99185478BD00E324C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5A002D9B185478BD00E324C2 /* ShopsListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopsListVC.h; sourceTree = "<group>"; };
 		5A002D9C185478BD00E324C2 /* ShopsListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopsListVC.m; sourceTree = "<group>"; };
-		5A002D9E185478BD00E324C2 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		5A002D9F185478BD00E324C2 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		5A002D9E185478BD00E324C2 /* MinPriceList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MinPriceList.h; sourceTree = "<group>"; };
+		5A002D9F185478BD00E324C2 /* MinPriceList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MinPriceList.m; sourceTree = "<group>"; };
 		5A002DA1185478BD00E324C2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5A002DA7185478BD00E324C2 /* eShopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eShopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A002DA8185478BD00E324C2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -149,6 +150,8 @@
 		5ADAAA9D185DF28F0080C816 /* ShopPriceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShopPriceCell.m; path = ViewControllers/ShopPriceCell.m; sourceTree = "<group>"; };
 		5ADCBEB9186C1FA80085920E /* EditProductVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditProductVC.h; path = ViewControllers/EditProductVC.h; sourceTree = "<group>"; };
 		5ADCBEBA186C1FA80085920E /* EditProductVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditProductVC.m; path = ViewControllers/EditProductVC.m; sourceTree = "<group>"; };
+		5AE4C5A018B29A95000A361D /* MinPriceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MinPriceCell.h; path = ViewControllers/MinPriceCell.h; sourceTree = "<group>"; };
+		5AE4C5A118B29A95000A361D /* MinPriceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MinPriceCell.m; path = ViewControllers/MinPriceCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,18 +225,16 @@
 		5A002D8C185478BD00E324C2 /* eShop */ = {
 			isa = PBXGroup;
 			children = (
+				5AD3F752185A25A800950BC1 /* ViewControllers */,
 				5ACF79E418A01AC000B514B9 /* BarCodeReader */,
 				5AC11A23189C1CA5005084C8 /* Images */,
 				5AA8993D189858D0005A813F /* Google Analytics */,
-				5AD3F752185A25A800950BC1 /* ViewControllers */,
 				5AB6C5411858FA020009A1D6 /* TODO.txt */,
 				5AAAAB331856513700319E87 /* Database */,
 				5A002DBE1854791300E324C2 /* Model */,
 				5A002D95185478BD00E324C2 /* AppDelegate.h */,
 				5A002D96185478BD00E324C2 /* AppDelegate.m */,
 				5A002D98185478BD00E324C2 /* Main.storyboard */,
-				5A002D9E185478BD00E324C2 /* SecondViewController.h */,
-				5A002D9F185478BD00E324C2 /* SecondViewController.m */,
 				5A002DA1185478BD00E324C2 /* Images.xcassets */,
 				5A002D8D185478BD00E324C2 /* Supporting Files */,
 				5AA8D840186226BA0086C605 /* Localizable.strings */,
@@ -414,6 +415,7 @@
 		5AD3F752185A25A800950BC1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5AE4C59F18B29703000A361D /* MinPriceList */,
 				5ACF79E518A01C6600B514B9 /* BarCodeReader */,
 				5AA88EF4186EBAFE00E80D90 /* AddShop */,
 				5ABA7A09186D703900883EA2 /* AddProduct */,
@@ -459,6 +461,17 @@
 				5ADCBEBA186C1FA80085920E /* EditProductVC.m */,
 			);
 			name = EditProduct;
+			sourceTree = "<group>";
+		};
+		5AE4C59F18B29703000A361D /* MinPriceList */ = {
+			isa = PBXGroup;
+			children = (
+				5A002D9E185478BD00E324C2 /* MinPriceList.h */,
+				5A002D9F185478BD00E324C2 /* MinPriceList.m */,
+				5AE4C5A018B29A95000A361D /* MinPriceCell.h */,
+				5AE4C5A118B29A95000A361D /* MinPriceCell.m */,
+			);
+			name = MinPriceList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -568,7 +581,8 @@
 				5A002DC418547C7E00E324C2 /* CShop.m in Sources */,
 				5AAAAB361856515F00319E87 /* CDatabase.m in Sources */,
 				5ADAAA9B185DF2120080C816 /* ShopListPricesVC.m in Sources */,
-				5A002DA0185478BD00E324C2 /* SecondViewController.m in Sources */,
+				5A002DA0185478BD00E324C2 /* MinPriceList.m in Sources */,
+				5AE4C5A218B29A95000A361D /* MinPriceCell.m in Sources */,
 				5ACD16F4186357D9003C83EA /* CProduct.m in Sources */,
 				5ADCBEBB186C1FA80085920E /* EditProductVC.m in Sources */,
 				5ACD17031863800C003C83EA /* ProductListPricesVC.m in Sources */,

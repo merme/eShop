@@ -32,6 +32,10 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     }
 }
 
++(void) printFilename{
+    NSLog(@"%@", [CDatabase getDBPath]);
+}
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
@@ -1030,6 +1034,51 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
 
     
     sqlite3_close(contactDB);
+    
+}
+
++(NSMutableArray*) getProductsMinList{
+
+    
+    NSMutableArray* arrProductsMin = [[NSMutableArray alloc] init];
+    
+    //Get Temporary Directory
+    NSString* dbPath = [CDatabase getDBPath];
+    
+    
+    int result = sqlite3_open([dbPath UTF8String], &contactDB);
+    
+    if (SQLITE_OK != result) {
+        NSLog(@"myDB opening error");
+        return nil;
+    }
+  
+    const char *sSqlSelect = "SELECT PRODUCTS.PRODUCT_ID,PRODUCTS.PRODUCT_NAME,SHOPS.SHOP_ID,SHOPS.SHOP_NAME,MIN(PRICE), PRODUCTS.PICTURE  FROM PRODUCTS, PRICES,SHOPS WHERE PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID=PRICES.SHOP_ID GROUP BY PRODUCTS.PRODUCT_ID";
+    /*
+    const char *sSqlSelect = "SELECT PRODUCTS.PRODUCT_ID,PRODUCTS.PRODUCT_NAME,SHOPS.SHOP_ID,SHOPS.SHOP_NAME,MIN(PRICE)  FROM PRODUCTS, PRICES,SHOPS WHERE PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID=PRICES.SHOP_ID GROUP BY PRODUCTS.PRODUCT_ID";
+  */
+    
+    sqlite3_stmt *selectStatement;
+    if(sqlite3_prepare_v2(contactDB, sSqlSelect, -1, &selectStatement, NULL) == SQLITE_OK) {
+        while(sqlite3_step(selectStatement) == SQLITE_ROW) {
+            CProductPrice *cProductPrice = [[CProductPrice alloc] init];
+            cProductPrice.sId=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 0)];
+            cProductPrice.sName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 1)];
+            cProductPrice.sShopId=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 2)];
+            cProductPrice.sShopName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 3)];
+            cProductPrice.fPrice = (float)sqlite3_column_double(selectStatement, 4);
+            
+            int length = sqlite3_column_bytes(selectStatement, 5);
+            if(length>0)
+                cProductPrice.dPicture = [NSData dataWithBytes:sqlite3_column_blob(selectStatement, 5) length:length];
+            [arrProductsMin addObject:cProductPrice];
+        }
+    }
+    
+    
+    sqlite3_close(contactDB);
+    
+    return arrProductsMin;
     
 }
 

@@ -100,6 +100,7 @@
 		5A61FF6B189D6160000FC585 /* common_bgt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "common_bgt@2x.png"; sourceTree = "<group>"; };
 		5A8FFE95185E353C00155799 /* AddProductToAShopVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddProductToAShopVC.h; path = ViewControllers/AddProductToAShopVC.h; sourceTree = "<group>"; };
 		5A8FFE96185E353C00155799 /* AddProductToAShopVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddProductToAShopVC.m; path = ViewControllers/AddProductToAShopVC.m; sourceTree = "<group>"; };
+		5A9EC5D918B40B3900F9A4F2 /* AppIcon57x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AppIcon57x.png; path = psd/AppIcon57x.png; sourceTree = "<group>"; };
 		5AA88EF5186EBB4100E80D90 /* AddShop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddShop.h; path = ViewControllers/AddShop.h; sourceTree = "<group>"; };
 		5AA88EF6186EBB4100E80D90 /* AddShop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddShop.m; path = ViewControllers/AddShop.m; sourceTree = "<group>"; };
 		5AA8993E189858FB005A813F /* GAI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
@@ -188,6 +189,7 @@
 		5A002D7A185478BD00E324C2 = {
 			isa = PBXGroup;
 			children = (
+				5A9EC5D918B40B3900F9A4F2 /* AppIcon57x.png */,
 				5A002D8C185478BD00E324C2 /* eShop */,
 				5A002DAE185478BD00E324C2 /* eShopTests */,
 				5A002D85185478BD00E324C2 /* Frameworks */,

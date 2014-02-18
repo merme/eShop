@@ -835,7 +835,7 @@
                                             <action selector="btnTakePhoto:" destination="bnS-cm-DVs" id="KnW-DB-6tn"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem image="CatalogShop_btn" id="a4L-9e-wvy">
+                                    <barButtonItem image="CatalogProd_btn" id="a4L-9e-wvy">
                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="btnSelectPhoto:" destination="bnS-cm-DVs" id="WUc-MM-AFp"/>
@@ -1499,11 +1499,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="dsY-ff-owF"/>
-        <segue reference="3ID-na-iIE"/>
-        <segue reference="CSJ-0v-GhB"/>
-        <segue reference="jiG-OJ-jYS"/>
-        <segue reference="ODi-BZ-8r7"/>
         <segue reference="6TK-Y2-1HA"/>
+        <segue reference="ODi-BZ-8r7"/>
+        <segue reference="oH7-7f-DFF"/>
+        <segue reference="CSJ-0v-GhB"/>
+        <segue reference="3ID-na-iIE"/>
+        <segue reference="dsY-ff-owF"/>
     </inferredMetricsTieBreakers>
 </document>

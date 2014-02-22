@@ -26,6 +26,8 @@ static AppDelegate *sharedInstance;
     
 }
 
+@synthesize sVersion;
+
 //Application routines:Begin
 -(id) init{
     
@@ -35,6 +37,8 @@ static AppDelegate *sharedInstance;
     
     self=[super init];
     sharedInstance=self;
+    
+    sVersion=VERSION;
     
     
     return self;
@@ -50,22 +54,26 @@ static AppDelegate *sharedInstance;
 {
     // Override point for customization after application launch.
     //[CDatabase printFilename];
-
-        
-        if(![CDatabase existsDB]){
-            // Create tables
-            [CDatabase createTables];
-            // Ask if user wants sample data
-            UIAlertView *message = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LOOK_OUT", nil)
-                message:NSLocalizedString(@"NO_SHOPS_PRODUCTS", nil)
-                delegate:self
-                cancelButtonTitle:NSLocalizedString(@"NO", nil)
-                otherButtonTitles:NSLocalizedString(@"YES", nil), nil];
-            [message show];
-            
-        }
-
  
+    //Create DB v1.0
+    if(![CDatabase existsDB]){
+        // Create tables
+        [CDatabase createTables];
+        // Ask if user wants sample data
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LOOK_OUT", nil)
+                                                          message:NSLocalizedString(@"NO_SHOPS_PRODUCTS", nil)
+                                                         delegate:self
+                                                cancelButtonTitle:NSLocalizedString(@"NO", nil)
+                                                otherButtonTitles:NSLocalizedString(@"YES", nil), nil];
+        [message show];
+        
+    }
+
+    //Check version
+    if([self isNewVersion]){
+        // Migrate tables
+    }
+
     
     // Do other work for customization after application launch
     // then initialize Google Analytics.
@@ -75,6 +83,45 @@ static AppDelegate *sharedInstance;
     
     return YES;
 }
+
+
+-(NSString*) prescriptionsFilename{
+    /*   NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+     NSString *documentsDirectory = [paths objectAtIndex:0];
+     
+     
+     //2) Create the full file path by appending the desired file name
+     return [documentsDirectory stringByAppendingPathComponent:@"presc.dat"];
+     */
+    
+    NSString *applicationDocumentsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    return  [applicationDocumentsDir stringByAppendingPathComponent:@"Version.txt"];
+    
+    
+}
+
+-(bool) isNewVersion{
+    
+    NSData * myData = [NSData dataWithContentsOfFile:[self prescriptionsFilename]];
+    NSError *error;
+    bool bResult=false;
+    
+    if(myData==nil){
+        NSData * myData = [NSKeyedArchiver archivedDataWithRootObject:self.sVersion];
+        if (![myData writeToFile:[self prescriptionsFilename] atomically:YES]) {
+                NSLog(@"There was an error saving: %@", error);
+        }
+        bResult=false;
+    }
+    else{
+        sVersion = [NSKeyedUnarchiver unarchiveObjectWithData:myData];
+        bResult= [sVersion isEqualToString:VERSION];
+    }
+    
+    return bResult;
+}
+
+
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {

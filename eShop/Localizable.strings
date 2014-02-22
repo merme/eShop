@@ -28,6 +28,7 @@
 "PROD_EXISTS"="%@(%@) exists already";
 "PRODUCT_LIST"="Product list";
 "SAVE"="Save";
+"SAVE_PROD"="Do you want to save the product?";
 "SELECT_PRODUCT"="Select product:";
 "SELECT_SHOP"="Select shop:";
 "SHOP_LIST"="Supermarket list";
@@ -38,6 +39,8 @@
 "NO_SHOPS_PRODUCTS"="There are no products nor shops. Fill with sample data.";
 "NO_PRODUCTS"="There are no products defined, in that case go to main screen and add some products.";
 "ALL_PRODUCTS"="This suppermarket has all the existing products assigned.";
+"YES"="Yes";
+
 
 "NO_SHOPS"="There are no shops defined, in that case go to main screen and add your regular shops.";
 "ALL_SHOPS"="This product has all the exists in all your shops.";

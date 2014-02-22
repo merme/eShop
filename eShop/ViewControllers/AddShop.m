@@ -103,27 +103,68 @@ static NSString* sBarCode;
     // Dispose of any resources that can be recreated.
 }
 
+
+- (IBAction)btnSave:(id)sender {
+     [self saveShop];
+    
+    // Execute back segue
+    [self performSegueWithIdentifier:@"backFromAddShop" sender:self];
+    
+    
+}
+- (IBAction)btnBack:(id)sender {
+    if([self validateForm]){
+        UIAlertView *alert = [[UIAlertView alloc] init];
+        [alert setTitle:NSLocalizedString(@"ATTENTION",nil)];
+        [alert setMessage:NSLocalizedString(@"SAVE_PROD",nil)];
+        [alert setDelegate:self];
+        [alert addButtonWithTitle:NSLocalizedString(@"YES",nil)];
+        [alert addButtonWithTitle:NSLocalizedString(@"NO",nil)];
+        [alert show];
+    }
+    else{
+            // Execute back segue
+            [self performSegueWithIdentifier:@"backFromAddShop" sender:self];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0)
+    {
+        // Yes, do something
+        [self saveShop];
+    }
+    
+    // Execute back segue
+    [self performSegueWithIdentifier:@"backFromAddShop" sender:self];
+}
+
+
+-(void) saveShop{
+    CShop *cShop = [[CShop alloc]init];
+    cShop.sId=[self.txtId text];
+    cShop.sName= [self.txtName text];
+    cShop.sLocation= [self.txtLocation text];
+    
+    //Set the image
+    if(self.bPicture){
+        cShop.dPicture=UIImagePNGRepresentation(self.uiImageView.image);
+    }
+    else{
+        cShop.dPicture=nil;
+    }
+    
+    //Request to CCoreManager to store new Product-Price
+    [CCoreManager addShop:cShop];
+    
+}
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if([segue.identifier isEqualToString:@"backFromAddShopSave"]){
+    if([segue.identifier isEqualToString:@"backFromAddShop"]){
             
-            CShop *cShop = [[CShop alloc]init];
-            cShop.sId=[self.txtId text];
-            cShop.sName= [self.txtName text];
-            cShop.sLocation= [self.txtLocation text];
-            
-            //Set the image
-            if(self.bPicture){
-                cShop.dPicture=UIImagePNGRepresentation(self.uiImageView.image);
-            }
-            else{
-                cShop.dPicture=nil;
-            }
-            
-            //Request to CCoreManager to store new Product-Price
-            [CCoreManager addShop:cShop];
-            
-            //Force to close view (-> -(void) viewWillDisappear:(BOOL)animated)
-            [self.navigationController popViewControllerAnimated:YES];
+        //Force to close view (-> -(void) viewWillDisappear:(BOOL)animated)
+        [self.navigationController popViewControllerAnimated:YES];
         
     }
     
@@ -152,7 +193,7 @@ static NSString* sBarCode;
     [sender resignFirstResponder];
 }
 
--(void) validateForm{
+-(bool) validateForm{
 
     CShop *cShopFound=nil;
     
@@ -174,7 +215,8 @@ static NSString* sBarCode;
     }
     
     self.btnSave.enabled=  ([self.txtId.text length]>0) && cShopFound==nil;
-    
+   
+    return self.btnSave.enabled;
 }
 
 //Camera and picture album:BEGIN

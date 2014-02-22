@@ -29,7 +29,7 @@
                                         <barButtonItem key="leftBarButtonItem" title="Item" id="AcK-kq-bLX">
                                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <segue destination="CZ4-MO-1fc" kind="modal" identifier="backFromAddShop" id="qhD-FO-lTt"/>
+                                                <action selector="btnBack:" destination="afK-uk-kga" id="1aV-Kw-ga8"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -97,7 +97,7 @@
                                     <barButtonItem image="Save_btn" id="CgY-Vc-kKS">
                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <segue destination="CZ4-MO-1fc" kind="modal" identifier="backFromAddShopSave" id="Qqu-gK-eoE"/>
+                                            <action selector="btnSave:" destination="afK-uk-kga" id="3PN-gI-DSs"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem image="Camera_btn" id="Whx-4b-kJA">
@@ -114,6 +114,16 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEx-tZ-vX1">
+                                <rect key="frame" x="86" y="219" width="174" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="CZ4-MO-1fc" kind="modal" identifier="backFromAddShop" id="pxZ-ML-8Jd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -281,7 +291,7 @@
                                         <barButtonItem key="leftBarButtonItem" title="Item" id="og6-Us-WMz">
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
-                                                <segue destination="QUy-BD-bpt" kind="modal" identifier="backFromAddProduct" id="5gg-2c-tOt"/>
+                                                <action selector="btnBack:" destination="avp-Fs-KJR" id="YUP-YY-58w"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -351,6 +361,16 @@
                                 <connections>
                                     <action selector="btnBarCode:" destination="avp-Fs-KJR" eventType="touchUpInside" id="0Pa-MP-3mv"/>
                                     <segue destination="3Up-vt-h2B" kind="modal" identifier="readCodeBar" id="CmQ-Lb-uYe"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcR-2k-oA1">
+                                <rect key="frame" x="67" y="177" width="233" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button &quot;backFromAddProduct&quot;">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="QUy-BD-bpt" kind="modal" identifier="backFromAddProduct" id="iiZ-Dx-XAL"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1504,11 +1524,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="fIA-GK-bpf"/>
+        <segue reference="pxZ-ML-8Jd"/>
         <segue reference="6TK-Y2-1HA"/>
-        <segue reference="5gg-2c-tOt"/>
+        <segue reference="iiZ-Dx-XAL"/>
         <segue reference="jiG-OJ-jYS"/>
         <segue reference="jDE-vt-Eu0"/>
-        <segue reference="fIA-GK-bpf"/>
-        <segue reference="qhD-FO-lTt"/>
     </inferredMetricsTieBreakers>
 </document>

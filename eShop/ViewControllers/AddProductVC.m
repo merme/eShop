@@ -164,13 +164,15 @@ NSString *sName=nil;
 
 
 
--(void) validateForm{
+-(bool) validateForm{
     // [self.txtBarCode setText:sBarCode];
     
     self.btnSave.enabled=([self.txtName.text length]>0 &&
         [self.txtBarCode.text length]>0 && cProdFound==nil);
     self.btnCamera.enabled=(cProdFound==nil);
     self.btnCatalog.enabled=(cProdFound==nil);
+    
+    return self.btnSave.enabled;
 }
 
 //Picker view interface methods: BEGIN
@@ -199,32 +201,68 @@ NSString *sName=nil;
 
 
 - (IBAction)btnSave:(id)sender {
-    if([[self.txtName text] length]>0 ){
-        
-        CProduct *cProduct = [[CProduct alloc]init];
-        cProduct.sId=[self.txtBarCode text];
-        cProduct.sName= [self.txtName text];
-        cProduct.tPriceType =iPickerPriceTypeRow;
-        
-        //Set the image
-        if(self.bPicture){
-            cProduct.dPicture=UIImagePNGRepresentation(self.uiImageView.image);
-        }
-        else{
-            cProduct.dPicture=nil;
-        }
-        
-        //Request to CCoreManager to store new Product-Price
-        [CCoreManager addProduct:cProduct];
-        
-        //Force to close view (-> -(void) viewWillDisappear:(BOOL)animated)
-        [self.navigationController popViewControllerAnimated:YES];
-    }
+    
+    [self saveProduct];
+    
     // Execute back segue
-     [self performSegueWithIdentifier:@"backFromAddProduct" sender:self];
+    [self performSegueWithIdentifier:@"backFromAddProduct" sender:self];
     
 }
 
+-(void) saveProduct{
+    CProduct *cProduct = [[CProduct alloc]init];
+    cProduct.sId=[self.txtBarCode text];
+    cProduct.sName= [self.txtName text];
+    cProduct.tPriceType =iPickerPriceTypeRow;
+        
+    //Set the image
+    if(self.bPicture){
+        cProduct.dPicture=UIImagePNGRepresentation(self.uiImageView.image);
+    }
+    else{
+        cProduct.dPicture=nil;
+    }
+        
+    //Request to CCoreManager to store new Product-Price
+    [CCoreManager addProduct:cProduct];
+        
+    //Force to close view (-> -(void) viewWillDisappear:(BOOL)animated)
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)btnBack:(id)sender {
+    
+    
+    if([self validateForm]){
+        UIAlertView *alert = [[UIAlertView alloc] init];
+        [alert setTitle:NSLocalizedString(@"ATTENTION",nil)];
+        [alert setMessage:NSLocalizedString(@"SAVE_PROD",nil)];
+        [alert setDelegate:self];
+        [alert addButtonWithTitle:NSLocalizedString(@"YES",nil)];
+        [alert addButtonWithTitle:NSLocalizedString(@"NO",nil)];
+        [alert show];
+    }
+    else{
+        // Execute back segue
+        [self performSegueWithIdentifier:@"backFromAddProduct" sender:self];
+    }
+    
+    
+
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0)
+    {
+        // Yes, do something
+        [self saveProduct];
+    }
+    
+    // Execute back segue
+    [self performSegueWithIdentifier:@"backFromAddProduct" sender:self];
+}
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

@@ -13,6 +13,7 @@
 #import "GAIFields.h"
 #import "GAITracker.h"
 #import "GAIDictionaryBuilder.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface BarCodeReaderVC () <AVCaptureMetadataOutputObjectsDelegate>
 {
@@ -29,6 +30,8 @@
 @end
 
 @implementation BarCodeReaderVC
+
+NSTimer *aTimer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -97,7 +100,23 @@
     
     [self.view bringSubviewToFront:_highlightView];
     [self.view bringSubviewToFront:_label];
+    
+    AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    if ([device hasTorch] && [device hasFlash]){
+        [device lockForConfiguration:nil];
+        [device setTorchMode:AVCaptureTorchModeOn];
+        [device setFlashMode:AVCaptureFlashModeOn];
+        [device unlockForConfiguration];
+    }
+    
+    aTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(aTime) userInfo:nil repeats:NO];
 }
+
+-(void)aTime
+{
+     [self performSegueWithIdentifier:@"backFromReadBarCode" sender:self.view];
+}
+
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection
 {
@@ -125,7 +144,7 @@
             break;
         }
         else
-            _label.text = @"(none)";
+            _label.text = @"";
     }
     
      [self performSegueWithIdentifier:@"backFromReadBarCode" sender:self.view];
@@ -146,15 +165,13 @@
         // Pass any objects to the view controller here, like...
         [vc setBarCode:_label.text];
         
-        /*
-         //Create a new prescription object
-         Prescription *prescription;
-         prescription = [[Prescription alloc] initWithName:txtName.text BoxUnits:[txtBoxUnits.text integerValue] UnitsTaken:[txtUnitsTaken.text integerValue] Dosis:tDosis Image:uiImageView.image];
-         
-         //Notify the model
-         AppDelegate *appDelegate = [AppDelegate sharedAppDelegate];
-         [appDelegate addPrescription:prescription];
-         */
+        AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+        if ([device hasTorch] && [device hasFlash]){
+            [device lockForConfiguration:nil];
+            [device setTorchMode:AVCaptureTorchModeOff];
+            [device setFlashMode:AVCaptureFlashModeOff];
+            [device unlockForConfiguration];
+        }
     }
 }
 

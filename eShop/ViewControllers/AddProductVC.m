@@ -322,13 +322,7 @@ NSString *sName=nil;
     self.uiImageView.image = chosenImage;
     
     self.bPicture=TRUE;
-    /*
-     //Manage save button status
-     if (!btnSave.enabled){
-     //Enable Save button if the value is different from previous one
-     btnSave.enabled=TRUE;
-     }
-     */
+
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
 }

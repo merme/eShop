@@ -11,6 +11,10 @@
 #import "ProductViewCell.h"
 #import "CProduct.h"
 #import "CCoreManager.h"
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
 
 static ProductListVC *sharedInstance;
 
@@ -59,6 +63,14 @@ static ProductListVC *sharedInstance;
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    // This screen name value will remain set on the tracker and sent with
+    // hits until it is set to a new value or to nil.
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName
+                                       value:@"Setup"];
+    // Send the screen view.
+    [[GAI sharedInstance].defaultTracker
+     send:[[GAIDictionaryBuilder createAppView] build]];
+    
     // This class implements DataSource and Delegate callbacks
     [self.tbvProducts setDataSource:self];
     [self.tbvProducts setDelegate:self];
@@ -70,6 +82,9 @@ static ProductListVC *sharedInstance;
     
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"common_bgt.png"]];
     self.tbvProducts.backgroundColor = background;
+    
+    //Set tittle text
+    [self.barTop setTitle:NSLocalizedString(@"PRODUCT_LIST", nil)];
     
     
 }

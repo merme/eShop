@@ -10,6 +10,10 @@
 #import "MinPriceCell.h"
 #import "CProductPrice.h"
 #import "CCoreManager.h"
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
 
 @interface MinPriceList ()
 
@@ -25,6 +29,13 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    // This screen name value will remain set on the tracker and sent with
+    // hits until it is set to a new value or to nil.
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName
+                                       value:@"Min Price List"];
+    // Send the screen view.
+    [[GAI sharedInstance].defaultTracker
+     send:[[GAIDictionaryBuilder createAppView] build]];
     
     // This class implements DataSource and Delegate callbacks
     [self.tbvMinPrices setDataSource:self];

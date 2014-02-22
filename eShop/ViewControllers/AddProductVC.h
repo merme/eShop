@@ -22,6 +22,10 @@
 @property (strong, nonatomic) UITapGestureRecognizer *singleTap;
 @property (weak, nonatomic) IBOutlet UIImageView *uiImageView;
 
+@property (weak, nonatomic) IBOutlet UINavigationItem *barTop;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnCamera;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnCatalog;
+
 @property bool bPicture;
 
 @property NSArray *arrPriceType;

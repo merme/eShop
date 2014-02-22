@@ -24,6 +24,7 @@
 
 @property (strong, nonatomic) UITapGestureRecognizer *singleTap;
 
+
 @property bool bPicture;
 
 @property NSArray *arrPriceType;

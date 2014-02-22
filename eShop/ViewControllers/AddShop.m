@@ -10,6 +10,10 @@
 #import "CShop.h"
 #import "CCoreManager.h"
 #import "ShopsListVC.h"
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
 
 
 @interface AddShop ()
@@ -38,13 +42,20 @@ static NSString* sBarCode;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
+    // This screen name value will remain set on the tracker and sent with
+    // hits until it is set to a new value or to nil.
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName
+                                       value:@"Add Shop"];
+    // Send the screen view.
+    [[GAI sharedInstance].defaultTracker
+     send:[[GAIDictionaryBuilder createAppView] build]];
     
     // Set label tags
     [self.btnBack setTitle:NSLocalizedString(@"BACK", nil)];
     [self.lblName setText:NSLocalizedString(@"NAME", nil)];
     [self.lblLocation setText:NSLocalizedString(@"LOCATION", nil)];
     [self.lblId setText:NSLocalizedString(@"FISCAL_ID", nil)];
+    [self.barTop setTitle:NSLocalizedString(@"ADD_SHOP", nil)];
     
     //Disable save button
     self.btnSave.enabled=NO;
@@ -155,9 +166,6 @@ static NSString* sBarCode;
                 message:[NSString stringWithFormat:NSLocalizedString(@"SHOPS_EXISTS", nil),cShopFound.sName,cShopFound.sId,cShopFound.sLocation] delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles: nil];
             
             [mes show];
-        
-
-        
         }
         
         

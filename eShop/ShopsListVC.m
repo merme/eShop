@@ -12,6 +12,10 @@
 #import "CShop.h"
 #import "CProductPrice.h"
 #import "CCoreManager.h"
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
 
 static ShopsListVC *sharedInstance;
 
@@ -50,6 +54,14 @@ static ShopsListVC *sharedInstance;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    // This screen name value will remain set on the tracker and sent with
+    // hits until it is set to a new value or to nil.
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName
+                                       value:@"Shop List"];
+    // Send the screen view.
+    [[GAI sharedInstance].defaultTracker
+     send:[[GAIDictionaryBuilder createAppView] build]];
     
     // This class implements DataSource and Delegate callbacks
     [self.tbvShops setDataSource:self];

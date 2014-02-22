@@ -264,7 +264,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4OF-BV-9mQ">
-                                <rect key="frame" x="86" y="145" width="227" height="30"/>
+                                <rect key="frame" x="67" y="145" width="246" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -281,7 +281,7 @@
                                         <barButtonItem key="leftBarButtonItem" title="Item" id="og6-Us-WMz">
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
-                                                <segue destination="QUy-BD-bpt" kind="modal" identifier="backFromAddProduct" id="ayA-Hb-AoD"/>
+                                                <segue destination="QUy-BD-bpt" kind="modal" identifier="backFromAddProduct" id="5gg-2c-tOt"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -302,7 +302,7 @@
                                     <barButtonItem image="Save_btn" id="hQ6-zR-7j5">
                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <segue destination="QUy-BD-bpt" kind="modal" identifier="backFromAddProductSave" id="Qaf-fu-ZBi"/>
+                                            <action selector="btnSave:" destination="avp-Fs-KJR" id="5b9-1X-pzb"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem image="Camera_btn" id="sE0-rc-gKJ">
@@ -327,7 +327,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dwe-ZT-A1h">
-                                <rect key="frame" x="90" y="95" width="145" height="30"/>
+                                <rect key="frame" x="98" y="95" width="145" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -350,7 +350,7 @@
                                 </state>
                                 <connections>
                                     <action selector="btnBarCode:" destination="avp-Fs-KJR" eventType="touchUpInside" id="0Pa-MP-3mv"/>
-                                    <segue destination="iwg-0f-1VO" kind="modal" identifier="readBarCode" id="6yx-Ej-pVF"/>
+                                    <segue destination="3Up-vt-h2B" kind="modal" identifier="readCodeBar" id="CmQ-Lb-uYe"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -358,7 +358,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="dCA-MK-Jbc"/>
                     <connections>
-                        <outlet property="btnBack" destination="og6-Us-WMz" id="IXd-kK-c5W"/>
+                        <outlet property="barTop" destination="9J5-ba-Cwm" id="HXR-6M-SOK"/>
+                        <outlet property="btnBack" destination="og6-Us-WMz" id="hoK-5u-exe"/>
+                        <outlet property="btnCamera" destination="sE0-rc-gKJ" id="ls5-Kg-QM6"/>
+                        <outlet property="btnCatalog" destination="Ggj-tl-tSi" id="MeR-Pd-ipR"/>
                         <outlet property="btnSave" destination="hQ6-zR-7j5" id="Bx5-Jy-C8f"/>
                         <outlet property="bview" destination="vJ7-0C-qBU" id="3B2-fP-d1r"/>
                         <outlet property="lblBarCode" destination="T7X-7W-Amv" id="Gyk-nH-YcW"/>
@@ -373,6 +376,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4bD-i5-J1A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="653" y="1336"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="pJ1-tO-zW2">
+            <objects>
+                <viewController id="3Up-vt-h2B" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="a9B-mq-7pi"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ea4-gy-zfG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rKd-uI-yLc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l9T-n5-8uB">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="BarCode_hlp">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="iwg-0f-1VO" kind="modal" id="rrk-hw-Mpd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dl4-Cd-sjs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1181" y="1655"/>
         </scene>
         <!--Product List PricesVC-->
         <scene sceneID="lxE-rU-Cvu">
@@ -569,7 +602,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Me6-IO-KRo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="56" y="1928"/>
+            <point key="canvasLocation" x="653" y="2208"/>
         </scene>
         <!--Add Product ToA ShopVC-->
         <scene sceneID="pdf-GP-qFH">
@@ -756,7 +789,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ynS-Xq-H9H"/>
                     <connections>
-                        <outlet property="barTop" destination="p0h-oo-dla" id="L6G-e0-wdy"/>
+                        <outlet property="barTop" destination="p0h-oo-dla" id="WZC-4n-VoY"/>
                         <outlet property="btnBack" destination="WY2-pY-MCk" id="F4f-DH-gdP"/>
                         <outlet property="btnSave" destination="S7p-fJ-ssr" id="tur-FQ-Gkj"/>
                         <outlet property="bview" destination="8Uc-b1-6rP" id="HqG-v3-Cr9"/>
@@ -862,7 +895,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Kpe-zd-B2J"/>
                     <connections>
-                        <outlet property="barTop" destination="gUe-GX-lfM" id="TUt-Q0-Xvm"/>
+                        <outlet property="barTop" destination="gUe-GX-lfM" id="gZ5-2o-xYh"/>
                         <outlet property="btnBack" destination="pHZ-6I-1LH" id="EVN-9j-iiW"/>
                         <outlet property="btnSave" destination="w7R-ET-y7k" id="r1c-a2-atM"/>
                         <outlet property="bview" destination="5wB-EX-I33" id="DDG-GI-Yq6"/>
@@ -1248,8 +1281,7 @@
                                                         <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="btnResetDB:" destination="mKl-RF-6ZR" eventType="touchUpInside" id="3df-ep-g46"/>
-                                                        <action selector="btnResetDB:" destination="kQG-IR-wJy" eventType="touchUpInside" id="veQ-Xr-yJs"/>
+                                                        <action selector="btnCleanDB:" destination="kQG-IR-wJy" eventType="touchUpInside" id="Xps-EJ-Y8k"/>
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CleanDB" translatesAutoresizingMaskIntoConstraints="NO" id="kjG-rh-nVB">
@@ -1275,8 +1307,6 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="btnResetDB:" destination="mKl-RF-6ZR" eventType="touchUpInside" id="1hT-kX-jqR"/>
-                                                        <action selector="btnRestoresSampleDB:" destination="mKl-RF-6ZR" eventType="touchUpInside" id="NRk-kk-ZFq"/>
                                                         <action selector="btnRestoresSampleDB:" destination="kQG-IR-wJy" eventType="touchUpInside" id="hNP-ij-ip6"/>
                                                     </connections>
                                                 </button>
@@ -1308,8 +1338,7 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="btnBack:" destination="kQG-IR-wJy" eventType="touchUpInside" id="lSF-Af-SSI"/>
-                                                        <action selector="btnResetDB:" destination="kQG-IR-wJy" eventType="touchUpInside" id="AZo-zG-eiy"/>
-                                                        <action selector="btnResetDB:" destination="mKl-RF-6ZR" eventType="touchUpInside" id="zyR-cC-FZr"/>
+                                                        <segue destination="4ZA-wS-3sq" kind="modal" identifier="backFromSetup" id="jDE-vt-Eu0"/>
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Back_btn" translatesAutoresizingMaskIntoConstraints="NO" id="Y9w-JF-7ek">
@@ -1342,35 +1371,9 @@
                     <state key="normal" title="Button">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <connections>
-                        <segue destination="4ZA-wS-3sq" kind="modal" identifier="backFromSetup" id="dsY-ff-owF"/>
-                    </connections>
                 </button>
             </objects>
             <point key="canvasLocation" x="-450" y="1380"/>
-        </scene>
-        <!--SetupVC-->
-        <scene sceneID="5O2-Ax-XQd">
-            <objects>
-                <viewController id="mKl-RF-6ZR" customClass="SetupVC" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="u1s-hA-Ywy"/>
-                        <viewControllerLayoutGuide type="bottom" id="6CK-LJ-PsO"/>
-                    </layoutGuides>
-                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" id="jTw-Q1-WST">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    </scrollView>
-                    <navigationItem key="navigationItem" id="Fp7-o9-c4h"/>
-                    <connections>
-                        <outlet property="btnCleanDB" destination="wHQ-wi-uZr" id="Ue0-me-Gbu"/>
-                        <outlet property="btnRestoreDB" destination="Bvl-qw-8YI" id="9nI-us-ZXw"/>
-                        <outlet property="tbvSetup" destination="Enp-yd-f5g" id="7sy-aQ-Qyf"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xs0-eR-WJ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="110" y="970"/>
         </scene>
         <!--Product ListVC - Second-->
         <scene sceneID="ot8-2e-RuS">
@@ -1463,6 +1466,7 @@
                     </scrollView>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="Z7h-1E-pvt"/>
                     <connections>
+                        <outlet property="barTop" destination="iUL-En-GYF" id="gcG-Xv-WnJ"/>
                         <outlet property="tbvProducts" destination="KZX-ZO-4Ab" id="1RQ-Ko-rQ6"/>
                     </connections>
                 </viewController>
@@ -1475,6 +1479,7 @@
         <image name="AddProdShop_btn" width="45" height="45"/>
         <image name="Back_btn" width="90" height="90"/>
         <image name="BarCode_btn" width="45" height="45"/>
+        <image name="BarCode_hlp" width="320" height="519"/>
         <image name="Camera_btn" width="45" height="45"/>
         <image name="CatalogProd_btn" width="45" height="45"/>
         <image name="CatalogShop_btn" width="45" height="45"/>
@@ -1500,10 +1505,10 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="6TK-Y2-1HA"/>
-        <segue reference="ODi-BZ-8r7"/>
-        <segue reference="oH7-7f-DFF"/>
-        <segue reference="CSJ-0v-GhB"/>
-        <segue reference="3ID-na-iIE"/>
-        <segue reference="dsY-ff-owF"/>
+        <segue reference="5gg-2c-tOt"/>
+        <segue reference="jiG-OJ-jYS"/>
+        <segue reference="jDE-vt-Eu0"/>
+        <segue reference="fIA-GK-bpf"/>
+        <segue reference="qhD-FO-lTt"/>
     </inferredMetricsTieBreakers>
 </document>

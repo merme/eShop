@@ -10,6 +10,10 @@
 #import "CCoreManager.h"
 #import "CProduct.h"
 #import "ProductListVC.h"
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
 
 
 
@@ -44,6 +48,14 @@ int iPickerPriceTypeOnEditRow=0;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    // This screen name value will remain set on the tracker and sent with
+    // hits until it is set to a new value or to nil.
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName
+                                       value:@"Edit Product"];
+    // Send the screen view.
+    [[GAI sharedInstance].defaultTracker
+     send:[[GAIDictionaryBuilder createAppView] build]];
+    
     //Initialize price type array
     arrPriceType=PRICE_TYPES;
     
@@ -51,7 +63,7 @@ int iPickerPriceTypeOnEditRow=0;
     [self.lblName setText:NSLocalizedString(@"NAME", nil)];
     [self.btnSave setTitle:NSLocalizedString(@"SAVE", nil)];
     [self.btnBack setTitle:NSLocalizedString(@"BACK", nil)];
-    [self.barTop setTitle:NSLocalizedString(@"ADD_PROD", nil)];
+    [self.barTop setTitle:NSLocalizedString(@"EDIT_PROD", nil)];
     
     
     CProduct *cProduct = [CCoreManager getActiveProduct];

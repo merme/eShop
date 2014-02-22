@@ -14,6 +14,7 @@
 "BACK"="Back";
 "BAR_CODE"="Bar code:";
 "COMP_UNIT"="Comparation unit";
+"EDIT_PROD"="Edit product";
 "EDIT_SHOP"="Edit supermarket";
 "FISCAL_ID"="Fiscal Id:";
 "LOCATION"="Location:";
@@ -24,6 +25,8 @@
 "OK"="Ok";
 "PRICE"="Price";
 "PRODUCT_PRICE"="+Prod.";
+"PROD_EXISTS"="%@(%@) exists already";
+"PRODUCT_LIST"="Product list";
 "SAVE"="Save";
 "SELECT_PRODUCT"="Select product:";
 "SELECT_SHOP"="Select shop:";

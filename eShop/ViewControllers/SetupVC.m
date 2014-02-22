@@ -32,6 +32,13 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    // This screen name value will remain set on the tracker and sent with
+    // hits until it is set to a new value or to nil.
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName
+                                       value:@"Setup"];
+    // Send the screen view.
+    [[GAI sharedInstance].defaultTracker
+     send:[[GAIDictionaryBuilder createAppView] build]];
     
     // Set label tags
     [self.btnBack setTitle:NSLocalizedString(@"BACK", nil) forState:UIControlStateNormal];    [self.btnCleanDB setTitle:NSLocalizedString(@"CLEAN_DB", nil) forState:UIControlStateNormal];
@@ -64,12 +71,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)btnResetDB:(id)sender {
+
+
+- (IBAction)btnCleanDB:(id)sender {
     [CDatabase dropTables];
     [CDatabase createTables];
     
     [self performSegueWithIdentifier:@"backFromSetup" sender:self.view];
-
 }
 
 - (IBAction)btnRestoresSampleDB:(id)sender {

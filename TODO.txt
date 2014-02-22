@@ -43,4 +43,5 @@ v Added google analytics
 v Add Shop picture
 + Check if a shop exists before insert
 + Check if a product exists before insert
-+ Add Google analytics on every screen
+v Add Google analytics on every screen
+o BUG. Take a picture a second time fails.

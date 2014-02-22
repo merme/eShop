@@ -10,6 +10,10 @@
 #import "CShop.h"
 #import "CCoreManager.h"
 #import "ShopsListVC.h"
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
 
 @interface EditShopVC ()
 
@@ -33,6 +37,14 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    // This screen name value will remain set on the tracker and sent with
+    // hits until it is set to a new value or to nil.
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName
+                                       value:@"Edit Shop"];
+    // Send the screen view.
+    [[GAI sharedInstance].defaultTracker
+     send:[[GAIDictionaryBuilder createAppView] build]];
     
     // Set label tags
     [self.lblName setText:NSLocalizedString(@"NAME", nil)];

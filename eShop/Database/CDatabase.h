@@ -50,6 +50,7 @@
 +(void) deleteProduct:(CProduct*)p_cProduct;
 +(void) updateProduct:(CProduct*)p_CProduct;
 +(void) addProduct:(CProduct*)p_CProduct;
++(CProduct*) existsProduct:(CProduct*) p_CProduct;
 
 +(NSMutableArray*) getProductsMinList;
 

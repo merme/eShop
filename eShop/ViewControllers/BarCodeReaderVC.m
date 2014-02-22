@@ -9,6 +9,10 @@
 #import <AVFoundation/AVFoundation.h>
 #import "BarCodeReaderVC.h"
 #import "AddProductVC.h"
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
 
 @interface BarCodeReaderVC () <AVCaptureMetadataOutputObjectsDelegate>
 {
@@ -20,6 +24,7 @@
     
     UIView *_highlightView;
     UILabel *_label;
+    UIImageView *_image;
 }
 @end
 
@@ -38,6 +43,14 @@
 {
     [super viewDidLoad];
     
+    // This screen name value will remain set on the tracker and sent with
+    // hits until it is set to a new value or to nil.
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName
+                                       value:@"Bar Code Reader"];
+    // Send the screen view.
+    [[GAI sharedInstance].defaultTracker
+     send:[[GAIDictionaryBuilder createAppView] build]];
+    
     _highlightView = [[UIView alloc] init];
     _highlightView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin;
     _highlightView.layer.borderColor = [UIColor greenColor].CGColor;
@@ -52,6 +65,11 @@
     _label.textAlignment = NSTextAlignmentCenter;
     _label.text = @"(none)";
     [self.view addSubview:_label];
+    
+    _image = [[UIImageView alloc] init];
+    _image.frame =CGRectMake(0, 0, 200, 300);
+    _image.image =[UIImage imageNamed:@"common_bg.png"];
+    [self.view addSubview:_image];
     
     _session = [[AVCaptureSession alloc] init];
     _device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];

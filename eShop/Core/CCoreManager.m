@@ -232,6 +232,10 @@ static CProduct *cAtiveProduct;
     
 }
 
++(CProduct*) existsProduct:(CProduct*) p_CProduct{
+    return [CDatabase existsProduct:p_CProduct];
+}
+
 +(NSMutableArray*) getProductsMinList{
     return [CDatabase getProductsMinList];
 }

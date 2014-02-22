@@ -11,6 +11,10 @@
 #import "CShop.h"
 #import "CCoreManager.h"
 #import "ShopListPricesVC.h"
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
 
 @interface AddProductToAShopVC ()
 
@@ -38,6 +42,14 @@ int iPickerViewRow=0;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    // This screen name value will remain set on the tracker and sent with
+    // hits until it is set to a new value or to nil.
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName
+                                       value:@"Add Product to a Shop"];
+    // Send the screen view.
+    [[GAI sharedInstance].defaultTracker
+     send:[[GAIDictionaryBuilder createAppView] build]];
     
     //Request CCoreManager for pending produts
     arrShopPendingProducts =[CCoreManager getShopNotExistingProducts];

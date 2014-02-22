@@ -179,6 +179,14 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     
     sqlite3_close(contactDB);
     
+    
+    //Recategorize the new products
+    NSMutableArray* arrProducts = [CDatabase getProductsList];
+    for (CProductPrice* p_cProductPrice in arrProducts) {
+        [CDatabase recategorizeProducts:p_cProductPrice];
+    }
+    
+    
 }
 
 +(NSMutableArray*) getShopsList
@@ -1037,6 +1045,42 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     
 }
 
++(CProduct*) existsProduct:(CProduct*) p_CProduct{
+  
+    CProduct *cProduct = nil;
+    
+    //Get Temporary Directory
+    NSString* dbPath = [CDatabase getDBPath];
+    
+    
+    int result = sqlite3_open([dbPath UTF8String], &contactDB);
+    
+    if (SQLITE_OK != result) {
+        NSLog(@"myDB opening error");
+        return nil;
+    }
+    
+     NSString *sSqlSelect=[[NSString alloc] initWithFormat:@"SELECT PRODUCT_ID, PRODUCT_NAME, PRICE_TYPE, PICTURE FROM PRODUCTS WHERE PRODUCT_ID='%@';",p_CProduct.sId];
+    
+    sqlite3_stmt *selectStatement;
+    if(sqlite3_prepare_v2(contactDB, [sSqlSelect UTF8String], -1, &selectStatement, NULL) == SQLITE_OK) {
+        while(sqlite3_step(selectStatement) == SQLITE_ROW) {
+            cProduct = [[CProduct alloc] init];
+            cProduct.sId=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 0)];
+            cProduct.sName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 1)];
+            cProduct.tPriceType=sqlite3_column_int(selectStatement, 2);
+            int length = sqlite3_column_bytes(selectStatement, 3);
+            cProduct.dPicture = [NSData dataWithBytes:sqlite3_column_blob(selectStatement, 3) length:length];
+        }
+    }
+    
+    
+    sqlite3_close(contactDB);
+    
+    return cProduct;
+    
+}
+
 +(NSMutableArray*) getProductsMinList{
 
     
@@ -1053,7 +1097,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
         return nil;
     }
   
-    const char *sSqlSelect = "SELECT PRODUCTS.PRODUCT_ID,PRODUCTS.PRODUCT_NAME,SHOPS.SHOP_ID,SHOPS.SHOP_NAME,MIN(PRICE), PRODUCTS.PICTURE  FROM PRODUCTS, PRICES,SHOPS WHERE PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID=PRICES.SHOP_ID GROUP BY PRODUCTS.PRODUCT_ID";
+    const char *sSqlSelect = "SELECT PRODUCTS.PRODUCT_ID,PRODUCTS.PRODUCT_NAME,SHOPS.SHOP_ID,SHOPS.SHOP_NAME,MIN(PRICE), PRODUCTS.PICTURE  FROM PRODUCTS, PRICES,SHOPS WHERE PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID=PRICES.SHOP_ID GROUP BY PRODUCTS.PRODUCT_ID ORDER BY SHOPS.SHOP_ID";
     /*
     const char *sSqlSelect = "SELECT PRODUCTS.PRODUCT_ID,PRODUCTS.PRODUCT_NAME,SHOPS.SHOP_ID,SHOPS.SHOP_NAME,MIN(PRICE)  FROM PRODUCTS, PRICES,SHOPS WHERE PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID=PRICES.SHOP_ID GROUP BY PRODUCTS.PRODUCT_ID";
   */

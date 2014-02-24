@@ -27,8 +27,16 @@ typedef enum Price : NSUInteger {
     PriceGallon
 } PriceType;
 
+typedef enum Status : NSUInteger {
+    Nothing,
+    Pending,
+    Bought,
+	MAX_PROD_STATE
+} ProdStatus;
+
 
 @property (nonatomic) enum Price tPriceType;
+@property (nonatomic) enum Status tProdStatus;
 
 @property (strong,nonatomic) NSString *sId;
 @property (strong,nonatomic) NSString *sName;

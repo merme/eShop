@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "CDatabase.h"
 #import "CProductPrice.h"
+#import "CRemoteDatabase.h"
 
 static NSString *const kGaPropertyId = @"UA-43230251-3"; // Placeholder property ID.
 static NSString *const kTrackingPreferenceKey = @"allowTracking";
@@ -54,6 +55,8 @@ static AppDelegate *sharedInstance;
 {
     // Override point for customization after application launch.
     //[CDatabase printFilename];
+    
+    //[CRemoteDatabase dumpDDBB];
  
     //Create DB v1.0
     if(![CDatabase existsDB]){

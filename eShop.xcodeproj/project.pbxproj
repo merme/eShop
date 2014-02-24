@@ -51,6 +51,7 @@
 		5ACF79E318A01A3000B514B9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ACF79E218A01A3000B514B9 /* QuartzCore.framework */; };
 		5ACF79E818A01CA400B514B9 /* BarCodeReaderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACF79E718A01CA400B514B9 /* BarCodeReaderVC.m */; };
 		5AD3F755185A316600950BC1 /* ShopViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD3F754185A316600950BC1 /* ShopViewCell.m */; };
+		5AD9AB3A18B92BD50064C61A /* CRemoteDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD9AB3918B92BD50064C61A /* CRemoteDatabase.m */; };
 		5ADAAA96185DCC770080C816 /* CProductPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADAAA95185DCC770080C816 /* CProductPrice.m */; };
 		5ADAAA9B185DF2120080C816 /* ShopListPricesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADAAA9A185DF2120080C816 /* ShopListPricesVC.m */; };
 		5ADAAA9E185DF28F0080C816 /* ShopPriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADAAA9D185DF28F0080C816 /* ShopPriceCell.m */; };
@@ -143,6 +144,8 @@
 		5ACF79E718A01CA400B514B9 /* BarCodeReaderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BarCodeReaderVC.m; path = ViewControllers/BarCodeReaderVC.m; sourceTree = "<group>"; };
 		5AD3F753185A316600950BC1 /* ShopViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShopViewCell.h; path = ViewControllers/ShopViewCell.h; sourceTree = "<group>"; };
 		5AD3F754185A316600950BC1 /* ShopViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShopViewCell.m; path = ViewControllers/ShopViewCell.m; sourceTree = "<group>"; };
+		5AD9AB3818B92BD50064C61A /* CRemoteDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRemoteDatabase.h; path = Database/CRemoteDatabase.h; sourceTree = "<group>"; };
+		5AD9AB3918B92BD50064C61A /* CRemoteDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRemoteDatabase.m; path = Database/CRemoteDatabase.m; sourceTree = "<group>"; };
 		5ADAAA94185DCC770080C816 /* CProductPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CProductPrice.h; path = Core/CProductPrice.h; sourceTree = "<group>"; };
 		5ADAAA95185DCC770080C816 /* CProductPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CProductPrice.m; path = Core/CProductPrice.m; sourceTree = "<group>"; };
 		5ADAAA99185DF2120080C816 /* ShopListPricesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShopListPricesVC.h; path = ViewControllers/ShopListPricesVC.h; sourceTree = "<group>"; };
@@ -334,6 +337,8 @@
 			children = (
 				5AAAAB341856515F00319E87 /* CDatabase.h */,
 				5AAAAB351856515F00319E87 /* CDatabase.m */,
+				5AD9AB3818B92BD50064C61A /* CRemoteDatabase.h */,
+				5AD9AB3918B92BD50064C61A /* CRemoteDatabase.m */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -581,6 +586,7 @@
 			files = (
 				5AA8D83F1862200C0086C605 /* EditShopVC.m in Sources */,
 				5A002DC418547C7E00E324C2 /* CShop.m in Sources */,
+				5AD9AB3A18B92BD50064C61A /* CRemoteDatabase.m in Sources */,
 				5AAAAB361856515F00319E87 /* CDatabase.m in Sources */,
 				5ADAAA9B185DF2120080C816 /* ShopListPricesVC.m in Sources */,
 				5A002DA0185478BD00E324C2 /* MinPriceList.m in Sources */,

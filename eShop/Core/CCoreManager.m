@@ -240,5 +240,19 @@ static CProduct *cAtiveProduct;
     return [CDatabase getProductsMinList];
 }
 
++(void) setNextProductState:(CProduct*) p_CProduct{
+
+
+  
+  // Change next state
+    p_CProduct.tProdStatus++;
+    if(p_CProduct.tProdStatus>=MAX_PROD_STATE) p_CProduct.tProdStatus=0;
+
+    
+  
+  // Update product in DDBB
+    [CDatabase updateProduct:p_CProduct];
+
+}
 
 @end

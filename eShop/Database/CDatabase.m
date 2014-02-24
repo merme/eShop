@@ -81,7 +81,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     //Prepare array of commands ...
     NSMutableArray *sSqlQueries = [NSMutableArray array];
     [sSqlQueries addObject:@"CREATE TABLE IF NOT EXISTS SHOPS( SHOP_ID TEXT PRIMARY KEY, SHOP_NAME TEXT  NOT NULL,LOCATION TEXT,PICTURE BLOB);"]; // same with float values
-    [sSqlQueries addObject:@"CREATE TABLE IF NOT EXISTS PRODUCTS(PRODUCT_ID TEXT PRIMARY KEY, PRODUCT_NAME TEXT UNIQUE NOT NULL,PRICE_TYPE INTEGER NOT NULL,PICTURE BLOB);"];
+    [sSqlQueries addObject:@"CREATE TABLE IF NOT EXISTS PRODUCTS(PRODUCT_ID TEXT PRIMARY KEY, PRODUCT_NAME TEXT UNIQUE NOT NULL,PROD_STATUS INTEGER NOT NULL,PICTURE BLOB);"];
     [sSqlQueries addObject:@"CREATE TABLE IF NOT EXISTS PRICES(SHOP_ID TEXT NOT NULL REFERENCES SHOPS(SHOP_ID), PRODUCT_ID TEXT NOT NULL REFERENCES PRODUCTS(PRODUCT_ID),PRICE DECIMAL(7,2) NOT NULL, CATEGORY INT);"];
     
     
@@ -287,7 +287,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     }
     
 
-    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT PRODUCT_NAME, PRODUCTS.PRODUCT_ID,PRICE_TYPE,PRODUCTS.PICTURE FROM PRODUCTS WHERE NOT EXISTS( SELECT * FROM SHOPS,PRICES WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID='%@') ORDER BY PRODUCT_NAME", p_cShop.sId];
+    NSString *sSqlSelect = [[NSString alloc] initWithFormat:@"SELECT PRODUCT_NAME, PRODUCTS.PRODUCT_ID,PROD_STATUS ,PRODUCTS.PICTURE FROM PRODUCTS WHERE NOT EXISTS( SELECT * FROM SHOPS,PRICES WHERE SHOPS.SHOP_ID=PRICES.SHOP_ID  AND PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID='%@') ORDER BY PRODUCT_NAME", p_cShop.sId];
    
     
     sqlite3_stmt *selectStatement;
@@ -296,7 +296,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
             CProductPrice *cProductPrice = [[CProductPrice alloc] init];
             cProductPrice.sName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 0)];
             cProductPrice.sId = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 1)];
-            cProductPrice.tPriceType = sqlite3_column_int(selectStatement, 2);
+            cProductPrice.tProdStatus = sqlite3_column_int(selectStatement, 2);
             cProductPrice.sShopId=p_cShop.sId;
             int length = sqlite3_column_bytes(selectStatement, 3);
             if(length>0)
@@ -593,7 +593,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
         {
             sqlite3_bind_text(statement, 1, [p_CShop.sName UTF8String], -1, SQLITE_TRANSIENT);
             sqlite3_bind_text(statement, 2, [p_CShop.sLocation UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_blob(statement, 3, [p_CShop.dPicture bytes], [p_CShop.dPicture length], SQLITE_TRANSIENT);
+            sqlite3_bind_blob(statement, 3, [p_CShop.dPicture bytes], [p_CShop.dPicture length], SQLITE_TRANSIENT);   
             sqlite3_step(statement);
         }
         else NSLog( @"SaveBody: Failed from sqlite3_prepare_v2. Error is:  %s", sqlite3_errmsg(contactDB) );
@@ -729,7 +729,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
         return nil;
     }
     
-    const char *sSqlSelect = "SELECT PRODUCT_ID, PRODUCT_NAME, PRICE_TYPE, PICTURE FROM PRODUCTS ORDER BY PRODUCT_NAME;";
+    const char *sSqlSelect = "SELECT PRODUCT_ID, PRODUCT_NAME,PROD_STATUS, PICTURE FROM PRODUCTS ORDER BY PRODUCT_NAME;";
     
     sqlite3_stmt *selectStatement;
     if(sqlite3_prepare_v2(contactDB, sSqlSelect, -1, &selectStatement, NULL) == SQLITE_OK) {
@@ -737,7 +737,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
             CProduct *cProduct = [[CProduct alloc] init];
             cProduct.sId=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 0)];
             cProduct.sName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 1)];
-            cProduct.tPriceType=sqlite3_column_int(selectStatement, 2);
+            cProduct.tProdStatus=sqlite3_column_int(selectStatement, 2);
             int length = sqlite3_column_bytes(selectStatement, 3);
             cProduct.dPicture = [NSData dataWithBytes:sqlite3_column_blob(selectStatement, 3) length:length];
             [arrProduct addObject:cProduct];
@@ -951,7 +951,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     if(p_CProduct.dPicture!=nil){
             // Construct the query and empty prepared statement.
             //const char *sql = "INSERT INTO `PRODUCTS` (`PRODUCT_ID`, `PRODUCT_NAME`, `PRICE_TYPE`, `PICTURE`) VALUES (?, ?, ?, ?)";
-            NSString *sql = [[NSString alloc] initWithFormat:@"UPDATE PRODUCTS SET `PRODUCT_NAME`=?,`PRICE_TYPE`=?, `PICTURE`=? WHERE PRODUCT_ID='%@' ",p_CProduct.sId];
+            NSString *sql = [[NSString alloc] initWithFormat:@"UPDATE PRODUCTS SET `PRODUCT_NAME`=?,`PROD_STATUS`=?, `PICTURE`=?,  WHERE PRODUCT_ID='%@' ",p_CProduct.sId];
             sqlite3_stmt *statement;
             
             // Prepare the data to bind.
@@ -960,7 +960,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
             if( sqlite3_prepare_v2(contactDB, [sql UTF8String], -1, &statement, NULL) == SQLITE_OK )
             {
                 sqlite3_bind_text(statement, 1, [p_CProduct.sName UTF8String], -1, SQLITE_TRANSIENT);
-                sqlite3_bind_int(statement, 2, p_CProduct.tPriceType );
+                sqlite3_bind_int(statement, 2, p_CProduct.tProdStatus );
                 sqlite3_bind_blob(statement, 3, [p_CProduct.dPicture bytes], [p_CProduct.dPicture length], SQLITE_TRANSIENT);
                 sqlite3_step(statement);
             }
@@ -974,7 +974,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
     }
     else{
         //Recategorize Product-Price
-        NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"UPDATE PRODUCTS SET PRODUCT_NAME='%@',PRICE_TYPE=%d WHERE PRODUCT_ID='%@' ",p_CProduct.sName,p_CProduct.tPriceType ,p_CProduct.sId];
+        NSString *sSqlUpdate=[[NSString alloc] initWithFormat:@"UPDATE PRODUCTS SET PRODUCT_NAME='%@',PROD_STATUS=%d WHERE PRODUCT_ID='%@' ",p_CProduct.sName,p_CProduct.tProdStatus ,p_CProduct.sId];
     
         char * errInfo ;
         result = sqlite3_exec(contactDB, [sSqlUpdate cStringUsingEncoding:NSUTF8StringEncoding], nil, nil, &errInfo);
@@ -1005,7 +1005,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
 
      
      // Construct the query and empty prepared statement.
-     const char *sql = "INSERT INTO `PRODUCTS` (`PRODUCT_ID`, `PRODUCT_NAME`, `PRICE_TYPE`, `PICTURE`) VALUES (?, ?, ?, ?)";
+     const char *sql = "INSERT INTO `PRODUCTS` (`PRODUCT_ID`, `PRODUCT_NAME`, `PROD_STATUS`, `PICTURE`) VALUES (?, ?, ?, ?)";
      sqlite3_stmt *statement;
      
      // Prepare the data to bind.
@@ -1015,7 +1015,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
      {
      sqlite3_bind_text(statement, 1, [p_CProduct.sId UTF8String], -1, SQLITE_TRANSIENT);
      sqlite3_bind_text(statement, 2, [p_CProduct.sName UTF8String], -1, SQLITE_TRANSIENT);
-     sqlite3_bind_int(statement, 3, p_CProduct.tPriceType );
+     sqlite3_bind_int(statement, 3, p_CProduct.tProdStatus );
      sqlite3_bind_blob(statement, 4, [p_CProduct.dPicture bytes], [p_CProduct.dPicture length], SQLITE_TRANSIENT);
      sqlite3_step(statement);
      }
@@ -1060,7 +1060,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
         return nil;
     }
     
-     NSString *sSqlSelect=[[NSString alloc] initWithFormat:@"SELECT PRODUCT_ID, PRODUCT_NAME, PRICE_TYPE, PICTURE FROM PRODUCTS WHERE PRODUCT_ID='%@';",p_CProduct.sId];
+     NSString *sSqlSelect=[[NSString alloc] initWithFormat:@"SELECT PRODUCT_ID, PRODUCT_NAME, PROD_STATUS, PICTURE FROM PRODUCTS WHERE PRODUCT_ID='%@';",p_CProduct.sId];
     
     sqlite3_stmt *selectStatement;
     if(sqlite3_prepare_v2(contactDB, [sSqlSelect UTF8String], -1, &selectStatement, NULL) == SQLITE_OK) {
@@ -1068,7 +1068,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
             cProduct = [[CProduct alloc] init];
             cProduct.sId=[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 0)];
             cProduct.sName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 1)];
-            cProduct.tPriceType=sqlite3_column_int(selectStatement, 2);
+            cProduct.tProdStatus=sqlite3_column_int(selectStatement, 2);
             int length = sqlite3_column_bytes(selectStatement, 3);
             cProduct.dPicture = [NSData dataWithBytes:sqlite3_column_blob(selectStatement, 3) length:length];
         }
@@ -1097,7 +1097,7 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
         return nil;
     }
   
-    const char *sSqlSelect = "SELECT PRODUCTS.PRODUCT_ID,PRODUCTS.PRODUCT_NAME,SHOPS.SHOP_ID,SHOPS.SHOP_NAME,MIN(PRICE), PRODUCTS.PICTURE  FROM PRODUCTS, PRICES,SHOPS WHERE PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID=PRICES.SHOP_ID GROUP BY PRODUCTS.PRODUCT_ID ORDER BY SHOPS.SHOP_ID";
+    const char *sSqlSelect = "SELECT PRODUCTS.PRODUCT_ID,PRODUCTS.PRODUCT_NAME,SHOPS.SHOP_ID,SHOPS.SHOP_NAME,MIN(PRICE), PRODUCTS.PICTURE, PRODUCTS.PROD_STATUS FROM PRODUCTS, PRICES,SHOPS WHERE PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID=PRICES.SHOP_ID GROUP BY PRODUCTS.PRODUCT_ID ORDER BY SHOPS.SHOP_ID";
     /*
     const char *sSqlSelect = "SELECT PRODUCTS.PRODUCT_ID,PRODUCTS.PRODUCT_NAME,SHOPS.SHOP_ID,SHOPS.SHOP_NAME,MIN(PRICE)  FROM PRODUCTS, PRICES,SHOPS WHERE PRODUCTS.PRODUCT_ID=PRICES.PRODUCT_ID AND SHOPS.SHOP_ID=PRICES.SHOP_ID GROUP BY PRODUCTS.PRODUCT_ID";
   */
@@ -1115,6 +1115,10 @@ static    sqlite3 *contactDB; //Declare a pointer to sqlite database structure
             int length = sqlite3_column_bytes(selectStatement, 5);
             if(length>0)
                 cProductPrice.dPicture = [NSData dataWithBytes:sqlite3_column_blob(selectStatement, 5) length:length];
+            
+            cProductPrice.tProdStatus = (float)sqlite3_column_int(selectStatement, 6);
+            
+            
             [arrProductsMin addObject:cProductPrice];
         }
     }

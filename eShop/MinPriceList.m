@@ -92,6 +92,19 @@
         cell.imgProd.image= [UIImage imageNamed:@"NoPict"];
         
     }
+    switch (currProductPrice.tProdStatus) {
+        case Nothing:
+             [cell setBackgroundColor:[UIColor colorWithRed:235.0/255 green:232.0/255 blue:227.0/255 alpha:1]];
+            break;
+        case Pending:
+            [cell setBackgroundColor:[UIColor colorWithRed:235.0/255 green:(232.0-50)/255 blue:(227.0-50)/255 alpha:1]];
+            break;
+            
+        default:
+            [cell setBackgroundColor:[UIColor colorWithRed:(235.0-50)/255 green:(232.0)/255 blue:(227.0-50)/255 alpha:1]];
+            
+            break;
+    }
     
     return cell;
     
@@ -100,8 +113,24 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-
+    CProduct *cProduct = [[CProduct alloc]init];
     
+    // Get the current shop
+    CProductPrice *currProductPrice = [arrMinPrices objectAtIndex:indexPath.row];
+
+    cProduct.sId=currProductPrice.sId;
+    cProduct.sName=currProductPrice.sName;
+    cProduct.tProdStatus=currProductPrice.tProdStatus;
+    
+    //Notify CoreManager which is the active shop
+    [CCoreManager setNextProductState:cProduct];
+    
+    //Refresh whole table
+    [self.tbvMinPrices reloadData];
+    
+  arrMinPrices = [CCoreManager getProductsMinList];
+    
+ 
 }
 // END: Methods to implement for fulfill CollectionView Interface
 

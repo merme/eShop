@@ -1,0 +1,347 @@
+eShop/Pods/Manifest.lock
+eShop/Pods/Firebase/.cocoapods.yml
+eShop/Pods/Firebase/CHANGELOG.md
+eShop/Pods/Firebase/NOTICES
+eShop/Pods/Firebase/README.md
+eShop/Pods/Firebase/Core/Sources/Firebase.h
+eShop/Pods/Firebase/Core/Sources/module.modulemap
+eShop/Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/FirebaseAnalytics
+eShop/Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/Headers/FIRAnalytics+AppDelegate.h
+eShop/Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/Headers/FIRAnalytics.h
+eShop/Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/Headers/FIRAnalyticsConfiguration.h
+eShop/Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/Headers/FIRAnalyticsSwiftNameSupport.h
+eShop/Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/Headers/FIRApp.h
+eShop/Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/Headers/FIRConfiguration.h
+eShop/Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/Headers/FirebaseAnalytics.h
+eShop/Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/Headers/FIREventNames.h
+eShop/Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/Headers/FIROptions.h
+eShop/Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/Headers/FIRParameterNames.h
+eShop/Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/Headers/FIRUserPropertyNames.h
+eShop/Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/Modules/module.modulemap
+eShop/Pods/FirebaseAnalytics/Frameworks/FirebaseCoreDiagnostics.framework/FirebaseCoreDiagnostics
+eShop/Pods/FirebaseAnalytics/Frameworks/FirebaseCoreDiagnostics.framework/Modules/module.modulemap
+eShop/Pods/FirebaseAnalytics/Frameworks/FirebaseNanoPB.framework/FirebaseNanoPB
+eShop/Pods/FirebaseAuth/CHANGELOG.md
+eShop/Pods/FirebaseAuth/README.md
+eShop/Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/FirebaseAuth
+eShop/Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIRActionCodeSettings.h
+eShop/Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIRAdditionalUserInfo.h
+eShop/Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIRAuth.h
+eShop/Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIRAuthAPNSTokenType.h
+eShop/Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIRAuthCredential.h
+eShop/Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIRAuthDataResult.h
+eShop/Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIRAuthErrors.h
+eShop/Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIRAuthTokenResult.h
+eShop/Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIRAuthUIDelegate.h
+eShop/Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FirebaseAuth.h
+eShop/Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FirebaseAuthVersion.h
+eShop/Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIREmailAuthProvider.h
+eShop/Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIRFacebookAuthProvider.h
+eShop/Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIRGitHubAuthProvider.h
+eShop/Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIRGoogleAuthProvider.h
+eShop/Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIROAuthProvider.h
+eShop/Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIRPhoneAuthCredential.h
+eShop/Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIRPhoneAuthProvider.h
+eShop/Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIRTwitterAuthProvider.h
+eShop/Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIRUser.h
+eShop/Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIRUserInfo.h
+eShop/Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIRUserMetadata.h
+eShop/Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Modules/module.modulemap
+eShop/Pods/FirebaseCore/Frameworks/FirebaseCore.framework/FirebaseCore
+eShop/Pods/FirebaseCore/Frameworks/FirebaseCore.framework/Headers/FIRAnalyticsConfiguration.h
+eShop/Pods/FirebaseCore/Frameworks/FirebaseCore.framework/Headers/FIRApp.h
+eShop/Pods/FirebaseCore/Frameworks/FirebaseCore.framework/Headers/FIRConfiguration.h
+eShop/Pods/FirebaseCore/Frameworks/FirebaseCore.framework/Headers/FirebaseCore.h
+eShop/Pods/FirebaseCore/Frameworks/FirebaseCore.framework/Headers/FIRLoggerLevel.h
+eShop/Pods/FirebaseCore/Frameworks/FirebaseCore.framework/Headers/FIROptions.h
+eShop/Pods/FirebaseCore/Frameworks/FirebaseCore.framework/Modules/module.modulemap
+eShop/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/FirebaseDatabase
+eShop/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/Headers/FIRDatabase.h
+eShop/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/Headers/FIRDatabaseQuery.h
+eShop/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/Headers/FIRDatabaseReference.h
+eShop/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/Headers/FIRDataEventType.h
+eShop/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/Headers/FIRDataSnapshot.h
+eShop/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/Headers/FirebaseDatabase.h
+eShop/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/Headers/FIRMutableData.h
+eShop/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/Headers/FIRServerValue.h
+eShop/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/Headers/FIRTransactionResult.h
+eShop/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/Modules/module.modulemap
+eShop/Pods/FirebaseInstanceID/CHANGELOG.md
+eShop/Pods/FirebaseInstanceID/README.md
+eShop/Pods/FirebaseInstanceID/Frameworks/FirebaseInstanceID.framework/FirebaseInstanceID
+eShop/Pods/FirebaseInstanceID/Frameworks/FirebaseInstanceID.framework/Headers/FirebaseInstanceID.h
+eShop/Pods/FirebaseInstanceID/Frameworks/FirebaseInstanceID.framework/Headers/FIRInstanceID.h
+eShop/Pods/FirebaseInstanceID/Frameworks/FirebaseInstanceID.framework/Modules/module.modulemap
+eShop/Pods/GoogleToolboxForMac/GTMDefines.h
+eShop/Pods/GoogleToolboxForMac/LICENSE
+eShop/Pods/GoogleToolboxForMac/README.md
+eShop/Pods/GoogleToolboxForMac/DebugUtils/GTMDebugSelectorValidation.h
+eShop/Pods/GoogleToolboxForMac/DebugUtils/GTMDebugThreadValidation.h
+eShop/Pods/GoogleToolboxForMac/DebugUtils/GTMMethodCheck.h
+eShop/Pods/GoogleToolboxForMac/Foundation/GTMNSData+zlib.h
+eShop/Pods/GoogleToolboxForMac/Foundation/GTMNSData+zlib.m
+eShop/Pods/GoogleToolboxForMac/Foundation/GTMNSDictionary+URLArguments.h
+eShop/Pods/GoogleToolboxForMac/Foundation/GTMNSDictionary+URLArguments.m
+eShop/Pods/GoogleToolboxForMac/Foundation/GTMNSString+URLArguments.h
+eShop/Pods/GoogleToolboxForMac/Foundation/GTMNSString+URLArguments.m
+eShop/Pods/GTMSessionFetcher/LICENSE
+eShop/Pods/GTMSessionFetcher/README.md
+eShop/Pods/GTMSessionFetcher/Source/GTMSessionFetcher.h
+eShop/Pods/GTMSessionFetcher/Source/GTMSessionFetcher.m
+eShop/Pods/GTMSessionFetcher/Source/GTMSessionFetcherLogging.h
+eShop/Pods/GTMSessionFetcher/Source/GTMSessionFetcherLogging.m
+eShop/Pods/GTMSessionFetcher/Source/GTMSessionFetcherService.h
+eShop/Pods/GTMSessionFetcher/Source/GTMSessionFetcherService.m
+eShop/Pods/GTMSessionFetcher/Source/GTMSessionUploadFetcher.h
+eShop/Pods/GTMSessionFetcher/Source/GTMSessionUploadFetcher.m
+eShop/Pods/Headers/Private/Firebase/Firebase.h
+eShop/Pods/Headers/Public/Firebase/Firebase.h
+eShop/Pods/leveldb-library/LICENSE
+eShop/Pods/leveldb-library/README.md
+eShop/Pods/leveldb-library/db/builder.cc
+eShop/Pods/leveldb-library/db/builder.h
+eShop/Pods/leveldb-library/db/c.cc
+eShop/Pods/leveldb-library/db/db_impl.cc
+eShop/Pods/leveldb-library/db/db_impl.h
+eShop/Pods/leveldb-library/db/db_iter.cc
+eShop/Pods/leveldb-library/db/db_iter.h
+eShop/Pods/leveldb-library/db/dbformat.cc
+eShop/Pods/leveldb-library/db/dbformat.h
+eShop/Pods/leveldb-library/db/dumpfile.cc
+eShop/Pods/leveldb-library/db/filename.cc
+eShop/Pods/leveldb-library/db/filename.h
+eShop/Pods/leveldb-library/db/log_format.h
+eShop/Pods/leveldb-library/db/log_reader.cc
+eShop/Pods/leveldb-library/db/log_reader.h
+eShop/Pods/leveldb-library/db/log_writer.cc
+eShop/Pods/leveldb-library/db/log_writer.h
+eShop/Pods/leveldb-library/db/memtable.cc
+eShop/Pods/leveldb-library/db/memtable.h
+eShop/Pods/leveldb-library/db/repair.cc
+eShop/Pods/leveldb-library/db/skiplist.h
+eShop/Pods/leveldb-library/db/snapshot.h
+eShop/Pods/leveldb-library/db/table_cache.cc
+eShop/Pods/leveldb-library/db/table_cache.h
+eShop/Pods/leveldb-library/db/version_edit.cc
+eShop/Pods/leveldb-library/db/version_edit.h
+eShop/Pods/leveldb-library/db/version_set.cc
+eShop/Pods/leveldb-library/db/version_set.h
+eShop/Pods/leveldb-library/db/write_batch.cc
+eShop/Pods/leveldb-library/db/write_batch_internal.h
+eShop/Pods/leveldb-library/include/leveldb/c.h
+eShop/Pods/leveldb-library/include/leveldb/cache.h
+eShop/Pods/leveldb-library/include/leveldb/comparator.h
+eShop/Pods/leveldb-library/include/leveldb/db.h
+eShop/Pods/leveldb-library/include/leveldb/dumpfile.h
+eShop/Pods/leveldb-library/include/leveldb/env.h
+eShop/Pods/leveldb-library/include/leveldb/filter_policy.h
+eShop/Pods/leveldb-library/include/leveldb/iterator.h
+eShop/Pods/leveldb-library/include/leveldb/options.h
+eShop/Pods/leveldb-library/include/leveldb/slice.h
+eShop/Pods/leveldb-library/include/leveldb/status.h
+eShop/Pods/leveldb-library/include/leveldb/table.h
+eShop/Pods/leveldb-library/include/leveldb/table_builder.h
+eShop/Pods/leveldb-library/include/leveldb/write_batch.h
+eShop/Pods/leveldb-library/port/atomic_pointer.h
+eShop/Pods/leveldb-library/port/port.h
+eShop/Pods/leveldb-library/port/port_example.h
+eShop/Pods/leveldb-library/port/port_posix.cc
+eShop/Pods/leveldb-library/port/port_posix.h
+eShop/Pods/leveldb-library/port/port_posix_sse.cc
+eShop/Pods/leveldb-library/port/thread_annotations.h
+eShop/Pods/leveldb-library/table/block.cc
+eShop/Pods/leveldb-library/table/block.h
+eShop/Pods/leveldb-library/table/block_builder.cc
+eShop/Pods/leveldb-library/table/block_builder.h
+eShop/Pods/leveldb-library/table/filter_block.cc
+eShop/Pods/leveldb-library/table/filter_block.h
+eShop/Pods/leveldb-library/table/format.cc
+eShop/Pods/leveldb-library/table/format.h
+eShop/Pods/leveldb-library/table/iterator.cc
+eShop/Pods/leveldb-library/table/iterator_wrapper.h
+eShop/Pods/leveldb-library/table/merger.cc
+eShop/Pods/leveldb-library/table/merger.h
+eShop/Pods/leveldb-library/table/table.cc
+eShop/Pods/leveldb-library/table/table_builder.cc
+eShop/Pods/leveldb-library/table/two_level_iterator.cc
+eShop/Pods/leveldb-library/table/two_level_iterator.h
+eShop/Pods/leveldb-library/util/arena.cc
+eShop/Pods/leveldb-library/util/arena.h
+eShop/Pods/leveldb-library/util/bloom.cc
+eShop/Pods/leveldb-library/util/cache.cc
+eShop/Pods/leveldb-library/util/coding.cc
+eShop/Pods/leveldb-library/util/coding.h
+eShop/Pods/leveldb-library/util/comparator.cc
+eShop/Pods/leveldb-library/util/crc32c.cc
+eShop/Pods/leveldb-library/util/crc32c.h
+eShop/Pods/leveldb-library/util/env.cc
+eShop/Pods/leveldb-library/util/env_posix.cc
+eShop/Pods/leveldb-library/util/env_posix_test_helper.h
+eShop/Pods/leveldb-library/util/filter_policy.cc
+eShop/Pods/leveldb-library/util/hash.cc
+eShop/Pods/leveldb-library/util/hash.h
+eShop/Pods/leveldb-library/util/histogram.cc
+eShop/Pods/leveldb-library/util/histogram.h
+eShop/Pods/leveldb-library/util/logging.cc
+eShop/Pods/leveldb-library/util/logging.h
+eShop/Pods/leveldb-library/util/mutexlock.h
+eShop/Pods/leveldb-library/util/options.cc
+eShop/Pods/leveldb-library/util/posix_logger.h
+eShop/Pods/leveldb-library/util/random.h
+eShop/Pods/leveldb-library/util/status.cc
+eShop/Pods/leveldb-library/util/testharness.cc
+eShop/Pods/leveldb-library/util/testharness.h
+eShop/Pods/leveldb-library/util/testutil.cc
+eShop/Pods/leveldb-library/util/testutil.h
+eShop/Pods/nanopb/LICENSE.txt
+eShop/Pods/nanopb/pb.h
+eShop/Pods/nanopb/pb_common.c
+eShop/Pods/nanopb/pb_common.h
+eShop/Pods/nanopb/pb_decode.c
+eShop/Pods/nanopb/pb_decode.h
+eShop/Pods/nanopb/pb_encode.c
+eShop/Pods/nanopb/pb_encode.h
+eShop/Pods/nanopb/README.md
+eShop/Pods/Pods.xcodeproj/project.pbxproj
+eShop/Pods/Pods.xcodeproj/xcuserdata/Altran.xcuserdatad/xcschemes/GoogleToolboxForMac.xcscheme
+eShop/Pods/Pods.xcodeproj/xcuserdata/Altran.xcuserdatad/xcschemes/GTMSessionFetcher.xcscheme
+eShop/Pods/Pods.xcodeproj/xcuserdata/Altran.xcuserdatad/xcschemes/leveldb-library.xcscheme
+eShop/Pods/Pods.xcodeproj/xcuserdata/Altran.xcuserdatad/xcschemes/nanopb.xcscheme
+eShop/Pods/Pods.xcodeproj/xcuserdata/Altran.xcuserdatad/xcschemes/Pods-eShop.xcscheme
+eShop/Pods/Pods.xcodeproj/xcuserdata/Altran.xcuserdatad/xcschemes/Pods-eShopTests.xcscheme
+eShop/Pods/Pods.xcodeproj/xcuserdata/Altran.xcuserdatad/xcschemes/R.swift.Library.xcscheme
+eShop/Pods/Pods.xcodeproj/xcuserdata/Altran.xcuserdatad/xcschemes/xcschememanagement.plist
+eShop/Pods/R.swift/License
+eShop/Pods/R.swift/rswift
+eShop/Pods/R.swift.Library/License
+eShop/Pods/R.swift.Library/Readme.md
+eShop/Pods/R.swift.Library/Library/Core/ColorResource.swift
+eShop/Pods/R.swift.Library/Library/Core/Core+Migration.swift
+eShop/Pods/R.swift.Library/Library/Core/FileResource.swift
+eShop/Pods/R.swift.Library/Library/Core/FontResource.swift
+eShop/Pods/R.swift.Library/Library/Core/Identifier.swift
+eShop/Pods/R.swift.Library/Library/Core/ImageResource.swift
+eShop/Pods/R.swift.Library/Library/Core/NibResource.swift
+eShop/Pods/R.swift.Library/Library/Core/ReuseIdentifierProtocol.swift
+eShop/Pods/R.swift.Library/Library/Core/StoryboardResource.swift
+eShop/Pods/R.swift.Library/Library/Core/StoryboardSegueIdentifierProtocol.swift
+eShop/Pods/R.swift.Library/Library/Core/StoryboardViewControllerResource.swift
+eShop/Pods/R.swift.Library/Library/Core/StringResource.swift
+eShop/Pods/R.swift.Library/Library/Core/Validatable.swift
+eShop/Pods/R.swift.Library/Library/Foundation/Bundle+FileResource.swift
+eShop/Pods/R.swift.Library/Library/Foundation/Data+FileResource.swift
+eShop/Pods/R.swift.Library/Library/Foundation/Foundation+Migration.swift
+eShop/Pods/R.swift.Library/Library/UIKit/ColorResource+UIKit.swift
+eShop/Pods/R.swift.Library/Library/UIKit/NibResource+UIKit.swift
+eShop/Pods/R.swift.Library/Library/UIKit/StoryboardResourceWithInitialController+UIKit.swift
+eShop/Pods/R.swift.Library/Library/UIKit/TypedStoryboardSegueInfo+UIStoryboardSegue.swift
+eShop/Pods/R.swift.Library/Library/UIKit/UICollectionView+ReuseIdentifierProtocol.swift
+eShop/Pods/R.swift.Library/Library/UIKit/UIFont+FontResource.swift
+eShop/Pods/R.swift.Library/Library/UIKit/UIImage+ImageResource.swift
+eShop/Pods/R.swift.Library/Library/UIKit/UIKit+Migration.swift
+eShop/Pods/R.swift.Library/Library/UIKit/UINib+NibResource.swift
+eShop/Pods/R.swift.Library/Library/UIKit/UIStoryboard+StoryboardResource.swift
+eShop/Pods/R.swift.Library/Library/UIKit/UIStoryboard+StoryboardViewControllerResource.swift
+eShop/Pods/R.swift.Library/Library/UIKit/UITableView+ReuseIdentifierProtocol.swift
+eShop/Pods/R.swift.Library/Library/UIKit/UIViewController+NibResource.swift
+eShop/Pods/R.swift.Library/Library/UIKit/UIViewController+StoryboardSegueIdentifierProtocol.swift
+eShop/Pods/SwiftLint/file.zip
+eShop/Pods/SwiftLint/LICENSE
+eShop/Pods/SwiftLint/swiftlint
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Resources
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/SwiftLintFramework
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/Current
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/SwiftLintFramework
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/libswiftCore.dylib
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/libswiftCoreGraphics.dylib
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/libswiftDarwin.dylib
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/libswiftDispatch.dylib
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/libswiftFoundation.dylib
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/libswiftIOKit.dylib
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/libswiftObjectiveC.dylib
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/Commandant.framework/Commandant
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/Commandant.framework/Resources
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/Commandant.framework/Versions/Current
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/Commandant.framework/Versions/A/Commandant
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/Commandant.framework/Versions/A/Resources/Info.plist
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/Result.framework/Resources
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/Result.framework/Result
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/Result.framework/Versions/Current
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/Result.framework/Versions/A/Result
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/Result.framework/Versions/A/Resources/Info.plist
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/SourceKittenFramework.framework/Resources
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/SourceKittenFramework.framework/SourceKittenFramework
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/SourceKittenFramework.framework/Versions/Current
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/SourceKittenFramework.framework/Versions/A/SourceKittenFramework
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/SourceKittenFramework.framework/Versions/A/Resources/Info.plist
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/SwiftyTextTable.framework/Resources
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/SwiftyTextTable.framework/SwiftyTextTable
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/SwiftyTextTable.framework/Versions/Current
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/SwiftyTextTable.framework/Versions/A/SwiftyTextTable
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/SwiftyTextTable.framework/Versions/A/Resources/Info.plist
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/SWXMLHash.framework/Resources
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/SWXMLHash.framework/SWXMLHash
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/SWXMLHash.framework/Versions/Current
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/SWXMLHash.framework/Versions/A/SWXMLHash
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/SWXMLHash.framework/Versions/A/Resources/Info.plist
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/Yaml.framework/Resources
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/Yaml.framework/Yaml
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/Yaml.framework/Versions/Current
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/Yaml.framework/Versions/A/Yaml
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/Yaml.framework/Versions/A/Resources/Info.plist
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/Yams.framework/Resources
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/Yams.framework/Yams
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/Yams.framework/Versions/Current
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/Yams.framework/Versions/A/Yams
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Frameworks/Yams.framework/Versions/A/Resources/Info.plist
+eShop/Pods/SwiftLint/SwiftLintFramework.framework/Versions/A/Resources/Info.plist
+eShop/Pods/Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-dummy.m
+eShop/Pods/Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-prefix.pch
+eShop/Pods/Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-umbrella.h
+eShop/Pods/Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac.modulemap
+eShop/Pods/Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac.xcconfig
+eShop/Pods/Target Support Files/GoogleToolboxForMac/Info.plist
+eShop/Pods/Target Support Files/GTMSessionFetcher/GTMSessionFetcher-dummy.m
+eShop/Pods/Target Support Files/GTMSessionFetcher/GTMSessionFetcher-prefix.pch
+eShop/Pods/Target Support Files/GTMSessionFetcher/GTMSessionFetcher-umbrella.h
+eShop/Pods/Target Support Files/GTMSessionFetcher/GTMSessionFetcher.modulemap
+eShop/Pods/Target Support Files/GTMSessionFetcher/GTMSessionFetcher.xcconfig
+eShop/Pods/Target Support Files/GTMSessionFetcher/Info.plist
+eShop/Pods/Target Support Files/leveldb-library/Info.plist
+eShop/Pods/Target Support Files/leveldb-library/leveldb-library-dummy.m
+eShop/Pods/Target Support Files/leveldb-library/leveldb-library-prefix.pch
+eShop/Pods/Target Support Files/leveldb-library/leveldb-library-umbrella.h
+eShop/Pods/Target Support Files/leveldb-library/leveldb-library.modulemap
+eShop/Pods/Target Support Files/leveldb-library/leveldb-library.xcconfig
+eShop/Pods/Target Support Files/nanopb/Info.plist
+eShop/Pods/Target Support Files/nanopb/nanopb-dummy.m
+eShop/Pods/Target Support Files/nanopb/nanopb-prefix.pch
+eShop/Pods/Target Support Files/nanopb/nanopb-umbrella.h
+eShop/Pods/Target Support Files/nanopb/nanopb.modulemap
+eShop/Pods/Target Support Files/nanopb/nanopb.xcconfig
+eShop/Pods/Target Support Files/Pods-eShop/Info.plist
+eShop/Pods/Target Support Files/Pods-eShop/Pods-eShop-acknowledgements.markdown
+eShop/Pods/Target Support Files/Pods-eShop/Pods-eShop-acknowledgements.plist
+eShop/Pods/Target Support Files/Pods-eShop/Pods-eShop-dummy.m
+eShop/Pods/Target Support Files/Pods-eShop/Pods-eShop-frameworks.sh
+eShop/Pods/Target Support Files/Pods-eShop/Pods-eShop-resources.sh
+eShop/Pods/Target Support Files/Pods-eShop/Pods-eShop-umbrella.h
+eShop/Pods/Target Support Files/Pods-eShop/Pods-eShop.debug.xcconfig
+eShop/Pods/Target Support Files/Pods-eShop/Pods-eShop.modulemap
+eShop/Pods/Target Support Files/Pods-eShop/Pods-eShop.release.xcconfig
+eShop/Pods/Target Support Files/Pods-eShopTests/Info.plist
+eShop/Pods/Target Support Files/Pods-eShopTests/Pods-eShopTests-acknowledgements.markdown
+eShop/Pods/Target Support Files/Pods-eShopTests/Pods-eShopTests-acknowledgements.plist
+eShop/Pods/Target Support Files/Pods-eShopTests/Pods-eShopTests-dummy.m
+eShop/Pods/Target Support Files/Pods-eShopTests/Pods-eShopTests-frameworks.sh
+eShop/Pods/Target Support Files/Pods-eShopTests/Pods-eShopTests-resources.sh
+eShop/Pods/Target Support Files/Pods-eShopTests/Pods-eShopTests-umbrella.h
+eShop/Pods/Target Support Files/Pods-eShopTests/Pods-eShopTests.debug.xcconfig
+eShop/Pods/Target Support Files/Pods-eShopTests/Pods-eShopTests.modulemap
+eShop/Pods/Target Support Files/Pods-eShopTests/Pods-eShopTests.release.xcconfig
+eShop/Pods/Target Support Files/R.swift.Library/Info.plist
+eShop/Pods/Target Support Files/R.swift.Library/R.swift.Library-dummy.m
+eShop/Pods/Target Support Files/R.swift.Library/R.swift.Library-prefix.pch
+eShop/Pods/Target Support Files/R.swift.Library/R.swift.Library-umbrella.h
+eShop/Pods/Target Support Files/R.swift.Library/R.swift.Library.modulemap
+eShop/Pods/Target Support Files/R.swift.Library/R.swift.Library.xcconfig

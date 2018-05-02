@@ -345,3 +345,38 @@ eShop/Pods/Target Support Files/R.swift.Library/R.swift.Library-prefix.pch
 eShop/Pods/Target Support Files/R.swift.Library/R.swift.Library-umbrella.h
 eShop/Pods/Target Support Files/R.swift.Library/R.swift.Library.modulemap
 eShop/Pods/Target Support Files/R.swift.Library/R.swift.Library.xcconfig
+eShop/Pods/BarcodeScanner/LICENSE.md
+eShop/Pods/BarcodeScanner/README.md
+eShop/Pods/BarcodeScanner/Images/cameraRotate@3x.png
+eShop/Pods/BarcodeScanner/Images/flashOff@3x.png
+eShop/Pods/BarcodeScanner/Images/flashOn@3x.png
+eShop/Pods/BarcodeScanner/Images/info@3x.png
+eShop/Pods/BarcodeScanner/Localization/de.lproj/Localizable.strings
+eShop/Pods/BarcodeScanner/Localization/en.lproj/Localizable.strings
+eShop/Pods/BarcodeScanner/Localization/fr.lproj/Localizable.strings
+eShop/Pods/BarcodeScanner/Localization/pl-PL.lproj/Localizable.strings
+eShop/Pods/BarcodeScanner/Localization/tr.lproj/Localizable.strings
+eShop/Pods/BarcodeScanner/Sources/Controllers/BarcodeScannerViewController.swift
+eShop/Pods/BarcodeScanner/Sources/Controllers/CameraViewController.swift
+eShop/Pods/BarcodeScanner/Sources/Controllers/HeaderViewController.swift
+eShop/Pods/BarcodeScanner/Sources/Controllers/MessageViewController.swift
+eShop/Pods/BarcodeScanner/Sources/DataStructures/FocusViewType.swift
+eShop/Pods/BarcodeScanner/Sources/DataStructures/State.swift
+eShop/Pods/BarcodeScanner/Sources/DataStructures/TorchMode.swift
+eShop/Pods/BarcodeScanner/Sources/Extensions/AVMetadataObject+Extensions.swift
+eShop/Pods/BarcodeScanner/Sources/Extensions/NSLayoutConstraint+Extensions.swift
+eShop/Pods/BarcodeScanner/Sources/Extensions/UIView+Extensions.swift
+eShop/Pods/BarcodeScanner/Sources/Extensions/UIViewController+Extensions.swift
+eShop/Pods/BarcodeScanner/Sources/Helpers/Functions.swift
+eShop/Pods/BarcodeScanner/Sources/Helpers/VideoPermissionService.swift
+eShop/Pods/Pods.xcodeproj/xcuserdata/Altran.xcuserdatad/xcschemes/BarcodeScanner-BarcodeScanner.xcscheme
+eShop/Pods/Pods.xcodeproj/xcuserdata/Altran.xcuserdatad/xcschemes/BarcodeScanner-Localization.xcscheme
+eShop/Pods/Pods.xcodeproj/xcuserdata/Altran.xcuserdatad/xcschemes/BarcodeScanner.xcscheme
+eShop/Pods/Target Support Files/BarcodeScanner/BarcodeScanner-dummy.m
+eShop/Pods/Target Support Files/BarcodeScanner/BarcodeScanner-prefix.pch
+eShop/Pods/Target Support Files/BarcodeScanner/BarcodeScanner-umbrella.h
+eShop/Pods/Target Support Files/BarcodeScanner/BarcodeScanner.modulemap
+eShop/Pods/Target Support Files/BarcodeScanner/BarcodeScanner.xcconfig
+eShop/Pods/Target Support Files/BarcodeScanner/Info.plist
+eShop/Pods/Target Support Files/BarcodeScanner/ResourceBundle-BarcodeScanner-Info.plist
+eShop/Pods/Target Support Files/BarcodeScanner/ResourceBundle-Localization-Info.plist

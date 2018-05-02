@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     override init() {
         print("init")
-        
+
         #if DEBUG
         let filePath = Bundle.main.path(forResource: "GoogleService-Info-DEBUG", ofType: "plist") ?? ""
         guard let fileopts = FirebaseOptions(contentsOfFile: filePath)
@@ -30,30 +30,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             FirebaseApp.configure(options: fileopts)
         }
         #endif
-        
 
-        
-
+        StartUpAppSequencer.shared.start()
 
     }
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         /*
-        // Override point for customization after application launch.
+         // Override point for customization after application launch.
          let product = Product(name: "patatas2", barcode: "12345678")
          FirebaseManager.shared.create(product:product)
          let product2 = Product(name: "berenjena2", barcode: "2222222")
          FirebaseManager.shared.create(product:product2)
 
-        
+
          FirebaseManager.shared.products { products in
          print("\(products)")
 
          //FirebaseManager.shared.reset()
          }
- */
-
+         */
 
         return true
     }

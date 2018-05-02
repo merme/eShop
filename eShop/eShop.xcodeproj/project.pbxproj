@@ -12,7 +12,6 @@
 		BF384A7120984A5900E0D073 /* UTPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF384A7020984A5900E0D073 /* UTPrice.swift */; };
 		BF6361E620947541008A174C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6361E520947541008A174C /* AppDelegate.swift */; };
 		BF6361E820947541008A174C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6361E720947541008A174C /* ViewController.swift */; };
-		BF6361EB20947541008A174C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF6361E920947541008A174C /* Main.storyboard */; };
 		BF6361ED20947542008A174C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF6361EC20947542008A174C /* Assets.xcassets */; };
 		BF6361F020947542008A174C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF6361EE20947542008A174C /* LaunchScreen.storyboard */; };
 		BF63620920947763008A174C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF63620820947763008A174C /* GoogleService-Info.plist */; };
@@ -23,6 +22,15 @@
 		BF636228209506C4008A174C /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF636227209506C4008A174C /* Shop.swift */; };
 		BF63622B20951548008A174C /* UTShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63622A20951548008A174C /* UTShop.swift */; };
 		BF63622E2095F938008A174C /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63622C2095F937008A174C /* Price.swift */; };
+		BF7CC6DA2099FC75009C422F /* scanForPrice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7CC6D92099FC75009C422F /* scanForPrice.storyboard */; };
+		BF7CC6DC2099FC8E009C422F /* AppStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CC6DB2099FC8E009C422F /* AppStoryboard.swift */; };
+		BF7CC6E02099FD7E009C422F /* StartScanningPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CC6DF2099FD7E009C422F /* StartScanningPVC.swift */; };
+		BF7CC6F02099FE4B009C422F /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CC6E52099FE4B009C422F /* ConcurrentOperation.swift */; };
+		BF7CC6F82099FE4B009C422F /* PresentMainAppOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CC6ED2099FE4B009C422F /* PresentMainAppOperation.swift */; };
+		BF7CC6F92099FE4B009C422F /* StartUpAppSequencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CC6EE2099FE4B009C422F /* StartUpAppSequencer.swift */; };
+		BF7CC6FC2099FE73009C422F /* ScanForPriceCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CC6FB2099FE73009C422F /* ScanForPriceCoordinator.swift */; };
+		BF7CC6FE2099FF7A009C422F /* ScanForPriceNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CC6FD2099FF7A009C422F /* ScanForPriceNC.swift */; };
+		BF7CC701209A014A009C422F /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CC700209A014A009C422F /* UIApplicationExtension.swift */; };
 		BFBBD67120999284003EB7E7 /* GoogleService-Info-DEBUG.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFBBD67020999284003EB7E7 /* GoogleService-Info-DEBUG.plist */; };
 		F432E218DFF4D1571FE670EB /* Pods_eShopTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82A741CB64EA926208A5E54 /* Pods_eShopTests.framework */; };
 /* End PBXBuildFile section */
@@ -48,7 +56,6 @@
 		BF6361E220947540008A174C /* eShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF6361E520947541008A174C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF6361E720947541008A174C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BF6361EA20947541008A174C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BF6361EC20947542008A174C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF6361EF20947542008A174C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF6361F620947542008A174C /* eShopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eShopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +69,15 @@
 		BF636227209506C4008A174C /* Shop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		BF63622A20951548008A174C /* UTShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTShop.swift; sourceTree = "<group>"; };
 		BF63622C2095F937008A174C /* Price.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
+		BF7CC6D92099FC75009C422F /* scanForPrice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = scanForPrice.storyboard; sourceTree = "<group>"; };
+		BF7CC6DB2099FC8E009C422F /* AppStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStoryboard.swift; sourceTree = "<group>"; };
+		BF7CC6DF2099FD7E009C422F /* StartScanningPVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScanningPVC.swift; sourceTree = "<group>"; };
+		BF7CC6E52099FE4B009C422F /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
+		BF7CC6ED2099FE4B009C422F /* PresentMainAppOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentMainAppOperation.swift; sourceTree = "<group>"; };
+		BF7CC6EE2099FE4B009C422F /* StartUpAppSequencer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartUpAppSequencer.swift; sourceTree = "<group>"; };
+		BF7CC6FB2099FE73009C422F /* ScanForPriceCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanForPriceCoordinator.swift; sourceTree = "<group>"; };
+		BF7CC6FD2099FF7A009C422F /* ScanForPriceNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanForPriceNC.swift; sourceTree = "<group>"; };
+		BF7CC700209A014A009C422F /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
 		BFBBD67020999284003EB7E7 /* GoogleService-Info-DEBUG.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-DEBUG.plist"; sourceTree = "<group>"; };
 		D82A741CB64EA926208A5E54 /* Pods_eShopTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eShopTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -120,9 +136,9 @@
 		BF6361E420947540008A174C /* eShop */ = {
 			isa = PBXGroup;
 			children = (
+				BF7CC6E12099FE24009C422F /* DomainLayer */,
 				BF63621E2094941A008A174C /* DataLayer */,
 				BF63620F20947F46008A174C /* ViewLayer */,
-				BF6361E920947541008A174C /* Main.storyboard */,
 				BF63620520947712008A174C /* Application */,
 				BF6361E520947541008A174C /* AppDelegate.swift */,
 				BF6361E720947541008A174C /* ViewController.swift */,
@@ -145,6 +161,7 @@
 		BF63620520947712008A174C /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				BF7CC6FF209A012C009C422F /* Extensions */,
 				BF63620820947763008A174C /* GoogleService-Info.plist */,
 				BFBBD67020999284003EB7E7 /* GoogleService-Info-DEBUG.plist */,
 			);
@@ -154,6 +171,8 @@
 		BF63620F20947F46008A174C /* ViewLayer */ = {
 			isa = PBXGroup;
 			children = (
+				BF7CC6DD2099FCB6009C422F /* ScanForPrice */,
+				BF7CC6D82099FC36009C422F /* Storyboards */,
 				BF63621020947F46008A174C /* Resources */,
 			);
 			path = ViewLayer;
@@ -211,6 +230,77 @@
 				BF63622A20951548008A174C /* UTShop.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		BF7CC6D82099FC36009C422F /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				BF7CC6DB2099FC8E009C422F /* AppStoryboard.swift */,
+				BF7CC6D92099FC75009C422F /* scanForPrice.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		BF7CC6DD2099FCB6009C422F /* ScanForPrice */ = {
+			isa = PBXGroup;
+			children = (
+				BF7CC6FD2099FF7A009C422F /* ScanForPriceNC.swift */,
+				BF7CC6DE2099FD0A009C422F /* StartScanning */,
+			);
+			path = ScanForPrice;
+			sourceTree = "<group>";
+		};
+		BF7CC6DE2099FD0A009C422F /* StartScanning */ = {
+			isa = PBXGroup;
+			children = (
+				BF7CC6DF2099FD7E009C422F /* StartScanningPVC.swift */,
+			);
+			path = StartScanning;
+			sourceTree = "<group>";
+		};
+		BF7CC6E12099FE24009C422F /* DomainLayer */ = {
+			isa = PBXGroup;
+			children = (
+				BF7CC6FA2099FE52009C422F /* Coordinators */,
+				BF7CC6E22099FE4A009C422F /* Sequencer */,
+			);
+			name = DomainLayer;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		BF7CC6E22099FE4A009C422F /* Sequencer */ = {
+			isa = PBXGroup;
+			children = (
+				BF7CC6E32099FE4A009C422F /* Operation */,
+				BF7CC6EE2099FE4B009C422F /* StartUpAppSequencer.swift */,
+			);
+			name = Sequencer;
+			path = eShop/DomainLayer/Sequencer;
+			sourceTree = SOURCE_ROOT;
+		};
+		BF7CC6E32099FE4A009C422F /* Operation */ = {
+			isa = PBXGroup;
+			children = (
+				BF7CC6E52099FE4B009C422F /* ConcurrentOperation.swift */,
+				BF7CC6ED2099FE4B009C422F /* PresentMainAppOperation.swift */,
+			);
+			path = Operation;
+			sourceTree = "<group>";
+		};
+		BF7CC6FA2099FE52009C422F /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				BF7CC6FB2099FE73009C422F /* ScanForPriceCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		BF7CC6FF209A012C009C422F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BF7CC700209A014A009C422F /* UIApplicationExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		CAF843E5223B306707C76558 /* Frameworks */ = {
@@ -312,7 +402,7 @@
 				BF6361F020947542008A174C /* LaunchScreen.storyboard in Resources */,
 				BF63620920947763008A174C /* GoogleService-Info.plist in Resources */,
 				BF6361ED20947542008A174C /* Assets.xcassets in Resources */,
-				BF6361EB20947541008A174C /* Main.storyboard in Resources */,
+				BF7CC6DA2099FC75009C422F /* scanForPrice.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,7 +506,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\n# swiftlint autocorrect --format\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "if which swiftlint >/dev/null; then\n swiftlint\n# swiftlint autocorrect --format\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -425,13 +515,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF7CC6F02099FE4B009C422F /* ConcurrentOperation.swift in Sources */,
+				BF7CC701209A014A009C422F /* UIApplicationExtension.swift in Sources */,
+				BF7CC6DC2099FC8E009C422F /* AppStoryboard.swift in Sources */,
 				BF6361E820947541008A174C /* ViewController.swift in Sources */,
+				BF7CC6FE2099FF7A009C422F /* ScanForPriceNC.swift in Sources */,
 				BF6362222094941A008A174C /* Product.swift in Sources */,
 				BF6362232094941A008A174C /* FirebaseManager.swift in Sources */,
 				BF636228209506C4008A174C /* Shop.swift in Sources */,
+				BF7CC6FC2099FE73009C422F /* ScanForPriceCoordinator.swift in Sources */,
+				BF7CC6F82099FE4B009C422F /* PresentMainAppOperation.swift in Sources */,
+				BF7CC6E02099FD7E009C422F /* StartScanningPVC.swift in Sources */,
 				BF6361E620947541008A174C /* AppDelegate.swift in Sources */,
 				BF63621A209480B7008A174C /* R.generated.swift in Sources */,
 				BF63622E2095F938008A174C /* Price.swift in Sources */,
+				BF7CC6F92099FE4B009C422F /* StartUpAppSequencer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,14 +555,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		BF6361E920947541008A174C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BF6361EA20947541008A174C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BF6361EE20947542008A174C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -598,7 +688,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				INFOPLIST_FILE = eShop/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jca.eShop.debug;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -614,7 +707,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				INFOPLIST_FILE = eShop/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jca.eShop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -631,7 +727,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				INFOPLIST_FILE = eShopTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jca.eShopTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -649,7 +749,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				INFOPLIST_FILE = eShopTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jca.eShopTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

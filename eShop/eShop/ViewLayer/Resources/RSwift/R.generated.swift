@@ -72,17 +72,17 @@ struct R: Rswift.Validatable {
   struct storyboard {
     /// Storyboard `LaunchScreen`.
     static let launchScreen = _R.storyboard.launchScreen()
-    /// Storyboard `Main`.
-    static let main = _R.storyboard.main()
+    /// Storyboard `scanForPrice`.
+    static let scanForPrice = _R.storyboard.scanForPrice()
     
     /// `UIStoryboard(name: "LaunchScreen", bundle: ...)`
     static func launchScreen(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.launchScreen)
     }
     
-    /// `UIStoryboard(name: "Main", bundle: ...)`
-    static func main(_: Void = ()) -> UIKit.UIStoryboard {
-      return UIKit.UIStoryboard(resource: R.storyboard.main)
+    /// `UIStoryboard(name: "scanForPrice", bundle: ...)`
+    static func scanForPrice(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.scanForPrice)
     }
     
     fileprivate init() {}
@@ -95,7 +95,7 @@ struct R: Rswift.Validatable {
   
   fileprivate struct intern: Rswift.Validatable {
     fileprivate static func validate() throws {
-      // There are no resources to validate
+      try _R.validate()
     }
     
     fileprivate init() {}
@@ -106,12 +106,20 @@ struct R: Rswift.Validatable {
   fileprivate init() {}
 }
 
-struct _R {
+struct _R: Rswift.Validatable {
+  static func validate() throws {
+    try storyboard.validate()
+  }
+  
   struct nib {
     fileprivate init() {}
   }
   
-  struct storyboard {
+  struct storyboard: Rswift.Validatable {
+    static func validate() throws {
+      try scanForPrice.validate()
+    }
+    
     struct launchScreen: Rswift.StoryboardResourceWithInitialControllerType {
       typealias InitialController = UIKit.UIViewController
       
@@ -121,11 +129,26 @@ struct _R {
       fileprivate init() {}
     }
     
-    struct main: Rswift.StoryboardResourceWithInitialControllerType {
-      typealias InitialController = ViewController
+    struct scanForPrice: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+      typealias InitialController = ScanForPriceNC
       
       let bundle = R.hostingBundle
-      let name = "Main"
+      let name = "scanForPrice"
+      let scanForPriceNC = StoryboardViewControllerResource<ScanForPriceNC>(identifier: "ScanForPriceNC")
+      let startScanningPVC = StoryboardViewControllerResource<StartScanningPVC>(identifier: "StartScanningPVC")
+      
+      func scanForPriceNC(_: Void = ()) -> ScanForPriceNC? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: scanForPriceNC)
+      }
+      
+      func startScanningPVC(_: Void = ()) -> StartScanningPVC? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: startScanningPVC)
+      }
+      
+      static func validate() throws {
+        if _R.storyboard.scanForPrice().scanForPriceNC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'scanForPriceNC' could not be loaded from storyboard 'scanForPrice' as 'ScanForPriceNC'.") }
+        if _R.storyboard.scanForPrice().startScanningPVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'startScanningPVC' could not be loaded from storyboard 'scanForPrice' as 'StartScanningPVC'.") }
+      }
       
       fileprivate init() {}
     }

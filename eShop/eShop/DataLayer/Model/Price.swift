@@ -64,24 +64,24 @@ struct Price {
     func getKey() -> String {
         return "\(barcode)-\(shopLocation)"
     }
- /*
-    func shop(onComplete: @escaping (Shop) -> Void ) {
-        guard shop == nil else { onComplete(self.shop!); return }
-        var shop = Shop(key: shopLocation)
-        FirebaseManager.shared.find(latitude: shop.latitude, longitude: shop.longitude, radious: Shop.gapErrorDistance) { shops in
-            guard shops.count == 1 else { return }
-            onComplete(shops[1])
-        }
-    }
-    
-    func product(onComplete: (Shop) -> Void ) {
-        guard product == nil else { onComplete(self.product!); return}
-        FirebaseManager.shared.find(barcode: barcode) { productFound in
-            guard let _product = productFound else { return }
-            onComplete(_product)
-        }
-    }
-*/
+    /*
+     func shop(onComplete: @escaping (Shop) -> Void ) {
+     guard shop == nil else { onComplete(self.shop!); return }
+     var shop = Shop(key: shopLocation)
+     FirebaseManager.shared.find(latitude: shop.latitude, longitude: shop.longitude, radious: Shop.gapErrorDistance) { shops in
+     guard shops.count == 1 else { return }
+     onComplete(shops[1])
+     }
+     }
+
+     func product(onComplete: (Shop) -> Void ) {
+     guard product == nil else { onComplete(self.product!); return}
+     FirebaseManager.shared.find(barcode: barcode) { productFound in
+     guard let _product = productFound else { return }
+     onComplete(_product)
+     }
+     }
+     */
     func distanceInM(latitude: Double, longitude: Double) -> Double {
         return Shop(key: self.shopLocation).distanceInM(latitude: latitude, longitude: longitude)
     }

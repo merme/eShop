@@ -109,7 +109,7 @@ final class FirebaseManager {
     }
 
     // MARK: - Price
-    
+
     func create(price:Price) {
 
         self.pricesKeyReference.child(price.getKey()).setValue(price.toAnyObject())
@@ -132,54 +132,54 @@ final class FirebaseManager {
             onComplete(price)
         })
     }
-    
+
     func find(latitude:Double,longitude:Double, barcode:String, onComplete: @escaping  (Price) -> Void ) {
-        
+
         self.find(latitude: latitude, longitude: longitude, radious: Shop.gapErrorDistance) { shopsFound in
-            
+
             var shop =  Shop(name: nil, latitude: latitude, longitude: longitude)
             if shopsFound.isEmpty {
                 self.create(shop: shop)
             } else {
                 shop = shopsFound.first!
             }
-            
+
             self.find(barcode: barcode, onComplete: { productFound in
-                
+
                 var product =  Product(name: nil, barcode: barcode)
                 if productFound == nil {
                     self.create(product: product)
                 } else {
                     product = productFound!
                 }
-                
+
                 self.find(product: product, shop: shop, onComplete: { price in
                     onComplete(price)
                 })
             })
         }
     }
-    
+
     func find(latitude:Double,longitude:Double, radious: Double, barcode:String, sortByPrice:Bool = false, onComplete: @escaping  ([Price]) -> Void ) {
-        
+
         pricesKeyReference
             .queryOrdered(byChild: Price.Field.barcode)
             .queryEqual(toValue: barcode).observeSingleEvent(of: .value) { snapshot in
-            let prices:[Price] = snapshot.children
-                .map { return Price(snapshot: $0 as! DataSnapshot) ?? Price(barcode: "", shop: "", price: nil) }
-                .filter { return $0.price != nil }
-                .sorted(by: {
-                    /*if sortByPrice {
-                      return   $0.price! < $1.price!
-                    } else {
-                      return  $0.distanceInM(latitude:latitude,longitude:longitude) < $1.distanceInM(latitude:latitude,longitude:longitude)
-                    }*/
-                    return sortByPrice ? $0.price! < $1.price! : $0.distanceInM(latitude:latitude,longitude:longitude) < $1.distanceInM(latitude:latitude,longitude:longitude)
-                    
-                })
-            
-            onComplete(prices)
+                let prices:[Price] = snapshot.children
+                    .map { return Price(snapshot: $0 as! DataSnapshot) ?? Price(barcode: "", shop: "", price: nil) }
+                    .filter { return $0.price != nil }
+                    .sorted(by: {
+                        /*if sortByPrice {
+                         return   $0.price! < $1.price!
+                         } else {
+                         return  $0.distanceInM(latitude:latitude,longitude:longitude) < $1.distanceInM(latitude:latitude,longitude:longitude)
+                         }*/
+                        return sortByPrice ? $0.price! < $1.price! : $0.distanceInM(latitude:latitude,longitude:longitude) < $1.distanceInM(latitude:latitude,longitude:longitude)
+
+                    })
+
+                onComplete(prices)
         }
-        
+
     }
 }

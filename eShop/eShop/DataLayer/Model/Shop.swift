@@ -38,12 +38,12 @@ struct Shop {
         self.creation  = Date().timeIntervalSince1970
         self.ref = nil
     }
-    
+
     init(key:String) {
         //41p4189-2p0008
         let splitted = key.replacingOccurrences(of: "p", with: ".").components(separatedBy: "-")
         guard splitted.count == 2 else { self.init(name: nil, latitude: 0, longitude: 0); return }
-        
+
         self.init(name: nil, latitude: Double(splitted[0]) ?? 0, longitude: Double(splitted[1]) ?? 0)
     }
 
@@ -84,15 +84,15 @@ struct Shop {
                                     radius: CLLocationDistance(radiousM), identifier: "user")
         return user.contains(CLLocationCoordinate2DMake(CLLocationDegrees(self.latitude), CLLocationDegrees(self.longitude)))
     }
-    
+
     func distanceInM(latitude: Double, longitude: Double) -> Double {
-        
+
         let shop:CLLocation = CLLocation(latitude: CLLocationDegrees(self.latitude),
-                           longitude: CLLocationDegrees(self.latitude))
-        
+                                         longitude: CLLocationDegrees(self.latitude))
+
         let distance:Double = shop.distance(from: CLLocation(latitude: CLLocationDegrees(latitude),
-                                              longitude: CLLocationDegrees(latitude)))
-        
+                                                             longitude: CLLocationDegrees(latitude)))
+
         return Double(round(10000 * distance) / 10000)
     }
 

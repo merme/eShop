@@ -8,24 +8,24 @@
 import Foundation
 import Firebase
 
-struct Product {
+struct ShopPrice {
 
     struct Field {
-        static let barcode  = "barcode"
-        static let name     = "name"
+        static let shop  = "shop"
+        static let price     = "price"
         static let creation = "creation"
     }
 
     let key: String
-    let barcode: String
-    let name: String?
+    let shop: String
+    let price: Double
     let creation: Double
     let ref: DatabaseReference?
 
-    init(name: String?, barcode: String, key: String = "") {
+    init(shop: String, price: Double, key: String = "") {
         self.key = key
-        self.name = name
-        self.barcode = barcode
+        self.shop = shop
+        self.price = price
         self.creation = Date().timeIntervalSince1970
         self.ref = nil
     }
@@ -37,7 +37,7 @@ struct Product {
             let _creation = _snapshotValue[Field.creation] as? Double else { return nil }
 
         key = snapshot.key
-        name = _name.isEmpty ? nil : _name
+        name = _name
         barcode = _barcode
         creation = _creation
         ref = snapshot.ref
@@ -45,14 +45,10 @@ struct Product {
 
     func toAnyObject() -> Any {
         return [
-            Field.name: name ?? "",
+            Field.name: name,
             Field.barcode: barcode,
             Field.creation:  creation
         ]
     }
 
-    // MARK: - Public methods
-    func getKey() -> String {
-        return barcode
-    }
 }

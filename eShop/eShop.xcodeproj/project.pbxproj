@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		00DB072F203F235427605218 /* Pods_eShop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 693EBEB6285F376CB57A8A3D /* Pods_eShop.framework */; };
+		BF384A6F209789CA00E0D073 /* UTProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF384A6E209789C900E0D073 /* UTProduct.swift */; };
+		BF384A7120984A5900E0D073 /* UTPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF384A7020984A5900E0D073 /* UTPrice.swift */; };
 		BF6361E620947541008A174C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6361E520947541008A174C /* AppDelegate.swift */; };
 		BF6361E820947541008A174C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6361E720947541008A174C /* ViewController.swift */; };
 		BF6361EB20947541008A174C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF6361E920947541008A174C /* Main.storyboard */; };
@@ -20,6 +22,8 @@
 		BF6362262094BEFA008A174C /* UTFirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6362252094BEFA008A174C /* UTFirebaseManager.swift */; };
 		BF636228209506C4008A174C /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF636227209506C4008A174C /* Shop.swift */; };
 		BF63622B20951548008A174C /* UTShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63622A20951548008A174C /* UTShop.swift */; };
+		BF63622E2095F938008A174C /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63622C2095F937008A174C /* Price.swift */; };
+		BFBBD67120999284003EB7E7 /* GoogleService-Info-DEBUG.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFBBD67020999284003EB7E7 /* GoogleService-Info-DEBUG.plist */; };
 		F432E218DFF4D1571FE670EB /* Pods_eShopTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82A741CB64EA926208A5E54 /* Pods_eShopTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +43,8 @@
 		693EBEB6285F376CB57A8A3D /* Pods_eShop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eShop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8856398CD142B99E40406E97 /* Pods-eShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eShop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eShop/Pods-eShop.debug.xcconfig"; sourceTree = "<group>"; };
 		A12AAAD9FAD84030B79DF1E8 /* Pods-eShop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eShop.release.xcconfig"; path = "Pods/Target Support Files/Pods-eShop/Pods-eShop.release.xcconfig"; sourceTree = "<group>"; };
+		BF384A6E209789C900E0D073 /* UTProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UTProduct.swift; sourceTree = "<group>"; };
+		BF384A7020984A5900E0D073 /* UTPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UTPrice.swift; sourceTree = "<group>"; };
 		BF6361E220947540008A174C /* eShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF6361E520947541008A174C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF6361E720947541008A174C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +61,8 @@
 		BF6362252094BEFA008A174C /* UTFirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTFirebaseManager.swift; sourceTree = "<group>"; };
 		BF636227209506C4008A174C /* Shop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		BF63622A20951548008A174C /* UTShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTShop.swift; sourceTree = "<group>"; };
+		BF63622C2095F937008A174C /* Price.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
+		BFBBD67020999284003EB7E7 /* GoogleService-Info-DEBUG.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-DEBUG.plist"; sourceTree = "<group>"; };
 		D82A741CB64EA926208A5E54 /* Pods_eShopTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eShopTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -138,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				BF63620820947763008A174C /* GoogleService-Info.plist */,
+				BFBBD67020999284003EB7E7 /* GoogleService-Info-DEBUG.plist */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -180,6 +189,7 @@
 			children = (
 				BF6362202094941A008A174C /* Product.swift */,
 				BF636227209506C4008A174C /* Shop.swift */,
+				BF63622C2095F937008A174C /* Price.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -196,6 +206,8 @@
 		BF63622920951521008A174C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BF384A7020984A5900E0D073 /* UTPrice.swift */,
+				BF384A6E209789C900E0D073 /* UTProduct.swift */,
 				BF63622A20951548008A174C /* UTShop.swift */,
 			);
 			path = Model;
@@ -296,6 +308,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFBBD67120999284003EB7E7 /* GoogleService-Info-DEBUG.plist in Resources */,
 				BF6361F020947542008A174C /* LaunchScreen.storyboard in Resources */,
 				BF63620920947763008A174C /* GoogleService-Info.plist in Resources */,
 				BF6361ED20947542008A174C /* Assets.xcassets in Resources */,
@@ -401,7 +414,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\n#swiftlint autocorrect --format\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\n# swiftlint autocorrect --format\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -416,6 +429,7 @@
 				BF636228209506C4008A174C /* Shop.swift in Sources */,
 				BF6361E620947541008A174C /* AppDelegate.swift in Sources */,
 				BF63621A209480B7008A174C /* R.generated.swift in Sources */,
+				BF63622E2095F938008A174C /* Price.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,8 +437,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF384A7120984A5900E0D073 /* UTPrice.swift in Sources */,
 				BF63622B20951548008A174C /* UTShop.swift in Sources */,
 				BF6362262094BEFA008A174C /* UTFirebaseManager.swift in Sources */,
+				BF384A6F209789CA00E0D073 /* UTProduct.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,7 +600,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jca.eShop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jca.eShop.debug;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

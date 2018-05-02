@@ -167,7 +167,63 @@ class UTFirebaseManager: XCTestCase {
         self.waitForExpectations(timeout: 10, handler: nil)
     }
     
-    func test_shop_find_10m() {
+    func test_shop_exists_empty() {
+        
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        let shop = Shop(name: "Bon Preu Pallejà", latitude:  41.4189, longitude: 2.0008)
+        //FirebaseManager.shared.create(shop: shop)
+        FirebaseManager.shared.exists(latitude: shop.latitude, longitude: shop.longitude) { shop in
+            XCTAssertNil(shop)
+            asyncExpectation.fulfill()
+
+        }
+        
+        self.waitForExpectations(timeout: 1, handler: nil)
+    }
+    
+    func test_shop_exists_Found() {
+        
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        var shop = Shop(name: "Bon Preu Pallejà", latitude:  41.4189, longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop)
+        shop = Shop(name: "Bon Preu", latitude:  41.4188, longitude: 2.0008)
+        
+        FirebaseManager.shared.exists(latitude: shop.latitude, longitude: shop.longitude) { shop in
+            guard let _shop = shop else {XCTFail(); return}
+            XCTAssertEqual(_shop.name, "Bon Preu Pallejà")
+            asyncExpectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 1, handler: nil)
+    }
+    
+    func test_shop_exists_Notfound() {
+        
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        var shop = Shop(name: "Bon Preu Pallejà", latitude:  41.4189, longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop)
+        shop = Shop(name: "Mercadona Pallejà", latitude:  41.4207, longitude: 1.9965)
+        
+        FirebaseManager.shared.exists(latitude: shop.latitude, longitude: shop.longitude) { shop in
+            XCTAssertNil(shop)
+            asyncExpectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 1, handler: nil)
+    }
+    
+    
+    
+    func test_shop_find_10m_NotFound() {
         
         FirebaseManager.shared.reset()
         
@@ -184,6 +240,32 @@ class UTFirebaseManager: XCTestCase {
         
         FirebaseManager.shared.find(latitude: 41.4213, longitude: 1.9998, radious: 10) { shops in
             XCTAssertEqual(shops.count, 0)
+            
+            asyncExpectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
+        
+    }
+    
+    func test_shop_find_15m_Found() {
+        
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        var shop = Shop(name: "Bon Preu Pallejà", latitude:  41.4189, longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop)
+        
+        shop = Shop(name: "Carrefour Estepona", latitude:  36.4285, longitude: -5.1307)
+        FirebaseManager.shared.create(shop: shop)
+        
+        shop = Shop(name: "Whole Foods Market Vancouver", latitude:  49.2901, longitude: -123.1325)
+        FirebaseManager.shared.create(shop: shop)
+        
+        FirebaseManager.shared.find(latitude: 41.4188, longitude: 2.0007, radious: 15) { shops in
+            guard shops.count == 1 else { XCTFail(); return }
+            XCTAssertEqual(shops[0].name, "Bon Preu Pallejà")
             
             asyncExpectation.fulfill()
         }
@@ -313,5 +395,612 @@ class UTFirebaseManager: XCTestCase {
         self.waitForExpectations(timeout: 1, handler: nil)
         
     }
+    
+    // MARK: - Price
+    func test_price_create() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        let shop = Shop(name: "Bon Preu Pallejà", latitude:  41.4189, longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop)
+        
+        let product = Product(name: "patatas", barcode: "12345678")
+        FirebaseManager.shared.create(product:product)
+        
+        let price = Price(barcode: product.getKey(), shop: shop.getKey(), price: 10.0)
+        FirebaseManager.shared.create(price: price)
+        
+        FirebaseManager.shared.find(product: product, shop: shop) { price in
+            XCTAssertEqual(price.price, 10.0)
+             asyncExpectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func test_price_create_overwrite() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        let shop = Shop(name: "Bon Preu Pallejà", latitude:  41.4189, longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop)
+        
+        let product = Product(name: "patatas", barcode: "12345678")
+        FirebaseManager.shared.create(product:product)
+        
+        var price = Price(barcode: product.getKey(), shop: shop.getKey(), price: 10.0)
+        FirebaseManager.shared.create(price: price)
+         price = Price(barcode: product.getKey(), shop: shop.getKey(), price: 12.3)
+        FirebaseManager.shared.create(price: price)
+        
+        FirebaseManager.shared.find(product: product, shop: shop) { price in
+            
+          //  guard let _price = price else {XCTFail(); return}
+            
+            XCTAssertEqual(price.barcode,"12345678")
+            XCTAssertEqual(price.shopLocation,"41p4189-2p0008")
+            XCTAssertEqual(price.price, 12.3)
+            
+            XCTAssertEqual(price.shop?.latitude, 41.4189)
+            XCTAssertEqual(price.shop?.longitude, 2.0008)
+            guard let _shopName = price.shop?.name else  {XCTFail(); return}
+            XCTAssertEqual(_shopName, "Bon Preu Pallejà")
+            
+            XCTAssertEqual(price.product?.barcode, "12345678")
+            guard let _productName = price.product?.name else  {XCTFail(); return}
+            XCTAssertEqual(_productName, "patatas")
+            
+            
+            asyncExpectation.fulfill()
+        }
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func test_create_find_priceNotFound() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        let shop = Shop(name: "Bon Preu Pallejà", latitude:  41.4189, longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop)
+        
+        var product = Product(name: "patatas", barcode: "12345678")
+        FirebaseManager.shared.create(product:product)
+        
+        let price = Price(barcode: product.getKey(), shop: shop.getKey(), price: 10.0)
+        FirebaseManager.shared.create(price: price)
+        product = Product(name: "patatas", barcode: "1334")
+        
+        FirebaseManager.shared.find(product: product, shop: shop) { price in
+           
+            XCTAssertEqual(price.barcode,"1334")
+            XCTAssertEqual(price.shopLocation,"41p4189-2p0008")
+            XCTAssertNil(price.price)
+            
+            XCTAssertEqual(price.shop?.latitude, 41.4189)
+            XCTAssertEqual(price.shop?.longitude, 2.0008)
+            guard let _shopName = price.shop?.name else  {XCTFail(); return}
+            XCTAssertEqual(_shopName, "Bon Preu Pallejà")
+            
+            XCTAssertEqual(price.product?.barcode, "1334")
+            guard let _productName = price.product?.name else  {XCTFail(); return}
+            XCTAssertEqual(_productName, "patatas")
+            
+            asyncExpectation.fulfill()
+        }
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func test_price_find_ShopExists_ProductExists_PriceExists() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        let shop = Shop(name: "Bon Preu Pallejà", latitude:  41.4189, longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop)
+        
+        let product = Product(name: "patatas", barcode: "12345678")
+        FirebaseManager.shared.create(product:product)
+        
+        let price = Price(barcode: product.getKey(), shop: shop.getKey(), price: 10.0)
+        FirebaseManager.shared.create(price: price)
+        
+        FirebaseManager.shared.find(latitude: shop.latitude, longitude: shop.longitude, barcode: product.barcode) { price in
+            
+          //  guard let _price = price else {XCTFail(); return}
+            
+            XCTAssertEqual(price.barcode,"12345678")
+            XCTAssertEqual(price.shopLocation,"41p4189-2p0008")
+            XCTAssertEqual(price.price,10.0)
+            
+            XCTAssertEqual(price.shop?.latitude, 41.4189)
+            XCTAssertEqual(price.shop?.longitude, 2.0008)
+            guard let _shopName = price.shop?.name else  {XCTFail(); return}
+            XCTAssertEqual(_shopName, "Bon Preu Pallejà")
+            
+            XCTAssertEqual(price.product?.barcode, "12345678")
+            guard let _productName = price.product?.name else  {XCTFail(); return}
+            XCTAssertEqual(_productName, "patatas")
+            
+             asyncExpectation.fulfill()
+            
+        }
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func test_price_find_ShopExistsNearby_ProductExists_PriceExists() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        let shop = Shop(name: "Bon Preu Pallejà", latitude:  41.4189, longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop)
+        
+        let product = Product(name: "patatas", barcode: "12345678")
+        FirebaseManager.shared.create(product:product)
+        
+        let price = Price(barcode: product.getKey(), shop: shop.getKey(), price: 10.0)
+        FirebaseManager.shared.create(price: price)
+        
+        FirebaseManager.shared.find(latitude: 41.4188, longitude: 2.0007, barcode: product.barcode) { price in
+            
+            XCTAssertEqual(price.barcode,"12345678")
+            XCTAssertEqual(price.shopLocation,"41p4189-2p0008")
+            XCTAssertEqual(price.price,10.0)
+            
+            XCTAssertEqual(price.shop?.latitude, 41.4189)
+            XCTAssertEqual(price.shop?.longitude, 2.0008)
+            guard let _shopName = price.shop?.name else  {XCTFail(); return}
+            XCTAssertEqual(_shopName, "Bon Preu Pallejà")
+            
+            XCTAssertEqual(price.product?.barcode, "12345678")
+            guard let _productName = price.product?.name else  {XCTFail(); return}
+            XCTAssertEqual(_productName, "patatas")
+            
+            asyncExpectation.fulfill()
+            
+        }
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    
+    func test_price_find_ShopExists_ProductExists_PriceNotExists() {
+        
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        let shop = Shop(name: "Bon Preu Pallejà", latitude:  41.4189, longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop)
+        
+        let product = Product(name: "patatas", barcode: "12345678")
+        FirebaseManager.shared.create(product:product)
+        
+        //let price = Price(barcode: product.getKey(), shop: shop.getKey(), price: 10.0)
+        //FirebaseManager.shared.create(price: price)
+        
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, barcode: product.barcode) { price in
+            
+            XCTAssertEqual(price.barcode,"12345678")
+            XCTAssertEqual(price.shopLocation,"41p4189-2p0008")
+            XCTAssertNil(price.price)
+            
+            XCTAssertEqual(price.shop?.latitude, 41.4189)
+            XCTAssertEqual(price.shop?.longitude, 2.0008)
+            guard let _shopName = price.shop?.name else  {XCTFail(); return}
+            XCTAssertEqual(_shopName, "Bon Preu Pallejà")
+            
+            XCTAssertEqual(price.product?.barcode, "12345678")
+            guard let _productName = price.product?.name else  {XCTFail(); return}
+            XCTAssertEqual(_productName, "patatas")
+            
+            asyncExpectation.fulfill()
+            
+        }
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func test_price_find_ShopExistsNearby_ProductNotExists_PriceNotExists() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        let shop = Shop(name: "Bon Preu Pallejà", latitude:  41.4189, longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop)
+        
+        //let product = Product(name: "patatas", barcode: "12345678")
+        //FirebaseManager.shared.create(product:product)
+        
+       // let price = Price(barcode: product.getKey(), shop: shop.getKey(), price: 10.0)
+       // FirebaseManager.shared.create(price: price)
+        
+        FirebaseManager.shared.find(latitude: 41.4189 + 0.0001, longitude: 2.0008 + 0.0001, barcode: "12345678") { price in
+            
+            XCTAssertEqual(price.barcode,"12345678")
+            XCTAssertEqual(price.shopLocation,"41p4189-2p0008")
+            XCTAssertNil(price.price)
+            
+            XCTAssertEqual(price.shop?.latitude, 41.4189)
+            XCTAssertEqual(price.shop?.longitude, 2.0008)
+            guard let _shopName = price.shop?.name else  {XCTFail(); return}
+            XCTAssertEqual(_shopName, "Bon Preu Pallejà")
+            
+            XCTAssertEqual(price.product?.barcode, "12345678")
+            XCTAssertNil(price.product?.name)
+            
+            FirebaseManager.shared.find(barcode: price.barcode, onComplete: { product in
+                guard let _product = product else { XCTFail(); return }
+                
+                 XCTAssertNil(_product.name)
+                XCTAssertEqual(_product.barcode,"12345678")
+                asyncExpectation.fulfill()
+            })
+        }
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func test_price_find_ShopExists_ProductNotExists_PriceNotExists() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        let shop = Shop(name: "Bon Preu Pallejà", latitude:  41.4189, longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop)
+        
+        //let product = Product(name: "patatas", barcode: "12345678")
+        //FirebaseManager.shared.create(product:product)
+        
+        // let price = Price(barcode: product.getKey(), shop: shop.getKey(), price: 10.0)
+        // FirebaseManager.shared.create(price: price)
+        
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, barcode: "12345678") { price in
+            
+            XCTAssertEqual(price.barcode,"12345678")
+            XCTAssertEqual(price.shopLocation,"41p4189-2p0008")
+            XCTAssertNil(price.price)
+            
+            XCTAssertEqual(price.shop?.latitude, 41.4189)
+            XCTAssertEqual(price.shop?.longitude, 2.0008)
+            guard let _shopName = price.shop?.name else  {XCTFail(); return}
+            XCTAssertEqual(_shopName, "Bon Preu Pallejà")
+            
+            XCTAssertEqual(price.product?.barcode, "12345678")
+            XCTAssertNil(price.product?.name)
+            
+            FirebaseManager.shared.find(barcode: price.barcode, onComplete: { product in
+                guard let _product = product else { XCTFail(); return }
+                
+                XCTAssertNil(_product.name)
+                XCTAssertEqual(_product.barcode,"12345678")
+                asyncExpectation.fulfill()
+            })
+        }
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    
+    func test_price_find_NotShopExists_ProductExists_PriceNotExists() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        //let shop = Shop(name: "Bon Preu Pallejà", latitude:  41.4189, longitude: 2.0008)
+        //FirebaseManager.shared.create(shop: shop)
+        
+        let product = Product(name: "patatas", barcode: "12345678")
+        FirebaseManager.shared.create(product:product)
+        
+        // let price = Price(barcode: product.getKey(), shop: shop.getKey(), price: 10.0)
+        // FirebaseManager.shared.create(price: price)
+        
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, barcode: "12345678") { price in
+            
+            XCTAssertEqual(price.barcode,"12345678")
+            XCTAssertEqual(price.shopLocation,"41p4189-2p0008")
+            XCTAssertNil(price.price)
+            
+            XCTAssertEqual(price.shop?.latitude, 41.4189)
+            XCTAssertEqual(price.shop?.longitude, 2.0008)
+            XCTAssertNil(price.shop?.name)
+            
+            guard let _productName = price.product?.name else  {XCTFail(); return}
+            XCTAssertEqual(price.product?.barcode, "12345678")
+            XCTAssertEqual(_productName,"patatas")
+            
+            FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: Shop.gapErrorDistance, onComplete: { shops in
+                guard shops.isEmpty == false else { XCTFail(); return }
+                
+                XCTAssertNil(shops[0].name)
+                XCTAssertEqual(shops[0].latitude,41.4189)
+                XCTAssertEqual(shops[0].longitude,2.0008)
+                
+                asyncExpectation.fulfill()
+            })
+    
+        }
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func test_price_find_NotShopExists_ProductNotExists_PriceNotExists() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        //let shop = Shop(name: "Bon Preu Pallejà", latitude:  41.4189, longitude: 2.0008)
+        //FirebaseManager.shared.create(shop: shop)
+        
+        //let product = Product(name: "patatas", barcode: "12345678")
+       // FirebaseManager.shared.create(product:product)
+        
+        // let price = Price(barcode: product.getKey(), shop: shop.getKey(), price: 10.0)
+        // FirebaseManager.shared.create(price: price)
+        
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, barcode: "12345678") { price in
+            
+            XCTAssertEqual(price.barcode,"12345678")
+            XCTAssertEqual(price.shopLocation,"41p4189-2p0008")
+            XCTAssertNil(price.price)
+            
+            XCTAssertEqual(price.shop?.latitude, 41.4189)
+            XCTAssertEqual(price.shop?.longitude, 2.0008)
+            XCTAssertNil(price.shop?.name)
+            
+            XCTAssertEqual(price.product?.barcode, "12345678")
+            XCTAssertNil(price.product?.name)
+            
+            FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: Shop.gapErrorDistance, onComplete: { shops in
+                guard shops.isEmpty == false else { XCTFail(); return }
+                
+                XCTAssertNil(shops[0].name)
+                XCTAssertEqual(shops[0].latitude,41.4189)
+                XCTAssertEqual(shops[0].longitude,2.0008)
+                
+                FirebaseManager.shared.find(barcode: price.barcode, onComplete: { product in
+                    guard let _product = product else { XCTFail(); return }
+                    
+                    XCTAssertNil(_product.name)
+                    XCTAssertEqual(_product.barcode,"12345678")
+                    asyncExpectation.fulfill()
+                })
+            })
+            
+        }
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    
+    func test_price_find() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        let shop3 = Shop(name: "Shop3", latitude:  40.4289, longitude: 3.0108)
+        FirebaseManager.shared.create(shop: shop3)
+        let shop1 = Shop(name: "Shop1", latitude:  41.4189, longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop1)
+        let shop2 = Shop(name: "Shop2", latitude:  41.4289, longitude: 2.0108)
+        FirebaseManager.shared.create(shop: shop2)
+        
+        
+        let product = Product(name: "patatas", barcode: "12345678")
+        FirebaseManager.shared.create(product:product)
+        
+        var price = Price(barcode: product.getKey(), shop: shop1.getKey(), price: 10.0)
+         FirebaseManager.shared.create(price: price)
+        price = Price(barcode: product.getKey(), shop: shop2.getKey(), price: 15.0)
+        FirebaseManager.shared.create(price: price)
+        price = Price(barcode: product.getKey(), shop: shop3.getKey(), price: 15.0)
+        FirebaseManager.shared.create(price: price)
+        
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000, barcode: "12345678") { prices in
+            XCTAssertEqual(prices.count, 3)
+            
+            XCTAssertEqual(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008), 0)
+            XCTAssertEqual(prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008), 1390.062)
+            XCTAssertEqual(prices[2].distanceInM(latitude: 41.4189, longitude: 2.0008), 137989.2863)
+            
+            asyncExpectation.fulfill()
+        }
+       
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func test_price_find_3shops_3products_11111111() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        self.set3Products3Shops()
+        
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000, barcode: "11111111") { prices in
+            XCTAssertEqual(prices.count, 3)
+            
+            XCTAssertEqual(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008), 139.0062)
+            XCTAssertEqual(prices[0].price!, 3)
+            XCTAssertEqual(prices[0].shopLocation, "41p4199-2p0008")
+            XCTAssertEqual(prices[0].barcode, "11111111")
+            XCTAssertEqual(prices[0].barcode, "11111111")
+            XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) <= prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008))
+            
+            XCTAssertEqual(prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008), 1390.062)
+            XCTAssertEqual(prices[1].price!, 2)
+            XCTAssertEqual(prices[1].shopLocation, "41p4289-2p0008")
+            XCTAssertEqual(prices[1].barcode, "11111111")
+            print("\(prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008))")
+            XCTAssertTrue(prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008) <= prices[2].distanceInM(latitude: 41.4189, longitude: 2.0008))
+            
+            XCTAssertEqual(prices[2].distanceInM(latitude: 41.4189, longitude: 2.0008), 13897.2178)
+            XCTAssertEqual(prices[2].price!, 1)
+            XCTAssertEqual(prices[2].shopLocation, "41p5189-2p0008")
+            XCTAssertEqual(prices[2].barcode, "11111111")
+            print("\(prices[2].distanceInM(latitude: 41.4189, longitude: 2.0008))")
+         
+            asyncExpectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func test_price_find_3shops_3products_22222222() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        self.set3Products3Shops()
+        
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000, barcode: "22222222") { prices in
+            XCTAssertEqual(prices.count, 1)
+            
+            XCTAssertEqual(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008), 1390.062)
+            XCTAssertEqual(prices[0].price!, 5)
+            XCTAssertEqual(prices[0].shopLocation, "41p4289-2p0008")
+            XCTAssertEqual(prices[0].barcode, "22222222")
+            
+            asyncExpectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func test_price_find_3shops_3products_33333333() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        self.set3Products3Shops()
+        
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000, barcode: "33333333") { prices in
+            XCTAssertEqual(prices.count, 2)
+            
+            XCTAssertEqual(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008), 139.0096)
+            XCTAssertEqual(prices[0].price!, 6)
+            XCTAssertEqual(prices[0].shopLocation, "41p4199-2p0008")
+            XCTAssertEqual(prices[0].barcode, "33333333")
+            XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) <= prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008))
+            
+            XCTAssertEqual(prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008), 13897.2178)
+            XCTAssertEqual(prices[1].price!, 4)
+            XCTAssertEqual(prices[1].shopLocation, "41p5189-2p0008")
+            XCTAssertEqual(prices[1].barcode, "33333333")
+            print("\(prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008))")
+            
+            asyncExpectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func test_price_find_3shops_3products_11111111_sortByPrice() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        self.set3Products3Shops()
+        
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000, barcode: "11111111",sortByPrice: true) { prices in
+            XCTAssertEqual(prices.count, 3)
+            
+            XCTAssertEqual(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008), 13897.2178)
+            XCTAssertEqual(prices[0].price!, 1)
+            XCTAssertEqual(prices[0].shopLocation, "41p5189-2p0008")
+            XCTAssertEqual(prices[0].barcode, "11111111")
+            XCTAssertTrue(prices[0].price! <= prices[1].price!)
+            
+            XCTAssertEqual(prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008), 1390.062)
+            XCTAssertEqual(prices[1].price!, 2)
+            XCTAssertEqual(prices[1].shopLocation, "41p4289-2p0008")
+            XCTAssertEqual(prices[1].barcode, "11111111")
+            print("\(prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008))")
+            XCTAssertTrue(prices[1].price! <= prices[2].price!)
+            
+            XCTAssertEqual(prices[2].distanceInM(latitude: 41.4189, longitude: 2.0008), 139.0062)
+            XCTAssertEqual(prices[2].price!, 3)
+            XCTAssertEqual(prices[2].shopLocation, "41p4199-2p0008")
+            XCTAssertEqual(prices[2].barcode, "11111111")
+            print("\(prices[2].distanceInM(latitude: 41.4189, longitude: 2.0008))")
+            
+            asyncExpectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func test_price_find_3shops_3products_22222222_sortByPrice() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        self.set3Products3Shops()
+        
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000, barcode: "22222222",sortByPrice: true) { prices in
+            XCTAssertEqual(prices.count, 1)
+            
+            XCTAssertEqual(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008), 1390.062)
+            XCTAssertEqual(prices[0].price!, 5)
+            XCTAssertEqual(prices[0].shopLocation, "41p4289-2p0008")
+            XCTAssertEqual(prices[0].barcode, "22222222")
+            
+            asyncExpectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func test_price_find_3shops_3products_33333333_sortByPrice() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        self.set3Products3Shops()
+        
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000, barcode: "33333333",sortByPrice: true) { prices in
+            XCTAssertEqual(prices.count, 2)
+            
+            XCTAssertEqual(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008), 13897.2178)
+            XCTAssertEqual(prices[0].price!, 4)
+            XCTAssertEqual(prices[0].shopLocation, "41p5189-2p0008")
+            XCTAssertEqual(prices[0].barcode, "33333333")
+            XCTAssertTrue(prices[0].price! <= prices[1].price!)
+            
+            XCTAssertEqual(prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008), 139.0096)
+            XCTAssertEqual(prices[1].price!, 6)
+            XCTAssertEqual(prices[1].shopLocation, "41p4199-2p0008")
+            XCTAssertEqual(prices[1].barcode, "33333333")
+            
+            asyncExpectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    // MARK:- Private/Internal
+    func set3Products3Shops() {
+        let shop1 = Shop(name: "Shop1", latitude:  41.4189 + 0.1000, longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop1)
+        let shop2 = Shop(name: "Shop2", latitude:  41.4189 + 0.0100 , longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop2)
+        let shop3 = Shop(name: "Shop3", latitude:  41.4189 + 0.0010 , longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop3)
+        
+        let product1 = Product(name: "product1", barcode: "11111111")
+        FirebaseManager.shared.create(product:product1)
+        let product2 = Product(name: "product2", barcode: "22222222")
+        FirebaseManager.shared.create(product:product2)
+        let product3 = Product(name: "product3", barcode: "33333333")
+        FirebaseManager.shared.create(product:product3)
+        
+        var price = Price(barcode: product1.getKey(), shop: shop1.getKey(), price: 1.0)
+        FirebaseManager.shared.create(price: price)
+        price = Price(barcode: product1.getKey(), shop: shop2.getKey(), price: 2.0)
+        FirebaseManager.shared.create(price: price)
+        price = Price(barcode: product1.getKey(), shop: shop3.getKey(), price: 3.0)
+        FirebaseManager.shared.create(price: price)
+        
+        price = Price(barcode: product2.getKey(), shop: shop2.getKey(), price: 5.0)
+        FirebaseManager.shared.create(price: price)
+        
+        price = Price(barcode: product3.getKey(), shop: shop1.getKey(), price: 4.0)
+        FirebaseManager.shared.create(price: price)
+        price = Price(barcode: product3.getKey(), shop: shop3.getKey(), price: 6.0)
+        FirebaseManager.shared.create(price: price)
+ 
+    }
+    
     
 }

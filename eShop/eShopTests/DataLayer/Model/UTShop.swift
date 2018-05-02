@@ -22,6 +22,33 @@ class UTShop: XCTestCase {
         super.tearDown()
     }
     
+    func test_init_key() {
+        let shop = Shop(key:"41p4189-2p0008")
+        XCTAssertEqual(shop.latitude, 41.4189)
+        XCTAssertEqual(shop.longitude, 2.0008)
+    }
+    
+    
+    
+    func test_name_nil() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        var shop = Shop(name: nil, latitude:  41.4189, longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop)
+        
+        
+        FirebaseManager.shared.find(latitude: 41.4191, longitude: 1.9999, radious: 1000 ) { shops in
+            guard shops.count == 1 else { XCTFail(); return }
+            XCTAssertNil(shops[0].name)
+            
+            asyncExpectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 1, handler: nil)
+    }
+    
     func test_getKey() {
         var shop = Shop(name: "", latitude: 123.1234, longitude: 321.4321)
         XCTAssertEqual(shop.getKey(),"123p1234-321p4321")
@@ -64,8 +91,19 @@ class UTShop: XCTestCase {
         XCTAssertEqual(shop.isPointInRadious(latitude: 41.4213, longitude: 1.9998, radiousM: 100000),false) //100 Km
         XCTAssertEqual(shop.isPointInRadious(latitude: 41.4213, longitude: 1.9998, radiousM: 1000000),false) //1.000 Km
         XCTAssertEqual(shop.isPointInRadious(latitude: 41.4213, longitude: 1.9998, radiousM: 10000000),true) //10.0000 Km
+    }
+    
+    func test_distanceInM() {
         
+        let shop = Shop(name: "Bon Preu Pallejà", latitude:  41.4189, longitude: 2.0008)
         
+        XCTAssertEqual(shop.distanceInM( latitude:  41.4189, longitude: 2.0008), 0)
+        
+        XCTAssertEqual(shop.distanceInM( latitude:  41.4189 - 0.0001, longitude: 2.0008), 13.901)
+        XCTAssertEqual(abs(shop.distanceInM( latitude:  41.4189 - 0.0010, longitude: 2.0008) - 139.0099) <= 0.0002 , true)
+        XCTAssertEqual(abs(shop.distanceInM( latitude:  41.4189 - 0.0010, longitude: 2.0008 + 0.0010) - 139.0099) <= 0.0002, true)
+        XCTAssertEqual(abs(shop.distanceInM( latitude:  41.4189 - 0.0100, longitude: 2.0008) - 1390.0994) <= 0.0003, true)
+        XCTAssertEqual(abs(shop.distanceInM( latitude:  41.4189 - 0.0100, longitude: 2.0008 + 0.0100) - 1390.0994) <= 0.0003, true)
     }
    
     

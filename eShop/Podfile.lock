@@ -48,6 +48,9 @@ PODS:
   - R.swift (3.3.0):
     - R.swift.Library (~> 3.0.2)
   - R.swift.Library (3.0.2)
+  - RxCocoa (4.1.2):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.1.2)
   - SwiftLint (0.16.1)
 
 DEPENDENCIES:
@@ -57,6 +60,8 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - R.swift (~> 3.3.0)
+  - RxCocoa
+  - RxSwift
   - SwiftLint (~> 0.16.1)
 
 SPEC REPOS:
@@ -74,6 +79,8 @@ SPEC REPOS:
     - nanopb
     - R.swift
     - R.swift.Library
+    - RxCocoa
+    - RxSwift
     - SwiftLint
 
 SPEC CHECKSUMS:
@@ -90,8 +97,10 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   R.swift: bde9704d50ff36820f49e266bc88ef545e1e9b36
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
+  RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
+  RxSwift: e49536837d9901277638493ea537394d4b55f570
   SwiftLint: b8b683208cc09640898f16318a7a452274e91f61
 
-PODFILE CHECKSUM: 81dd0e8eff98e80d8900ff9647494684f16adde0
+PODFILE CHECKSUM: 4090d6443d826be6c8830ea4d248cee66beb539e
 
 COCOAPODS: 1.5.0

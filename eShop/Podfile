@@ -6,6 +6,10 @@ target 'eShop' do
   use_frameworks!
 
 
+# Pods Reactive
+pod 'RxSwift'
+pod 'RxCocoa'
+
   # Pods for DDBB
   pod 'Firebase'
   pod 'Firebase/Core'

@@ -9,7 +9,14 @@
 import UIKit
 
 class StartScanningPVC: UIViewController {
-
+    
+    // MARK: - Private/Internal
+    private var startScanningContentVC:StartScanningContentVC?
+    
+    // MARK: - Callbacks
+    var onScan3: (() -> Void) = { }
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +28,18 @@ class StartScanningPVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if (segue.identifier ==  R.segue.startScanningPVC.startScanningContentSegue.identifier) {
+            startScanningContentVC = segue.destination as? StartScanningContentVC
+            
+            startScanningContentVC?.onScan = { [weak self] in
+                guard let weakSelf = self else { return }
+                weakSelf.onScan3()
+            }
+        }
+    }
+    
     /*
      // MARK: - Navigation
 

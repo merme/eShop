@@ -19,11 +19,13 @@ class  StartUpAppSequencer {
     func start() {
 
         let presentMainAppOperation = PresentMainAppOperation()
-
-        let operations = [presentMainAppOperation]
+        //let presentSplashOperation = PresentSplashOperation()
+       
+        let operations = [/*presentSplashOperation,*/
+                          presentMainAppOperation]
 
         // Add operation dependencies
-        //presentMainAppOperation.addDependency(fetchFirstMachineOperation)
+        //presentMainAppOperation.addDependency(presentSplashOperation)
 
         operationQueue.addOperations(operations, waitUntilFinished: false)
     }

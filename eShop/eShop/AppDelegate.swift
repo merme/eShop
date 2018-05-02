@@ -31,8 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         #endif
 
-        StartUpAppSequencer.shared.start()
-
     }
 
     func application(_ application: UIApplication,
@@ -51,6 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          //FirebaseManager.shared.reset()
          }
          */
+         StartUpAppSequencer.shared.start()
 
         return true
     }

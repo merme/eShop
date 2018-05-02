@@ -63,21 +63,43 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.segue` struct is generated, and contains static references to 0 view controllers.
+  /// This `R.segue` struct is generated, and contains static references to 1 view controllers.
   struct segue {
+    /// This struct is generated for `StartScanningPVC`, and contains static references to 1 segues.
+    struct startScanningPVC {
+      /// Segue identifier `StartScanningContentSegue`.
+      static let startScanningContentSegue: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, StartScanningPVC, StartScanningContentVC> = Rswift.StoryboardSegueIdentifier(identifier: "StartScanningContentSegue")
+      
+      /// Optionally returns a typed version of segue `StartScanningContentSegue`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func startScanningContentSegue(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, StartScanningPVC, StartScanningContentVC>? {
+        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.startScanningPVC.startScanningContentSegue, segue: segue)
+      }
+      
+      fileprivate init() {}
+    }
+    
     fileprivate init() {}
   }
   
-  /// This `R.storyboard` struct is generated, and contains static references to 2 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 3 storyboards.
   struct storyboard {
     /// Storyboard `LaunchScreen`.
     static let launchScreen = _R.storyboard.launchScreen()
+    /// Storyboard `Main`.
+    static let main = _R.storyboard.main()
     /// Storyboard `scanForPrice`.
     static let scanForPrice = _R.storyboard.scanForPrice()
     
     /// `UIStoryboard(name: "LaunchScreen", bundle: ...)`
     static func launchScreen(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.launchScreen)
+    }
+    
+    /// `UIStoryboard(name: "Main", bundle: ...)`
+    static func main(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.main)
     }
     
     /// `UIStoryboard(name: "scanForPrice", bundle: ...)`
@@ -117,6 +139,7 @@ struct _R: Rswift.Validatable {
   
   struct storyboard: Rswift.Validatable {
     static func validate() throws {
+      try main.validate()
       try scanForPrice.validate()
     }
     
@@ -129,13 +152,40 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
     
-    struct scanForPrice: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = ScanForPriceNC
+    struct main: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+      typealias InitialController = SplashVC
       
+      let bundle = R.hostingBundle
+      let mainTabViewController = StoryboardViewControllerResource<UIKit.UITabBarController>(identifier: "MainTabViewController")
+      let name = "Main"
+      let splashVC = StoryboardViewControllerResource<SplashVC>(identifier: "SplashVC")
+      
+      func mainTabViewController(_: Void = ()) -> UIKit.UITabBarController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: mainTabViewController)
+      }
+      
+      func splashVC(_: Void = ()) -> SplashVC? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: splashVC)
+      }
+      
+      static func validate() throws {
+        if _R.storyboard.main().mainTabViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'mainTabViewController' could not be loaded from storyboard 'Main' as 'UIKit.UITabBarController'.") }
+        if _R.storyboard.main().splashVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'splashVC' could not be loaded from storyboard 'Main' as 'SplashVC'.") }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct scanForPrice: Rswift.StoryboardResourceType, Rswift.Validatable {
+      let barcodeScannerPVC = StoryboardViewControllerResource<BarcodeScannerPVC>(identifier: "BarcodeScannerPVC")
       let bundle = R.hostingBundle
       let name = "scanForPrice"
       let scanForPriceNC = StoryboardViewControllerResource<ScanForPriceNC>(identifier: "ScanForPriceNC")
       let startScanningPVC = StoryboardViewControllerResource<StartScanningPVC>(identifier: "StartScanningPVC")
+      
+      func barcodeScannerPVC(_: Void = ()) -> BarcodeScannerPVC? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: barcodeScannerPVC)
+      }
       
       func scanForPriceNC(_: Void = ()) -> ScanForPriceNC? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: scanForPriceNC)
@@ -148,6 +198,7 @@ struct _R: Rswift.Validatable {
       static func validate() throws {
         if _R.storyboard.scanForPrice().scanForPriceNC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'scanForPriceNC' could not be loaded from storyboard 'scanForPrice' as 'ScanForPriceNC'.") }
         if _R.storyboard.scanForPrice().startScanningPVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'startScanningPVC' could not be loaded from storyboard 'scanForPrice' as 'StartScanningPVC'.") }
+        if _R.storyboard.scanForPrice().barcodeScannerPVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'barcodeScannerPVC' could not be loaded from storyboard 'scanForPrice' as 'BarcodeScannerPVC'.") }
       }
       
       fileprivate init() {}

@@ -10,6 +10,7 @@ import UIKit
 enum AppStoryboard : String {
 
     case scanForPrice
+    case Main
 
     var instance : UIStoryboard {
 

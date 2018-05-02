@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="11C-SM-m6e">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -21,7 +21,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bu6-uN-gSJ">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <connections>
-                                    <segue destination="42u-pf-Shg" kind="embed" id="aaP-0J-7VT"/>
+                                    <segue destination="42u-pf-Shg" kind="embed" identifier="StartScanningContentSegue" id="aaP-0J-7VT"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -53,19 +53,62 @@
             </objects>
             <point key="canvasLocation" x="-1041" y="170"/>
         </scene>
-        <!--View Controller-->
+        <!--Start Scanning ContentVC-->
         <scene sceneID="pFY-bM-aNz">
             <objects>
-                <viewController id="42u-pf-Shg" sceneMemberID="viewController">
+                <viewController id="42u-pf-Shg" customClass="StartScanningContentVC" customModule="eShop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YSu-4J-a42">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxA-IM-dgZ">
+                                <rect key="frame" x="164.5" y="308.5" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="hxA-IM-dgZ" firstAttribute="centerY" secondItem="YSu-4J-a42" secondAttribute="centerY" id="2b8-qZ-YKd"/>
+                            <constraint firstItem="hxA-IM-dgZ" firstAttribute="centerX" secondItem="YSu-4J-a42" secondAttribute="centerX" id="Y9h-7H-m7t"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="EDO-Td-2Uy"/>
                     </view>
+                    <connections>
+                        <outlet property="btnScan" destination="hxA-IM-dgZ" id="yyc-18-tV7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VJT-R0-DC6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-236" y="1011"/>
+        </scene>
+        <!--Barcode ScannerPVC-->
+        <scene sceneID="Jrg-v2-ZrX">
+            <objects>
+                <viewController storyboardIdentifier="BarcodeScannerPVC" id="a39-GX-3ml" customClass="BarcodeScannerPVC" customModule="eShop" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9NH-p4-IIl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e7t-YH-a5R">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="e7t-YH-a5R" firstAttribute="leading" secondItem="gfc-DE-HRO" secondAttribute="leading" id="USZ-n0-97b"/>
+                            <constraint firstItem="gfc-DE-HRO" firstAttribute="bottom" secondItem="e7t-YH-a5R" secondAttribute="bottom" id="oKz-o3-cVL"/>
+                            <constraint firstItem="e7t-YH-a5R" firstAttribute="top" secondItem="gfc-DE-HRO" secondAttribute="top" id="ocE-bK-lhO"/>
+                            <constraint firstItem="gfc-DE-HRO" firstAttribute="trailing" secondItem="e7t-YH-a5R" secondAttribute="trailing" id="pZd-hs-pdS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gfc-DE-HRO"/>
+                    </view>
+                    <connections>
+                        <outlet property="containerVC" destination="e7t-YH-a5R" id="19u-o2-bRy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TVv-rI-d8t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="578" y="168"/>
         </scene>
     </scenes>
 </document>

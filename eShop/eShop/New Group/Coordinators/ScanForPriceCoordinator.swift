@@ -20,28 +20,32 @@ class  ScanForPriceCoordinator {
 
     // MARK: - Pulic methods
     func start() {
-
-        self.presentStartScanning()
+self.presentStartScanning()
     }
 
     // MARK: - Private/Internal
-    private func presentStartScanning() {
+    private func presentStartScanning()  {
         DispatchQueue.main.async {
 
             let startScanningPVC =  StartScanningPVC.instantiate(fromAppStoryboard: .scanForPrice)
+            startScanningPVC.onScan3 = { [weak self] in
+                guard let weakSelf = self else { return }
+                weakSelf.presentBarcodeScanner()
+            }
             
             self.scanForPriceNC.viewControllers = [startScanningPVC]
-
-            let appDelegate  = UIApplication.shared.delegate as! AppDelegate
-            if let _window = appDelegate.window {
-                _window.rootViewController = self.scanForPriceNC
-            } else {
-                print("Therse no ViewController set as initial in main.storyboard")
-            }
-        
+            
+            if let topController = UIApplication.topViewController() {
+                topController.present(self.scanForPriceNC, animated: true, completion: nil )
+            } 
         }
+    }
+    
+    private func presentBarcodeScanner() {
         
+        let barcodeScannerPVC =  BarcodeScannerPVC.instantiate(fromAppStoryboard: .scanForPrice)
         
+        scanForPriceNC.pushViewController(barcodeScannerPVC, animated: true)
     }
 
     /*

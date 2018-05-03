@@ -37,7 +37,7 @@ self.presentStartScanning()
             
             if let topController = UIApplication.topViewController() {
                 topController.present(self.scanForPriceNC, animated: true, completion: nil )
-            } 
+            }
         }
     }
     
@@ -48,15 +48,4 @@ self.presentStartScanning()
         scanForPriceNC.pushViewController(barcodeScannerPVC, animated: true)
     }
 
-    /*
-     private func dismissBuyView(refresh: Bool) {
-     buyNC.dismiss(animated: true, completion: {
-     self.completion(refresh)
-     })
-     }
-
-     private func backToRoot() {
-     buyNC.popViewController(animated: true)
-     }
-     */
 }

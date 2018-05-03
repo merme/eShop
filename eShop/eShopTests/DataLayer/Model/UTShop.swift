@@ -99,12 +99,34 @@ class UTShop: XCTestCase {
         
         XCTAssertEqual(shop.distanceInM( latitude:  41.4189, longitude: 2.0008), 0)
         
-        XCTAssertEqual(shop.distanceInM( latitude:  41.4189 - 0.0001, longitude: 2.0008), 13.901)
-        XCTAssertEqual(abs(shop.distanceInM( latitude:  41.4189 - 0.0010, longitude: 2.0008) - 139.0099) <= 0.0002 , true)
-        XCTAssertEqual(abs(shop.distanceInM( latitude:  41.4189 - 0.0010, longitude: 2.0008 + 0.0010) - 139.0099) <= 0.0002, true)
-        XCTAssertEqual(abs(shop.distanceInM( latitude:  41.4189 - 0.0100, longitude: 2.0008) - 1390.0994) <= 0.0003, true)
-        XCTAssertEqual(abs(shop.distanceInM( latitude:  41.4189 - 0.0100, longitude: 2.0008 + 0.0100) - 1390.0994) <= 0.0003, true)
+        XCTAssertTrue(shop.distanceInM( latitude:  41.4189 - 0.0001, longitude: 2.0008) -  11.1186 <= 0.0001)
+        XCTAssertTrue(abs(shop.distanceInM( latitude:  41.4189 - 0.0010, longitude: 2.0008) - 111.1895) <= 0.0002 )
+        XCTAssertTrue(abs(shop.distanceInM( latitude:  41.4189 - 0.0010, longitude: 2.0008 + 0.0010) - 138.9802) <= 0.0002)
+        XCTAssertTrue(abs(shop.distanceInM( latitude:  41.4189 - 0.0100, longitude: 2.0008) - 1111.8957) <= 0.0003)
+        XCTAssertTrue(abs(shop.distanceInM( latitude:  41.4189 - 0.0100, longitude: 2.0008 + 0.0100) - 1389.8367) <= 0.0003)
+    }
+    
+    func test_degree2m() {
+        XCTAssertTrue(Shop.degree2m(degrees:Shop.m2Degree(m:1)) -  1 <= 0.0001)
+        XCTAssertTrue(Shop.degree2m(degrees:Shop.m2Degree(m:10)) - 10 <= 0.0001)
+        XCTAssertTrue(Shop.degree2m(degrees:Shop.m2Degree(m:100)) - 100 <= 0.0001)
+        XCTAssertTrue(Shop.degree2m(degrees:Shop.m2Degree(m:999)) - 999 <= 0.0001)
+        XCTAssertTrue(Shop.degree2m(degrees:Shop.m2Degree(m:10000)) - 10000 <= 0.0001)
+        
+        //print("\(Shop.degree2m(degrees:Shop.m2Degree(m:800)))")
     }
    
+    func test_m2degree() {
+        XCTAssertTrue(Shop.m2Degree(m: Shop.degree2m(degrees: 100)) - 100 <= 0.0001)
+        XCTAssertTrue(Shop.m2Degree(m: Shop.degree2m(degrees: 10)) - 10 <= 0.0001)
+        XCTAssertTrue(Shop.m2Degree(m: Shop.degree2m(degrees: 1)) - 1 <= 0.0001)
+        XCTAssertTrue(Shop.m2Degree(m: Shop.degree2m(degrees: 0.1)) - 0.1 <= 0.0001)
+        XCTAssertTrue(Shop.m2Degree(m: Shop.degree2m(degrees: 0.01)) - 0.01 <= 0.0001)
+        
+    }
+    
+    /*
+ print("\(Shop.degree2m(degrees:Shop.m2Degree(m:800)))")
+ */
     
 }

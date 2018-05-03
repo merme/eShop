@@ -72,7 +72,7 @@ final class FirebaseManager {
     }
 
     func exists(latitude: Double, longitude: Double,onComplete:@escaping (Shop?) -> Void) {
-        self.find(latitude: latitude, longitude: longitude, radious: Shop.gapErrorDistance) { shops in
+        self.find(latitude: latitude, longitude: longitude, radious: Shop.gapErrorDistanceM) { shops in
             // guard shops.isEmpty else { onComplete(nil); return }
             onComplete(shops.first ?? nil)
         }
@@ -135,7 +135,7 @@ final class FirebaseManager {
 
     func find(latitude:Double,longitude:Double, barcode:String, onComplete: @escaping  (Price) -> Void ) {
 
-        self.find(latitude: latitude, longitude: longitude, radious: Shop.gapErrorDistance) { shopsFound in
+        self.find(latitude: latitude, longitude: longitude, radious: Shop.gapErrorDistanceM) { shopsFound in
 
             var shop =  Shop(name: nil, latitude: latitude, longitude: longitude)
             if shopsFound.isEmpty {
@@ -167,7 +167,10 @@ final class FirebaseManager {
             .queryEqual(toValue: barcode).observeSingleEvent(of: .value) { snapshot in
                 let prices:[Price] = snapshot.children
                     .map { return Price(snapshot: $0 as! DataSnapshot) ?? Price(barcode: "", shop: "", price: nil) }
-                    .filter { return $0.price != nil }
+                    .filter {
+                        let isInRange = Shop(key: $0.shopLocation).distanceInM(latitude: latitude, longitude: longitude) <= radious
+                        return $0.price != nil && isInRange
+                    }
                     .sorted(by: {
                         /*if sortByPrice {
                          return   $0.price! < $1.price!

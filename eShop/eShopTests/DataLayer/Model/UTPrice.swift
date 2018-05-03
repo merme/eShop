@@ -31,7 +31,7 @@ class UTPrice: XCTestCase {
         let price = Price(barcode: product.getKey(), shop: shop.getKey(), price: nil)
         FirebaseManager.shared.create(price: price)
         
-        XCTAssertEqual(price.distanceInM(latitude:  41.4189 + 0.0001, longitude: 2.0008), 13.901)
+        XCTAssertTrue(price.distanceInM(latitude:  41.4189 + 0.0001, longitude: 2.0008) - 11.1186 <= 0.0001)
     }
     
     func test_price_nil() {

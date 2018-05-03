@@ -709,7 +709,7 @@ class UTFirebaseManager: XCTestCase {
             XCTAssertEqual(price.product?.barcode, "12345678")
             XCTAssertEqual(_productName,"patatas")
             
-            FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: Shop.gapErrorDistance, onComplete: { shops in
+            FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: Shop.gapErrorDistanceM, onComplete: { shops in
                 guard shops.isEmpty == false else { XCTFail(); return }
                 
                 XCTAssertNil(shops[0].name)
@@ -750,7 +750,7 @@ class UTFirebaseManager: XCTestCase {
             XCTAssertEqual(price.product?.barcode, "12345678")
             XCTAssertNil(price.product?.name)
             
-            FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: Shop.gapErrorDistance, onComplete: { shops in
+            FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: Shop.gapErrorDistanceM, onComplete: { shops in
                 guard shops.isEmpty == false else { XCTFail(); return }
                 
                 XCTAssertNil(shops[0].name)
@@ -794,12 +794,12 @@ class UTFirebaseManager: XCTestCase {
         price = Price(barcode: product.getKey(), shop: shop3.getKey(), price: 15.0)
         FirebaseManager.shared.create(price: price)
         
-        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000, barcode: "12345678") { prices in
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000 * 1000, barcode: "12345678") { prices in
             XCTAssertEqual(prices.count, 3)
             
             XCTAssertEqual(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008), 0)
-            XCTAssertEqual(prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008), 1390.062)
-            XCTAssertEqual(prices[2].distanceInM(latitude: 41.4189, longitude: 2.0008), 137989.2863)
+            XCTAssertTrue(prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008) - 1390.062 <= 0.0001)
+            XCTAssertTrue(prices[2].distanceInM(latitude: 41.4189, longitude: 2.0008) - 138983.5492 <= 0.0001)
             
             asyncExpectation.fulfill()
         }
@@ -813,24 +813,24 @@ class UTFirebaseManager: XCTestCase {
         let asyncExpectation = expectation(description: "\(#function)")
         self.set3Products3Shops()
         
-        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000, barcode: "11111111") { prices in
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000 * 1000, barcode: "11111111") { prices in
             XCTAssertEqual(prices.count, 3)
             
-            XCTAssertEqual(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008), 139.0062)
+            XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) - 139.0062 <= 0.0001)
             XCTAssertEqual(prices[0].price!, 3)
             XCTAssertEqual(prices[0].shopLocation, "41p4199-2p0008")
             XCTAssertEqual(prices[0].barcode, "11111111")
             XCTAssertEqual(prices[0].barcode, "11111111")
             XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) <= prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008))
             
-            XCTAssertEqual(prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008), 1390.062)
+            XCTAssertTrue(prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008) - 1390.062 <= 0.0001)
             XCTAssertEqual(prices[1].price!, 2)
             XCTAssertEqual(prices[1].shopLocation, "41p4289-2p0008")
             XCTAssertEqual(prices[1].barcode, "11111111")
             print("\(prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008))")
             XCTAssertTrue(prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008) <= prices[2].distanceInM(latitude: 41.4189, longitude: 2.0008))
             
-            XCTAssertEqual(prices[2].distanceInM(latitude: 41.4189, longitude: 2.0008), 13897.2178)
+            XCTAssertTrue(prices[2].distanceInM(latitude: 41.4189, longitude: 2.0008) - 13897.2178 <= 0.0001)
             XCTAssertEqual(prices[2].price!, 1)
             XCTAssertEqual(prices[2].shopLocation, "41p5189-2p0008")
             XCTAssertEqual(prices[2].barcode, "11111111")
@@ -848,10 +848,10 @@ class UTFirebaseManager: XCTestCase {
         let asyncExpectation = expectation(description: "\(#function)")
         self.set3Products3Shops()
         
-        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000, barcode: "22222222") { prices in
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000 * 1000, barcode: "22222222") { prices in
             XCTAssertEqual(prices.count, 1)
             
-            XCTAssertEqual(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008), 1390.062)
+            XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) - 1390.062 <= 0.0001)
             XCTAssertEqual(prices[0].price!, 5)
             XCTAssertEqual(prices[0].shopLocation, "41p4289-2p0008")
             XCTAssertEqual(prices[0].barcode, "22222222")
@@ -868,16 +868,16 @@ class UTFirebaseManager: XCTestCase {
         let asyncExpectation = expectation(description: "\(#function)")
         self.set3Products3Shops()
         
-        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000, barcode: "33333333") { prices in
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000 * 1000, barcode: "33333333") { prices in
             XCTAssertEqual(prices.count, 2)
             
-            XCTAssertEqual(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008), 139.0096)
+            XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) - 139.0096 <= 0.0001)
             XCTAssertEqual(prices[0].price!, 6)
             XCTAssertEqual(prices[0].shopLocation, "41p4199-2p0008")
             XCTAssertEqual(prices[0].barcode, "33333333")
             XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) <= prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008))
             
-            XCTAssertEqual(prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008), 13897.2178)
+            XCTAssertTrue(prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008) - 13897.2178 <= 0.0001)
             XCTAssertEqual(prices[1].price!, 4)
             XCTAssertEqual(prices[1].shopLocation, "41p5189-2p0008")
             XCTAssertEqual(prices[1].barcode, "33333333")
@@ -895,23 +895,23 @@ class UTFirebaseManager: XCTestCase {
         let asyncExpectation = expectation(description: "\(#function)")
         self.set3Products3Shops()
         
-        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000, barcode: "11111111",sortByPrice: true) { prices in
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000 * 1000, barcode: "11111111",sortByPrice: true) { prices in
             XCTAssertEqual(prices.count, 3)
             
-            XCTAssertEqual(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008), 13897.2178)
+            XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) - 13897.2178 <= 0.0001)
             XCTAssertEqual(prices[0].price!, 1)
             XCTAssertEqual(prices[0].shopLocation, "41p5189-2p0008")
             XCTAssertEqual(prices[0].barcode, "11111111")
             XCTAssertTrue(prices[0].price! <= prices[1].price!)
             
-            XCTAssertEqual(prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008), 1390.062)
+            XCTAssertTrue(prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008) - 1390.062 <= 0.0001)
             XCTAssertEqual(prices[1].price!, 2)
             XCTAssertEqual(prices[1].shopLocation, "41p4289-2p0008")
             XCTAssertEqual(prices[1].barcode, "11111111")
             print("\(prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008))")
             XCTAssertTrue(prices[1].price! <= prices[2].price!)
             
-            XCTAssertEqual(prices[2].distanceInM(latitude: 41.4189, longitude: 2.0008), 139.0062)
+            XCTAssertTrue(prices[2].distanceInM(latitude: 41.4189, longitude: 2.0008) - 139.0062 <= 0.0001)
             XCTAssertEqual(prices[2].price!, 3)
             XCTAssertEqual(prices[2].shopLocation, "41p4199-2p0008")
             XCTAssertEqual(prices[2].barcode, "11111111")
@@ -929,10 +929,10 @@ class UTFirebaseManager: XCTestCase {
         let asyncExpectation = expectation(description: "\(#function)")
         self.set3Products3Shops()
         
-        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000, barcode: "22222222",sortByPrice: true) { prices in
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000 * 1000, barcode: "22222222",sortByPrice: true) { prices in
             XCTAssertEqual(prices.count, 1)
             
-            XCTAssertEqual(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008), 1390.062)
+            XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) - 1390.062 <= 0.0001)
             XCTAssertEqual(prices[0].price!, 5)
             XCTAssertEqual(prices[0].shopLocation, "41p4289-2p0008")
             XCTAssertEqual(prices[0].barcode, "22222222")
@@ -949,19 +949,406 @@ class UTFirebaseManager: XCTestCase {
         let asyncExpectation = expectation(description: "\(#function)")
         self.set3Products3Shops()
         
-        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000, barcode: "33333333",sortByPrice: true) { prices in
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000 * 1000, barcode: "33333333",sortByPrice: true) { prices in
             XCTAssertEqual(prices.count, 2)
             
-            XCTAssertEqual(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008), 13897.2178)
+            XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) - 13897.2178 <= 0.0001)
             XCTAssertEqual(prices[0].price!, 4)
             XCTAssertEqual(prices[0].shopLocation, "41p5189-2p0008")
             XCTAssertEqual(prices[0].barcode, "33333333")
             XCTAssertTrue(prices[0].price! <= prices[1].price!)
             
-            XCTAssertEqual(prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008), 139.0096)
+            XCTAssertTrue(prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008) - 139.0096 <= 0.0001)
             XCTAssertEqual(prices[1].price!, 6)
             XCTAssertEqual(prices[1].shopLocation, "41p4199-2p0008")
             XCTAssertEqual(prices[1].barcode, "33333333")
+            print("\(prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008))")
+           
+            asyncExpectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func test_price_find_firstIsCurrentShop() {
+        
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        let shop1 = Shop(name: "Shop1", latitude:  41.4189 + 0.0010, longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop1)
+        let shop2 = Shop(name: "Shop2", latitude:  41.4189 + Shop.gapErrorDistanceDegrees + 0.0001 , longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop2)
+        let shop3 = Shop(name: "Shop3", latitude:  41.4189 + Shop.gapErrorDistanceDegrees  , longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop3)
+        
+        let product1 = Product(name: "product1", barcode: "11111111")
+        FirebaseManager.shared.create(product:product1)
+        
+        
+        var price = Price(barcode: product1.getKey(), shop: shop1.getKey(), price: 1.0)
+        FirebaseManager.shared.create(price: price)
+        price = Price(barcode: product1.getKey(), shop: shop2.getKey(), price: 2.0)
+        FirebaseManager.shared.create(price: price)
+        price = Price(barcode: product1.getKey(), shop: shop3.getKey(), price: 3.0)
+        FirebaseManager.shared.create(price: price)
+        
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: Shop.gapErrorDistanceM, barcode: "11111111") { prices in
+            XCTAssertEqual(prices.count, 1)
+            XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) - 11.1186 <= 0.0001)
+            XCTAssertEqual(prices[0].price!, 3)
+            XCTAssertEqual(prices[0].shopLocation, "41p4190-2p0008")
+            XCTAssertEqual(prices[0].barcode, "11111111")
+            XCTAssertEqual(prices[0].barcode, "11111111")
+           
+            asyncExpectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func test_price_find_firstIsNotCurrentShop() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        let shop1 = Shop(name: "Shop1", latitude:  41.4189 + 0.1000, longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop1)
+        let shop2 = Shop(name: "Shop2", latitude:  41.4189 + 0.0010 , longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop2)
+        let shop3 = Shop(name: "Shop3", latitude:  41.4189 + Shop.gapErrorDistanceDegrees + 0.0001, longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop3)
+        
+        let product1 = Product(name: "product1", barcode: "11111111")
+        FirebaseManager.shared.create(product:product1)
+        
+        
+        var price = Price(barcode: product1.getKey(), shop: shop1.getKey(), price: 1.0)
+        FirebaseManager.shared.create(price: price)
+        price = Price(barcode: product1.getKey(), shop: shop2.getKey(), price: 2.0)
+        FirebaseManager.shared.create(price: price)
+        price = Price(barcode: product1.getKey(), shop: shop3.getKey(), price: 3.0)
+        FirebaseManager.shared.create(price: price)
+        
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: Shop.gapErrorDistanceM, barcode: "11111111") { prices in
+            XCTAssertEqual(prices.count, 0)
+            
+            asyncExpectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func test_price_find_IsCurrentShop() {
+        
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        let shop1 = Shop(name: "Shop1", latitude:  41.4189 + 0.0010, longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop1)
+        let shop2 = Shop(name: "Shop2", latitude:  41.4189 + Shop.gapErrorDistanceDegrees + 0.0001 , longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop2)
+        let shop3 = Shop(name: "Shop3", latitude:  41.4189 + Shop.gapErrorDistanceDegrees  , longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop3)
+        
+        let product1 = Product(name: "product1", barcode: "11111111")
+        FirebaseManager.shared.create(product:product1)
+        
+        
+        var price = Price(barcode: product1.getKey(), shop: shop1.getKey(), price: 1.0)
+        FirebaseManager.shared.create(price: price)
+        price = Price(barcode: product1.getKey(), shop: shop2.getKey(), price: 2.0)
+        FirebaseManager.shared.create(price: price)
+        price = Price(barcode: product1.getKey(), shop: shop3.getKey(), price: 3.0)
+        FirebaseManager.shared.create(price: price)
+        
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, barcode: "11111111") { price in
+            
+            XCTAssertTrue(price.distanceInM(latitude: 41.4189, longitude: 2.0008) - 11.1186 <= 0.0001)
+            XCTAssertEqual(price.price!, 3)
+            XCTAssertEqual(price.shopLocation, "41p4190-2p0008")
+            XCTAssertEqual(price.barcode, "11111111")
+            XCTAssertEqual(price.barcode, "11111111")
+            
+            asyncExpectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func test_price_find_IsNotCurrentShop() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        let shop1 = Shop(name: "Shop1", latitude:  41.4189 + 0.1000, longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop1)
+        let shop2 = Shop(name: "Shop2", latitude:  41.4189 + 0.0010 , longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop2)
+        let shop3 = Shop(name: "Shop3", latitude:  41.4189 + Shop.gapErrorDistanceDegrees + 0.0001, longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop3)
+        
+        let product1 = Product(name: "product1", barcode: "11111111")
+        FirebaseManager.shared.create(product:product1)
+        
+        
+        var price = Price(barcode: product1.getKey(), shop: shop1.getKey(), price: 1.0)
+        FirebaseManager.shared.create(price: price)
+        price = Price(barcode: product1.getKey(), shop: shop2.getKey(), price: 2.0)
+        FirebaseManager.shared.create(price: price)
+        price = Price(barcode: product1.getKey(), shop: shop3.getKey(), price: 3.0)
+        FirebaseManager.shared.create(price: price)
+        
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, barcode: "11111111") { price in
+            XCTAssertEqual(price.barcode,"11111111")
+            XCTAssertEqual(price.shopLocation,"41p4189-2p0008")
+            XCTAssertNil(price.price)
+            XCTAssertNil(price.shop?.name)
+            XCTAssertEqual(price.product?.name,"product1")
+            
+            asyncExpectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func test_price_find_13m() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        let shop1 = Shop(name: "Shop1", latitude:  41.4189 + Shop.m2Degree(m:1000), longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop1)
+        let shop2 = Shop(name: "Shop2", latitude:  41.4189 + Shop.m2Degree(m:100) , longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop2)
+        let shop3 = Shop(name: "Shop3", latitude:  41.4189   , longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop3)
+        
+        let product1 = Product(name: "product1", barcode: "11111111")
+        FirebaseManager.shared.create(product:product1)
+        
+        
+        var price = Price(barcode: product1.getKey(), shop: shop1.getKey(), price: 1.0)
+        FirebaseManager.shared.create(price: price)
+        price = Price(barcode: product1.getKey(), shop: shop2.getKey(), price: 2.0)
+        FirebaseManager.shared.create(price: price)
+        price = Price(barcode: product1.getKey(), shop: shop3.getKey(), price: 3.0)
+        FirebaseManager.shared.create(price: price)
+        
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 13, barcode: "11111111") { prices in
+            XCTAssertEqual(prices.count, 1)
+            XCTAssertEqual(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008), 0.0)
+            XCTAssertEqual(prices[0].price!, 3)
+            XCTAssertEqual(prices[0].shopLocation, "41p4189-2p0008")
+            XCTAssertEqual(prices[0].barcode, "11111111")
+            XCTAssertNil(prices[0].shop?.name)
+            XCTAssertNil(prices[0].product?.name)
+            
+            asyncExpectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func test_price_find_50m() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        let shop1 = Shop(name: "Shop1", latitude:  41.4189 + Shop.m2Degree(m:1000), longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop1)
+        let shop2 = Shop(name: "Shop2", latitude:  41.4189 + Shop.m2Degree(m:70) , longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop2)
+        let shop3 = Shop(name: "Shop3", latitude:  41.4189  + Shop.m2Degree(m:30) , longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop3)
+        
+        let product1 = Product(name: "product1", barcode: "11111111")
+        FirebaseManager.shared.create(product:product1)
+        
+        
+        var price = Price(barcode: product1.getKey(), shop: shop1.getKey(), price: 1.0)
+        FirebaseManager.shared.create(price: price)
+        price = Price(barcode: product1.getKey(), shop: shop2.getKey(), price: 2.0)
+        FirebaseManager.shared.create(price: price)
+        price = Price(barcode: product1.getKey(), shop: shop3.getKey(), price: 3.0)
+        FirebaseManager.shared.create(price: price)
+        
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 50, barcode: "11111111") { prices in
+            XCTAssertEqual(prices.count, 1)
+            XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) - 33.3567 <= 0.0001)
+            XCTAssertEqual(prices[0].price!, 3)
+            XCTAssertEqual(prices[0].shopLocation, "41p4192-2p0008")
+            XCTAssertEqual(prices[0].barcode, "11111111")
+            XCTAssertNil(prices[0].shop?.name)
+            XCTAssertNil(prices[0].product?.name)
+            
+            asyncExpectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func test_price_find_100m() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        let shop1 = Shop(name: "Shop1", latitude:  41.4189 + Shop.m2Degree(m:1000), longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop1)
+        let shop2 = Shop(name: "Shop2", latitude:  41.4189 + Shop.m2Degree(m:110) , longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop2)
+        let shop3 = Shop(name: "Shop3", latitude:  41.4189  + Shop.m2Degree(m:93) , longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop3)
+        
+        let product1 = Product(name: "product1", barcode: "11111111")
+        FirebaseManager.shared.create(product:product1)
+        
+        
+        var price = Price(barcode: product1.getKey(), shop: shop1.getKey(), price: 1.0)
+        FirebaseManager.shared.create(price: price)
+        price = Price(barcode: product1.getKey(), shop: shop2.getKey(), price: 2.0)
+        FirebaseManager.shared.create(price: price)
+        price = Price(barcode: product1.getKey(), shop: shop3.getKey(), price: 3.0)
+        FirebaseManager.shared.create(price: price)
+        
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 100, barcode: "11111111") { prices in
+            XCTAssertEqual(prices.count, 1)
+            XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) - 88.9516 <= 0.0001)
+            XCTAssertEqual(prices[0].price!, 3)
+            XCTAssertEqual(prices[0].shopLocation, "41p4197-2p0008")
+            XCTAssertEqual(prices[0].barcode, "11111111")
+            XCTAssertNil(prices[0].shop?.name)
+            XCTAssertNil(prices[0].product?.name)
+            
+            asyncExpectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func test_price_find_1Km() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        let shop1 = Shop(name: "Shop1", latitude:  41.4189 + Shop.m2Degree(m:1000), longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop1)
+        let shop2 = Shop(name: "Shop2", latitude:  41.4189 + Shop.m2Degree(m:1020) , longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop2)
+        let shop3 = Shop(name: "Shop3", latitude:  41.4189  + Shop.m2Degree(m:990) , longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop3)
+        
+        print("\(Shop.degree2m(degrees:Shop.m2Degree(m:800)))")
+        
+        print("\(41.4189  + Shop.m2Degree(m:800))")
+        
+        let product1 = Product(name: "product1", barcode: "11111111")
+        FirebaseManager.shared.create(product:product1)
+        
+        
+        var price = Price(barcode: product1.getKey(), shop: shop1.getKey(), price: 1.0)
+        FirebaseManager.shared.create(price: price)
+        price = Price(barcode: product1.getKey(), shop: shop2.getKey(), price: 2.0)
+        FirebaseManager.shared.create(price: price)
+        price = Price(barcode: product1.getKey(), shop: shop3.getKey(), price: 3.0)
+        FirebaseManager.shared.create(price: price)
+        
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000, barcode: "11111111") { prices in
+            XCTAssertEqual(prices.count, 1)
+            
+            XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) - 989.5872 <= 0.0001)
+            XCTAssertEqual(prices[0].price!, 3)
+            XCTAssertEqual(prices[0].shopLocation, "41p4278-2p0008")
+            XCTAssertEqual(prices[0].barcode, "11111111")
+            XCTAssertNil(prices[0].shop?.name)
+            XCTAssertNil(prices[0].product?.name)
+            
+            asyncExpectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func test_price_find_10Km() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        let shop1 = Shop(name: "Shop1", latitude:  41.4189 + Shop.m2Degree(m:10200), longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop1)
+        let shop2 = Shop(name: "Shop2", latitude:  41.4189 + Shop.m2Degree(m:10100) , longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop2)
+        let shop3 = Shop(name: "Shop3", latitude:  41.4189  + Shop.m2Degree(m:9990) , longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop3)
+        
+        print("\(Shop.degree2m(degrees:Shop.m2Degree(m:800)))")
+        
+        print("\(41.4189  + Shop.m2Degree(m:800))")
+        
+        let product1 = Product(name: "product1", barcode: "11111111")
+        FirebaseManager.shared.create(product:product1)
+        
+        var price = Price(barcode: product1.getKey(), shop: shop1.getKey(), price: 1.0)
+        FirebaseManager.shared.create(price: price)
+        price = Price(barcode: product1.getKey(), shop: shop2.getKey(), price: 2.0)
+        FirebaseManager.shared.create(price: price)
+        price = Price(barcode: product1.getKey(), shop: shop3.getKey(), price: 3.0)
+        FirebaseManager.shared.create(price: price)
+        
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 10000, barcode: "11111111") { prices in
+            XCTAssertEqual(prices.count, 1)
+            
+            XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) -  9973.7050 <= 0.0001)
+            XCTAssertEqual(prices[0].price!, 3)
+            XCTAssertEqual(prices[0].shopLocation, "41p5086-2p0008")
+            XCTAssertEqual(prices[0].barcode, "11111111")
+            XCTAssertNil(prices[0].shop?.name)
+            XCTAssertNil(prices[0].product?.name)
+            
+            asyncExpectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func test_price_find_1000Km() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        let shop1 = Shop(name: "Shop1", latitude:  41.4189 + Shop.m2Degree(m:2000020), longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop1)
+        let shop2 = Shop(name: "Shop2", latitude:  41.4189 + Shop.m2Degree(m:1000000 + 5000) , longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop2)
+        let shop3 = Shop(name: "Shop3", latitude:  41.4189  + Shop.m2Degree(m:999990) , longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop3)
+        
+        print("\(Shop.degree2m(degrees:Shop.m2Degree(m:800)))")
+        
+        print("\(41.4189  + Shop.m2Degree(m:800))")
+        
+        let product1 = Product(name: "product1", barcode: "11111111")
+        FirebaseManager.shared.create(product:product1)
+        
+        
+        var price = Price(barcode: product1.getKey(), shop: shop1.getKey(), price: 1.0)
+        FirebaseManager.shared.create(price: price)
+        price = Price(barcode: product1.getKey(), shop: shop2.getKey(), price: 2.0)
+        FirebaseManager.shared.create(price: price)
+        price = Price(barcode: product1.getKey(), shop: shop3.getKey(), price: 3.0)
+        FirebaseManager.shared.create(price: price)
+        
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000000, barcode: "11111111") { prices in
+            XCTAssertEqual(prices.count, 1)
+            
+            XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) - 998815.9698 <= 0.0001)
+            XCTAssertEqual(prices[0].price!, 3)
+            XCTAssertEqual(prices[0].shopLocation, "50p4019-2p0008")
+            XCTAssertEqual(prices[0].barcode, "11111111")
+            XCTAssertNil(prices[0].shop?.name)
+            XCTAssertNil(prices[0].product?.name)
             
             asyncExpectation.fulfill()
         }
@@ -999,7 +1386,6 @@ class UTFirebaseManager: XCTestCase {
         FirebaseManager.shared.create(price: price)
         price = Price(barcode: product3.getKey(), shop: shop3.getKey(), price: 6.0)
         FirebaseManager.shared.create(price: price)
- 
     }
     
     

@@ -7,32 +7,51 @@
 
 import Foundation
 import Firebase
+import RxSwift
 
-final class FirebaseManager {
+final class DataManager {
 
-    static let shared = FirebaseManager()
-
-    // MARK: - Private attributes
-    private struct ReferenceKey {
-        static let products = "products"
-        static let shops  = "shops"
-        static let prices = "prices"
-    }
-
-    private let productsKeyReference = Database.database().reference(withPath:ReferenceKey.products)
-    private let shopsKeyReference = Database.database().reference(withPath:ReferenceKey.shops)
-    private let pricesKeyReference = Database.database().reference(withPath:ReferenceKey.prices)
+    static let shared = DataManager()
 
     private init() {
 
     }
 
     func reset() {
-        self.productsKeyReference.ref.removeValue()
-        self.shopsKeyReference.ref.removeValue()
-        self.pricesKeyReference.ref.removeValue()
+        FirebaseManager.shared.reset()
     }
-
+    
+    // MARK:- Products
+    
+    // MARK: - Shop
+    
+    // MARK: - Price
+    func create(price:Price) -> Completable {
+        return Completable.create { completable in
+            
+            FirebaseManager.shared.create(price:price)
+            completable(.completed)
+            return Disposables.create()
+        }
+    }
+    
+    func find(latitude:Double,longitude:Double, barcode:String, onComplete: @escaping  (Price) -> Void ) {
+        
+        FirebaseManager.shared.find(latitude: latitude, longitude: longitude, barcode: barcode, onComplete: onComplete)
+    }
+    
+    func find(latitude:Double,longitude:Double, barcode:String) -> Single<Price> {
+        return Single.create { single in
+                let disposable = Disposables.create()
+            
+            FirebaseManager.shared.find(latitude: latitude, longitude: longitude, barcode: barcode, onComplete: { price in
+                single(.success(price))
+            })
+            return disposable
+        }
+    }
+    
+/*
     // MARK: - Products
 
     func create(product:Product) {
@@ -113,12 +132,6 @@ final class FirebaseManager {
     func create(price:Price) {
 
         self.pricesKeyReference.child(price.getKey()).setValue(price.toAnyObject())
-        if let _shop = price.shop {
-            self.create(shop: _shop)
-        }
-        if let _product = price.product {
-            self.create(product: _product)
-        }
     }
 
     func find(product:Product, shop:Shop, onComplete: @escaping (Price) -> Void) {
@@ -191,4 +204,5 @@ final class FirebaseManager {
         }
 
     }
+ */
 }

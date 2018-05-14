@@ -50,7 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          }
          */
          StartUpAppSequencer.shared.start()
-
+        
+        
         return true
     }
 

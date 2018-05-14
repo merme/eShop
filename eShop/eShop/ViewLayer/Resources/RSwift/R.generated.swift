@@ -181,6 +181,7 @@ struct _R: Rswift.Validatable {
       let bundle = R.hostingBundle
       let name = "scanForPrice"
       let scanForPriceNC = StoryboardViewControllerResource<ScanForPriceNC>(identifier: "ScanForPriceNC")
+      let shopPricePVC = StoryboardViewControllerResource<ShopPricePVC>(identifier: "ShopPricePVC")
       let startScanningPVC = StoryboardViewControllerResource<StartScanningPVC>(identifier: "StartScanningPVC")
       
       func barcodeScannerPVC(_: Void = ()) -> BarcodeScannerPVC? {
@@ -191,11 +192,16 @@ struct _R: Rswift.Validatable {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: scanForPriceNC)
       }
       
+      func shopPricePVC(_: Void = ()) -> ShopPricePVC? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: shopPricePVC)
+      }
+      
       func startScanningPVC(_: Void = ()) -> StartScanningPVC? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: startScanningPVC)
       }
       
       static func validate() throws {
+        if _R.storyboard.scanForPrice().shopPricePVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'shopPricePVC' could not be loaded from storyboard 'scanForPrice' as 'ShopPricePVC'.") }
         if _R.storyboard.scanForPrice().scanForPriceNC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'scanForPriceNC' could not be loaded from storyboard 'scanForPrice' as 'ScanForPriceNC'.") }
         if _R.storyboard.scanForPrice().startScanningPVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'startScanningPVC' could not be loaded from storyboard 'scanForPrice' as 'StartScanningPVC'.") }
         if _R.storyboard.scanForPrice().barcodeScannerPVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'barcodeScannerPVC' could not be loaded from storyboard 'scanForPrice' as 'BarcodeScannerPVC'.") }

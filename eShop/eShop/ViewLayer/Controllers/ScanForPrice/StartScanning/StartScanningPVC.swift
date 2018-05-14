@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class StartScanningPVC: UIViewController {
     
@@ -16,11 +17,27 @@ class StartScanningPVC: UIViewController {
     // MARK: - Callbacks
     var onScan3: (() -> Void) = { }
     
+    private var disposeBag = DisposeBag()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        LocationManager.shared.requestOrRememberLocationAuthorization()
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+       // LocationManager.shared.requestOrRememberLocationAuthorization()
+        /*
+        LocationManager.shared.getCurrentLocation().subscribe(onSuccess: { location in
+            print("\(location)")
+        }) { error in
+            print("\(error)")
+        }*/
     }
 
     override func didReceiveMemoryWarning() {

@@ -44,8 +44,20 @@ self.presentStartScanning()
     private func presentBarcodeScanner() {
         
         let barcodeScannerPVC =  BarcodeScannerPVC.instantiate(fromAppStoryboard: .scanForPrice)
+        barcodeScannerPVC.onShopPrice = { [weak self] price in
+            guard let weakSelf = self else { return }
+            weakSelf.presentShopPrice(price: price)
+        }
         
         scanForPriceNC.pushViewController(barcodeScannerPVC, animated: true)
     }
 
+    private func presentShopPrice(price: Price) {
+        let shopPricePVC =  ShopPricePVC.instantiate(fromAppStoryboard: .scanForPrice)
+        /*barcodeScannerPVC.onShopPrice = { [weak self] price in
+            guard let weakSelf = self else { return }
+            weakSelf.presentShopPrice(price: price)
+        }*/
+        scanForPriceNC.pushViewController(shopPricePVC, animated: true)
+    }
 }

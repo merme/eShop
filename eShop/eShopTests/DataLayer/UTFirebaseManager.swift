@@ -458,6 +458,48 @@ class UTFirebaseManager: XCTestCase {
         self.waitForExpectations(timeout: 10, handler: nil)
     }
     
+    func test_price_update() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        let shop = Shop(name: "Bon Preu Pallejà", latitude:  41.4189, longitude: 2.0008)
+        FirebaseManager.shared.create(shop: shop)
+        
+        let product = Product(name: "patatas", barcode: "12345678")
+        FirebaseManager.shared.create(product:product)
+        
+        let price = Price(barcode: product.getKey(), shop: shop.getKey(), price: 10.0)
+        FirebaseManager.shared.create(price: price)
+        
+        let shopModified = Shop(name: "Minipreu", latitude: shop.latitude, longitude: shop.longitude)
+        let productModified = Product(name: "ensaladilla", barcode: "12345678")
+        let priceModified = Price(product: productModified, shop: shopModified, price: 12.3)
+        
+        FirebaseManager.shared.create(price: priceModified)
+        
+        FirebaseManager.shared.find(latitude: shop.latitude, longitude: shop.longitude, barcode: product.barcode) { price in
+            
+            //  guard let _price = price else {XCTFail(); return}
+            XCTAssertEqual(price.barcode,"12345678")
+            XCTAssertEqual(price.shopLocation,"41p4189-2p0008")
+            XCTAssertEqual(price.price, 12.3)
+            
+            XCTAssertEqual(price.shop?.latitude, 41.4189)
+            XCTAssertEqual(price.shop?.longitude, 2.0008)
+            guard let _shopName = price.shop?.name else  {XCTFail(); return}
+            XCTAssertEqual(_shopName, "Minipreu")
+            
+            XCTAssertEqual(price.product?.barcode, "12345678")
+            guard let _productName = price.product?.name else  {XCTFail(); return}
+            XCTAssertEqual(_productName, "ensaladilla")
+            
+            
+            asyncExpectation.fulfill()
+        }
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
     func test_create_find_priceNotFound() {
         FirebaseManager.shared.reset()
         

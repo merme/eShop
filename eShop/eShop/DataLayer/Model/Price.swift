@@ -36,6 +36,13 @@ struct Price {
         self.ref = nil
     }
 
+    init(product: Product, shop: Shop, price: Double?) {
+        
+        self.init(barcode: product.barcode, shop: shop.getKey(), price: price)
+        self.product = product
+        self.shop = shop
+    }
+    
     init?(snapshot: DataSnapshot) {
         guard let _snapshotValue = snapshot.value as? [String: AnyObject] ,
             let _price = _snapshotValue[Field.price] as? Double ,
@@ -64,6 +71,8 @@ struct Price {
     func getKey() -> String {
         return "\(barcode)-\(shopLocation)"
     }
+    
+    
     /*
      func shop(onComplete: @escaping (Shop) -> Void ) {
      guard shop == nil else { onComplete(self.shop!); return }

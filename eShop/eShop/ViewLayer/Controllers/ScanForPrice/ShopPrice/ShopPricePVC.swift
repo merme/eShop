@@ -8,23 +8,15 @@
 
 import UIKit
 import BarcodeScanner
-import RxSwift
 
-class BarcodeScannerPVC: UIViewController, BarcodeScannerCodeDelegate, BarcodeScannerErrorDelegate, BarcodeScannerDismissalDelegate {
+class ShopPricePVC: UIViewController, BarcodeScannerCodeDelegate, BarcodeScannerErrorDelegate, BarcodeScannerDismissalDelegate {
     
-    //MARK:- IBOutlet
+    // MARK:- IBOutlet
     @IBOutlet weak var containerVC: UIView!
     
-    //MARK:- Callbacks
-    var onShopPrice: ((Price) -> Void) = { _ in }
-    
-    //MARK:- Private attributes
-    private var disposeBag = DisposeBag()
-    
-    //MARK:- Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+/*
         let barcodeScannerViewController = BarcodeScannerViewController()
         barcodeScannerViewController.codeDelegate = self
         barcodeScannerViewController.errorDelegate = self
@@ -35,14 +27,14 @@ class BarcodeScannerPVC: UIViewController, BarcodeScannerCodeDelegate, BarcodeSc
         
         containerVC.addSubview(barcodeScannerViewController.view)
         NSLayoutConstraint.activate([
-            barcodeScannerViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            barcodeScannerViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -0),
-            barcodeScannerViewController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-            barcodeScannerViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -0)
+            barcodeScannerViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            barcodeScannerViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            barcodeScannerViewController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
+            barcodeScannerViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10)
             ])
         
         barcodeScannerViewController.didMove(toParentViewController: self)
-        
+     */
         // Do any additional setup after loading the view.
     }
 
@@ -67,20 +59,9 @@ class BarcodeScannerPVC: UIViewController, BarcodeScannerCodeDelegate, BarcodeSc
         print("Barcode Data: \(code)")
         print("Symbology Type: \(type)")
         
-        ScanForPriceUC.shared
-            .find(barcode: code)
-            .observeOn(MainScheduler.instance)
-            .subscribe { [weak self] event in
-            guard let weakSelf = self else { return }
-            switch event {
-            case .success(let price):
-                weakSelf.onShopPrice(price)
-            case .error(let error):
-                print("\(error)")
-                controller.resetWithError()
-            }
-            }.disposed(by: disposeBag)
-        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            controller.resetWithError()
+        }
     }
 
 // MARK: - BarcodeScannerErrorDelegate

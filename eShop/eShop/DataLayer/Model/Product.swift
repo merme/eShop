@@ -56,3 +56,9 @@ struct Product {
         return barcode
     }
 }
+
+extension Product: Equatable {
+    static func == (lhs: Product, rhs: Product) -> Bool {
+        return lhs.barcode == rhs.barcode && lhs.name == rhs.name
+    }
+}

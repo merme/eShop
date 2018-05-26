@@ -41,15 +41,110 @@ final class DataManager {
     }
     
     func find(latitude:Double,longitude:Double, barcode:String) -> Single<Price> {
-        return Single.create { single in
+        return Single.create {  [weak self] single in
                 let disposable = Disposables.create()
-            
+            /*
             FirebaseManager.shared.find(latitude: latitude, longitude: longitude, barcode: barcode, onComplete: { price in
                 single(.success(price))
-            })
+            })*/
+            DataManager.shared.find(latitude: latitude,
+                                    longitude: longitude,
+                                    barcode: barcode,
+                                    radious: Shop.gapErrorDistanceM).subscribe({ event in
+                switch event {
+                case .success(let prices):
+                    guard prices.isEmpty == false else {
+                        DataManager.shared.find(latitude: latitude, longitude: longitude, barcode: barcode, onComplete: { (product, shop) in
+                            let price = Price(product:product,
+                                              shop: shop,
+                                              price: nil)
+                            
+                            single(.success(price))
+                        })
+                        /*
+                        var product =  Product(name: nil, barcode: barcode)
+                        FirebaseManager.shared.find(barcode: barcode, onComplete: { productFound in
+                            if productFound != nil {
+                                product = productFound!
+                            }
+                            
+                            var shop = Shop(name: nil, latitude: latitude, longitude: longitude)
+                            FirebaseManager.shared.find(latitude: latitude, longitude: longitude, radious: Shop.gapErrorDistanceM, onComplete: { shops in
+                                if shops.isEmpty == false {
+                                    shop = shops[0]
+                                }
+                                
+                                let price = Price(product:product,
+                                                  shop: shop,
+                                                  price: nil)
+                                
+                                single(.success(price))
+                                
+                            })
+                            
+                        })
+                        */
+                        return
+                    }
+                    DataManager.shared.find(latitude: latitude, longitude: longitude, barcode: barcode, onComplete: { (product, shop) in
+                        let price = Price(product:product,
+                                          shop: shop,
+                                          price: prices[0].price)
+                        
+                        single(.success(price))
+                    })
+                    
+                    
+                case .error(let error):
+                    single(.error(error))
+                }
+            })/*.disposed(by: disposeBag)*/
+            
+            
             return disposable
         }
     }
+    
+    
+    private func find(latitude:Double,longitude:Double, barcode:String, onComplete: @escaping ( Product, Shop) ->Void ){
+        var product =  Product(name: nil, barcode: barcode)
+        FirebaseManager.shared.find(barcode: barcode, onComplete: { productFound in
+            if productFound != nil {
+                product = productFound!
+            }
+            
+            var shop = Shop(name: nil, latitude: latitude, longitude: longitude)
+            FirebaseManager.shared.find(latitude: latitude, longitude: longitude, radious: Shop.gapErrorDistanceM, onComplete: { shops in
+                if shops.isEmpty == false {
+                    shop = shops[0]
+                }
+                
+                /* let price = Price(product:product,
+                 shop: shop,
+                 price: nil)*/
+                
+                onComplete(product,shop)
+                
+            })
+        })
+    }
+    
+    func find(latitude:Double,longitude:Double, barcode:String, radious: Double) -> Single<[Price]> {
+        return Single.create { single in
+            let disposable = Disposables.create()
+            
+            FirebaseManager.shared.find(latitude: latitude,
+                                        longitude: longitude,
+                                        radious: radious,
+                                        barcode: barcode,
+                                        onComplete: { prices in
+                single(.success(prices))
+            })
+            
+            return disposable
+        }
+    }
+    
     
 /*
     // MARK: - Products

@@ -43,6 +43,14 @@ struct Price {
         self.shop = shop
     }
     
+    init? (price:Price) {
+        
+        guard let _product = price.product,
+            let _shop = price.shop else { return nil }
+        
+        self.init(product: _product, shop: _shop, price: price.price)
+    }
+    
     init?(snapshot: DataSnapshot) {
         guard let _snapshotValue = snapshot.value as? [String: AnyObject] ,
             let _price = _snapshotValue[Field.price] as? Double ,
@@ -72,27 +80,24 @@ struct Price {
         return "\(barcode)-\(shopLocation)"
     }
     
-    
-    /*
-     func shop(onComplete: @escaping (Shop) -> Void ) {
-     guard shop == nil else { onComplete(self.shop!); return }
-     var shop = Shop(key: shopLocation)
-     FirebaseManager.shared.find(latitude: shop.latitude, longitude: shop.longitude, radious: Shop.gapErrorDistance) { shops in
-     guard shops.count == 1 else { return }
-     onComplete(shops[1])
-     }
-     }
-
-     func product(onComplete: (Shop) -> Void ) {
-     guard product == nil else { onComplete(self.product!); return}
-     FirebaseManager.shared.find(barcode: barcode) { productFound in
-     guard let _product = productFound else { return }
-     onComplete(_product)
-     }
-     }
-     */
     func distanceInM(latitude: Double, longitude: Double) -> Double {
         return Shop(key: self.shopLocation).distanceInM(latitude: latitude, longitude: longitude)
     }
+    
+    func getShop(shopLocation:String, onCompletion: (Shop?) -> Void ) {
+        
+    }
 
+}
+
+extension Price: Equatable {
+    static func == (lhs: Price, rhs: Price) -> Bool {
+        guard let _lhsShop = lhs.shop, let _rhsShop = rhs.shop else { return false }
+        guard let _lhsProduct = lhs.product, let _rhsProduct = rhs.product else { return false }
+        guard let _lhsPrice = lhs.price, let _rhsPrice = rhs.price else { return false }
+        
+        
+        
+        return _lhsShop == _rhsShop  && _lhsProduct == _rhsProduct && _lhsPrice == _rhsPrice
+    }
 }

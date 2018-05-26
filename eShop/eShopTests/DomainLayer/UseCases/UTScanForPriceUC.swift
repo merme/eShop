@@ -64,15 +64,17 @@ class UTScanForPriceUC: XCTestCase {
             }.disposed(by: disposeBag)
         
 
-    self.waitForExpectations(timeout: 10+1000, handler: nil)
+    self.waitForExpectations(timeout: 10, handler: nil)
 
     }
+    
+    
     
     func test_PriceExists_ShopExistsNearby_ProductExists() {
         
         let asyncExpectation = expectation(description: "\(#function)")
         
-        let shop = Shop(name: "Bon Preu Pallejà", latitude:  41.4189 - 0.0001, longitude: 2.0008)
+        let shop = Shop(name: "Bon Preu Pallejà", latitude:  41.4189 - 0.0003, longitude: 2.0008)
         FirebaseManager.shared.create(shop: shop)
         
         let product = Product(name: "patatas", barcode: "12345678")
@@ -88,10 +90,11 @@ class UTScanForPriceUC: XCTestCase {
             case .success(let price):
                 
                 XCTAssertEqual(price.barcode,"12345678")
-                XCTAssertEqual(price.shopLocation,"41p4188-2p0008")
+                XCTAssertEqual(price.shopLocation,"41p4186-2p0008")
                 XCTAssertEqual(price.price, 10.0)
+        
                 
-                XCTAssertEqual(price.shop?.latitude, 41.4188)
+                XCTAssertEqual(price.shop?.latitude, 41.4186)
                 XCTAssertEqual(price.shop?.longitude, 2.0008)
                 guard let _shopName = price.shop?.name else  {XCTFail(); return}
                 XCTAssertEqual(_shopName, "Bon Preu Pallejà")
@@ -221,12 +224,12 @@ class UTScanForPriceUC: XCTestCase {
             case .success(let price):
                 
                 XCTAssertEqual(price.barcode,"2222222")
-                XCTAssertEqual(price.shopLocation,"41p4189-2p0008")
+                XCTAssertEqual(price.shopLocation,"41p4189-2p0011")
                 XCTAssertNil(price.price)
                 
                 XCTAssertEqual(price.shop?.latitude, 41.4189)
-                XCTAssertEqual(price.shop?.longitude, 2.0008)
-                XCTAssertNil(price.shop?.name)
+                XCTAssertEqual(price.shop?.longitude, 2.0011)
+                XCTAssertEqual(price.shop?.name,"Bon Preu Pallejà")
                 
                 XCTAssertEqual(price.product?.barcode, "2222222")
                 XCTAssertNil(price.product?.name)
@@ -339,11 +342,147 @@ class UTScanForPriceUC: XCTestCase {
         
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func test_find_prices_in_10Km_1Found() {
+        //  find(latitude:Double,longitude:Double, barcode:String, radious: Double) -> Single<[Price]> {
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        var shop = Shop(name: "Bon Preu Pallejà", latitude:  LocationManager.DefaultPosition.latitude + Shop.m2Degree(m: 2000) , longitude: LocationManager.DefaultPosition.longitude)
+        FirebaseManager.shared.create(shop: shop)
+        let product = Product(name: "patatas", barcode: "12345678")
+        FirebaseManager.shared.create(product:product)
+        var price = Price(barcode: product.getKey(), shop: shop.getKey(), price: 10.0)
+        FirebaseManager.shared.create(price: price)
+        
+        shop = Shop(name: "Bon Preu Pallejà", latitude:  LocationManager.DefaultPosition.latitude + Shop.m2Degree(m: 15000), longitude: LocationManager.DefaultPosition.longitude)
+        FirebaseManager.shared.create(shop: shop)
+        price = Price(barcode: product.getKey(), shop: shop.getKey(), price: 15.0)
+        FirebaseManager.shared.create(price: price)
+        
+        let disposeBag = DisposeBag()
+        
+        ScanForPriceUC.shared.find(barcode: "12345678", radious: 10000).subscribe { event in
+            
+            switch event {
+            case .success(let prices):
+                guard prices.count == 1 else { XCTFail(); return }
+                
+                let price = prices[0]
+                
+                XCTAssertEqual(price.price,10.0)
+                XCTAssertEqual(price.shopLocation,"41p4369-2p0008")
+                XCTAssertEqual(price.barcode, "12345678")
+                
+                XCTAssertNil(price.shop)
+                XCTAssertNil(price.product)
+                
+                asyncExpectation.fulfill()
+            case .error(let error):
+                print("\(error)")
+                XCTFail()
+                asyncExpectation.fulfill()
+            }
+            
+        }.disposed(by: disposeBag)
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
     }
+ 
+    
+    func test_find_prices_in_20Km_2Found() {
+        //  find(latitude:Double,longitude:Double, barcode:String, radious: Double) -> Single<[Price]> {
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        var shop = Shop(name: "Bon Preu Pallejà", latitude:  LocationManager.DefaultPosition.latitude + Shop.m2Degree(m: 2000) , longitude: LocationManager.DefaultPosition.longitude)
+        FirebaseManager.shared.create(shop: shop)
+        let product = Product(name: "patatas", barcode: "12345678")
+        FirebaseManager.shared.create(product:product)
+        var price = Price(barcode: product.getKey(), shop: shop.getKey(), price: 10.0)
+        FirebaseManager.shared.create(price: price)
+        
+        shop = Shop(name: "Bon Preu Pallejà", latitude:  LocationManager.DefaultPosition.latitude + Shop.m2Degree(m: 15000), longitude: LocationManager.DefaultPosition.longitude)
+        FirebaseManager.shared.create(shop: shop)
+        price = Price(barcode: product.getKey(), shop: shop.getKey(), price: 15.0)
+        FirebaseManager.shared.create(price: price)
+        
+        let disposeBag = DisposeBag()
+        
+        ScanForPriceUC.shared.find(barcode: "12345678", radious: 20000).subscribe { event in
+            
+            switch event {
+            case .success(let prices):
+                guard prices.count == 2 else { XCTFail(); return }
+                
+                var price = prices[0]
+                
+                XCTAssertEqual(price.price,10.0)
+                XCTAssertEqual(price.shopLocation,"41p4369-2p0008")
+                XCTAssertEqual(price.barcode, "12345678")
+                
+                XCTAssertNil(price.shop)
+                XCTAssertNil(price.product)
+                
+                price = prices[1]
+                
+                XCTAssertEqual(price.price,15.0)
+                XCTAssertEqual(price.shopLocation,"41p5536-2p0008")
+                XCTAssertEqual(price.barcode, "12345678")
+                
+                XCTAssertNil(price.shop)
+                XCTAssertNil(price.product)
+                
+                
+                
+                asyncExpectation.fulfill()
+            case .error(let error):
+                print("\(error)")
+                XCTFail()
+                asyncExpectation.fulfill()
+            }
+            
+            }.disposed(by: disposeBag)
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func test_find_prices_in_1Km_0Found() {
+        //  find(latitude:Double,longitude:Double, barcode:String, radious: Double) -> Single<[Price]> {
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        var shop = Shop(name: "Bon Preu Pallejà", latitude:  LocationManager.DefaultPosition.latitude + Shop.m2Degree(m: 2000) , longitude: LocationManager.DefaultPosition.longitude)
+        FirebaseManager.shared.create(shop: shop)
+        let product = Product(name: "patatas", barcode: "12345678")
+        FirebaseManager.shared.create(product:product)
+        var price = Price(barcode: product.getKey(), shop: shop.getKey(), price: 10.0)
+        FirebaseManager.shared.create(price: price)
+        
+        shop = Shop(name: "Bon Preu Pallejà", latitude:  LocationManager.DefaultPosition.latitude + Shop.m2Degree(m: 15000), longitude: LocationManager.DefaultPosition.longitude)
+        FirebaseManager.shared.create(shop: shop)
+        price = Price(barcode: product.getKey(), shop: shop.getKey(), price: 15.0)
+        FirebaseManager.shared.create(price: price)
+        
+        let disposeBag = DisposeBag()
+        
+        ScanForPriceUC.shared.find(barcode: "12345678", radious: 1000).subscribe { event in
+            
+            switch event {
+            case .success(let prices):
+                guard prices.count == 0 else { XCTFail(); return }
+                
+                asyncExpectation.fulfill()
+            case .error(let error):
+                print("\(error)")
+                XCTFail()
+                asyncExpectation.fulfill()
+            }
+            
+            }.disposed(by: disposeBag)
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
     
 }

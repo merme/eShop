@@ -58,13 +58,48 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 0 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 2 reuse identifiers.
   struct reuseIdentifier {
+    /// Reuse identifier `ProductPricesTVC`.
+    static let productPricesTVC: Rswift.ReuseIdentifier<ProductPricesTVC> = Rswift.ReuseIdentifier(identifier: "ProductPricesTVC")
+    /// Reuse identifier `ShopPriceTVC`.
+    static let shopPriceTVC: Rswift.ReuseIdentifier<ShopPriceTVC> = Rswift.ReuseIdentifier(identifier: "ShopPriceTVC")
+    
     fileprivate init() {}
   }
   
-  /// This `R.segue` struct is generated, and contains static references to 1 view controllers.
+  /// This `R.segue` struct is generated, and contains static references to 3 view controllers.
   struct segue {
+    /// This struct is generated for `ProductPricesPVC`, and contains static references to 1 segues.
+    struct productPricesPVC {
+      /// Segue identifier `ProductPricesSegue`.
+      static let productPricesSegue: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, ProductPricesPVC, ProductPricesContentVC> = Rswift.StoryboardSegueIdentifier(identifier: "ProductPricesSegue")
+      
+      /// Optionally returns a typed version of segue `ProductPricesSegue`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func productPricesSegue(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, ProductPricesPVC, ProductPricesContentVC>? {
+        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.productPricesPVC.productPricesSegue, segue: segue)
+      }
+      
+      fileprivate init() {}
+    }
+    
+    /// This struct is generated for `ShopPricePVC`, and contains static references to 1 segues.
+    struct shopPricePVC {
+      /// Segue identifier `ShopPriceSegue`.
+      static let shopPriceSegue: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, ShopPricePVC, ShopPriceContentVC> = Rswift.StoryboardSegueIdentifier(identifier: "ShopPriceSegue")
+      
+      /// Optionally returns a typed version of segue `ShopPriceSegue`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func shopPriceSegue(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, ShopPricePVC, ShopPriceContentVC>? {
+        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.shopPricePVC.shopPriceSegue, segue: segue)
+      }
+      
+      fileprivate init() {}
+    }
+    
     /// This struct is generated for `StartScanningPVC`, and contains static references to 1 segues.
     struct startScanningPVC {
       /// Segue identifier `StartScanningContentSegue`.
@@ -180,12 +215,17 @@ struct _R: Rswift.Validatable {
       let barcodeScannerPVC = StoryboardViewControllerResource<BarcodeScannerPVC>(identifier: "BarcodeScannerPVC")
       let bundle = R.hostingBundle
       let name = "scanForPrice"
+      let productPricesPVC = StoryboardViewControllerResource<ProductPricesPVC>(identifier: "ProductPricesPVC")
       let scanForPriceNC = StoryboardViewControllerResource<ScanForPriceNC>(identifier: "ScanForPriceNC")
       let shopPricePVC = StoryboardViewControllerResource<ShopPricePVC>(identifier: "ShopPricePVC")
       let startScanningPVC = StoryboardViewControllerResource<StartScanningPVC>(identifier: "StartScanningPVC")
       
       func barcodeScannerPVC(_: Void = ()) -> BarcodeScannerPVC? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: barcodeScannerPVC)
+      }
+      
+      func productPricesPVC(_: Void = ()) -> ProductPricesPVC? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: productPricesPVC)
       }
       
       func scanForPriceNC(_: Void = ()) -> ScanForPriceNC? {
@@ -202,6 +242,7 @@ struct _R: Rswift.Validatable {
       
       static func validate() throws {
         if _R.storyboard.scanForPrice().shopPricePVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'shopPricePVC' could not be loaded from storyboard 'scanForPrice' as 'ShopPricePVC'.") }
+        if _R.storyboard.scanForPrice().productPricesPVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'productPricesPVC' could not be loaded from storyboard 'scanForPrice' as 'ProductPricesPVC'.") }
         if _R.storyboard.scanForPrice().scanForPriceNC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'scanForPriceNC' could not be loaded from storyboard 'scanForPrice' as 'ScanForPriceNC'.") }
         if _R.storyboard.scanForPrice().startScanningPVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'startScanningPVC' could not be loaded from storyboard 'scanForPrice' as 'StartScanningPVC'.") }
         if _R.storyboard.scanForPrice().barcodeScannerPVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'barcodeScannerPVC' could not be loaded from storyboard 'scanForPrice' as 'BarcodeScannerPVC'.") }

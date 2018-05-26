@@ -70,7 +70,78 @@ class UTPrice: XCTestCase {
         self.waitForExpectations(timeout: 1, handler: nil)
     }
     
-   
+    func test_initialize() {
+        let price = Price(barcode: "123456789", shop: "Minipreu", price: 12.34)
+        
+        XCTAssertNil(price.shop)
+        XCTAssertNil(price.product)
+    }
+    
+    
+    func test_equatable() {
+        
+        var product1 = Product(name: "asdfg", barcode: "1234")
+        var product2 = Product(name: "asdfg", barcode: "1234")
+        var shop1 = Shop(name: "poiu", latitude: 1.234, longitude: 2.343)
+        var shop2 = Shop(name: "poiu", latitude: 1.234, longitude: 2.343)
+        var price1 = Price(product: product1, shop: shop1, price: 10.5)
+        var price2 = Price(product: product2, shop: shop2, price: 10.5)
+        XCTAssertEqual(price1, price2)
+        
+        product1 = Product(name: "asdfgX", barcode: "1234")
+        product2 = Product(name: "asdfg", barcode: "1234")
+        shop1 = Shop(name: "poiu", latitude: 1.234, longitude: 2.343)
+        shop2 = Shop(name: "poiu", latitude: 1.234, longitude: 2.343)
+        price1 = Price(product: product1, shop: shop1, price: 10.5)
+        price2 = Price(product: product2, shop: shop2, price: 10.5)
+        XCTAssertNotEqual(price1, price2)
+        
+        
+        product1 = Product(name: "asdfg", barcode: "124")
+        product2 = Product(name: "asdfg", barcode: "1234")
+        shop1 = Shop(name: "poiu", latitude: 1.234, longitude: 2.343)
+        shop2 = Shop(name: "poiu", latitude: 1.234, longitude: 2.343)
+        price1 = Price(product: product1, shop: shop1, price: 10.5)
+        price2 = Price(product: product2, shop: shop2, price: 10.5)
+        XCTAssertNotEqual(price1, price2)
+        
+        
+        product1 = Product(name: "asdfg", barcode: "1234")
+        product2 = Product(name: "asdfg", barcode: "1234")
+        shop1 = Shop(name: "poiu", latitude: 1.234, longitude: 2.343)
+        shop2 = Shop(name: "poiuX", latitude: 1.234, longitude: 2.343)
+        price1 = Price(product: product1, shop: shop1, price: 10.5)
+        price2 = Price(product: product2, shop: shop2, price: 10.5)
+        XCTAssertNotEqual(price1, price2)
+        
+        
+        product1 = Product(name: "asdfg", barcode: "1234")
+        product2 = Product(name: "asdfg", barcode: "1234")
+        shop1 = Shop(name: "poiu", latitude: 1.234, longitude: 2.343)
+        shop2 = Shop(name: "poiu", latitude: 1.235, longitude: 2.343)
+        price1 = Price(product: product1, shop: shop1, price: 10.5)
+        price2 = Price(product: product2, shop: shop2, price: 10.5)
+        XCTAssertNotEqual(price1, price2)
+        
+        
+        product1 = Product(name: "asdfg", barcode: "1234")
+        product2 = Product(name: "asdfg", barcode: "1234")
+        shop1 = Shop(name: "poiu", latitude: 1.234, longitude: 2.34)
+        shop2 = Shop(name: "poiu", latitude: 1.234, longitude: 2.343)
+        price1 = Price(product: product1, shop: shop1, price: 10.5)
+        price2 = Price(product: product2, shop: shop2, price: 10.5)
+        XCTAssertNotEqual(price1, price2)
+        
+        
+        product1 = Product(name: "asdfgX", barcode: "1234")
+        product2 = Product(name: "asdfg", barcode: "1234")
+        shop1 = Shop(name: "poiu", latitude: 1.234, longitude: 2.343)
+        shop2 = Shop(name: "poiu", latitude: 1.234, longitude: 2.343)
+        price1 = Price(product: product1, shop: shop1, price: 10.4)
+        price2 = Price(product: product2, shop: shop2, price: 10.5)
+        XCTAssertNotEqual(price1, price2)
+
+    }
    
     
 }

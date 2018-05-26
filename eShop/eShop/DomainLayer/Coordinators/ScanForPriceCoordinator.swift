@@ -20,7 +20,39 @@ class  ScanForPriceCoordinator {
 
     // MARK: - Pulic methods
     func start() {
-self.presentStartScanning()
+        self.presentStartScanning()
+        
+        /*
+        DataManager.shared.reset()
+        LocationManager.shared.requestOrRememberLocationAuthorization()
+        var shop = Shop(name: "Bon Preu Pallejà",latitude: LocationManager.DefaultPosition.latitude + Shop.m2Degree(m: 3000), longitude: LocationManager.DefaultPosition.longitude)
+        FirebaseManager.shared.create(shop: shop)
+        
+        let product = Product(name: "patatas", barcode: "12345678")
+        FirebaseManager.shared.create(product:product)
+        
+        var price = Price(barcode: product.getKey(), shop: shop.getKey(), price: 10.0)
+        FirebaseManager.shared.create(price: price)
+        
+        
+         shop = Shop(name: "Minipreu", latitude:  LocationManager.DefaultPosition.latitude + Shop.m2Degree(m: 6000), longitude: LocationManager.DefaultPosition.longitude)
+        FirebaseManager.shared.create(shop: shop)
+        
+        
+        price = Price(barcode: product.getKey(), shop: shop.getKey(), price: 15.0)
+        FirebaseManager.shared.create(price: price)
+        
+        
+        
+        
+        */
+        /*
+        let price = Price(product: Product(name: "patatas", barcode: "12345678"),
+                          shop: Shop(name: "Minipreu", latitude: 1.2343, longitude: 1.3243),
+                          price: 12.34)
+        
+        self.presentShopPrice(price: price)
+ */
     }
 
     // MARK: - Private/Internal
@@ -54,10 +86,44 @@ self.presentStartScanning()
 
     private func presentShopPrice(price: Price) {
         let shopPricePVC =  ShopPricePVC.instantiate(fromAppStoryboard: .scanForPrice)
-        /*barcodeScannerPVC.onShopPrice = { [weak self] price in
-            guard let weakSelf = self else { return }
-            weakSelf.presentShopPrice(price: price)
-        }*/
+        shopPricePVC.price = price
+        shopPricePVC.onPriceUpdated = { [weak self] updatedPrice in
+            guard let weakSelf = self,
+                let _product = updatedPrice.product else { return }
+           weakSelf.presentProductPrices(product:_product,radious:10000)
+        }
+        
         scanForPriceNC.pushViewController(shopPricePVC, animated: true)
+        /*
+        self.scanForPriceNC.viewControllers = [shopPricePVC]
+        
+        if let topController = UIApplication.topViewController() {
+            topController.present(self.scanForPriceNC, animated: true, completion: nil )
+        }*/
     }
+    
+    private func presentProductPrices(product: Product, radious: Double) {
+        
+        let productPricesPVC = ProductPricesPVC.instantiate(fromAppStoryboard: .scanForPrice)
+        productPricesPVC.product = product
+        productPricesPVC.radious = radious
+        productPricesPVC.onDone = { [weak self] in
+            guard let weakSelf = self else { return }
+            weakSelf.scanForPriceNC.popToRootViewController(animated: false)
+        }
+        
+        
+         scanForPriceNC.pushViewController(productPricesPVC, animated: true)
+        
+        /*
+        self.scanForPriceNC.viewControllers = [productProductPrices]
+        
+        if let topController = UIApplication.topViewController() {
+            topController.present(self.scanForPriceNC, animated: true, completion: nil )
+        }*/
+        
+    }
+    
+    
+    
 }

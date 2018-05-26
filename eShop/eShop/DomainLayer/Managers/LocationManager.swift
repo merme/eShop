@@ -15,8 +15,12 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     static let shared: LocationManager = LocationManager()
     
-    static let zoomDegree = 0.04 //2 Kms
+    struct DefaultPosition {
+        static let latitude = 41.4189
+        static let longitude = 2.0008
+    }
     
+    static let zoomDegree = 0.04 //2 Kms
     static let locationUpdateNotification = "locationUpdateNotification"
     
     lazy var locationManager: CLLocationManager = {
@@ -40,7 +44,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     // MARK: - Public / Helpers
-    func requestOrRememberLocationAuthorization()  {
+    func requestOrRememberLocationAuthorization() {
         
         if  self.isAuthorizadionDenied {
             self.informUserOfPermissions()
@@ -67,7 +71,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             let disposable = Disposables.create()
             
             guard  NSClassFromString("XCTest") == nil else {
-                single(.success(CLLocation(latitude: 41.4189, longitude: 2.0008)))
+                single(.success(CLLocation(latitude: LocationManager.DefaultPosition.latitude/*41.4189*/,longitude: LocationManager.DefaultPosition.longitude/*2.0008*/)))
                 return disposable
             }
             

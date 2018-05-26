@@ -1,41 +1,37 @@
 //
-//  BarcodeScannerVC.swift
+//  ShopPricePVC.swift
 //  eShop
 //
 //  Created by 08APO0516 on 02/05/2018.
 //  Copyright © 2018 jca. All rights reserved.
 //
 
-import UIKit
-import BarcodeScanner
+import RxSwift
+import RxCocoa
+import CocoaLumberjack
 
-class ShopPricePVC: UIViewController, BarcodeScannerCodeDelegate, BarcodeScannerErrorDelegate, BarcodeScannerDismissalDelegate {
+class ShopPricePVC: UIViewController {
     
-    // MARK:- IBOutlet
-    @IBOutlet weak var containerVC: UIView!
+    // MARK :- Callbacks
+    var onPriceUpdated:((Price) -> Void) = { _ in }
+    
+    // MARK :- Public attributes
+    var price:Price?
+    
+   // private var priceUpdated:Price?
+    
+    // MARK :- Private attributes
+    private var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-/*
-        let barcodeScannerViewController = BarcodeScannerViewController()
-        barcodeScannerViewController.codeDelegate = self
-        barcodeScannerViewController.errorDelegate = self
-        barcodeScannerViewController.dismissalDelegate = self
-        
-        addChildViewController(barcodeScannerViewController)
-        barcodeScannerViewController.view.translatesAutoresizingMaskIntoConstraints = false
-        
-        containerVC.addSubview(barcodeScannerViewController.view)
-        NSLayoutConstraint.activate([
-            barcodeScannerViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            barcodeScannerViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            barcodeScannerViewController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
-            barcodeScannerViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10)
-            ])
-        
-        barcodeScannerViewController.didMove(toParentViewController: self)
-     */
+//DataManager.shared.reset()
         // Do any additional setup after loading the view.
+     /*
+        priceUpdated = Price(product: Product(name: price?.product?.name, barcode:  (price?.product?.barcode)!),
+                             shop: Shop(name: price?.shop?.name, latitude:  (price?.shop?.latitude)!,longitude:  (price?.shop?.longitude)!),
+                             price: price?.price)
+ */
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,36 +39,47 @@ class ShopPricePVC: UIViewController, BarcodeScannerCodeDelegate, BarcodeScanner
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-// MARK: - BarcodeScannerCodeDelegate
-
-    func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
-        print("Barcode Data: \(code)")
-        print("Symbology Type: \(type)")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            controller.resetWithError()
+        if let shopPriceContentVC = segue.destination as? ShopPriceContentVC,
+            (segue.identifier ==  R.segue.shopPricePVC.shopPriceSegue.identifier) {
+           
+            shopPriceContentVC.price = self.price ?? nil
+            
+            shopPriceContentVC.onPriceUpdated = { [weak self] priceUpdated in
+                   // DDLo("\(price)")
+                guard let weakSelf = self else { return }
+                guard  priceUpdated != weakSelf.price else { weakSelf.onPriceUpdated(priceUpdated); return }
+                
+                // todo: check whether price has really changed
+                DDLogInfo("\(priceUpdated)")
+                //private var disposeBag = DisposeBag()
+                ScanForPriceUC.shared.update(price:priceUpdated).subscribe { [weak self] event in
+                    guard let weakSelf = self else { return }
+                    switch event {
+                        case .completed:
+                            weakSelf.onPriceUpdated(priceUpdated)
+                        case .error(let error):
+                            DDLogError("\(error)")
+                    }
+                    }.disposed(by: DisposeBag())
+            }
+            /*
+            startScanningContentVC?.onScan = { [weak self] in
+                guard let weakSelf = self else { return }
+                weakSelf.onScan3()
+            }*/
         }
     }
-
-// MARK: - BarcodeScannerErrorDelegate
-
-    func scanner(_ controller: BarcodeScannerViewController, didReceiveError error: Error) {
-        print(error)
+    
+    // MARK:- Private/internal
+    func setupViewController() {
+        
     }
 
-// MARK: - BarcodeScannerDismissalDelegate
-
-    func scannerDidDismiss(_ controller: BarcodeScannerViewController) {
-        controller.dismiss(animated: true, completion: nil)
+    func refreshViewController() {
+        
     }
+   
 }

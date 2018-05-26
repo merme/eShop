@@ -18,7 +18,7 @@ struct Shop {
         static let name     = "name"
         static let creation    = "creation"
     }
-    static let gapErrorDistanceM:Double = 15.0
+    static let gapErrorDistanceM:Double = 1.1132 * 10 * 3 //15.0
     static let gapErrorDistanceDegrees:Double = Shop.m2Degree(m:gapErrorDistanceM)
     
     static func m2Degree(m:Double) -> Double {
@@ -128,4 +128,10 @@ struct Shop {
         return rad * 180.0 / .pi
     }
 
+}
+
+extension Shop: Equatable {
+    static func == (lhs: Shop, rhs: Shop) -> Bool {
+        return lhs.name == rhs.name && lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
+    }
 }

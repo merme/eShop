@@ -13,10 +13,10 @@ class ScanForPriceUC {
     
     static let shared =  ScanForPriceUC()
     
-    //MARK:- Private attributes
+    // MARK :- Private attributes
     var disposeBag = DisposeBag()
     
-    //MARK:-
+    // MARK :-
     private init() {} //This prevents others from using the default '()' initializer for this class.
     
     func find(barcode: String) -> Single<Price> {
@@ -63,4 +63,34 @@ class ScanForPriceUC {
             return Disposables.create()
         }
     }
+    
+    func find(barcode: String, radious: Double) -> Single<[Price]> {
+        return Single.create { single in
+            let disposable = Disposables.create()
+            
+          //  let disposeBag = DisposeBag()
+            LocationManager.shared.getCurrentLocation()
+                .subscribe { event in
+                    switch event {
+                    case .success(let location):
+                        DataManager.shared.find(latitude: location.coordinate.latitude,
+                                                longitude: location.coordinate.longitude,
+                                                barcode: barcode,
+                                                radious:radious)
+                            .subscribe({ event in
+                                switch event {
+                                case .success(let prices):
+                                    single(.success(prices))
+                                case .error(let error):
+                                    single(.error(error))
+                                }
+                            })/*.disposed(by: disposeBag)*/
+                    case .error(let error):
+                        single(.error(error))
+                    }
+                }.disposed(by: self.disposeBag)
+            return disposable
+        }
+    }
+    
 }

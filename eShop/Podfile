@@ -18,6 +18,9 @@ pod 'RxCocoa'
   
   # Scancode
   pod 'BarcodeScanner'
+  
+  # Logging
+  pod 'CocoaLumberjack/Swift', '~> 3.2.0'
 
   # QA and CI
   pod 'SwiftLint', '~> 0.16.1'

@@ -11,6 +11,7 @@
 		BF014D8120A1783E00F7E1A4 /* UIAlertController+rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF014D8020A1783E00F7E1A4 /* UIAlertController+rx.swift */; };
 		BF384A6F209789CA00E0D073 /* UTProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF384A6E209789C900E0D073 /* UTProduct.swift */; };
 		BF384A7120984A5900E0D073 /* UTPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF384A7020984A5900E0D073 /* UTPrice.swift */; };
+		BF4E901420B47E6B002B908B /* UTDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4E901320B47E6A002B908B /* UTDataManager.swift */; };
 		BF55468320A6CC25003388F0 /* ScanForPriceUC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF55467E20A6CC24003388F0 /* ScanForPriceUC.swift */; };
 		BF55468420A6CC25003388F0 /* ScanForPriceCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF55468020A6CC24003388F0 /* ScanForPriceCoordinator.swift */; };
 		BF55468520A6CC25003388F0 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF55468220A6CC25003388F0 /* LocationManager.swift */; };
@@ -26,6 +27,10 @@
 		BF636228209506C4008A174C /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF636227209506C4008A174C /* Shop.swift */; };
 		BF63622B20951548008A174C /* UTShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63622A20951548008A174C /* UTShop.swift */; };
 		BF63622E2095F938008A174C /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63622C2095F937008A174C /* Price.swift */; };
+		BF682F9F20B311090010094C /* ProductPricesPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF682F9B20B311080010094C /* ProductPricesPVC.swift */; };
+		BF682FA020B311090010094C /* ProductPricesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF682F9D20B311080010094C /* ProductPricesTVC.swift */; };
+		BF682FA120B311090010094C /* ProductPricesContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF682F9E20B311080010094C /* ProductPricesContentVC.swift */; };
+		BF73C4ED20AB462B00452BBD /* ShopPriceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF73C4EC20AB462B00452BBD /* ShopPriceTVC.swift */; };
 		BF7CC6DA2099FC75009C422F /* scanForPrice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7CC6D92099FC75009C422F /* scanForPrice.storyboard */; };
 		BF7CC6DC2099FC8E009C422F /* AppStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CC6DB2099FC8E009C422F /* AppStoryboard.swift */; };
 		BF7CC6F02099FE4B009C422F /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CC6E52099FE4B009C422F /* ConcurrentOperation.swift */; };
@@ -43,7 +48,7 @@
 		BFB11469209ACC8A001CB1A8 /* PresentSplashOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB11468209ACC8A001CB1A8 /* PresentSplashOperation.swift */; };
 		BFBBD67120999284003EB7E7 /* GoogleService-Info-DEBUG.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFBBD67020999284003EB7E7 /* GoogleService-Info-DEBUG.plist */; };
 		BFED589620A77C7C00E6DA92 /* ShopPricePVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED589320A77C7B00E6DA92 /* ShopPricePVC.swift */; };
-		BFED589720A77C7C00E6DA92 /* ShopPriceContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED589520A77C7B00E6DA92 /* ShopPriceContainerVC.swift */; };
+		BFED589720A77C7C00E6DA92 /* ShopPriceContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED589520A77C7B00E6DA92 /* ShopPriceContentVC.swift */; };
 		BFF54B5420A06D7C004917AC /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF54B5320A06D7B004917AC /* DataManager.swift */; };
 		F432E218DFF4D1571FE670EB /* Pods_eShopTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82A741CB64EA926208A5E54 /* Pods_eShopTests.framework */; };
 /* End PBXBuildFile section */
@@ -67,6 +72,7 @@
 		BF014D8020A1783E00F7E1A4 /* UIAlertController+rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+rx.swift"; sourceTree = "<group>"; };
 		BF384A6E209789C900E0D073 /* UTProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UTProduct.swift; sourceTree = "<group>"; };
 		BF384A7020984A5900E0D073 /* UTPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UTPrice.swift; sourceTree = "<group>"; };
+		BF4E901320B47E6A002B908B /* UTDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UTDataManager.swift; sourceTree = "<group>"; };
 		BF55467E20A6CC24003388F0 /* ScanForPriceUC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanForPriceUC.swift; sourceTree = "<group>"; };
 		BF55468020A6CC24003388F0 /* ScanForPriceCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanForPriceCoordinator.swift; sourceTree = "<group>"; };
 		BF55468220A6CC25003388F0 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -86,6 +92,10 @@
 		BF636227209506C4008A174C /* Shop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		BF63622A20951548008A174C /* UTShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTShop.swift; sourceTree = "<group>"; };
 		BF63622C2095F937008A174C /* Price.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
+		BF682F9B20B311080010094C /* ProductPricesPVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductPricesPVC.swift; sourceTree = "<group>"; };
+		BF682F9D20B311080010094C /* ProductPricesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductPricesTVC.swift; sourceTree = "<group>"; };
+		BF682F9E20B311080010094C /* ProductPricesContentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductPricesContentVC.swift; sourceTree = "<group>"; };
+		BF73C4EC20AB462B00452BBD /* ShopPriceTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopPriceTVC.swift; sourceTree = "<group>"; };
 		BF7CC6D92099FC75009C422F /* scanForPrice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = scanForPrice.storyboard; sourceTree = "<group>"; };
 		BF7CC6DB2099FC8E009C422F /* AppStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStoryboard.swift; sourceTree = "<group>"; };
 		BF7CC6E52099FE4B009C422F /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
@@ -103,7 +113,7 @@
 		BFB11468209ACC8A001CB1A8 /* PresentSplashOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentSplashOperation.swift; sourceTree = "<group>"; };
 		BFBBD67020999284003EB7E7 /* GoogleService-Info-DEBUG.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-DEBUG.plist"; sourceTree = "<group>"; };
 		BFED589320A77C7B00E6DA92 /* ShopPricePVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopPricePVC.swift; sourceTree = "<group>"; };
-		BFED589520A77C7B00E6DA92 /* ShopPriceContainerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopPriceContainerVC.swift; sourceTree = "<group>"; };
+		BFED589520A77C7B00E6DA92 /* ShopPriceContentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopPriceContentVC.swift; sourceTree = "<group>"; };
 		BFF54B5320A06D7B004917AC /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		D82A741CB64EA926208A5E54 /* Pods_eShopTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eShopTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -280,6 +290,7 @@
 		BF6362242094BEC5008A174C /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
+				BF4E901320B47E6A002B908B /* UTDataManager.swift */,
 				BF6362252094BEFA008A174C /* UTFirebaseManager.swift */,
 				BF63622920951521008A174C /* Model */,
 			);
@@ -294,6 +305,24 @@
 				BF63622A20951548008A174C /* UTShop.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		BF682F9A20B311080010094C /* ProductPrices */ = {
+			isa = PBXGroup;
+			children = (
+				BF682F9B20B311080010094C /* ProductPricesPVC.swift */,
+				BF682F9C20B311080010094C /* Views */,
+			);
+			path = ProductPrices;
+			sourceTree = "<group>";
+		};
+		BF682F9C20B311080010094C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BF682F9D20B311080010094C /* ProductPricesTVC.swift */,
+				BF682F9E20B311080010094C /* ProductPricesContentVC.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		BF7CC6D82099FC36009C422F /* Storyboards */ = {
@@ -374,10 +403,11 @@
 		BFB11453209ACA56001CB1A8 /* ScanForPrice */ = {
 			isa = PBXGroup;
 			children = (
+				BF682F9A20B311080010094C /* ProductPrices */,
+				BFB11459209ACA56001CB1A8 /* StartScanning */,
 				BFED589220A77C7B00E6DA92 /* ShopPrice */,
 				BFB11454209ACA56001CB1A8 /* BarcodeScanner */,
 				BFB11458209ACA56001CB1A8 /* ScanForPriceNC.swift */,
-				BFB11459209ACA56001CB1A8 /* StartScanning */,
 			);
 			path = ScanForPrice;
 			sourceTree = "<group>";
@@ -402,18 +432,10 @@
 		BFB11459209ACA56001CB1A8 /* StartScanning */ = {
 			isa = PBXGroup;
 			children = (
-				BFB1145A209ACA56001CB1A8 /* New Group */,
 				BFB1145B209ACA56001CB1A8 /* Views */,
 				BFB1145D209ACA56001CB1A8 /* StartScanningPVC.swift */,
 			);
 			path = StartScanning;
-			sourceTree = "<group>";
-		};
-		BFB1145A209ACA56001CB1A8 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		BFB1145B209ACA56001CB1A8 /* Views */ = {
@@ -444,7 +466,8 @@
 		BFED589420A77C7B00E6DA92 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				BFED589520A77C7B00E6DA92 /* ShopPriceContainerVC.swift */,
+				BFED589520A77C7B00E6DA92 /* ShopPriceContentVC.swift */,
+				BF73C4EC20AB462B00452BBD /* ShopPriceTVC.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -607,6 +630,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-eShop/Pods-eShop-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BarcodeScanner/BarcodeScanner.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
@@ -618,6 +642,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BarcodeScanner.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
@@ -668,10 +693,12 @@
 			files = (
 				BF7CC6F02099FE4B009C422F /* ConcurrentOperation.swift in Sources */,
 				BFB11463209ACA56001CB1A8 /* StartScanningContentVC.swift in Sources */,
+				BF682FA120B311090010094C /* ProductPricesContentVC.swift in Sources */,
 				BF55468320A6CC25003388F0 /* ScanForPriceUC.swift in Sources */,
 				BF7CC701209A014A009C422F /* UIApplicationExtension.swift in Sources */,
 				BF7CC6DC2099FC8E009C422F /* AppStoryboard.swift in Sources */,
 				BF6361E820947541008A174C /* ViewController.swift in Sources */,
+				BF682FA020B311090010094C /* ProductPricesTVC.swift in Sources */,
 				BFB11464209ACA56001CB1A8 /* StartScanningPVC.swift in Sources */,
 				BF55468420A6CC25003388F0 /* ScanForPriceCoordinator.swift in Sources */,
 				BF6362222094941A008A174C /* Product.swift in Sources */,
@@ -679,16 +706,18 @@
 				BFB11460209ACA56001CB1A8 /* BarcodeScannerPVC.swift in Sources */,
 				BF6362232094941A008A174C /* FirebaseManager.swift in Sources */,
 				BFF54B5420A06D7C004917AC /* DataManager.swift in Sources */,
+				BF682F9F20B311090010094C /* ProductPricesPVC.swift in Sources */,
 				BF636228209506C4008A174C /* Shop.swift in Sources */,
 				BFB11461209ACA56001CB1A8 /* BarcodeScannerContainerVC.swift in Sources */,
 				BFB11469209ACC8A001CB1A8 /* PresentSplashOperation.swift in Sources */,
+				BF73C4ED20AB462B00452BBD /* ShopPriceTVC.swift in Sources */,
 				BF7CC6F82099FE4B009C422F /* PresentMainAppOperation.swift in Sources */,
 				BF6361E620947541008A174C /* AppDelegate.swift in Sources */,
 				BF63621A209480B7008A174C /* R.generated.swift in Sources */,
 				BF63622E2095F938008A174C /* Price.swift in Sources */,
 				BF55468520A6CC25003388F0 /* LocationManager.swift in Sources */,
 				BF7CC6F92099FE4B009C422F /* StartUpAppSequencer.swift in Sources */,
-				BFED589720A77C7C00E6DA92 /* ShopPriceContainerVC.swift in Sources */,
+				BFED589720A77C7C00E6DA92 /* ShopPriceContentVC.swift in Sources */,
 				BF014D8120A1783E00F7E1A4 /* UIAlertController+rx.swift in Sources */,
 				BFB11462209ACA56001CB1A8 /* ScanForPriceNC.swift in Sources */,
 				BFED589620A77C7C00E6DA92 /* ShopPricePVC.swift in Sources */,
@@ -699,6 +728,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF4E901420B47E6B002B908B /* UTDataManager.swift in Sources */,
 				BF384A7120984A5900E0D073 /* UTPrice.swift in Sources */,
 				BF63622B20951548008A174C /* UTShop.swift in Sources */,
 				BF7FC7D920A6B472008859BF /* UTScanForPriceUC.swift in Sources */,

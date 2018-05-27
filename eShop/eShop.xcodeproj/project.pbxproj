@@ -49,6 +49,16 @@
 		BFBBD67120999284003EB7E7 /* GoogleService-Info-DEBUG.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFBBD67020999284003EB7E7 /* GoogleService-Info-DEBUG.plist */; };
 		BFED589620A77C7C00E6DA92 /* ShopPricePVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED589320A77C7B00E6DA92 /* ShopPricePVC.swift */; };
 		BFED589720A77C7C00E6DA92 /* ShopPriceContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED589520A77C7B00E6DA92 /* ShopPriceContentVC.swift */; };
+		BFEFBA8220BA851C004143DE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEFBA8120BA851C004143DE /* BaseViewController.swift */; };
+		BFEFBA8520BA879A004143DE /* eShopFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEFBA8420BA879A004143DE /* eShopFonts.swift */; };
+		BFEFBA9720BA96E0004143DE /* SanFranciscoDisplay-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = BFEFBA9620BA960F004143DE /* SanFranciscoDisplay-Thin.otf */; };
+		BFEFBA9820BA96E0004143DE /* SanFranciscoDisplay-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = BFEFBA9420BA95E7004143DE /* SanFranciscoDisplay-Ultralight.otf */; };
+		BFEFBA9920BA96E0004143DE /* SanFranciscoDisplay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = BFEFBA9320BA95B8004143DE /* SanFranciscoDisplay-Regular.otf */; };
+		BFEFBA9A20BA96E0004143DE /* SanFranciscoDisplay-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BFEFBA9120BA94C3004143DE /* SanFranciscoDisplay-Bold.otf */; };
+		BFEFBA9C20BA99C0004143DE /* DistanceSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEFBA9B20BA99C0004143DE /* DistanceSelectorView.swift */; };
+		BFEFBAA120BABC3F004143DE /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEFBAA020BABC3F004143DE /* Strings.swift */; };
+		BFEFBAA320BABC92004143DE /* LocaleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEFBAA220BABC92004143DE /* LocaleManager.swift */; };
+		BFEFBAA420BABD3B004143DE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BFEFBAA620BABD3B004143DE /* Localizable.strings */; };
 		BFF54B5420A06D7C004917AC /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF54B5320A06D7B004917AC /* DataManager.swift */; };
 		F432E218DFF4D1571FE670EB /* Pods_eShopTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82A741CB64EA926208A5E54 /* Pods_eShopTests.framework */; };
 /* End PBXBuildFile section */
@@ -114,6 +124,18 @@
 		BFBBD67020999284003EB7E7 /* GoogleService-Info-DEBUG.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-DEBUG.plist"; sourceTree = "<group>"; };
 		BFED589320A77C7B00E6DA92 /* ShopPricePVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopPricePVC.swift; sourceTree = "<group>"; };
 		BFED589520A77C7B00E6DA92 /* ShopPriceContentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopPriceContentVC.swift; sourceTree = "<group>"; };
+		BFEFBA8120BA851C004143DE /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		BFEFBA8420BA879A004143DE /* eShopFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eShopFonts.swift; sourceTree = "<group>"; };
+		BFEFBA9120BA94C3004143DE /* SanFranciscoDisplay-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoDisplay-Bold.otf"; sourceTree = "<group>"; };
+		BFEFBA9320BA95B8004143DE /* SanFranciscoDisplay-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoDisplay-Regular.otf"; sourceTree = "<group>"; };
+		BFEFBA9420BA95E7004143DE /* SanFranciscoDisplay-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoDisplay-Ultralight.otf"; sourceTree = "<group>"; };
+		BFEFBA9620BA960F004143DE /* SanFranciscoDisplay-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoDisplay-Thin.otf"; sourceTree = "<group>"; };
+		BFEFBA9B20BA99C0004143DE /* DistanceSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceSelectorView.swift; sourceTree = "<group>"; };
+		BFEFBAA020BABC3F004143DE /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		BFEFBAA220BABC92004143DE /* LocaleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleManager.swift; sourceTree = "<group>"; };
+		BFEFBAA520BABD3B004143DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BFEFBAA720BABD65004143DE /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		BFEFBAA820BABD65004143DE /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BFF54B5320A06D7B004917AC /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		D82A741CB64EA926208A5E54 /* Pods_eShopTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eShopTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -153,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				BF014D8020A1783E00F7E1A4 /* UIAlertController+rx.swift */,
+				BFEFBA8120BA851C004143DE /* BaseViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -179,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				BF55468220A6CC25003388F0 /* LocationManager.swift */,
+				BFEFBAA220BABC92004143DE /* LocaleManager.swift */,
 			);
 			name = Managers;
 			path = eShop/DomainLayer/Managers;
@@ -213,7 +237,6 @@
 				BF63620520947712008A174C /* Application */,
 				BF6361E520947541008A174C /* AppDelegate.swift */,
 				BF6361E720947541008A174C /* ViewController.swift */,
-				BF6361EC20947542008A174C /* Assets.xcassets */,
 				BF6361EE20947542008A174C /* LaunchScreen.storyboard */,
 				BF63620C209479EF008A174C /* Info.plist */,
 			);
@@ -254,6 +277,10 @@
 		BF63621020947F46008A174C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BFEFBA9D20BABAA1004143DE /* Strings */,
+				BFEFBA8620BA8903004143DE /* Fonts */,
+				BFEFBA8320BA876C004143DE /* Styles */,
+				BF6361EC20947542008A174C /* Assets.xcassets */,
 				BF636218209480B7008A174C /* RSwift */,
 			);
 			path = Resources;
@@ -442,6 +469,7 @@
 			isa = PBXGroup;
 			children = (
 				BFB1145C209ACA56001CB1A8 /* StartScanningContentVC.swift */,
+				BFEFBA9B20BA99C0004143DE /* DistanceSelectorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -470,6 +498,34 @@
 				BF73C4EC20AB462B00452BBD /* ShopPriceTVC.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		BFEFBA8320BA876C004143DE /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				BFEFBA8420BA879A004143DE /* eShopFonts.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		BFEFBA8620BA8903004143DE /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				BFEFBA9620BA960F004143DE /* SanFranciscoDisplay-Thin.otf */,
+				BFEFBA9420BA95E7004143DE /* SanFranciscoDisplay-Ultralight.otf */,
+				BFEFBA9320BA95B8004143DE /* SanFranciscoDisplay-Regular.otf */,
+				BFEFBA9120BA94C3004143DE /* SanFranciscoDisplay-Bold.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		BFEFBA9D20BABAA1004143DE /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				BFEFBAA620BABD3B004143DE /* Localizable.strings */,
+				BFEFBAA020BABC3F004143DE /* Strings.swift */,
+			);
+			path = Strings;
 			sourceTree = "<group>";
 		};
 		CAF843E5223B306707C76558 /* Frameworks */ = {
@@ -550,6 +606,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = BF6361D920947540008A174C;
 			productRefGroup = BF6361E320947540008A174C /* Products */;
@@ -567,6 +624,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFEFBA9720BA96E0004143DE /* SanFranciscoDisplay-Thin.otf in Resources */,
+				BFEFBA9820BA96E0004143DE /* SanFranciscoDisplay-Ultralight.otf in Resources */,
+				BFEFBAA420BABD3B004143DE /* Localizable.strings in Resources */,
+				BFEFBA9920BA96E0004143DE /* SanFranciscoDisplay-Regular.otf in Resources */,
+				BFEFBA9A20BA96E0004143DE /* SanFranciscoDisplay-Bold.otf in Resources */,
 				BFBBD67120999284003EB7E7 /* GoogleService-Info-DEBUG.plist in Resources */,
 				BF6361F020947542008A174C /* LaunchScreen.storyboard in Resources */,
 				BF63620920947763008A174C /* GoogleService-Info.plist in Resources */,
@@ -692,9 +754,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF7CC6F02099FE4B009C422F /* ConcurrentOperation.swift in Sources */,
+				BFEFBAA320BABC92004143DE /* LocaleManager.swift in Sources */,
 				BFB11463209ACA56001CB1A8 /* StartScanningContentVC.swift in Sources */,
 				BF682FA120B311090010094C /* ProductPricesContentVC.swift in Sources */,
 				BF55468320A6CC25003388F0 /* ScanForPriceUC.swift in Sources */,
+				BFEFBA8220BA851C004143DE /* BaseViewController.swift in Sources */,
 				BF7CC701209A014A009C422F /* UIApplicationExtension.swift in Sources */,
 				BF7CC6DC2099FC8E009C422F /* AppStoryboard.swift in Sources */,
 				BF6361E820947541008A174C /* ViewController.swift in Sources */,
@@ -702,7 +766,9 @@
 				BFB11464209ACA56001CB1A8 /* StartScanningPVC.swift in Sources */,
 				BF55468420A6CC25003388F0 /* ScanForPriceCoordinator.swift in Sources */,
 				BF6362222094941A008A174C /* Product.swift in Sources */,
+				BFEFBAA120BABC3F004143DE /* Strings.swift in Sources */,
 				BFB11465209ACA56001CB1A8 /* SplashVC.swift in Sources */,
+				BFEFBA9C20BA99C0004143DE /* DistanceSelectorView.swift in Sources */,
 				BFB11460209ACA56001CB1A8 /* BarcodeScannerPVC.swift in Sources */,
 				BF6362232094941A008A174C /* FirebaseManager.swift in Sources */,
 				BFF54B5420A06D7C004917AC /* DataManager.swift in Sources */,
@@ -710,6 +776,7 @@
 				BF636228209506C4008A174C /* Shop.swift in Sources */,
 				BFB11461209ACA56001CB1A8 /* BarcodeScannerContainerVC.swift in Sources */,
 				BFB11469209ACC8A001CB1A8 /* PresentSplashOperation.swift in Sources */,
+				BFEFBA8520BA879A004143DE /* eShopFonts.swift in Sources */,
 				BF73C4ED20AB462B00452BBD /* ShopPriceTVC.swift in Sources */,
 				BF7CC6F82099FE4B009C422F /* PresentMainAppOperation.swift in Sources */,
 				BF6361E620947541008A174C /* AppDelegate.swift in Sources */,
@@ -752,8 +819,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				BF6361EF20947542008A174C /* Base */,
+				BFEFBAA720BABD65004143DE /* es */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		BFEFBAA620BABD3B004143DE /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BFEFBAA520BABD3B004143DE /* en */,
+				BFEFBAA820BABD65004143DE /* es */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -763,6 +840,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -823,6 +901,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

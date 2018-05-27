@@ -18,6 +18,7 @@ class BarcodeScannerPVC: UIViewController, BarcodeScannerCodeDelegate, BarcodeSc
     //MARK:- Callbacks
     var onShopPrice: ((Price) -> Void) = { _ in }
     
+    
     //MARK:- Private attributes
     private var disposeBag = DisposeBag()
     

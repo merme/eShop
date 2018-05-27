@@ -9,22 +9,25 @@
 import UIKit
 import RxSwift
 
-class StartScanningPVC: UIViewController {
+class StartScanningPVC: BaseViewController {
     
     // MARK: - Private/Internal
     private var startScanningContentVC:StartScanningContentVC?
     
     // MARK: - Callbacks
-    var onScan3: (() -> Void) = { }
+    var onScan: (( ) -> Void) = {  }
     
     private var disposeBag = DisposeBag()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
         // Do any additional setup after loading the view.
         LocationManager.shared.requestOrRememberLocationAuthorization()
+        self.setupPresenterViewController()
 
     }
     
@@ -52,11 +55,15 @@ class StartScanningPVC: UIViewController {
             
             startScanningContentVC?.onScan = { [weak self] in
                 guard let weakSelf = self else { return }
-                weakSelf.onScan3()
+                weakSelf.onScan()
             }
         }
     }
     
+    // MARK :-  Private/Internal
+    func setupPresenterViewController() {
+        self.title = R.string.localizable.start_scanning_title.key.localized
+    }
     /*
      // MARK: - Navigation
 

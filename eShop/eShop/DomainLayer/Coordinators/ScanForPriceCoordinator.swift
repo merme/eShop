@@ -60,7 +60,7 @@ class  ScanForPriceCoordinator {
         DispatchQueue.main.async {
 
             let startScanningPVC =  StartScanningPVC.instantiate(fromAppStoryboard: .scanForPrice)
-            startScanningPVC.onScan3 = { [weak self] in
+            startScanningPVC.onScan = { [weak self] in
                 guard let weakSelf = self else { return }
                 weakSelf.presentBarcodeScanner()
             }

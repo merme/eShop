@@ -9,13 +9,14 @@
 import RxCocoa
 import RxSwift
 
-class StartScanningContentVC: UIViewController {
+class StartScanningContentVC: BaseViewController {
     
     // MARK: - IBOutlet
     @IBOutlet weak var btnScan: UIButton!
+    @IBOutlet weak var distanceSelectorView:DistanceSelectorView!
     
     // MARK: - Callbacks
-    var onScan: (() -> Void) = { }
+    var onScan: (( ) -> Void) = {  }
     
     // MARK: - Private attributes
     var disposeBag = DisposeBag()
@@ -35,9 +36,10 @@ class StartScanningContentVC: UIViewController {
     
     // MARK: - Private/Internal
     func setupContentViewController() {
+        btnScan.setImage(R.image.img_scancode(), for: .normal)
         btnScan.rx.tap.bind { [weak self] _ in
             guard let weakSelf = self else { return }
-            weakSelf.onScan()
+            weakSelf.onScan(/*weakSelf.distanceSelectorView.getRadiousInM()*/)
             }
             .disposed(by: disposeBag)
     }

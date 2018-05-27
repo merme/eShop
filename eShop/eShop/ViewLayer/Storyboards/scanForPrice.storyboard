@@ -61,25 +61,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxA-IM-dgZ">
-                                <rect key="frame" x="164.5" y="308.5" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxA-IM-dgZ">
+                                <rect key="frame" x="40" y="200" width="295" height="347"/>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WjM-TB-bya" customClass="DistanceSelectorView" customModule="eShop" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="hy7-jl-Il9">
+                                        <rect key="frame" x="19" y="36" width="180" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLu-kR-1Sq">
+                                        <rect key="frame" x="223" y="40" width="121" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="IBJ-ma-qaa"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="lblDistance" destination="NLu-kR-1Sq" id="WvB-NJ-Tpd"/>
+                                    <outlet property="sldDistance" destination="hy7-jl-Il9" id="XqF-cY-mgu"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="hxA-IM-dgZ" firstAttribute="centerY" secondItem="YSu-4J-a42" secondAttribute="centerY" id="2b8-qZ-YKd"/>
-                            <constraint firstItem="hxA-IM-dgZ" firstAttribute="centerX" secondItem="YSu-4J-a42" secondAttribute="centerX" id="Y9h-7H-m7t"/>
+                            <constraint firstItem="WjM-TB-bya" firstAttribute="top" secondItem="YSu-4J-a42" secondAttribute="top" id="2Is-pC-kTk"/>
+                            <constraint firstItem="EDO-Td-2Uy" firstAttribute="bottom" secondItem="hxA-IM-dgZ" secondAttribute="bottom" constant="100" id="BVK-wj-hSK"/>
+                            <constraint firstItem="WjM-TB-bya" firstAttribute="leading" secondItem="EDO-Td-2Uy" secondAttribute="leading" id="SdI-EW-2FP"/>
+                            <constraint firstItem="hxA-IM-dgZ" firstAttribute="leading" secondItem="EDO-Td-2Uy" secondAttribute="leading" constant="40" id="X8l-0r-Ist"/>
+                            <constraint firstItem="EDO-Td-2Uy" firstAttribute="trailing" secondItem="hxA-IM-dgZ" secondAttribute="trailing" constant="40" id="a7q-k4-8gA"/>
+                            <constraint firstItem="WjM-TB-bya" firstAttribute="trailing" secondItem="EDO-Td-2Uy" secondAttribute="trailing" id="aLB-rd-oSw"/>
+                            <constraint firstItem="hxA-IM-dgZ" firstAttribute="top" secondItem="WjM-TB-bya" secondAttribute="bottom" constant="100" id="dnm-Cz-yrr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EDO-Td-2Uy"/>
                     </view>
                     <connections>
                         <outlet property="btnScan" destination="hxA-IM-dgZ" id="yyc-18-tV7"/>
+                        <outlet property="distanceSelectorView" destination="WjM-TB-bya" id="tbD-nW-juv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VJT-R0-DC6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-236" y="1011"/>
+            <point key="canvasLocation" x="-236" y="1010.6446776611695"/>
         </scene>
         <!--Barcode ScannerPVC-->
         <scene sceneID="Jrg-v2-ZrX">

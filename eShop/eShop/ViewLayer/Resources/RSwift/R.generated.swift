@@ -13,6 +13,7 @@ struct R: Rswift.Validatable {
   fileprivate static let hostingBundle = Bundle(for: R.Class.self)
   
   static func validate() throws {
+    try font.validate()
     try intern.validate()
   }
   
@@ -21,12 +22,20 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.file` struct is generated, and contains static references to 2 files.
+  /// This `R.file` struct is generated, and contains static references to 6 files.
   struct file {
     /// Resource file `GoogleService-Info-DEBUG.plist`.
     static let googleServiceInfoDEBUGPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "GoogleService-Info-DEBUG", pathExtension: "plist")
     /// Resource file `GoogleService-Info.plist`.
     static let googleServiceInfoPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "GoogleService-Info", pathExtension: "plist")
+    /// Resource file `SanFranciscoDisplay-Bold.otf`.
+    static let sanFranciscoDisplayBoldOtf = Rswift.FileResource(bundle: R.hostingBundle, name: "SanFranciscoDisplay-Bold", pathExtension: "otf")
+    /// Resource file `SanFranciscoDisplay-Regular.otf`.
+    static let sanFranciscoDisplayRegularOtf = Rswift.FileResource(bundle: R.hostingBundle, name: "SanFranciscoDisplay-Regular", pathExtension: "otf")
+    /// Resource file `SanFranciscoDisplay-Thin.otf`.
+    static let sanFranciscoDisplayThinOtf = Rswift.FileResource(bundle: R.hostingBundle, name: "SanFranciscoDisplay-Thin", pathExtension: "otf")
+    /// Resource file `SanFranciscoDisplay-Ultralight.otf`.
+    static let sanFranciscoDisplayUltralightOtf = Rswift.FileResource(bundle: R.hostingBundle, name: "SanFranciscoDisplay-Ultralight", pathExtension: "otf")
     
     /// `bundle.url(forResource: "GoogleService-Info", withExtension: "plist")`
     static func googleServiceInfoPlist(_: Void = ()) -> Foundation.URL? {
@@ -40,16 +49,91 @@ struct R: Rswift.Validatable {
       return fileResource.bundle.url(forResource: fileResource)
     }
     
+    /// `bundle.url(forResource: "SanFranciscoDisplay-Bold", withExtension: "otf")`
+    static func sanFranciscoDisplayBoldOtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.sanFranciscoDisplayBoldOtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "SanFranciscoDisplay-Regular", withExtension: "otf")`
+    static func sanFranciscoDisplayRegularOtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.sanFranciscoDisplayRegularOtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "SanFranciscoDisplay-Thin", withExtension: "otf")`
+    static func sanFranciscoDisplayThinOtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.sanFranciscoDisplayThinOtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "SanFranciscoDisplay-Ultralight", withExtension: "otf")`
+    static func sanFranciscoDisplayUltralightOtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.sanFranciscoDisplayUltralightOtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
     fileprivate init() {}
   }
   
-  /// This `R.font` struct is generated, and contains static references to 0 fonts.
-  struct font {
+  /// This `R.font` struct is generated, and contains static references to 4 fonts.
+  struct font: Rswift.Validatable {
+    /// Font `SanFranciscoDisplay-Bold`.
+    static let sanFranciscoDisplayBold = Rswift.FontResource(fontName: "SanFranciscoDisplay-Bold")
+    /// Font `SanFranciscoDisplay-Regular`.
+    static let sanFranciscoDisplayRegular = Rswift.FontResource(fontName: "SanFranciscoDisplay-Regular")
+    /// Font `SanFranciscoDisplay-Thin`.
+    static let sanFranciscoDisplayThin = Rswift.FontResource(fontName: "SanFranciscoDisplay-Thin")
+    /// Font `SanFranciscoDisplay-Ultralight`.
+    static let sanFranciscoDisplayUltralight = Rswift.FontResource(fontName: "SanFranciscoDisplay-Ultralight")
+    
+    /// `UIFont(name: "SanFranciscoDisplay-Bold", size: ...)`
+    static func sanFranciscoDisplayBold(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: sanFranciscoDisplayBold, size: size)
+    }
+    
+    /// `UIFont(name: "SanFranciscoDisplay-Regular", size: ...)`
+    static func sanFranciscoDisplayRegular(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: sanFranciscoDisplayRegular, size: size)
+    }
+    
+    /// `UIFont(name: "SanFranciscoDisplay-Thin", size: ...)`
+    static func sanFranciscoDisplayThin(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: sanFranciscoDisplayThin, size: size)
+    }
+    
+    /// `UIFont(name: "SanFranciscoDisplay-Ultralight", size: ...)`
+    static func sanFranciscoDisplayUltralight(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: sanFranciscoDisplayUltralight, size: size)
+    }
+    
+    static func validate() throws {
+      if R.font.sanFranciscoDisplayUltralight(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'SanFranciscoDisplay-Ultralight' could not be loaded, is 'SanFranciscoDisplay-Ultralight.otf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.sanFranciscoDisplayRegular(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'SanFranciscoDisplay-Regular' could not be loaded, is 'SanFranciscoDisplay-Regular.otf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.sanFranciscoDisplayThin(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'SanFranciscoDisplay-Thin' could not be loaded, is 'SanFranciscoDisplay-Thin.otf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.sanFranciscoDisplayBold(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'SanFranciscoDisplay-Bold' could not be loaded, is 'SanFranciscoDisplay-Bold.otf' added to the UIAppFonts array in this targets Info.plist?") }
+    }
+    
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 0 images.
+  /// This `R.image` struct is generated, and contains static references to 2 images.
   struct image {
+    /// Image `background`.
+    static let background = Rswift.ImageResource(bundle: R.hostingBundle, name: "background")
+    /// Image `img_scancode`.
+    static let img_scancode = Rswift.ImageResource(bundle: R.hostingBundle, name: "img_scancode")
+    
+    /// `UIImage(named: "background", bundle: ..., traitCollection: ...)`
+    static func background(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.background, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "img_scancode", bundle: ..., traitCollection: ...)`
+    static func img_scancode(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.img_scancode, compatibleWith: traitCollection)
+    }
+    
     fileprivate init() {}
   }
   
@@ -145,8 +229,30 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.string` struct is generated, and contains static references to 0 localization tables.
+  /// This `R.string` struct is generated, and contains static references to 2 localization tables.
   struct string {
+    /// This `R.string.launchScreen` struct is generated, and contains static references to 0 localization keys.
+    struct launchScreen {
+      fileprivate init() {}
+    }
+    
+    /// This `R.string.localizable` struct is generated, and contains static references to 1 localization keys.
+    struct localizable {
+      /// en translation: Start scanning
+      /// 
+      /// Locales: en, es
+      static let start_scanning_title = Rswift.StringResource(key: "start_scanning_title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
+      
+      /// en translation: Start scanning
+      /// 
+      /// Locales: en, es
+      static func start_scanning_title(_: Void = ()) -> String {
+        return NSLocalizedString("start_scanning_title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      fileprivate init() {}
+    }
+    
     fileprivate init() {}
   }
   

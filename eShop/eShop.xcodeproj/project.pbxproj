@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		00DB072F203F235427605218 /* Pods_eShop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 693EBEB6285F376CB57A8A3D /* Pods_eShop.framework */; };
 		BF014D8120A1783E00F7E1A4 /* UIAlertController+rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF014D8020A1783E00F7E1A4 /* UIAlertController+rx.swift */; };
+		BF0C555920BB13C900D6F7BC /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0C555820BB13C900D6F7BC /* MainTabBarController.swift */; };
 		BF384A6F209789CA00E0D073 /* UTProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF384A6E209789C900E0D073 /* UTProduct.swift */; };
 		BF384A7120984A5900E0D073 /* UTPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF384A7020984A5900E0D073 /* UTPrice.swift */; };
 		BF4E901420B47E6B002B908B /* UTDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4E901320B47E6A002B908B /* UTDataManager.swift */; };
@@ -80,6 +81,7 @@
 		8856398CD142B99E40406E97 /* Pods-eShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eShop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eShop/Pods-eShop.debug.xcconfig"; sourceTree = "<group>"; };
 		A12AAAD9FAD84030B79DF1E8 /* Pods-eShop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eShop.release.xcconfig"; path = "Pods/Target Support Files/Pods-eShop/Pods-eShop.release.xcconfig"; sourceTree = "<group>"; };
 		BF014D8020A1783E00F7E1A4 /* UIAlertController+rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+rx.swift"; sourceTree = "<group>"; };
+		BF0C555820BB13C900D6F7BC /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		BF384A6E209789C900E0D073 /* UTProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UTProduct.swift; sourceTree = "<group>"; };
 		BF384A7020984A5900E0D073 /* UTPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UTPrice.swift; sourceTree = "<group>"; };
 		BF4E901320B47E6A002B908B /* UTDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UTDataManager.swift; sourceTree = "<group>"; };
@@ -178,6 +180,22 @@
 				BFEFBA8120BA851C004143DE /* BaseViewController.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BF0C555620BB133200D6F7BC /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				BF0C555720BB134400D6F7BC /* MainTab */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		BF0C555720BB134400D6F7BC /* MainTab */ = {
+			isa = PBXGroup;
+			children = (
+				BF0C555820BB13C900D6F7BC /* MainTabBarController.swift */,
+			);
+			path = MainTab;
 			sourceTree = "<group>";
 		};
 		BF55467D20A6CC24003388F0 /* UseCases */ = {
@@ -421,6 +439,7 @@
 		BFB11452209ACA56001CB1A8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BF0C555620BB133200D6F7BC /* Main */,
 				BFB11453209ACA56001CB1A8 /* ScanForPrice */,
 				BFB1145E209ACA56001CB1A8 /* Splash */,
 			);
@@ -755,6 +774,7 @@
 			files = (
 				BF7CC6F02099FE4B009C422F /* ConcurrentOperation.swift in Sources */,
 				BFEFBAA320BABC92004143DE /* LocaleManager.swift in Sources */,
+				BF0C555920BB13C900D6F7BC /* MainTabBarController.swift in Sources */,
 				BFB11463209ACA56001CB1A8 /* StartScanningContentVC.swift in Sources */,
 				BF682FA120B311090010094C /* ProductPricesContentVC.swift in Sources */,
 				BF55468320A6CC25003388F0 /* ScanForPriceUC.swift in Sources */,

@@ -19,8 +19,9 @@ class  ScanForPriceCoordinator {
     private init() {} //This prevents others from using the default '()' initializer for this class.
 
     // MARK: - Pulic methods
-    func start() {
+    @discardableResult func start() -> UINavigationController {
         self.presentStartScanning()
+        return scanForPriceNC
         
         /*
         DataManager.shared.reset()
@@ -66,10 +67,10 @@ class  ScanForPriceCoordinator {
             }
             
             self.scanForPriceNC.viewControllers = [startScanningPVC]
-            
+            /*
             if let topController = UIApplication.topViewController() {
                 topController.present(self.scanForPriceNC, animated: true, completion: nil )
-            }
+            }*/
         }
     }
     

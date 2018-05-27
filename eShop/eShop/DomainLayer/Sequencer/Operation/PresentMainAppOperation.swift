@@ -17,8 +17,18 @@ class PresentMainAppOperation: ConcurrentOperation {
     override func main() {
         DispatchQueue.main.async {
 
-            ScanForPriceCoordinator.shared.start()
+            
+          //  ScanForPriceCoordinator.shared.start()
 
+            let mainTabBarController = MainTabBarController.instantiate(fromAppStoryboard: .Main)
+            mainTabBarController.viewControllers = [ScanForPriceCoordinator.shared.start()]
+            mainTabBarController.modalTransitionStyle = .crossDissolve
+
+            
+            let appDelegate  = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.window!.rootViewController?.present(mainTabBarController, animated: true, completion: nil)
+            
+            
             self.state = .Finished
         }
     }

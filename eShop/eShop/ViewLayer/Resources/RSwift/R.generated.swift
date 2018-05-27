@@ -297,12 +297,12 @@ struct _R: Rswift.Validatable {
       typealias InitialController = SplashVC
       
       let bundle = R.hostingBundle
-      let mainTabViewController = StoryboardViewControllerResource<UIKit.UITabBarController>(identifier: "MainTabViewController")
+      let mainTabBarController = StoryboardViewControllerResource<MainTabBarController>(identifier: "MainTabBarController")
       let name = "Main"
       let splashVC = StoryboardViewControllerResource<SplashVC>(identifier: "SplashVC")
       
-      func mainTabViewController(_: Void = ()) -> UIKit.UITabBarController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: mainTabViewController)
+      func mainTabBarController(_: Void = ()) -> MainTabBarController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: mainTabBarController)
       }
       
       func splashVC(_: Void = ()) -> SplashVC? {
@@ -310,7 +310,7 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
-        if _R.storyboard.main().mainTabViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'mainTabViewController' could not be loaded from storyboard 'Main' as 'UIKit.UITabBarController'.") }
+        if _R.storyboard.main().mainTabBarController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'mainTabBarController' could not be loaded from storyboard 'Main' as 'MainTabBarController'.") }
         if _R.storyboard.main().splashVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'splashVC' could not be loaded from storyboard 'Main' as 'SplashVC'.") }
       }
       

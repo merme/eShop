@@ -344,7 +344,7 @@ class UTScanForPriceUC: XCTestCase {
     
     
     func test_find_prices_in_10Km_1Found() {
-        //  find(latitude:Double,longitude:Double, barcode:String, radious: Double) -> Single<[Price]> {
+        //  find(latitude:Double,longitude:Double, barcode:String, radiousInM: Double) -> Single<[Price]> {
         
         let asyncExpectation = expectation(description: "\(#function)")
         
@@ -362,7 +362,7 @@ class UTScanForPriceUC: XCTestCase {
         
         let disposeBag = DisposeBag()
         
-        ScanForPriceUC.shared.find(barcode: "12345678", radious: 10000).subscribe { event in
+        ScanForPriceUC.shared.find(barcode: "12345678", radiousInM: 10000).subscribe { event in
             
             switch event {
             case .success(let prices):
@@ -391,7 +391,7 @@ class UTScanForPriceUC: XCTestCase {
  
     
     func test_find_prices_in_20Km_2Found() {
-        //  find(latitude:Double,longitude:Double, barcode:String, radious: Double) -> Single<[Price]> {
+        //  find(latitude:Double,longitude:Double, barcode:String, radiousInM: Double) -> Single<[Price]> {
         
         let asyncExpectation = expectation(description: "\(#function)")
         
@@ -409,7 +409,7 @@ class UTScanForPriceUC: XCTestCase {
         
         let disposeBag = DisposeBag()
         
-        ScanForPriceUC.shared.find(barcode: "12345678", radious: 20000).subscribe { event in
+        ScanForPriceUC.shared.find(barcode: "12345678", radiousInM: 20000).subscribe { event in
             
             switch event {
             case .success(let prices):
@@ -448,7 +448,7 @@ class UTScanForPriceUC: XCTestCase {
     }
     
     func test_find_prices_in_1Km_0Found() {
-        //  find(latitude:Double,longitude:Double, barcode:String, radious: Double) -> Single<[Price]> {
+        //  find(latitude:Double,longitude:Double, barcode:String, radiousInM: Double) -> Single<[Price]> {
         
         let asyncExpectation = expectation(description: "\(#function)")
         
@@ -466,7 +466,7 @@ class UTScanForPriceUC: XCTestCase {
         
         let disposeBag = DisposeBag()
         
-        ScanForPriceUC.shared.find(barcode: "12345678", radious: 1000).subscribe { event in
+        ScanForPriceUC.shared.find(barcode: "12345678", radiousInM: 1000).subscribe { event in
             
             switch event {
             case .success(let prices):

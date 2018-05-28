@@ -139,6 +139,31 @@ class UTFirebaseManager: XCTestCase {
         self.waitForExpectations(timeout: 1, handler: nil)
     }
     
+    func test_product_find_productName() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        var product = Product(name: "patatas 2Kg", barcode: "12345678")
+        FirebaseManager.shared.create(product:product)
+        product = Product(name: "pimientos", barcode: "2222")
+        FirebaseManager.shared.create(product:product)
+        product = Product(name: "patatas 1Kg", barcode: "1111")
+        FirebaseManager.shared.create(product:product)
+        
+        FirebaseManager.shared.find(productName: "pata") { products in
+            guard products.count == 2 else {  XCTFail(); return }
+            
+            XCTAssertEqual(products[0].name, "patatas 1Kg")
+            XCTAssertEqual(products[1].name, "patatas 2Kg")
+            
+            asyncExpectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 2, handler: nil)
+    }
+    
+    
     // MARK: - Shop
     func test_shop_create() {
         
@@ -238,7 +263,7 @@ class UTFirebaseManager: XCTestCase {
         shop = Shop(name: "Whole Foods Market Vancouver", latitude:  49.2901, longitude: -123.1325)
         FirebaseManager.shared.create(shop: shop)
         
-        FirebaseManager.shared.find(latitude: 41.4213, longitude: 1.9998, radious: 10) { shops in
+        FirebaseManager.shared.find(latitude: 41.4213, longitude: 1.9998, radiousInM: 10) { shops in
             XCTAssertEqual(shops.count, 0)
             
             asyncExpectation.fulfill()
@@ -263,7 +288,7 @@ class UTFirebaseManager: XCTestCase {
         shop = Shop(name: "Whole Foods Market Vancouver", latitude:  49.2901, longitude: -123.1325)
         FirebaseManager.shared.create(shop: shop)
         
-        FirebaseManager.shared.find(latitude: 41.4188, longitude: 2.0007, radious: 15) { shops in
+        FirebaseManager.shared.find(latitude: 41.4188, longitude: 2.0007, radiousInM: 15) { shops in
             guard shops.count == 1 else { XCTFail(); return }
             XCTAssertEqual(shops[0].name, "Bon Preu Pallejà")
             
@@ -292,7 +317,7 @@ class UTFirebaseManager: XCTestCase {
         shop = Shop(name: "Whole Foods Market Vancouver", latitude:  49.2901, longitude: -123.1325)
         FirebaseManager.shared.create(shop: shop)
         
-        FirebaseManager.shared.find(latitude: 41.4191, longitude: 1.9999, radious: 100) { shops in
+        FirebaseManager.shared.find(latitude: 41.4191, longitude: 1.9999, radiousInM: 100) { shops in
             guard shops.count == 1 else { XCTFail(); return }
             XCTAssertEqual(shops[0].name, "Bon Preu Pallejà")
             
@@ -321,7 +346,7 @@ class UTFirebaseManager: XCTestCase {
         shop = Shop(name: "Whole Foods Market Vancouver", latitude:  49.2901, longitude: -123.1325)
         FirebaseManager.shared.create(shop: shop)
         
-        FirebaseManager.shared.find(latitude: 41.4191, longitude: 1.9999, radious: 1000) { shops in
+        FirebaseManager.shared.find(latitude: 41.4191, longitude: 1.9999, radiousInM: 1000) { shops in
             guard shops.count == 2 else { XCTFail(); return }
             XCTAssertEqual(shops[0].name, "Bon Preu Pallejà")
             XCTAssertEqual(shops[1].name, "Mercadona Pallejà")
@@ -351,7 +376,7 @@ class UTFirebaseManager: XCTestCase {
         shop = Shop(name: "Whole Foods Market Vancouver", latitude:  49.2901, longitude: -123.1325)
         FirebaseManager.shared.create(shop: shop)
         
-        FirebaseManager.shared.find(latitude: 41.4191, longitude: 1.9999, radious: 1000000) { shops in
+        FirebaseManager.shared.find(latitude: 41.4191, longitude: 1.9999, radiousInM: 1000000) { shops in
             guard shops.count == 3 else { XCTFail(); return }
             XCTAssertEqual(shops[0].name, "Bon Preu Pallejà")
             XCTAssertEqual(shops[1].name, "Mercadona Pallejà")
@@ -382,7 +407,7 @@ class UTFirebaseManager: XCTestCase {
         shop = Shop(name: "Whole Foods Market Vancouver", latitude:  49.2901, longitude: -123.1325)
         FirebaseManager.shared.create(shop: shop)
         
-        FirebaseManager.shared.find(latitude: 41.4191, longitude: 1.9999, radious: 10000 * 1000 ) { shops in
+        FirebaseManager.shared.find(latitude: 41.4191, longitude: 1.9999, radiousInM: 10000 * 1000 ) { shops in
             guard shops.count == 4 else { XCTFail(); return }
             XCTAssertEqual(shops[0].name, "Bon Preu Pallejà")
             XCTAssertEqual(shops[1].name, "Mercadona Pallejà")
@@ -751,7 +776,7 @@ class UTFirebaseManager: XCTestCase {
             XCTAssertEqual(price.product?.barcode, "12345678")
             XCTAssertEqual(_productName,"patatas")
             
-            FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: Shop.gapErrorDistanceM, onComplete: { shops in
+            FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radiousInM: Shop.gapErrorDistanceM, onComplete: { shops in
                 guard shops.isEmpty == false else { XCTFail(); return }
                 
                 XCTAssertNil(shops[0].name)
@@ -792,7 +817,7 @@ class UTFirebaseManager: XCTestCase {
             XCTAssertEqual(price.product?.barcode, "12345678")
             XCTAssertNil(price.product?.name)
             
-            FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: Shop.gapErrorDistanceM, onComplete: { shops in
+            FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radiousInM: Shop.gapErrorDistanceM, onComplete: { shops in
                 guard shops.isEmpty == false else { XCTFail(); return }
                 
                 XCTAssertNil(shops[0].name)
@@ -836,7 +861,7 @@ class UTFirebaseManager: XCTestCase {
         price = Price(barcode: product.getKey(), shop: shop3.getKey(), price: 15.0)
         FirebaseManager.shared.create(price: price)
         
-        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000 * 1000, barcode: "12345678") { prices in
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radiousInM: 1000 * 1000, barcode: "12345678") { prices in
             XCTAssertEqual(prices.count, 3)
             
             XCTAssertEqual(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008), 0)
@@ -855,7 +880,7 @@ class UTFirebaseManager: XCTestCase {
         let asyncExpectation = expectation(description: "\(#function)")
         self.set3Products3Shops()
         
-        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000 * 1000, barcode: "11111111") { prices in
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radiousInM: 1000 * 1000, barcode: "11111111") { prices in
             XCTAssertEqual(prices.count, 3)
             
             XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) - 139.0062 <= 0.0001)
@@ -890,7 +915,7 @@ class UTFirebaseManager: XCTestCase {
         let asyncExpectation = expectation(description: "\(#function)")
         self.set3Products3Shops()
         
-        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000 * 1000, barcode: "22222222") { prices in
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radiousInM: 1000 * 1000, barcode: "22222222") { prices in
             XCTAssertEqual(prices.count, 1)
             
             XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) - 1390.062 <= 0.0001)
@@ -910,7 +935,7 @@ class UTFirebaseManager: XCTestCase {
         let asyncExpectation = expectation(description: "\(#function)")
         self.set3Products3Shops()
         
-        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000 * 1000, barcode: "33333333") { prices in
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radiousInM: 1000 * 1000, barcode: "33333333") { prices in
             XCTAssertEqual(prices.count, 2)
             
             XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) - 139.0096 <= 0.0001)
@@ -937,7 +962,7 @@ class UTFirebaseManager: XCTestCase {
         let asyncExpectation = expectation(description: "\(#function)")
         self.set3Products3Shops()
         
-        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000 * 1000, barcode: "11111111",sortByPrice: true) { prices in
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radiousInM: 1000 * 1000, barcode: "11111111",sortByPrice: true) { prices in
             XCTAssertEqual(prices.count, 3)
             
             XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) - 13897.2178 <= 0.0001)
@@ -965,13 +990,67 @@ class UTFirebaseManager: XCTestCase {
         self.waitForExpectations(timeout: 10, handler: nil)
     }
     
+    func test_price_find_3shops_3products_11111111_sortByDistance() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        self.set3Products3Shops()
+        
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radiousInM: 1000 * 1000, barcode: "11111111",sortByPrice: false) { prices in
+            XCTAssertEqual(prices.count, 3)
+            
+            XCTAssertTrue(abs(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) - 111.18958108512207) <= 0.0001)
+            XCTAssertEqual(prices[0].price!, 3)
+            XCTAssertEqual(prices[0].shopLocation, "41p4199-2p0008")
+            XCTAssertEqual(prices[0].barcode, "11111111")
+            XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) <= prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008))
+            
+            XCTAssertTrue(abs(prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008) - 1111.895767671225) <= 0.0001)
+            XCTAssertEqual(prices[1].price!, 2)
+            XCTAssertEqual(prices[1].shopLocation, "41p4289-2p0008")
+            XCTAssertEqual(prices[1].barcode, "11111111")
+            print("\(prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008))")
+            XCTAssertTrue(prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008) <= prices[2].distanceInM(latitude: 41.4189, longitude: 2.0008))
+            
+            XCTAssertTrue(abs(prices[2].distanceInM(latitude: 41.4189, longitude: 2.0008) - 11118.957695211695) <= 0.0001)
+            XCTAssertEqual(prices[2].price!, 1)
+            XCTAssertEqual(prices[2].shopLocation, "41p5189-2p0008")
+            XCTAssertEqual(prices[2].barcode, "11111111")
+            print("\(prices[2].distanceInM(latitude: 41.4189, longitude: 2.0008))")
+            
+            asyncExpectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
     func test_price_find_3shops_3products_22222222_sortByPrice() {
         FirebaseManager.shared.reset()
         
         let asyncExpectation = expectation(description: "\(#function)")
         self.set3Products3Shops()
         
-        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000 * 1000, barcode: "22222222",sortByPrice: true) { prices in
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radiousInM: 1000 * 1000, barcode: "22222222",sortByPrice: true) { prices in
+            XCTAssertEqual(prices.count, 1)
+            
+            XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) - 1390.062 <= 0.0001)
+            XCTAssertEqual(prices[0].price!, 5)
+            XCTAssertEqual(prices[0].shopLocation, "41p4289-2p0008")
+            XCTAssertEqual(prices[0].barcode, "22222222")
+            
+            asyncExpectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func test_price_find_3shops_3products_22222222_sortByDistance() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        self.set3Products3Shops()
+        
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radiousInM: 1000 * 1000, barcode: "22222222",sortByPrice: false) { prices in
             XCTAssertEqual(prices.count, 1)
             
             XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) - 1390.062 <= 0.0001)
@@ -991,7 +1070,7 @@ class UTFirebaseManager: XCTestCase {
         let asyncExpectation = expectation(description: "\(#function)")
         self.set3Products3Shops()
         
-        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000 * 1000, barcode: "33333333",sortByPrice: true) { prices in
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radiousInM: 1000 * 1000, barcode: "33333333",sortByPrice: true) { prices in
             XCTAssertEqual(prices.count, 2)
             
             XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) - 13897.2178 <= 0.0001)
@@ -1006,6 +1085,34 @@ class UTFirebaseManager: XCTestCase {
             XCTAssertEqual(prices[1].barcode, "33333333")
             print("\(prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008))")
            
+            asyncExpectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func test_price_find_3shops_3products_33333333_sortByDistance() {
+        FirebaseManager.shared.reset()
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        self.set3Products3Shops()
+        
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radiousInM: 1000 * 1000, barcode: "33333333",sortByPrice: false) { prices in
+            XCTAssertEqual(prices.count, 2)
+            
+            XCTAssertTrue(abs(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) - 111.18958108512207) <= 0.0001)
+            XCTAssertEqual(prices[0].price!, 6)
+            XCTAssertEqual(prices[0].shopLocation, "41p4199-2p0008")
+            XCTAssertEqual(prices[0].barcode, "33333333")
+            
+            XCTAssertTrue(abs(prices[1].distanceInM(latitude: 41.4189, longitude: 2.0008) - 11118.957695211695) <= 0.0001)
+            XCTAssertEqual(prices[1].price!, 4)
+            XCTAssertEqual(prices[1].shopLocation, "41p5189-2p0008")
+            XCTAssertEqual(prices[1].barcode, "33333333")
+            XCTAssertTrue(prices[1].price! <= prices[1].price!)
+            
+            //print("\(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008))")
+            
             asyncExpectation.fulfill()
         }
         
@@ -1036,7 +1143,7 @@ class UTFirebaseManager: XCTestCase {
         price = Price(barcode: product1.getKey(), shop: shop3.getKey(), price: 3.0)
         FirebaseManager.shared.create(price: price)
         
-        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: Shop.gapErrorDistanceM, barcode: "11111111") { prices in
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radiousInM: Shop.gapErrorDistanceM, barcode: "11111111") { prices in
             XCTAssertEqual(prices.count, 1)
             XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) - 33.3567 <= 0.0001)
             XCTAssertEqual(prices[0].price!, 3)
@@ -1073,7 +1180,7 @@ class UTFirebaseManager: XCTestCase {
         price = Price(barcode: product1.getKey(), shop: shop3.getKey(), price: 3.0)
         FirebaseManager.shared.create(price: price)
         
-        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: Shop.gapErrorDistanceM, barcode: "11111111") { prices in
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radiousInM: Shop.gapErrorDistanceM, barcode: "11111111") { prices in
             XCTAssertEqual(prices.count, 0)
             
             asyncExpectation.fulfill()
@@ -1179,7 +1286,7 @@ class UTFirebaseManager: XCTestCase {
         price = Price(barcode: product1.getKey(), shop: shop3.getKey(), price: 3.0)
         FirebaseManager.shared.create(price: price)
         
-        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 13, barcode: "11111111") { prices in
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radiousInM: 13, barcode: "11111111") { prices in
             XCTAssertEqual(prices.count, 1)
             XCTAssertEqual(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008), 0.0)
             XCTAssertEqual(prices[0].price!, 3)
@@ -1217,7 +1324,7 @@ class UTFirebaseManager: XCTestCase {
         price = Price(barcode: product1.getKey(), shop: shop3.getKey(), price: 3.0)
         FirebaseManager.shared.create(price: price)
         
-        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 50, barcode: "11111111") { prices in
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radiousInM: 50, barcode: "11111111") { prices in
             XCTAssertEqual(prices.count, 1)
             XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) - 33.3567 <= 0.0001)
             XCTAssertEqual(prices[0].price!, 3)
@@ -1255,7 +1362,7 @@ class UTFirebaseManager: XCTestCase {
         price = Price(barcode: product1.getKey(), shop: shop3.getKey(), price: 3.0)
         FirebaseManager.shared.create(price: price)
         
-        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 100, barcode: "11111111") { prices in
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radiousInM: 100, barcode: "11111111") { prices in
             XCTAssertEqual(prices.count, 1)
             XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) - 88.9516 <= 0.0001)
             XCTAssertEqual(prices[0].price!, 3)
@@ -1297,7 +1404,7 @@ class UTFirebaseManager: XCTestCase {
         price = Price(barcode: product1.getKey(), shop: shop3.getKey(), price: 3.0)
         FirebaseManager.shared.create(price: price)
         
-        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000, barcode: "11111111") { prices in
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radiousInM: 1000, barcode: "11111111") { prices in
             XCTAssertEqual(prices.count, 1)
             
             XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) - 989.5872 <= 0.0001)
@@ -1339,7 +1446,7 @@ class UTFirebaseManager: XCTestCase {
         price = Price(barcode: product1.getKey(), shop: shop3.getKey(), price: 3.0)
         FirebaseManager.shared.create(price: price)
         
-        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 10000, barcode: "11111111") { prices in
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radiousInM: 10000, barcode: "11111111") { prices in
             XCTAssertEqual(prices.count, 1)
             
             XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) -  9973.7050 <= 0.0001)
@@ -1382,7 +1489,7 @@ class UTFirebaseManager: XCTestCase {
         price = Price(barcode: product1.getKey(), shop: shop3.getKey(), price: 3.0)
         FirebaseManager.shared.create(price: price)
         
-        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radious: 1000000, barcode: "11111111") { prices in
+        FirebaseManager.shared.find(latitude: 41.4189, longitude: 2.0008, radiousInM: 1000000, barcode: "11111111") { prices in
             XCTAssertEqual(prices.count, 1)
             
             XCTAssertTrue(prices[0].distanceInM(latitude: 41.4189, longitude: 2.0008) - 998815.9698 <= 0.0001)

@@ -50,7 +50,7 @@ final class DataManager {
             DataManager.shared.find(latitude: latitude,
                                     longitude: longitude,
                                     barcode: barcode,
-                                    radious: Shop.gapErrorDistanceM).subscribe({ event in
+                                    radiousInM: Shop.gapErrorDistanceM).subscribe({ event in
                 switch event {
                 case .success(let prices):
                     guard prices.isEmpty == false else {
@@ -69,7 +69,7 @@ final class DataManager {
                             }
                             
                             var shop = Shop(name: nil, latitude: latitude, longitude: longitude)
-                            FirebaseManager.shared.find(latitude: latitude, longitude: longitude, radious: Shop.gapErrorDistanceM, onComplete: { shops in
+                            FirebaseManager.shared.find(latitude: latitude, longitude: longitude, radiousInM: Shop.gapErrorDistanceM, onComplete: { shops in
                                 if shops.isEmpty == false {
                                     shop = shops[0]
                                 }
@@ -114,7 +114,7 @@ final class DataManager {
             }
             
             var shop = Shop(name: nil, latitude: latitude, longitude: longitude)
-            FirebaseManager.shared.find(latitude: latitude, longitude: longitude, radious: Shop.gapErrorDistanceM, onComplete: { shops in
+            FirebaseManager.shared.find(latitude: latitude, longitude: longitude, radiousInM: Shop.gapErrorDistanceM, onComplete: { shops in
                 if shops.isEmpty == false {
                     shop = shops[0]
                 }
@@ -129,13 +129,13 @@ final class DataManager {
         })
     }
     
-    func find(latitude:Double,longitude:Double, barcode:String, radious: Double) -> Single<[Price]> {
+    func find(latitude:Double,longitude:Double, barcode:String, radiousInM: Double) -> Single<[Price]> {
         return Single.create { single in
             let disposable = Disposables.create()
             
             FirebaseManager.shared.find(latitude: latitude,
                                         longitude: longitude,
-                                        radious: radious,
+                                        radiousInM: radiousInM,
                                         barcode: barcode,
                                         onComplete: { prices in
                 single(.success(prices))
@@ -186,7 +186,7 @@ final class DataManager {
     }
 
     func exists(latitude: Double, longitude: Double,onComplete:@escaping (Shop?) -> Void) {
-        self.find(latitude: latitude, longitude: longitude, radious: Shop.gapErrorDistanceM) { shops in
+        self.find(latitude: latitude, longitude: longitude, radiousInM: Shop.gapErrorDistanceM) { shops in
             // guard shops.isEmpty else { onComplete(nil); return }
             onComplete(shops.first ?? nil)
         }
@@ -205,7 +205,7 @@ final class DataManager {
             })
     }
 
-    func find(latitude:Double, longitude:Double, radious:Double,  onComplete:@escaping ([Shop]) -> Void ) {
+    func find(latitude:Double, longitude:Double, radiousInM:Double,  onComplete:@escaping ([Shop]) -> Void ) {
 
         shopsKeyReference
             .queryOrdered(byChild: Shop.Field.creation)
@@ -249,7 +249,7 @@ final class DataManager {
 
     func find(latitude:Double,longitude:Double, barcode:String, onComplete: @escaping  (Price) -> Void ) {
 
-        self.find(latitude: latitude, longitude: longitude, radious: Shop.gapErrorDistanceM) { shopsFound in
+        self.find(latitude: latitude, longitude: longitude, radiousInM: Shop.gapErrorDistanceM) { shopsFound in
 
             var shop =  Shop(name: nil, latitude: latitude, longitude: longitude)
             if shopsFound.isEmpty {
@@ -274,7 +274,7 @@ final class DataManager {
         }
     }
 
-    func find(latitude:Double,longitude:Double, radious: Double, barcode:String, sortByPrice:Bool = false, onComplete: @escaping  ([Price]) -> Void ) {
+    func find(latitude:Double,longitude:Double, radiousInM: Double, barcode:String, sortByPrice:Bool = false, onComplete: @escaping  ([Price]) -> Void ) {
 
         pricesKeyReference
             .queryOrdered(byChild: Price.Field.barcode)

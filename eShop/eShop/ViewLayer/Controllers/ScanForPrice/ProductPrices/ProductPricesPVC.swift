@@ -23,7 +23,7 @@ class ProductPricesPVC: UIViewController {
             self.refreshViewController()
         }
     }
-    var radious:Double = 0.0
+    var radiousInM:Double = 0.0
     
    // private var priceUpdated:Price?
     
@@ -41,7 +41,7 @@ class ProductPricesPVC: UIViewController {
                              price: price?.price)
  */
         guard let _product = self.product else { return }
-        self.fetchProductPrices(product: _product, radious: self.radious).subscribe(onSuccess: { [weak self] prices in
+        self.fetchProductPrices(product: _product, radiousInM: self.radiousInM).subscribe(onSuccess: { [weak self] prices in
             guard let weakSelf = self else { return }
             weakSelf.productPricesContentVC.prices = prices
         }) { error in
@@ -51,11 +51,11 @@ class ProductPricesPVC: UIViewController {
     }
 
     
-    func fetchProductPrices(product:Product, radious: Double) -> Single<[Price]>  {
+    func fetchProductPrices(product:Product, radiousInM: Double) -> Single<[Price]>  {
         return Single.create { single in
             let disposable = Disposables.create()
             //let disposeBag = DisposeBag()
-            ScanForPriceUC.shared.find(barcode: product.barcode, radious: radious).subscribe { event in
+            ScanForPriceUC.shared.find(barcode: product.barcode, radiousInM: radiousInM).subscribe { event in
                 
                 switch event {
                 case .success(let prices):
@@ -76,7 +76,7 @@ class ProductPricesPVC: UIViewController {
     
     
 /*
-    func find(barcode: String, radious: Double) -> Single<[Price]> {
+    func find(barcode: String, radiousInM: Double) -> Single<[Price]> {
         return Single.create { single in
             let disposable = Disposables.create()
             
@@ -88,7 +88,7 @@ class ProductPricesPVC: UIViewController {
                         DataManager.shared.find(latitude: location.coordinate.latitude,
                                                 longitude: location.coordinate.longitude,
                                                 barcode: barcode,
-                                                radious:radious)
+                                                radiousInM:radious)
                             .subscribe({ event in
                                 switch event {
                                 case .success(let prices):

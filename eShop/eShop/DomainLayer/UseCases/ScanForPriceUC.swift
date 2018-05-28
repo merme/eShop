@@ -64,7 +64,7 @@ class ScanForPriceUC {
         }
     }
     
-    func find(barcode: String, radious: Double) -> Single<[Price]> {
+    func find(barcode: String, radiousInM: Double) -> Single<[Price]> {
         return Single.create { single in
             let disposable = Disposables.create()
             
@@ -76,7 +76,7 @@ class ScanForPriceUC {
                         DataManager.shared.find(latitude: location.coordinate.latitude,
                                                 longitude: location.coordinate.longitude,
                                                 barcode: barcode,
-                                                radious:radious)
+                                                radiousInM:radiousInM)
                             .subscribe({ event in
                                 switch event {
                                 case .success(let prices):

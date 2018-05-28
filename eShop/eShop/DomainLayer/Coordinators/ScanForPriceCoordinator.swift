@@ -91,7 +91,7 @@ class  ScanForPriceCoordinator {
         shopPricePVC.onPriceUpdated = { [weak self] updatedPrice in
             guard let weakSelf = self,
                 let _product = updatedPrice.product else { return }
-           weakSelf.presentProductPrices(product:_product,radious:10000)
+           weakSelf.presentProductPrices(product:_product,radiousInM:10000)
         }
         
         scanForPriceNC.pushViewController(shopPricePVC, animated: true)
@@ -103,11 +103,11 @@ class  ScanForPriceCoordinator {
         }*/
     }
     
-    private func presentProductPrices(product: Product, radious: Double) {
+    private func presentProductPrices(product: Product, radiousInM: Double) {
         
         let productPricesPVC = ProductPricesPVC.instantiate(fromAppStoryboard: .scanForPrice)
         productPricesPVC.product = product
-        productPricesPVC.radious = radious
+        productPricesPVC.radiousInM = radiousInM
         productPricesPVC.onDone = { [weak self] in
             guard let weakSelf = self else { return }
             weakSelf.scanForPriceNC.popToRootViewController(animated: false)

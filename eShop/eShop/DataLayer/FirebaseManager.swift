@@ -59,11 +59,47 @@ final class FirebaseManager {
     }
 
     func find(barcode:String, onComplete:@escaping (Product?) -> Void ) {
-
+        
         productsKeyReference.child(barcode).observeSingleEvent(of: .value, with: { snapshot in
             onComplete(Product(snapshot: snapshot ))
         })
     }
+    
+    func find(productName:String, onComplete:@escaping ([Product]) -> Void ) {
+        
+        productsKeyReference.queryOrdered(byChild: "name")
+            .queryStarting(atValue: productName)
+            .queryEnding(atValue: "\(productName)z")
+            .observeSingleEvent(of: .value, with: { snapshot in
+                let products:[Product] = snapshot.children.map {
+                    return Product(snapshot: $0 as! DataSnapshot)!
+                }
+            onComplete(products)
+        })
+        /*
+        pricesKeyReference
+            .queryOrdered(byChild: Price.Field.barcode)
+            .queryEqual(toValue: barcode).observeSingleEvent(of: .value) { snapshot in
+                let prices:[Price] = snapshot.children
+                    .map { return Price(snapshot: $0 as! DataSnapshot) ?? Price(barcode: "", shop: "", price: nil) }
+                    .filter {
+                        let isInRange = Shop(key: $0.shopLocation).distanceInM(latitude: latitude, longitude: longitude) <= radiousInM
+                        return $0.price != nil && isInRange
+                    }
+                    .sorted(by: {
+                        /*if sortByPrice {
+                         return   $0.price! < $1.price!
+                         } else {
+                         return  $0.distanceInM(latitude:latitude,longitude:longitude) < $1.distanceInM(latitude:latitude,longitude:longitude)
+                         }*/
+                        return sortByPrice ? $0.price! < $1.price! : $0.distanceInM(latitude:latitude,longitude:longitude) < $1.distanceInM(latitude:latitude,longitude:longitude)
+                        
+                    })
+                
+                onComplete(prices)
+        }*/
+    }
+    
 
     // MARK: - Shop
     func create(shop:Shop) {
@@ -72,7 +108,7 @@ final class FirebaseManager {
     }
 
     func exists(latitude: Double, longitude: Double,onComplete:@escaping (Shop?) -> Void) {
-        self.find(latitude: latitude, longitude: longitude, radious: Shop.gapErrorDistanceM) { shops in
+        self.find(latitude: latitude, longitude: longitude, radiousInM: Shop.gapErrorDistanceM) { shops in
             // guard shops.isEmpty else { onComplete(nil); return }
             onComplete(shops.first ?? nil)
         }
@@ -91,7 +127,7 @@ final class FirebaseManager {
             })
     }
 
-    func find(latitude:Double, longitude:Double, radious:Double,  onComplete:@escaping ([Shop]) -> Void ) {
+    func find(latitude:Double, longitude:Double, radiousInM:Double,  onComplete:@escaping ([Shop]) -> Void ) {
 
         shopsKeyReference
             .queryOrdered(byChild: Shop.Field.creation)
@@ -99,7 +135,7 @@ final class FirebaseManager {
                 let shops:[Shop] = snapshot.children.map {
                     let jsonShop = $0
                     let shop = Shop(snapshot: jsonShop as! DataSnapshot) ?? Shop(name: "Invalid", latitude: 0, longitude: 0)
-                    return shop.isPointInRadious(latitude: latitude, longitude: longitude, radiousM: radious) ?
+                    return shop.isPointInRadious(latitude: latitude, longitude: longitude, radiousM: radiousInM) ?
                         shop : Shop(name: "Invalid", latitude: 0, longitude: 0)
                     }.filter {
                         return $0.name != "Invalid"
@@ -141,7 +177,7 @@ final class FirebaseManager {
 
     func find(latitude:Double,longitude:Double, barcode:String, onComplete: @escaping  (Price) -> Void ) {
 
-        self.find(latitude: latitude, longitude: longitude, radious: Shop.gapErrorDistanceM) { shopsFound in
+        self.find(latitude: latitude, longitude: longitude, radiousInM: Shop.gapErrorDistanceM) { shopsFound in
 
             var shop =  Shop(name: nil, latitude: latitude, longitude: longitude)
             if shopsFound.isEmpty {
@@ -166,7 +202,7 @@ final class FirebaseManager {
         }
     }
 
-    func find(latitude:Double,longitude:Double, radious: Double, barcode:String, sortByPrice:Bool = false, onComplete: @escaping  ([Price]) -> Void ) {
+    func find(latitude:Double,longitude:Double, radiousInM: Double, barcode:String, sortByPrice:Bool = false, onComplete: @escaping  ([Price]) -> Void ) {
 
         pricesKeyReference
             .queryOrdered(byChild: Price.Field.barcode)
@@ -174,7 +210,7 @@ final class FirebaseManager {
                 let prices:[Price] = snapshot.children
                     .map { return Price(snapshot: $0 as! DataSnapshot) ?? Price(barcode: "", shop: "", price: nil) }
                     .filter {
-                        let isInRange = Shop(key: $0.shopLocation).distanceInM(latitude: latitude, longitude: longitude) <= radious
+                        let isInRange = Shop(key: $0.shopLocation).distanceInM(latitude: latitude, longitude: longitude) <= radiousInM
                         return $0.price != nil && isInRange
                     }
                     .sorted(by: {

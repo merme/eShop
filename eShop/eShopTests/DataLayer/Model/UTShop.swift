@@ -39,7 +39,7 @@ class UTShop: XCTestCase {
         FirebaseManager.shared.create(shop: shop)
         
         
-        FirebaseManager.shared.find(latitude: 41.4191, longitude: 1.9999, radious: 1000 ) { shops in
+        FirebaseManager.shared.find(latitude: 41.4191, longitude: 1.9999, radiousInM: 1000 ) { shops in
             guard shops.count == 1 else { XCTFail(); return }
             XCTAssertNil(shops[0].name)
             

@@ -48,6 +48,7 @@
 		BFB11465209ACA56001CB1A8 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB1145F209ACA56001CB1A8 /* SplashVC.swift */; };
 		BFB11469209ACC8A001CB1A8 /* PresentSplashOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB11468209ACC8A001CB1A8 /* PresentSplashOperation.swift */; };
 		BFBBD67120999284003EB7E7 /* GoogleService-Info-DEBUG.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFBBD67020999284003EB7E7 /* GoogleService-Info-DEBUG.plist */; };
+		BFDF48D520BDC78E00563695 /* EShopColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDF48D420BDC78E00563695 /* EShopColors.swift */; };
 		BFED589620A77C7C00E6DA92 /* ShopPricePVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED589320A77C7B00E6DA92 /* ShopPricePVC.swift */; };
 		BFED589720A77C7C00E6DA92 /* ShopPriceContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED589520A77C7B00E6DA92 /* ShopPriceContentVC.swift */; };
 		BFEFBA8220BA851C004143DE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEFBA8120BA851C004143DE /* BaseViewController.swift */; };
@@ -124,6 +125,7 @@
 		BFB1145F209ACA56001CB1A8 /* SplashVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		BFB11468209ACC8A001CB1A8 /* PresentSplashOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentSplashOperation.swift; sourceTree = "<group>"; };
 		BFBBD67020999284003EB7E7 /* GoogleService-Info-DEBUG.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-DEBUG.plist"; sourceTree = "<group>"; };
+		BFDF48D420BDC78E00563695 /* EShopColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EShopColors.swift; sourceTree = "<group>"; };
 		BFED589320A77C7B00E6DA92 /* ShopPricePVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopPricePVC.swift; sourceTree = "<group>"; };
 		BFED589520A77C7B00E6DA92 /* ShopPriceContentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopPriceContentVC.swift; sourceTree = "<group>"; };
 		BFEFBA8120BA851C004143DE /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -523,6 +525,7 @@
 			isa = PBXGroup;
 			children = (
 				BFEFBA8420BA879A004143DE /* eShopFonts.swift */,
+				BFDF48D420BDC78E00563695 /* EShopColors.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -775,6 +778,7 @@
 				BF7CC6F02099FE4B009C422F /* ConcurrentOperation.swift in Sources */,
 				BFEFBAA320BABC92004143DE /* LocaleManager.swift in Sources */,
 				BF0C555920BB13C900D6F7BC /* MainTabBarController.swift in Sources */,
+				BFDF48D520BDC78E00563695 /* EShopColors.swift in Sources */,
 				BFB11463209ACA56001CB1A8 /* StartScanningContentVC.swift in Sources */,
 				BF682FA120B311090010094C /* ProductPricesContentVC.swift in Sources */,
 				BF55468320A6CC25003388F0 /* ScanForPriceUC.swift in Sources */,

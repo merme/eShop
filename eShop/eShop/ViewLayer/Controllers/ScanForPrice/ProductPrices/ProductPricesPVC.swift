@@ -10,12 +10,13 @@ import RxSwift
 import RxCocoa
 import CocoaLumberjack
 
-class ProductPricesPVC: UIViewController {
+class ProductPricesPVC: BaseViewController {
     
     // MARK :-
     
     // MARK:- Callbacks
     var onDone:(() -> Void) = {  }
+    
     
     // MARK:- Public attributes
     var product:Product? {
@@ -31,6 +32,8 @@ class ProductPricesPVC: UIViewController {
     private var productPricesContentVC = ProductPricesContentVC()
     private var disposeBag = DisposeBag()
     
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 //DataManager.shared.reset()
@@ -40,6 +43,8 @@ class ProductPricesPVC: UIViewController {
                              shop: Shop(name: price?.shop?.name, latitude:  (price?.shop?.latitude)!,longitude:  (price?.shop?.longitude)!),
                              price: price?.price)
  */
+        self._setupPresenterViewController()
+        
         guard let _product = self.product else { return }
         self.fetchProductPrices(product: _product, radiousInM: self.radiousInM).subscribe(onSuccess: { [weak self] prices in
             guard let weakSelf = self else { return }
@@ -50,6 +55,29 @@ class ProductPricesPVC: UIViewController {
         
     }
 
+    
+    // MARK: - Private/Internal methods
+    func _setupPresenterViewController() {
+        
+        self.title = R.string.localizable.shop_price_title.key.localized
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        self.addCloseButton()
+    }
+    
+    private func addCloseButton() {
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: R.image.img_close(),
+                                                                 style: .plain,
+                                                                 target: self,
+                                                                 action: #selector(closeAction))
+        
+        self.navigationItem.rightBarButtonItem?.tintColor = ColorsEShop.NavigationBar.TitleFontColor
+    }
+    
+    @objc func closeAction() {
+        self.onDone()
+    }
+    
     
     func fetchProductPrices(product:Product, radiousInM: Double) -> Single<[Price]>  {
         return Single.create { single in

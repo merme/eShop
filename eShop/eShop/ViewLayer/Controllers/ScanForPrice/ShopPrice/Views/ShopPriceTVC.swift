@@ -9,29 +9,26 @@
 import RxCocoa
 import RxSwift
 
-class ShopPriceTVC: UITableViewCell {
+class ShopPriceTVC: UITableViewCell, UITextFieldDelegate {
 
     // MARK: - IBOutlet
-    @IBOutlet weak var lblKey: UILabel!
     @IBOutlet weak var txtValue: UITextField!
-    //@IBOutlet weak var lblValue: UILabel!
+    @IBOutlet weak var btnRemove: UIButton!
+    @IBOutlet weak var svwLine: UIView!
+    
     
     // MARK: - Callbacks
     var onEditingEnd: ((ShopPriceContentField, String? ) -> Void) = { _ ,_  in }
     
     // MARK: - Public attribures
-    var key:String = "" {
+    var shopPriceContentField = ShopPriceContentField.count {
         didSet {
-            lblKey.text = key
+            self._refreshView()
         }
     }
     
-    var value:String = "" {
-        didSet {
-            txtValue.text = value
-        }
-    }
-    var shopPriceContentField = ShopPriceContentField.count
+    // MARK :- Private attributes
+    private var isEditMode = false
     
     // MARK: - Private attributes
     private var disposeBag = DisposeBag()
@@ -51,15 +48,72 @@ class ShopPriceTVC: UITableViewCell {
     
     // MARK: - Private / Intrnal
     private func setupView() {
+        self.backgroundColor = UIColor.clear
+        txtValue.borderStyle = .none
+        
         txtValue.rx
             .controlEvent(.editingDidEnd)
             .subscribe(onNext: { [weak self] _ in
             guard let weakSelf = self,
                 let _text = weakSelf.txtValue.text else { return }
-            
-            weakSelf._trimTextAndReadMode(text:_text)
+                
+            //weakSelf._trimTextAndReadMode(text:_text)
+                weakSelf.onEditingEnd(weakSelf.shopPriceContentField, _text)
+                
+                weakSelf.isEditMode = false
+                weakSelf._refreshView()
+                
         }).disposed(by: disposeBag)
         
+        
+        txtValue.rx
+            .controlEvent(.editingDidBegin)
+            .subscribe(onNext: { [weak self] _ in
+                guard let weakSelf = self else { return }
+                
+                //weakSelf._trimTextAndReadMode(text:weakSelf.txtValue.text!)
+                weakSelf.onEditingEnd(weakSelf.shopPriceContentField, weakSelf.txtValue.text ?? weakSelf.shopPriceContentField.emptyValue())
+                weakSelf.isEditMode = true
+                weakSelf._refreshView()
+                
+            }).disposed(by: disposeBag)
+        
+        
+        
+        btnRemove.setImage(R.image.img_edit(), for: .normal)
+        btnRemove.setImage(R.image.img_close(), for: .selected)
+        btnRemove.rx.tap.bind { [weak self] _ in
+            guard let weakSelf = self else { return }
+            
+            if weakSelf.btnRemove.isSelected {
+                weakSelf.txtValue.text = ""
+            }
+            weakSelf.isEditMode = true
+            weakSelf._refreshView()
+        }
+        
+    }
+    
+    func _refreshView() {
+        
+        if (txtValue.text?.isEmpty)! && self.isEditMode == false {
+            txtValue.text = shopPriceContentField.value() ?? ""
+        }
+        
+        self.txtValue.font = shopPriceContentField.font()
+        self.txtValue.textColor = UIColor.white
+        self.txtValue.placeholder = shopPriceContentField.key()
+        self.txtValue.keyboardType = shopPriceContentField.keyboardType()
+        
+        btnRemove.isSelected = isEditMode
+        
+        svwLine.isHidden = isEditMode == false
+        
+        if isEditMode {
+            txtValue.becomeFirstResponder()
+        } else {
+            self.endEditing(true)
+        }
     }
     
     func _trimTextAndReadMode(text:String) {

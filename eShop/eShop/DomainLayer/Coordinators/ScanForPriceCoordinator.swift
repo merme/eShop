@@ -93,6 +93,11 @@ class  ScanForPriceCoordinator {
                 let _product = updatedPrice.product else { return }
            weakSelf.presentProductPrices(product:_product,radiousInM:10000)
         }
+        shopPricePVC.onClose = { [weak self]  in
+            guard let weakSelf = self else { return }
+           
+            weakSelf.scanForPriceNC.popToRootViewController(animated: false)
+        }
         
         scanForPriceNC.pushViewController(shopPricePVC, animated: true)
         /*

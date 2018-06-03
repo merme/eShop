@@ -23,6 +23,13 @@ struct EShopFonts {
         static let TitleFont = TextStyle.h18Bold.font
     }
     
+    struct ShopPrice {
+        static let ProductFont      = TextStyle.h40Bold.font
+        static let ShopFont         = TextStyle.h40Bold.font
+        static let PriceFont        = TextStyle.h75Bold.font
+        static let PricesFoundFont  = TextStyle.h36Bold.font
+    }
+    
     struct Home {
         
         static let MachineSelectorFont      = TextStyle.h15Regular.font
@@ -45,6 +52,7 @@ enum TextStyle {
 }
 
 enum TextStyleSize:Int {
+    case h120 = 120
     case h75 = 75
     case h40 = 40
     case h36 = 36
@@ -66,6 +74,7 @@ extension TextStyle {
     static let body = TextStyle.dynamic(style: .body)
     //static let headline = TextStyle.customBold(size: 20, weight: UIFontWeightBold, height: 24, dropShadow: true)
     
+    static let h120Bold = TextStyle.customBold(size: CGFloat(TextStyleSize.h120.rawValue))
     static let h75Bold = TextStyle.customBold(size: CGFloat(TextStyleSize.h75.rawValue))
     static let h40Bold = TextStyle.customBold(size: CGFloat(TextStyleSize.h40.rawValue))
     static let h36Bold = TextStyle.customBold(size: CGFloat(TextStyleSize.h36.rawValue))
@@ -77,6 +86,7 @@ extension TextStyle {
     static let h14Bold = TextStyle.customBold(size: CGFloat(TextStyleSize.h14.rawValue))
     static let h10Bold = TextStyle.customBold(size: CGFloat(TextStyleSize.h10.rawValue))
     
+    static let h120Regular = TextStyle.customRegular(size: CGFloat(TextStyleSize.h75.rawValue))
     static let h75Regular = TextStyle.customRegular(size: CGFloat(TextStyleSize.h75.rawValue))
     static let h40Regular = TextStyle.customRegular(size: CGFloat(TextStyleSize.h40.rawValue))
     static let h36Regular = TextStyle.customRegular(size: CGFloat(TextStyleSize.h36.rawValue))
@@ -89,6 +99,7 @@ extension TextStyle {
     static let h10Regular = TextStyle.customRegular(size: CGFloat(TextStyleSize.h10.rawValue))
     static let h6Regular  = TextStyle.customRegular(size: CGFloat(TextStyleSize.h6.rawValue))
     
+    static let h120Thin = TextStyle.customRegular(size: CGFloat(TextStyleSize.h120.rawValue))
     static let h75Thin = TextStyle.customThin(size: CGFloat(TextStyleSize.h75.rawValue))
     static let h40Thin = TextStyle.customThin(size: CGFloat(TextStyleSize.h40.rawValue))
     static let h28Thin = TextStyle.customThin(size: CGFloat(TextStyleSize.h28.rawValue))
@@ -100,6 +111,7 @@ extension TextStyle {
     static let h14Thin = TextStyle.customThin(size: CGFloat(TextStyleSize.h14.rawValue))
     static let h10Thin = TextStyle.customThin(size: CGFloat(TextStyleSize.h10.rawValue))
     
+    static let h120Ultralight = TextStyle.customUltralight(size: CGFloat(TextStyleSize.h120.rawValue))
     static let h75Ultralight = TextStyle.customUltralight(size: CGFloat(TextStyleSize.h75.rawValue))
     static let h40Ultralight = TextStyle.customUltralight(size: CGFloat(TextStyleSize.h40.rawValue))
     static let h36Ultralight = TextStyle.customUltralight(size: CGFloat(TextStyleSize.h36.rawValue))

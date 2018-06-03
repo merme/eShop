@@ -7,3 +7,10 @@
 */
 
 "start_scanning_title" = "Start scanning";
+"start_scanning_product_placeholder" = "Product?";
+"start_scanning_shop_placeholder" = "Shop?";
+"start_scanning_price_placeholder" = "Price?";
+
+
+"shop_price_title" = "Shop price";
+"shop_price_prices_found" = "%d prices found";

@@ -19,11 +19,20 @@ enum ShopPriceContentField {
     
     func key() -> String {
         switch self {
-        case .shopName:      return "_ShopName"
-        case .productName:   return "_ProductName"
-        case .priceValue:    return "_PriceValue"
+        case .shopName:      return R.string.localizable.start_scanning_shop_placeholder.key.localized
+        case .productName:   return R.string.localizable.start_scanning_product_placeholder.key.localized
+        case .priceValue:    return R.string.localizable.start_scanning_price_placeholder.key.localized
         default: return ""
          }
+    }
+    
+    func emptyValue() -> String {
+        switch self {
+        case .shopName:      return ""
+        case .productName:   return ""
+        case .priceValue:    return "0"
+        default: return ""
+        }
     }
     
     func value() -> String? {
@@ -35,14 +44,34 @@ enum ShopPriceContentField {
         }
     }
     
+    func font() -> UIFont {
+        switch self {
+        case .shopName:         return EShopFonts.ShopPrice.ShopFont
+        case .productName:      return EShopFonts.ShopPrice.ProductFont
+        case .priceValue:       return EShopFonts.ShopPrice.PriceFont
+        default: return UIFont()
+        }
+    }
+    
+    func keyboardType() -> UIKeyboardType {
+        switch self {
+        case .shopName:         return UIKeyboardType.alphabet
+        case .productName:      return UIKeyboardType.alphabet
+        case .priceValue:       return UIKeyboardType.decimalPad
+        default: return UIKeyboardType.alphabet
+        }
+    }
+    
 }
 
-class ShopPriceContentVC: UIViewController {
+class ShopPriceContentVC: BaseViewController {
 
     // MARK:- IBOutlet
     @IBOutlet weak var tblShopPrice: UITableView!
     @IBOutlet weak var tapGestureRecognizer:UITapGestureRecognizer!
     @IBOutlet weak var btnSaveAndContinue: UIButton!
+    @IBOutlet weak var lblPricesFound: UILabel!
+    @IBOutlet weak var svwPricesFound: UIView!
     
     // MARK: - Callbacks
     var onPriceUpdated: ((Price) -> Void) = { _ in }
@@ -56,8 +85,16 @@ class ShopPriceContentVC: UIViewController {
         }
     }
     
+    var pricesFound:Int = 0 {
+        didSet {
+            self.vPriceFound.value = pricesFound
+            self.refreshPricesFoundView()
+        }
+    }
+    
     // MARK: - Private attributes
     private var datasource:Variable<[ShopPriceContentField]> = Variable([])
+    private var vPriceFound:Variable<Int> = Variable(0)
     
     private var newProductName:String?
     private var newShopName:String?
@@ -71,7 +108,7 @@ class ShopPriceContentVC: UIViewController {
 
         // Do any additional setup after loading the view.
         setupViewController()
-        self.refreshViewController()
+        self.refreshPricesFoundView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -83,16 +120,7 @@ class ShopPriceContentVC: UIViewController {
     private func setupViewController() {
         self.tblShopPrice.tableFooterView = UIView()
         
-        self.btnSaveAndContinue.rx.tap.bind { [weak self] _ in
-            guard let weakSelf = self else { return }
-          //  if weakSelf.view.
-            weakSelf.view.endEditing(true)
-            
-            weakSelf.onPriceUpdated(weakSelf.updateNewPrice(productName: weakSelf.newProductName,
-                                                            shopName: weakSelf.newShopName,
-                                                            priceValue: weakSelf.newPriceValue))
-            }
-        .disposed(by: disposeBag)
+        self.setupPricesFoundSubview()
         
         tapGestureRecognizer.rx.event
             .bind { [weak self] _ in
@@ -101,37 +129,78 @@ class ShopPriceContentVC: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        
+        tblShopPrice.alwaysBounceVertical = false
+        tblShopPrice.tableFooterView = UIView()
+        tblShopPrice.backgroundColor = UIColor.clear
+        tblShopPrice.rowHeight = UITableViewAutomaticDimension
+        tblShopPrice.estimatedRowHeight = 200
+        tblShopPrice.separatorStyle = .none
+        tblShopPrice.allowsSelection = false
+
         self.datasource.asDriver().drive( self.tblShopPrice.rx.items(cellIdentifier: R.reuseIdentifier.shopPriceTVC.identifier, cellType: ShopPriceTVC.self)) { [weak self] (_, shopPriceContentField, shopPriceTVC ) in
             
-                guard let weakSelf = self else { return}
+                guard let weakSelf = self else { return }
                 weakSelf.configureShopPriceTVC(shopPriceContentField: shopPriceContentField,
                                                shopPriceTVC: shopPriceTVC)
             
             }.disposed(by: disposeBag)
         
+        
+        
+    }
+    
+    func setupPricesFoundSubview() {
+        
+        svwPricesFound.backgroundColor = ColorsEShop.ShopPrice.PricesFoundBackground
+        
+        lblPricesFound.text = ""
+        lblPricesFound.numberOfLines = 1
+        lblPricesFound.textAlignment = .center
+        lblPricesFound.font = EShopFonts.ShopPrice.PricesFoundFont
+        lblPricesFound.textColor = ColorsEShop.ShopPrice.PricesFound
+        
+        btnSaveAndContinue.setImage(R.image.img_continue(), for: .normal)
+        self.btnSaveAndContinue.rx.tap.bind { [weak self] _ in
+            guard let weakSelf = self else { return }
+            //  if weakSelf.view.
+           // weakSelf.view.endEditing(true)
+            
+            if weakSelf.newPriceValue == nil {
+                print("stop!!")
+            }
+            
+            weakSelf.onPriceUpdated(weakSelf.updateNewPrice(productName: weakSelf.newProductName,
+                                                            shopName: weakSelf.newShopName,
+                                                            priceValue: weakSelf.newPriceValue))
+            }
+            .disposed(by: disposeBag)
     }
     
     private func configureShopPriceTVC(shopPriceContentField: ShopPriceContentField, shopPriceTVC: ShopPriceTVC) {
         
-        shopPriceTVC.key = shopPriceContentField.key()
-        shopPriceTVC.value = shopPriceContentField.value() ?? "nil"
+       
+        //shopPriceTVC.value = shopPriceContentField.value() ?? "nil"
         shopPriceTVC.shopPriceContentField = shopPriceContentField
         shopPriceTVC.onEditingEnd = { [weak self] shopPriceContentField, newValue in
             guard let weakSelf = self else { return }
-            print("\(newValue)")
+            print("newValue:\(newValue)")
+            if newValue! == "0.00" {
+                print("stop")
+            }
+            
             switch shopPriceContentField {
             case .productName:  weakSelf.newProductName = (newValue == nil) ? weakSelf.price?.product?.name : newValue
             case .shopName:     weakSelf.newShopName = (newValue == nil) ? weakSelf.price?.shop?.name : newValue
-            case .priceValue:   weakSelf.newPriceValue = (newValue == nil) ? weakSelf.price?.price : Double(newValue!) 
+            case .priceValue:   //weakSelf.newPriceValue = (newValue == nil) ? weakSelf.price?.price : Double(newValue!)
+                if newValue == nil {
+                    weakSelf.newPriceValue =  8.88 //weakSelf.price?.price
+                } else {
+                    weakSelf.newPriceValue =  Double(newValue!)
+                }
             default: return
             }
-            /* This action is performed on pressing the button
-            weakSelf.onPriceUpdated(weakSelf.updateNewPrice(productName: weakSelf.newProductName,
-                                               shopName: weakSelf.newShopName,
-                                               priceValue: weakSelf.newPriceValue))
- */
         }
+        
     }
     
     func updateNewPrice(productName:String?,  shopName:String?, priceValue:Double?) -> Price {
@@ -156,8 +225,14 @@ class ShopPriceContentVC: UIViewController {
         return Price(product: product!, shop: shop!, price: _price)
     }
     
+    private func refreshPricesFoundView() {
+        self.lblPricesFound.text = String(format: R.string.localizable.shop_price_prices_found.key.localized, vPriceFound.value)
+        
+    }
+    
     private func refreshViewController() {
-  
+        
+        
         DDLogVerbose("\(self.price!)")
         self.tblShopPrice.reloadData()
     }

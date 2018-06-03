@@ -117,16 +117,37 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 2 images.
+  /// This `R.image` struct is generated, and contains static references to 5 images.
   struct image {
     /// Image `background`.
     static let background = Rswift.ImageResource(bundle: R.hostingBundle, name: "background")
+    /// Image `img_close`.
+    static let img_close = Rswift.ImageResource(bundle: R.hostingBundle, name: "img_close")
+    /// Image `img_continue`.
+    static let img_continue = Rswift.ImageResource(bundle: R.hostingBundle, name: "img_continue")
+    /// Image `img_edit`.
+    static let img_edit = Rswift.ImageResource(bundle: R.hostingBundle, name: "img_edit")
     /// Image `img_scancode`.
     static let img_scancode = Rswift.ImageResource(bundle: R.hostingBundle, name: "img_scancode")
     
     /// `UIImage(named: "background", bundle: ..., traitCollection: ...)`
     static func background(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.background, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "img_close", bundle: ..., traitCollection: ...)`
+    static func img_close(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.img_close, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "img_continue", bundle: ..., traitCollection: ...)`
+    static func img_continue(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.img_continue, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "img_edit", bundle: ..., traitCollection: ...)`
+    static func img_edit(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.img_edit, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "img_scancode", bundle: ..., traitCollection: ...)`
@@ -236,12 +257,67 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
     
-    /// This `R.string.localizable` struct is generated, and contains static references to 1 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 6 localization keys.
     struct localizable {
+      /// en translation: %d prices found
+      /// 
+      /// Locales: en, es
+      static let shop_price_prices_found = Rswift.StringResource(key: "shop_price_prices_found", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
+      /// en translation: Price?
+      /// 
+      /// Locales: en, es
+      static let start_scanning_price_placeholder = Rswift.StringResource(key: "start_scanning_price_placeholder", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
+      /// en translation: Product?
+      /// 
+      /// Locales: en, es
+      static let start_scanning_product_placeholder = Rswift.StringResource(key: "start_scanning_product_placeholder", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
+      /// en translation: Shop price
+      /// 
+      /// Locales: en, es
+      static let shop_price_title = Rswift.StringResource(key: "shop_price_title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
+      /// en translation: Shop?
+      /// 
+      /// Locales: en, es
+      static let start_scanning_shop_placeholder = Rswift.StringResource(key: "start_scanning_shop_placeholder", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
       /// en translation: Start scanning
       /// 
       /// Locales: en, es
       static let start_scanning_title = Rswift.StringResource(key: "start_scanning_title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
+      
+      /// en translation: %d prices found
+      /// 
+      /// Locales: en, es
+      static func shop_price_prices_found(_ value1: Int) -> String {
+        return String(format: NSLocalizedString("shop_price_prices_found", bundle: R.hostingBundle, comment: ""), locale: R.applicationLocale, value1)
+      }
+      
+      /// en translation: Price?
+      /// 
+      /// Locales: en, es
+      static func start_scanning_price_placeholder(_: Void = ()) -> String {
+        return NSLocalizedString("start_scanning_price_placeholder", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Product?
+      /// 
+      /// Locales: en, es
+      static func start_scanning_product_placeholder(_: Void = ()) -> String {
+        return NSLocalizedString("start_scanning_product_placeholder", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Shop price
+      /// 
+      /// Locales: en, es
+      static func shop_price_title(_: Void = ()) -> String {
+        return NSLocalizedString("shop_price_title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Shop?
+      /// 
+      /// Locales: en, es
+      static func start_scanning_shop_placeholder(_: Void = ()) -> String {
+        return NSLocalizedString("start_scanning_shop_placeholder", bundle: R.hostingBundle, comment: "")
+      }
       
       /// en translation: Start scanning
       /// 

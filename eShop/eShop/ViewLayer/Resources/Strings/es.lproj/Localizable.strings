@@ -7,3 +7,8 @@
 */
 
 "start_scanning_title" = "Comienza escaneo";
+"start_scanning_product_placeholder" = "¿Producto?";
+"start_scanning_shop_placeholder" = "¿Comercio?";
+"start_scanning_price_placeholder" = "¿Pricio?";
+"shop_price_title" = "Precio en tienda";
+"shop_price_prices_found" = "%d precios encontrados";

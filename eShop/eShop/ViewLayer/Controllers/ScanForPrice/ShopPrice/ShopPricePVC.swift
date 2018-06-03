@@ -10,10 +10,11 @@ import RxSwift
 import RxCocoa
 import CocoaLumberjack
 
-class ShopPricePVC: UIViewController {
+class ShopPricePVC: BaseViewController {
     
     // MARK :- Callbacks
     var onPriceUpdated:((Price) -> Void) = { _ in }
+    var onClose: ( ) -> Void = { }
     
     // MARK :- Public attributes
     var price:Price?
@@ -21,19 +22,21 @@ class ShopPricePVC: UIViewController {
    // private var priceUpdated:Price?
     
     // MARK :- Private attributes
+    private var  shopPriceContentVC :ShopPriceContentVC = ShopPriceContentVC()
+    
     private var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//DataManager.shared.reset()
-        // Do any additional setup after loading the view.
-     /*
-        priceUpdated = Price(product: Product(name: price?.product?.name, barcode:  (price?.product?.barcode)!),
-                             shop: Shop(name: price?.shop?.name, latitude:  (price?.shop?.latitude)!,longitude:  (price?.shop?.longitude)!),
-                             price: price?.price)
- */
+        self._setupPresenterViewController()
+        
+        guard let _product = price?.product else { return }
+        self.fetchProductPrices(product: _product, radiousInM: 10000)
+        
+       
+            
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -42,11 +45,10 @@ class ShopPricePVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let shopPriceContentVC = segue.destination as? ShopPriceContentVC,
+        if let _shopPriceContentVC = segue.destination as? ShopPriceContentVC,
             (segue.identifier ==  R.segue.shopPricePVC.shopPriceSegue.identifier) {
-           
+           shopPriceContentVC = _shopPriceContentVC
             shopPriceContentVC.price = self.price ?? nil
-            
             shopPriceContentVC.onPriceUpdated = { [weak self] priceUpdated in
                    // DDLo("\(price)")
                 guard let weakSelf = self else { return }
@@ -74,12 +76,43 @@ class ShopPricePVC: UIViewController {
     }
     
     // MARK:- Private/internal
-    func setupViewController() {
+    func _setupPresenterViewController() {
         
+        self.title = R.string.localizable.shop_price_title.key.localized
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        self.addCloseButton()
+    }
+    
+    private func addCloseButton() {
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: R.image.img_close(),
+                                                                 style: .plain,
+                                                                 target: self,
+                                                                 action: #selector(closeAction))
+        
+        self.navigationItem.rightBarButtonItem?.tintColor = ColorsEShop.NavigationBar.TitleFontColor
+    }
+    
+    @objc func closeAction() {
+        self.onClose()
     }
 
     func refreshViewController() {
         
     }
    
+    
+    func fetchProductPrices(product:Product, radiousInM: Double)  {
+        
+            ScanForPriceUC.shared.find(barcode: product.barcode, radiousInM: 10000 ).subscribe { [weak self] event in
+                guard let weakSelf = self else { return }
+                switch event {
+                case .success(let prices):
+                    weakSelf.shopPriceContentVC.pricesFound = prices.count
+                case .error(let error):
+                    DDLogError("Error. ScanForPriceUC failed!")
+                }
+            }.disposed(by: self.disposeBag)
+    }
+    
 }

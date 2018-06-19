@@ -10,7 +10,15 @@
 "start_scanning_product_placeholder" = "Product?";
 "start_scanning_shop_placeholder" = "Shop?";
 "start_scanning_price_placeholder" = "Price?";
+"start_scanning_tap_start_scan" = "Tap for start scanning a product barcode";
+
+"distance_selecgtor_title" = "Scanning radious";
 
 
 "shop_price_title" = "Shop price";
 "shop_price_prices_found" = "%d prices found";
+
+
+"product_prices_price" = "Price";
+"product_prices_distance" = "Distance";
+

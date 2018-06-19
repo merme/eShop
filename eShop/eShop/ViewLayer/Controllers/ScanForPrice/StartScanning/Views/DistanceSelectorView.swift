@@ -14,7 +14,11 @@ class DistanceSelectorView: UIView {
     // MARK :- IBOUTLET
     @IBOutlet weak var sldDistance: UISlider!
     @IBOutlet weak var lblDistance: UILabel!
+    @IBOutlet weak var lblTitle: UILabel!
     
+    
+    // MARK: - Callbacks
+    var onDistanceChanged: (Int) -> Void = { _ in }
     
     // MARK :- Private attributes
     private static let defaultValue:Double = 10000.0
@@ -36,33 +40,31 @@ class DistanceSelectorView: UIView {
     
     // MARK :- Private/Internal
     private func _setupView() {
+        
+        lblTitle.numberOfLines = 1
+        lblTitle.font = EShopFonts.DistanceSelector.TitleFont
+        lblTitle.textColor = ColorsEShop.DistanceSelector.TitleFontColor
+        lblTitle.text = R.string.localizable.distance_selecgtor_title.key.localized
+        
+        lblDistance.numberOfLines = 1
+        lblDistance.font = EShopFonts.DistanceSelector.DistanceFont
+        lblDistance.textColor = ColorsEShop.DistanceSelector.DistanceFontColor
+        lblDistance.textAlignment = .right
+        
         sldDistance.minimumValue = 1
         sldDistance.maximumValue = 7.301
+        sldDistance.tintColor = ColorsEShop.DistanceSelector.DistanceFontColor
         sldDistance.value = Float(log10(DistanceSelectorView.defaultValue))
         sldDistance.rx.controlEvent(.valueChanged).subscribe(onNext: { [weak self] _ in
             
             guard let weakSelf = self else { return }
-            
-            weakSelf.lblDistance.text = weakSelf.formatDist(value: Int(pow(10,weakSelf.sldDistance.value)))
+            let _distanceInM =  Int(pow(10,weakSelf.sldDistance.value))
+            weakSelf.lblDistance.text = _distanceInM.formatDist()
+            weakSelf.onDistanceChanged(_distanceInM)
         }).disposed(by: disposeBag)
-        
-        lblDistance.text = self.formatDist(value: Int(DistanceSelectorView.defaultValue))
-        
+ 
+         self.lblDistance.text = Int(pow(10,self.sldDistance.value)).formatDist()
     }
-    
-    private func formatDist(value:Int) -> String {
-    
-        if value < 1000 {
-            return "\(String(value)) m"
-        } else if value >= 1000 && value < 10000 {
-            let i:Double = Double(value) / 1000.0
-             return "\(String(format: "%.1f", i)) Km"
-        } else {
-            return "\(String(value / 1000)) Km"
-        }
-    }
-    
-    
     
     
     func _refreshView() {
@@ -76,5 +78,22 @@ class DistanceSelectorView: UIView {
         // Drawing code
     }
     */
+    
+    class ApiController {
+        
+        struct Weather {
+            let cityName: String
+            let temperature: Int
+            let humidity: Int
+            let icon: String
+            
+            static let empty = Weather(
+                cityName: "Unknown",
+                temperature: -1000,
+                humidity: 0,
+                icon: ""
+            )
+        }
+    }
 
 }

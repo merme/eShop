@@ -19,7 +19,7 @@ class ScanForPriceUC {
     // MARK :-
     private init() {} //This prevents others from using the default '()' initializer for this class.
     
-    func find(barcode: String) -> Single<Price> {
+    func find(barcode: String,sortByPrice:Bool) -> Single<Price> {
         return Single.create { single in
             let disposable = Disposables.create()
             
@@ -30,7 +30,7 @@ class ScanForPriceUC {
                     case .success(let location):
                         DataManager.shared.find(latitude: location.coordinate.latitude,
                                                 longitude: location.coordinate.longitude,
-                                                barcode: barcode)
+                                                barcode: barcode,sortByPrice:sortByPrice)
                             .subscribe({ event in
                             switch event {
                             case .success(let price):
@@ -64,7 +64,7 @@ class ScanForPriceUC {
         }
     }
     
-    func find(barcode: String, radiousInM: Double) -> Single<[Price]> {
+    func find(barcode: String, radiousInM: Double,sortByPrice:Bool) -> Single<[Price]> {
         return Single.create { single in
             let disposable = Disposables.create()
             
@@ -76,7 +76,7 @@ class ScanForPriceUC {
                         DataManager.shared.find(latitude: location.coordinate.latitude,
                                                 longitude: location.coordinate.longitude,
                                                 barcode: barcode,
-                                                radiousInM:radiousInM)
+                                                radiousInM:radiousInM,sortByPrice:sortByPrice)
                             .subscribe({ event in
                                 switch event {
                                 case .success(let prices):

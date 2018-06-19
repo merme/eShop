@@ -6,14 +6,6 @@
 //  Copyright © 2018 jca. All rights reserved.
 //
 
-//
-//  TextStyles.swift
-//  Barista
-//
-//  Created by 08APO0516 on 06/02/2017.
-//  Copyright © 2017 08APO0516ja. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
@@ -22,6 +14,23 @@ struct EShopFonts {
     struct NavigationBar {
         static let TitleFont = TextStyle.h18Bold.font
     }
+    
+    struct DistanceSelector {
+        static let TitleFont = TextStyle.h18Bold.font
+        static let DistanceFont = TextStyle.h18Bold.font
+    }
+    
+    struct StartScanning {
+        static let TitleFont      = TextStyle.h24Bold.font
+    }
+
+    struct ProductPrices {
+        static let DistanceFont      = TextStyle.h40Bold.font
+        static let ShopFont         = TextStyle.h40Bold.font
+        static let PriceFont        = TextStyle.h40Bold.font
+        static let SelectorFont        = TextStyle.h20Bold.font
+    }
+    
     
     struct ShopPrice {
         static let ProductFont      = TextStyle.h40Bold.font

@@ -24,7 +24,7 @@ class ProductPricesPVC: BaseViewController {
             self.refreshViewController()
         }
     }
-    var radiousInM:Double = 0.0
+    var radiousInM:Int = 0
     
    // private var priceUpdated:Price?
     
@@ -45,18 +45,40 @@ class ProductPricesPVC: BaseViewController {
  */
         self._setupPresenterViewController()
         
-        guard let _product = self.product else { return }
-        self.fetchProductPrices(product: _product, radiousInM: self.radiousInM).subscribe(onSuccess: { [weak self] prices in
+
+        self._fetchProductPrices(sortByPrice: false)
+        LocationManager.shared.getCurrentLocation().subscribe(onSuccess: { [weak self] cllocation in
             guard let weakSelf = self else { return }
-            weakSelf.productPricesContentVC.prices = prices
+            weakSelf.productPricesContentVC.deviceLocation = cllocation
         }) { error in
             print("todo")
-        }.disposed(by: disposeBag)
-        
+        }
     }
 
+
     
-    // MARK: - Private/Internal methods
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if  let destinationVC = segue.destination as? ProductPricesContentVC,
+            (segue.identifier ==  R.segue.productPricesPVC.productPricesSegue.identifier) {
+            self.productPricesContentVC = destinationVC
+            self.productPricesContentVC.onDone = { [weak self] in
+                guard let weakSelf =  self else { return }
+                weakSelf.onDone()
+            }
+            self.productPricesContentVC.onSortBy = { sortingType in
+                self._fetchProductPrices(sortByPrice: sortingType.rawValue == SortingType.price.rawValue)
+            }
+        }
+    }
+    
+    // MARK:- Private/internal
     func _setupPresenterViewController() {
         
         self.title = R.string.localizable.shop_price_title.key.localized
@@ -78,12 +100,24 @@ class ProductPricesPVC: BaseViewController {
         self.onDone()
     }
     
+    func _fetchProductPrices(sortByPrice:Bool) {
+        guard let _product = self.product else { return }
+        self.fetchProductPrices(product: _product,
+                                radiousInM: Double(self.radiousInM),
+                                sortByPrice:sortByPrice).subscribe(onSuccess: { [weak self] prices in
+            guard let weakSelf = self else { return }
+            weakSelf.productPricesContentVC.prices = prices
+        }) { error in
+            print("todo")
+            }.disposed(by: disposeBag)
+    }
     
-    func fetchProductPrices(product:Product, radiousInM: Double) -> Single<[Price]>  {
+    
+    func fetchProductPrices(product:Product, radiousInM: Double,sortByPrice:Bool) -> Single<[Price]>  {
         return Single.create { single in
             let disposable = Disposables.create()
             //let disposeBag = DisposeBag()
-            ScanForPriceUC.shared.find(barcode: product.barcode, radiousInM: radiousInM).subscribe { event in
+            ScanForPriceUC.shared.find(barcode: product.barcode, radiousInM: radiousInM,sortByPrice:sortByPrice).subscribe { event in
                 
                 switch event {
                 case .success(let prices):
@@ -100,89 +134,10 @@ class ProductPricesPVC: BaseViewController {
         }
     }
     
-    
-    
-    
-/*
-    func find(barcode: String, radiousInM: Double) -> Single<[Price]> {
-        return Single.create { single in
-            let disposable = Disposables.create()
-            
-            let disposeBag = DisposeBag()
-            LocationManager.shared.getCurrentLocation()
-                .subscribe { event in
-                    switch event {
-                    case .success(let location):
-                        DataManager.shared.find(latitude: location.coordinate.latitude,
-                                                longitude: location.coordinate.longitude,
-                                                barcode: barcode,
-                                                radiousInM:radious)
-                            .subscribe({ event in
-                                switch event {
-                                case .success(let prices):
-                                    single(.success(prices))
-                                case .error(let error):
-                                    single(.error(error))
-                                }
-                            })/*.disposed(by: disposeBag)*/
-                    case .error(let error):
-                        single(.error(error))
-                    }
-                }.disposed(by: disposeBag)
-            return disposable
-        }
-    }
-    
-    */
+
     
         
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if  let destinationVC = segue.destination as? ProductPricesContentVC,
-            (segue.identifier ==  R.segue.productPricesPVC.productPricesSegue.identifier) {
-                self.productPricesContentVC = destinationVC
-            self.productPricesContentVC.onDone = { [weak self] in
-                guard let weakSelf =  self else { return }
-                weakSelf.onDone()
-            }
-            
-            /*
-            shopPriceContentVC.price = self.price ?? nil
-            
-            shopPriceContentVC.onPriceUpdated = { [weak self] priceUpdated in
-                   // DDLo("\(price)")
-                guard let weakSelf = self,
-                    priceUpdated != weakSelf.price else { return }
-                
-                // todo: check whether price has really changed
-                DDLogInfo("\(priceUpdated)")
-                //private var disposeBag = DisposeBag()
-                ScanForPriceUC.shared.update(price:priceUpdated).subscribe { [weak self] event in
-                    guard let weakSelf = self else { return }
-                    switch event {
-                        case .completed:
-                            weakSelf.onPriceUpdated()
-                        case .error(let error):
-                            DDLogError("\(error)")
-                    }
-                    }.disposed(by: DisposeBag())
-            }
- */
-            /*
-            startScanningContentVC?.onScan = { [weak self] in
-                guard let weakSelf = self else { return }
-                weakSelf.onScan3()
-            }*/
-        }
-    }
-    
-    // MARK:- Private/internal
+
     func setupViewController() {
         
     }

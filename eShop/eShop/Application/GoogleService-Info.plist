@@ -17,21 +17,21 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.jca.eShop</string>
+	<string>com.jca.eshop</string>
 	<key>PROJECT_ID</key>
 	<string>eshop-d0a5f</string>
 	<key>STORAGE_BUCKET</key>
 	<string>eshop-d0a5f.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:1026596879443:ios:9b6be72e83bd418e</string>
 	<key>DATABASE_URL</key>

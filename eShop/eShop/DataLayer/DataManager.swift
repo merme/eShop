@@ -24,6 +24,16 @@ final class DataManager {
     // MARK:- Products
     
     // MARK: - Shop
+    func getShop(shopLocation:String, onComplete: @escaping ( Shop?) ->Void)  {
+        let _shop = Shop(shopLocation: shopLocation)
+        FirebaseManager.shared.find(latitude: _shop.latitude, longitude: _shop.longitude, radiousInM: Shop.gapErrorDistanceM, onComplete: { shops in
+            if shops.isEmpty == false {
+                onComplete(shops.first)
+            } else {
+                onComplete(nil)
+            }
+        })
+    }
     
     // MARK: - Price
     func create(price:Price) -> Completable {
@@ -40,7 +50,7 @@ final class DataManager {
         FirebaseManager.shared.find(latitude: latitude, longitude: longitude, barcode: barcode, onComplete: onComplete)
     }
     
-    func find(latitude:Double,longitude:Double, barcode:String) -> Single<Price> {
+    func find(latitude:Double,longitude:Double, barcode:String, sortByPrice:Bool) -> Single<Price> {
         return Single.create {  [weak self] single in
                 let disposable = Disposables.create()
             /*
@@ -50,7 +60,7 @@ final class DataManager {
             DataManager.shared.find(latitude: latitude,
                                     longitude: longitude,
                                     barcode: barcode,
-                                    radiousInM: Shop.gapErrorDistanceM).subscribe({ event in
+                                    radiousInM: Shop.gapErrorDistanceM,sortByPrice:sortByPrice).subscribe({ event in
                 switch event {
                 case .success(let prices):
                     guard prices.isEmpty == false else {
@@ -129,7 +139,7 @@ final class DataManager {
         })
     }
     
-    func find(latitude:Double,longitude:Double, barcode:String, radiousInM: Double) -> Single<[Price]> {
+    func find(latitude:Double,longitude:Double, barcode:String, radiousInM: Double, sortByPrice: Bool) -> Single<[Price]> {
         return Single.create { single in
             let disposable = Disposables.create()
             
@@ -137,6 +147,7 @@ final class DataManager {
                                         longitude: longitude,
                                         radiousInM: radiousInM,
                                         barcode: barcode,
+                                        sortByPrice: sortByPrice,
                                         onComplete: { prices in
                 single(.success(prices))
             })

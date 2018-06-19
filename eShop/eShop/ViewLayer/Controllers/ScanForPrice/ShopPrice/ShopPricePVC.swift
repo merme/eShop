@@ -31,7 +31,7 @@ class ShopPricePVC: BaseViewController {
         self._setupPresenterViewController()
         
         guard let _product = price?.product else { return }
-        self.fetchProductPrices(product: _product, radiousInM: 10000)
+        self.fetchProductPrices(product: _product, radiousInM: 10000, sortByPrice: false)
         
        
             
@@ -54,6 +54,9 @@ class ShopPricePVC: BaseViewController {
                 guard let weakSelf = self else { return }
                 guard  priceUpdated != weakSelf.price else { weakSelf.onPriceUpdated(priceUpdated); return }
                 
+                if priceUpdated.price == nil {
+                    print("stop")
+                }
                 // todo: check whether price has really changed
                 DDLogInfo("\(priceUpdated)")
                 //private var disposeBag = DisposeBag()
@@ -102,9 +105,9 @@ class ShopPricePVC: BaseViewController {
     }
    
     
-    func fetchProductPrices(product:Product, radiousInM: Double)  {
+    func fetchProductPrices(product:Product, radiousInM: Double,sortByPrice:Bool)  {
         
-            ScanForPriceUC.shared.find(barcode: product.barcode, radiousInM: 10000 ).subscribe { [weak self] event in
+        ScanForPriceUC.shared.find(barcode: product.barcode, radiousInM: 10000,sortByPrice:sortByPrice ).subscribe { [weak self] event in
                 guard let weakSelf = self else { return }
                 switch event {
                 case .success(let prices):

@@ -81,11 +81,11 @@ struct Price {
     }
     
     func distanceInM(latitude: Double, longitude: Double) -> Double {
-        return Shop(key: self.shopLocation).distanceInM(latitude: latitude, longitude: longitude)
+        return Shop(shopLocation: self.shopLocation).distanceInM(latitude: latitude, longitude: longitude)
     }
     
-    func getShop(shopLocation:String, onCompletion: (Shop?) -> Void ) {
-        
+    func getShop(shopLocation:String, onCompletion: @escaping (Shop?) -> Void ) {
+        DataManager.shared.getShop(shopLocation: shopLocation, onComplete: onCompletion)
     }
 
 }

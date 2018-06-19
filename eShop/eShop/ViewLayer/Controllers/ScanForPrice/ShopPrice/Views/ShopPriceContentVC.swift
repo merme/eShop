@@ -62,6 +62,15 @@ enum ShopPriceContentField {
         }
     }
     
+    func icon() -> UIImage {
+        switch self {
+        case .shopName:         return R.image.img_shop() ?? UIImage()
+        case .productName:      return R.image.img_scancode() ?? UIImage()
+        case .priceValue:       return R.image.img_price() ?? UIImage()
+        default: return UIImage()
+        }
+    }
+    
 }
 
 class ShopPriceContentVC: BaseViewController {
@@ -72,6 +81,7 @@ class ShopPriceContentVC: BaseViewController {
     @IBOutlet weak var btnSaveAndContinue: UIButton!
     @IBOutlet weak var lblPricesFound: UILabel!
     @IBOutlet weak var svwPricesFound: UIView!
+    
     
     // MARK: - Callbacks
     var onPriceUpdated: ((Price) -> Void) = { _ in }
@@ -98,7 +108,11 @@ class ShopPriceContentVC: BaseViewController {
     
     private var newProductName:String?
     private var newShopName:String?
-    private var newPriceValue:Double?
+    private var newPriceValue:Double? {
+        didSet {
+            print(">>>>>>>>>>>>>>> \(newPriceValue)")
+        }
+    }
     
     private var disposeBag = DisposeBag()
     
@@ -109,6 +123,8 @@ class ShopPriceContentVC: BaseViewController {
         // Do any additional setup after loading the view.
         setupViewController()
         self.refreshPricesFoundView()
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -134,7 +150,7 @@ class ShopPriceContentVC: BaseViewController {
         tblShopPrice.backgroundColor = UIColor.clear
         tblShopPrice.rowHeight = UITableViewAutomaticDimension
         tblShopPrice.estimatedRowHeight = 200
-        tblShopPrice.separatorStyle = .none
+        //tblShopPrice.separatorStyle = .none
         tblShopPrice.allowsSelection = false
 
         self.datasource.asDriver().drive( self.tblShopPrice.rx.items(cellIdentifier: R.reuseIdentifier.shopPriceTVC.identifier, cellType: ShopPriceTVC.self)) { [weak self] (_, shopPriceContentField, shopPriceTVC ) in
@@ -152,12 +168,13 @@ class ShopPriceContentVC: BaseViewController {
     func setupPricesFoundSubview() {
         
         svwPricesFound.backgroundColor = ColorsEShop.ShopPrice.PricesFoundBackground
+        svwPricesFound.dropUpperShadow()
         
         lblPricesFound.text = ""
         lblPricesFound.numberOfLines = 1
         lblPricesFound.textAlignment = .center
         lblPricesFound.font = EShopFonts.ShopPrice.PricesFoundFont
-        lblPricesFound.textColor = ColorsEShop.ShopPrice.PricesFound
+        lblPricesFound.textColor = ColorsEShop.ShopPrice.FontColor
         
         btnSaveAndContinue.setImage(R.image.img_continue(), for: .normal)
         self.btnSaveAndContinue.rx.tap.bind { [weak self] _ in
@@ -181,22 +198,18 @@ class ShopPriceContentVC: BaseViewController {
        
         //shopPriceTVC.value = shopPriceContentField.value() ?? "nil"
         shopPriceTVC.shopPriceContentField = shopPriceContentField
-        shopPriceTVC.onEditingEnd = { [weak self] shopPriceContentField, newValue in
+        shopPriceTVC.onEditingEnd = { [weak self] shopPriceContentField in
             guard let weakSelf = self else { return }
-            print("newValue:\(newValue)")
-            if newValue! == "0.00" {
-                print("stop")
-            }
             
             switch shopPriceContentField {
-            case .productName:  weakSelf.newProductName = (newValue == nil) ? weakSelf.price?.product?.name : newValue
-            case .shopName:     weakSelf.newShopName = (newValue == nil) ? weakSelf.price?.shop?.name : newValue
-            case .priceValue:   //weakSelf.newPriceValue = (newValue == nil) ? weakSelf.price?.price : Double(newValue!)
-                if newValue == nil {
-                    weakSelf.newPriceValue =  8.88 //weakSelf.price?.price
+            case .productName(let productName) :  weakSelf.newProductName = productName
+            case .shopName(let shopName):     weakSelf.newShopName = shopName
+            case .priceValue(let priceValue):   weakSelf.newPriceValue = priceValue //(newValue == nil) ? weakSelf.price?.price : Double(newValue!)
+              /*  if newValue == nil {
+                    weakSelf.newPriceValue =  weakSelf.price?.price
                 } else {
                     weakSelf.newPriceValue =  Double(newValue!)
-                }
+                }*/
             default: return
             }
         }

@@ -13,6 +13,13 @@ class BarcodeScannerContainerVC: BarcodeScannerViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.messageViewController.regularTintColor = ColorsEShop.NavigationBar.TitleFontColor
+        self.messageViewController.messages.scanningText = "_scannig text"
+        self.messageViewController.messages.processingText = "_processing text"
+        
+        self.headerViewController.titleLabel.font = EShopFonts.NavigationBar.TitleFont
+        self.headerViewController.titleLabel.highlightedTextColor = ColorsEShop.NavigationBar.TitleFontColor
 
         // Do any additional setup after loading the view.
     }

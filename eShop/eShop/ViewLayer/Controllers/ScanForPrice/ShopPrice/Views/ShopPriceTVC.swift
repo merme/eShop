@@ -15,10 +15,12 @@ class ShopPriceTVC: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var txtValue: UITextField!
     @IBOutlet weak var btnRemove: UIButton!
     @IBOutlet weak var svwLine: UIView!
+    @IBOutlet weak var imgIcon: UIImageView!
+    
     
     
     // MARK: - Callbacks
-    var onEditingEnd: ((ShopPriceContentField, String? ) -> Void) = { _ ,_  in }
+    var onEditingEnd: ((ShopPriceContentField) -> Void) = { _  in }
     
     // MARK: - Public attribures
     var shopPriceContentField = ShopPriceContentField.count {
@@ -49,16 +51,33 @@ class ShopPriceTVC: UITableViewCell, UITextFieldDelegate {
     // MARK: - Private / Intrnal
     private func setupView() {
         self.backgroundColor = UIColor.clear
+        
+        svwLine.backgroundColor = ColorsEShop.ShopPrice.FontColor
+        
         txtValue.borderStyle = .none
         
         txtValue.rx
             .controlEvent(.editingDidEnd)
             .subscribe(onNext: { [weak self] _ in
             guard let weakSelf = self,
-                let _text = weakSelf.txtValue.text else { return }
+                let _text = weakSelf.txtValue.text else {
+                    return
+                    
+                }
+                /*
+                 ShopPriceContentField.shopName(price?.shop?.name),
+                 ShopPriceContentField.productName(price?.product?.name),
+                 ShopPriceContentField.priceValue(price?.price)
+ */
+                switch weakSelf.shopPriceContentField {
+                case .shopName:  weakSelf.onEditingEnd(ShopPriceContentField.shopName(_text))
+                case .productName:  weakSelf.onEditingEnd(ShopPriceContentField.productName(_text))
+                case .priceValue:  weakSelf.onEditingEnd(ShopPriceContentField.priceValue(Double(_text) ?? 0.0))
+                case .count: return
+                }
                 
             //weakSelf._trimTextAndReadMode(text:_text)
-                weakSelf.onEditingEnd(weakSelf.shopPriceContentField, _text)
+               // weakSelf.onEditingEnd(weakSelf.shopPriceContentField, _text)
                 
                 weakSelf.isEditMode = false
                 weakSelf._refreshView()
@@ -72,7 +91,7 @@ class ShopPriceTVC: UITableViewCell, UITextFieldDelegate {
                 guard let weakSelf = self else { return }
                 
                 //weakSelf._trimTextAndReadMode(text:weakSelf.txtValue.text!)
-                weakSelf.onEditingEnd(weakSelf.shopPriceContentField, weakSelf.txtValue.text ?? weakSelf.shopPriceContentField.emptyValue())
+               /* weakSelf.onEditingEnd(weakSelf.shopPriceContentField, weakSelf.txtValue.text ?? weakSelf.shopPriceContentField.emptyValue())*/
                 weakSelf.isEditMode = true
                 weakSelf._refreshView()
                 
@@ -96,12 +115,14 @@ class ShopPriceTVC: UITableViewCell, UITextFieldDelegate {
     
     func _refreshView() {
         
+        imgIcon.image = shopPriceContentField.icon()
+        
         if (txtValue.text?.isEmpty)! && self.isEditMode == false {
             txtValue.text = shopPriceContentField.value() ?? ""
         }
         
         self.txtValue.font = shopPriceContentField.font()
-        self.txtValue.textColor = UIColor.white
+        self.txtValue.textColor = ColorsEShop.ShopPrice.FontColor
         self.txtValue.placeholder = shopPriceContentField.key()
         self.txtValue.keyboardType = shopPriceContentField.keyboardType()
         
@@ -122,7 +143,7 @@ class ShopPriceTVC: UITableViewCell, UITextFieldDelegate {
         var _text = String(text)
         _text = _text.trimmingCharacters(in: .whitespacesAndNewlines)
         self.txtValue.text = _text
-        self.onEditingEnd(self.shopPriceContentField, _text.isEmpty ? nil : _text)
+        self.onEditingEnd(self.shopPriceContentField)
         /*
         self.onNewMachineName(_text)
         self.isEditMode = false

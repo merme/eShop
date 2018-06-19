@@ -17,15 +17,11 @@ class BaseViewController: UIViewController {
         
         _setupNavigationControllerAndStatusBar()
        
-        _setupBackgroundImage()
+       // _setupBackgroundImage()
 
         // Do any additional setup after loading the view.
     }
-  /*
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-*/
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -69,22 +65,16 @@ class BaseViewController: UIViewController {
     }
     
     fileprivate func _setupNavigationControllerAndStatusBar() {
-        UIApplication.shared.statusBarStyle = .lightContent
+        UIApplication.shared.statusBarStyle = .default
         self.setNeedsStatusBarAppearanceUpdate()
         
         if let _navigationbar = self.navigationController?.navigationBar {
-            _navigationbar.setBackgroundImage(UIImage(), for: .default)
-            _navigationbar.shadowImage = UIImage()
-            _navigationbar.isTranslucent = true
-            
-            navigationItem.titleView = nil
-            
+          
+            _navigationbar.barTintColor = ColorsEShop.NavigationBar.BackgroundColor
             UINavigationBar.appearance().titleTextAttributes = [
                 NSAttributedStringKey.font: EShopFonts.NavigationBar.TitleFont,
-                NSAttributedStringKey.foregroundColor: UIColor.white
+                NSAttributedStringKey.foregroundColor: ColorsEShop.NavigationBar.TitleFontColor
             ]
-            
-            //   self.title = "patata"
         }
     }
     

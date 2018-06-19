@@ -12,6 +12,10 @@ class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //UITabBar.appearance().barTintColor = UIColor.orange
+        UITabBar.appearance().tintColor = ColorsEShop.NavigationBar.TitleFontColor
+
 
         // Do any additional setup after loading the view.
     }

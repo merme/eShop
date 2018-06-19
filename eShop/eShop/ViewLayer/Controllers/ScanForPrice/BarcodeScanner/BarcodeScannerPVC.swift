@@ -12,17 +12,17 @@ import RxSwift
 
 class BarcodeScannerPVC: UIViewController, BarcodeScannerCodeDelegate, BarcodeScannerErrorDelegate, BarcodeScannerDismissalDelegate {
     
-    //MARK:- IBOutlet
+    // MARK: - IBOutlet
     @IBOutlet weak var containerVC: UIView!
     
-    //MARK:- Callbacks
+    // MARK: - Callbacks
     var onShopPrice: ((Price) -> Void) = { _ in }
     
     
-    //MARK:- Private attributes
+    // MARK: - Private attributes
     private var disposeBag = DisposeBag()
     
-    //MARK:- Lifecycle
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -69,7 +69,7 @@ class BarcodeScannerPVC: UIViewController, BarcodeScannerCodeDelegate, BarcodeSc
         print("Symbology Type: \(type)")
         
         ScanForPriceUC.shared
-            .find(barcode: code)
+            .find(barcode: code,sortByPrice:false)
             .observeOn(MainScheduler.instance)
             .subscribe { [weak self] event in
             guard let weakSelf = self else { return }

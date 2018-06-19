@@ -26,6 +26,53 @@ class UTDataManager: XCTestCase {
         super.tearDown()
     }
   
+    // MARK: - Shop
+    func test_getShop_Found() {
+
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        let shop = Shop(name: "Bon Preu Pallejà", latitude:  41.4175, longitude: 1.9995)
+        FirebaseManager.shared.create(shop: shop)
+        
+        DataManager.shared.getShop(shopLocation: "41p4175-1p9995") { shop in
+            guard let _shop = shop else {
+                XCTFail()
+                asyncExpectation.fulfill()
+                return
+            }
+            
+            XCTAssertEqual(_shop.latitude, 41.4175)
+            XCTAssertEqual(_shop.longitude, 1.9995)
+            XCTAssertEqual(_shop.name, "Bon Preu Pallejà")
+            
+            asyncExpectation.fulfill()
+            
+        }
+        
+         self.waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func test_getShop_NotFound() {
+        
+        let asyncExpectation = expectation(description: "\(#function)")
+        
+        let shop = Shop(name: "Bon Preu Pallejà", latitude:  41.4175, longitude: 1.9995)
+        FirebaseManager.shared.create(shop: shop)
+        
+        DataManager.shared.getShop(shopLocation: "41p4175-1p9994") { shop in
+            guard shop == nil else {
+                asyncExpectation.fulfill()
+                return
+            }
+            
+            XCTFail()
+            asyncExpectation.fulfill()
+            
+        }
+        
+        self.waitForExpectations(timeout: 5, handler: nil)
+    }
+    
     // MARK: - Price
     func test_price_find_FoundNearby() {
         

@@ -15,7 +15,7 @@ class StartScanningPVC: BaseViewController {
     private var startScanningContentVC:StartScanningContentVC?
     
     // MARK: - Callbacks
-    var onScan: (( ) -> Void) = {  }
+    var onScan: ((Int) -> Void) = { _ in }
     
     private var disposeBag = DisposeBag()
     
@@ -53,9 +53,9 @@ class StartScanningPVC: BaseViewController {
         if (segue.identifier ==  R.segue.startScanningPVC.startScanningContentSegue.identifier) {
             startScanningContentVC = segue.destination as? StartScanningContentVC
             
-            startScanningContentVC?.onScan = { [weak self] in
+            startScanningContentVC?.onScan = { [weak self] distanceInM in
                 guard let weakSelf = self else { return }
-                weakSelf.onScan()
+                weakSelf.onScan(distanceInM)
             }
         }
     }

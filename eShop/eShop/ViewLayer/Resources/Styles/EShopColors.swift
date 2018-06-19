@@ -36,15 +36,33 @@ struct ColorsEShop {
     
     // MARK: - NavigationBar
     struct NavigationBar {
-        static let TitleFontColor  = Interface.ColorWhite
+        static let TitleFontColor  = Interface.ColorDarkBlue
+        static let BackgroundColor = Interface.ColorWhite
+    }
+    
+    struct DistanceSelector {
+        static let TitleFontColor = Interface.ColorDarkBlue
+        static let DistanceFontColor = Interface.ColorDarkBlue
+    }
+    
+    struct StartScanning {
+        static let TitleFontColor = Interface.ColorDarkBlue
     }
     
     // MARK: - ShopPrice
     struct ShopPrice {
         static let PricesFoundBackground = ColorsEShop.Interface.ColorWhiteAlpha05
-        static let PricesFound = ColorsEShop.Interface.ColorWhite
+        static let FontColor = ColorsEShop.Interface.ColorDarkBlue
     }
     
+    struct ProductPrices {
+        static let PriceFontColor = ColorsEShop.Interface.ColorDarkBlue
+        static let DistanceFontColor = ColorsEShop.Interface.ColorDarkBlue
+        static let ShopFontColor = ColorsEShop.Interface.ColorDarkBlue
+        static let NormalFontColor = ColorsEShop.Interface.ColorDarkBlue
+        static let SelectedFontColor = ColorsEShop.Interface.ColorWhite
+        static let DistanceSelectorColor = ColorsEShop.Interface.ColorWhite
+    }
 }
 
 extension UIColor {

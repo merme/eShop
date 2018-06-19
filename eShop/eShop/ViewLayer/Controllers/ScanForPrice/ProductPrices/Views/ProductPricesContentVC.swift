@@ -9,21 +9,30 @@
 import RxSwift
 import RxCocoa
 import CocoaLumberjack
- 
+import CoreLocation
+
 class ProductPricesContentVC: UIViewController {
 
     // MARK:- IBOutlet
     @IBOutlet weak var tblProductPrices: UITableView!
     @IBOutlet weak var btnDone: UIButton!
-    
+    @IBOutlet weak var productFilterView: ProductFilterView!
     
     // MARK: - Callbacks
    var onDone:(() -> Void) = {  }
+  var onSortBy: (SortingType) -> Void = { _ in }
+    
  
     // MARK: - Public/Attributes
     var prices:[Price] = [] {
         didSet {
             self.datasource.value = prices
+        }
+    }
+    
+    var deviceLocation:CLLocation?  {
+        didSet {
+            self._refreshContentViewController()
         }
     }
     
@@ -55,28 +64,37 @@ class ProductPricesContentVC: UIViewController {
         
         self.navigationItem.hidesBackButton = true
         
+        self.productFilterView.dropShadow()
+        
         self.tblProductPrices.tableFooterView = UIView()
+        self.tblProductPrices.estimatedRowHeight = 100
+        self.tblProductPrices.backgroundColor = UIColor.clear
         
-        self.btnDone.rx.tap.bind { [weak self] _ in
+        self.productFilterView.onSortBy = { [weak self] sortingType in
             guard let weakSelf = self else { return }
-          //  if weakSelf.view.
-                weakSelf.onDone()
-            
-            }
-        .disposed(by: disposeBag)
-        
+            weakSelf.onSortBy(sortingType)
+        }
         
         self.datasource.asDriver().drive( self.tblProductPrices.rx.items(cellIdentifier: R.reuseIdentifier.productPricesTVC.identifier, cellType: ProductPricesTVC.self)) { [weak self] (_, price, productPricesTVC ) in
             
                 guard let weakSelf = self else { return}
-              //  weakSelf.configureShopPriceTVC(shopPriceContentField: shopPriceContentField,
-              //                                 shopPriceTVC: shopPriceTVC)
+               weakSelf.configureShopPriceTVC(price: price,
+                                              productPricesTVC: productPricesTVC,
+                                              location: weakSelf.deviceLocation)
             
             }.disposed(by: disposeBag)
         
     }
     
-    private func configureShopPriceTVC(shopPriceContentField: ShopPriceContentField, shopPriceTVC: ShopPriceTVC) {
+    func _refreshContentViewController() {
+        self.tblProductPrices.reloadData()
+    }
+    
+    private func configureShopPriceTVC(price: Price, productPricesTVC: ProductPricesTVC, location: CLLocation?) {
+        
+        productPricesTVC.location  = location
+        productPricesTVC.price = price
+       
       /*
         shopPriceTVC.key = shopPriceContentField.key()
         shopPriceTVC.value = shopPriceContentField.value() ?? "nil"
@@ -120,7 +138,7 @@ class ProductPricesContentVC: UIViewController {
     }
     */
     private func refreshViewController() {
-  
+        guard prices != nil else { return }
       //  DDLogVerbose("\(self.price!)")
         self.tblProductPrices.reloadData()
     }

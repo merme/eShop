@@ -23,7 +23,7 @@ class UTShop: XCTestCase {
     }
     
     func test_init_key() {
-        let shop = Shop(key:"41p4189-2p0008")
+        let shop = Shop(shopLocation:"41p4189-2p0008")
         XCTAssertEqual(shop.latitude, 41.4189)
         XCTAssertEqual(shop.longitude, 2.0008)
     }

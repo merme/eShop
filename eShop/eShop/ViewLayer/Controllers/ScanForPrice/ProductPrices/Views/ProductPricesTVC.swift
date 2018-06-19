@@ -8,34 +8,36 @@
 
 import RxCocoa
 import RxSwift
+import CoreLocation
 
 class ProductPricesTVC: UITableViewCell {
 
     // MARK: - IBOutlet
-    @IBOutlet weak var lblKey: UILabel!
-    @IBOutlet weak var txtValue: UITextField!
+    @IBOutlet weak var lblPrice: UILabel!
+    @IBOutlet weak var lblDistanceM: UILabel!
+    @IBOutlet weak var lblShopName: UILabel!
+    @IBOutlet weak var imgPrice: UIImageView!
+    @IBOutlet weak var imgDistance: UIImageView!
+    
     //@IBOutlet weak var lblValue: UILabel!
     
     // MARK: - Callbacks
     var onEditingEnd: ((ShopPriceContentField, String? ) -> Void) = { _ ,_  in }
     
     // MARK: - Public attribures
-    var key:String = "" {
+    var price:Price? {
         didSet {
-            lblKey.text = key
+            self._refreshView()
         }
     }
     
-    var value:String = "" {
+    var location:CLLocation? {
         didSet {
-            txtValue.text = value
+            self._refreshView()
         }
     }
-    
-    var shopPriceContentField = ShopPriceContentField.count
     
     // MARK: - Private attributes
-    private var disposeBag = DisposeBag()
     
     // MARK: - Lifecycle
     override func awakeFromNib() {
@@ -52,17 +54,41 @@ class ProductPricesTVC: UITableViewCell {
     
     // MARK: - Private / Intrnal
     private func setupView() {
-        /*
-        txtValue.rx
-            .controlEvent(.editingDidEnd)
-            .subscribe(onNext: { [weak self] _ in
-            guard let weakSelf = self,
-                let _text = weakSelf.txtValue.text else { return }
-            
-            weakSelf._trimTextAndReadMode(text:_text)
-        }).disposed(by: disposeBag)
- */
+        self.backgroundColor = UIColor.clear
+        self.selectionStyle = .none
         
+        imgPrice.image = R.image.img_price()
+        
+        imgDistance.image = R.image.img_distance()
+
+        lblPrice.numberOfLines = 1
+        lblPrice.font = EShopFonts.ProductPrices.PriceFont
+        lblPrice.textColor = ColorsEShop.ProductPrices.PriceFontColor
+        
+        lblDistanceM.numberOfLines = 1
+        lblDistanceM.font = EShopFonts.ProductPrices.DistanceFont
+        lblDistanceM.textColor = ColorsEShop.ProductPrices.DistanceFontColor
+        
+        lblShopName.numberOfLines = 1
+        lblShopName.font = EShopFonts.ProductPrices.ShopFont
+        lblShopName.textColor = ColorsEShop.ProductPrices.ShopFontColor
+        
+    }
+    
+    private func _refreshView() {
+        guard let _price = price        else { return }
+        
+        _price.getShop(shopLocation: _price.shopLocation) { [weak self] shop in
+            guard let weakSelf = self else { return}
+            weakSelf.lblShopName.text = shop?.name ?? "???"
+        }
+        
+        lblPrice.text = String(_price.price ?? 0)
+        if let _location = self.location {
+            let distanceM = _price.distanceInM(latitude: _location.coordinate.latitude,
+                                              longitude: _location.coordinate.longitude)
+            lblDistanceM.text = Int(distanceM).formatDist()
+        }
     }
 
 }

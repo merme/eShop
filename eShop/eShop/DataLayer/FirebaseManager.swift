@@ -202,7 +202,7 @@ final class FirebaseManager {
         }
     }
 
-    func find(latitude:Double,longitude:Double, radiousInM: Double, barcode:String, sortByPrice:Bool = false, onComplete: @escaping  ([Price]) -> Void ) {
+    func find(latitude:Double,longitude:Double, radiousInM: Double, barcode:String, sortByPrice:Bool /*= false*/, onComplete: @escaping  ([Price]) -> Void ) {
 
         pricesKeyReference
             .queryOrdered(byChild: Price.Field.barcode)
@@ -210,7 +210,7 @@ final class FirebaseManager {
                 let prices:[Price] = snapshot.children
                     .map { return Price(snapshot: $0 as! DataSnapshot) ?? Price(barcode: "", shop: "", price: nil) }
                     .filter {
-                        let isInRange = Shop(key: $0.shopLocation).distanceInM(latitude: latitude, longitude: longitude) <= radiousInM
+                        let isInRange = Shop(shopLocation: $0.shopLocation).distanceInM(latitude: latitude, longitude: longitude) <= radiousInM
                         return $0.price != nil && isInRange
                     }
                     .sorted(by: {

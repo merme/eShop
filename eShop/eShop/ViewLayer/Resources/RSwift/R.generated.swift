@@ -117,7 +117,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 5 images.
+  /// This `R.image` struct is generated, and contains static references to 8 images.
   struct image {
     /// Image `background`.
     static let background = Rswift.ImageResource(bundle: R.hostingBundle, name: "background")
@@ -125,10 +125,16 @@ struct R: Rswift.Validatable {
     static let img_close = Rswift.ImageResource(bundle: R.hostingBundle, name: "img_close")
     /// Image `img_continue`.
     static let img_continue = Rswift.ImageResource(bundle: R.hostingBundle, name: "img_continue")
+    /// Image `img_distance`.
+    static let img_distance = Rswift.ImageResource(bundle: R.hostingBundle, name: "img_distance")
     /// Image `img_edit`.
     static let img_edit = Rswift.ImageResource(bundle: R.hostingBundle, name: "img_edit")
+    /// Image `img_price`.
+    static let img_price = Rswift.ImageResource(bundle: R.hostingBundle, name: "img_price")
     /// Image `img_scancode`.
     static let img_scancode = Rswift.ImageResource(bundle: R.hostingBundle, name: "img_scancode")
+    /// Image `img_shop`.
+    static let img_shop = Rswift.ImageResource(bundle: R.hostingBundle, name: "img_shop")
     
     /// `UIImage(named: "background", bundle: ..., traitCollection: ...)`
     static func background(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
@@ -145,14 +151,29 @@ struct R: Rswift.Validatable {
       return UIKit.UIImage(resource: R.image.img_continue, compatibleWith: traitCollection)
     }
     
+    /// `UIImage(named: "img_distance", bundle: ..., traitCollection: ...)`
+    static func img_distance(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.img_distance, compatibleWith: traitCollection)
+    }
+    
     /// `UIImage(named: "img_edit", bundle: ..., traitCollection: ...)`
     static func img_edit(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.img_edit, compatibleWith: traitCollection)
     }
     
+    /// `UIImage(named: "img_price", bundle: ..., traitCollection: ...)`
+    static func img_price(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.img_price, compatibleWith: traitCollection)
+    }
+    
     /// `UIImage(named: "img_scancode", bundle: ..., traitCollection: ...)`
     static func img_scancode(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.img_scancode, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "img_shop", bundle: ..., traitCollection: ...)`
+    static func img_shop(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.img_shop, compatibleWith: traitCollection)
     }
     
     fileprivate init() {}
@@ -257,12 +278,20 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
     
-    /// This `R.string.localizable` struct is generated, and contains static references to 6 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 10 localization keys.
     struct localizable {
       /// en translation: %d prices found
       /// 
       /// Locales: en, es
       static let shop_price_prices_found = Rswift.StringResource(key: "shop_price_prices_found", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
+      /// en translation: Distance
+      /// 
+      /// Locales: en, es
+      static let product_prices_distance = Rswift.StringResource(key: "product_prices_distance", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
+      /// en translation: Price
+      /// 
+      /// Locales: en, es
+      static let product_prices_price = Rswift.StringResource(key: "product_prices_price", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
       /// en translation: Price?
       /// 
       /// Locales: en, es
@@ -271,6 +300,10 @@ struct R: Rswift.Validatable {
       /// 
       /// Locales: en, es
       static let start_scanning_product_placeholder = Rswift.StringResource(key: "start_scanning_product_placeholder", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
+      /// en translation: Scanning radious
+      /// 
+      /// Locales: en, es
+      static let distance_selecgtor_title = Rswift.StringResource(key: "distance_selecgtor_title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
       /// en translation: Shop price
       /// 
       /// Locales: en, es
@@ -283,12 +316,30 @@ struct R: Rswift.Validatable {
       /// 
       /// Locales: en, es
       static let start_scanning_title = Rswift.StringResource(key: "start_scanning_title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
+      /// en translation: Tap for start scanning a product barcode
+      /// 
+      /// Locales: en, es
+      static let start_scanning_tap_start_scan = Rswift.StringResource(key: "start_scanning_tap_start_scan", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
       
       /// en translation: %d prices found
       /// 
       /// Locales: en, es
       static func shop_price_prices_found(_ value1: Int) -> String {
         return String(format: NSLocalizedString("shop_price_prices_found", bundle: R.hostingBundle, comment: ""), locale: R.applicationLocale, value1)
+      }
+      
+      /// en translation: Distance
+      /// 
+      /// Locales: en, es
+      static func product_prices_distance(_: Void = ()) -> String {
+        return NSLocalizedString("product_prices_distance", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Price
+      /// 
+      /// Locales: en, es
+      static func product_prices_price(_: Void = ()) -> String {
+        return NSLocalizedString("product_prices_price", bundle: R.hostingBundle, comment: "")
       }
       
       /// en translation: Price?
@@ -303,6 +354,13 @@ struct R: Rswift.Validatable {
       /// Locales: en, es
       static func start_scanning_product_placeholder(_: Void = ()) -> String {
         return NSLocalizedString("start_scanning_product_placeholder", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Scanning radious
+      /// 
+      /// Locales: en, es
+      static func distance_selecgtor_title(_: Void = ()) -> String {
+        return NSLocalizedString("distance_selecgtor_title", bundle: R.hostingBundle, comment: "")
       }
       
       /// en translation: Shop price
@@ -324,6 +382,13 @@ struct R: Rswift.Validatable {
       /// Locales: en, es
       static func start_scanning_title(_: Void = ()) -> String {
         return NSLocalizedString("start_scanning_title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Tap for start scanning a product barcode
+      /// 
+      /// Locales: en, es
+      static func start_scanning_tap_start_scan(_: Void = ()) -> String {
+        return NSLocalizedString("start_scanning_tap_start_scan", bundle: R.hostingBundle, comment: "")
       }
       
       fileprivate init() {}

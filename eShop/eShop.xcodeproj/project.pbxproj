@@ -16,6 +16,7 @@
 		BF55468320A6CC25003388F0 /* ScanForPriceUC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF55467E20A6CC24003388F0 /* ScanForPriceUC.swift */; };
 		BF55468420A6CC25003388F0 /* ScanForPriceCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF55468020A6CC24003388F0 /* ScanForPriceCoordinator.swift */; };
 		BF55468520A6CC25003388F0 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF55468220A6CC25003388F0 /* LocationManager.swift */; };
+		BF635E6F20CAE83D00F81A4C /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF635E6E20CAE83D00F81A4C /* DoubleExtension.swift */; };
 		BF6361E620947541008A174C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6361E520947541008A174C /* AppDelegate.swift */; };
 		BF6361E820947541008A174C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6361E720947541008A174C /* ViewController.swift */; };
 		BF6361ED20947542008A174C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF6361EC20947542008A174C /* Assets.xcassets */; };
@@ -48,11 +49,13 @@
 		BFB11465209ACA56001CB1A8 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB1145F209ACA56001CB1A8 /* SplashVC.swift */; };
 		BFB11469209ACC8A001CB1A8 /* PresentSplashOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB11468209ACC8A001CB1A8 /* PresentSplashOperation.swift */; };
 		BFBBD67120999284003EB7E7 /* GoogleService-Info-DEBUG.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFBBD67020999284003EB7E7 /* GoogleService-Info-DEBUG.plist */; };
+		BFBEF9C520D66C2000D37855 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBEF9C420D66C2000D37855 /* UIViewExtension.swift */; };
+		BFDD643620C9A6E8002244D0 /* ProductFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD643520C9A6E8002244D0 /* ProductFilterView.swift */; };
 		BFDF48D520BDC78E00563695 /* EShopColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDF48D420BDC78E00563695 /* EShopColors.swift */; };
 		BFED589620A77C7C00E6DA92 /* ShopPricePVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED589320A77C7B00E6DA92 /* ShopPricePVC.swift */; };
 		BFED589720A77C7C00E6DA92 /* ShopPriceContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED589520A77C7B00E6DA92 /* ShopPriceContentVC.swift */; };
 		BFEFBA8220BA851C004143DE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEFBA8120BA851C004143DE /* BaseViewController.swift */; };
-		BFEFBA8520BA879A004143DE /* eShopFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEFBA8420BA879A004143DE /* eShopFonts.swift */; };
+		BFEFBA8520BA879A004143DE /* EShopFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEFBA8420BA879A004143DE /* EShopFonts.swift */; };
 		BFEFBA9720BA96E0004143DE /* SanFranciscoDisplay-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = BFEFBA9620BA960F004143DE /* SanFranciscoDisplay-Thin.otf */; };
 		BFEFBA9820BA96E0004143DE /* SanFranciscoDisplay-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = BFEFBA9420BA95E7004143DE /* SanFranciscoDisplay-Ultralight.otf */; };
 		BFEFBA9920BA96E0004143DE /* SanFranciscoDisplay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = BFEFBA9320BA95B8004143DE /* SanFranciscoDisplay-Regular.otf */; };
@@ -85,10 +88,12 @@
 		BF0C555820BB13C900D6F7BC /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		BF384A6E209789C900E0D073 /* UTProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UTProduct.swift; sourceTree = "<group>"; };
 		BF384A7020984A5900E0D073 /* UTPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UTPrice.swift; sourceTree = "<group>"; };
+		BF462DD720C9541C00094777 /* eShop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = eShop.entitlements; sourceTree = "<group>"; };
 		BF4E901320B47E6A002B908B /* UTDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UTDataManager.swift; sourceTree = "<group>"; };
 		BF55467E20A6CC24003388F0 /* ScanForPriceUC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanForPriceUC.swift; sourceTree = "<group>"; };
 		BF55468020A6CC24003388F0 /* ScanForPriceCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanForPriceCoordinator.swift; sourceTree = "<group>"; };
 		BF55468220A6CC25003388F0 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		BF635E6E20CAE83D00F81A4C /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		BF6361E220947540008A174C /* eShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF6361E520947541008A174C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF6361E720947541008A174C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -125,11 +130,13 @@
 		BFB1145F209ACA56001CB1A8 /* SplashVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		BFB11468209ACC8A001CB1A8 /* PresentSplashOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentSplashOperation.swift; sourceTree = "<group>"; };
 		BFBBD67020999284003EB7E7 /* GoogleService-Info-DEBUG.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-DEBUG.plist"; sourceTree = "<group>"; };
+		BFBEF9C420D66C2000D37855 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		BFDD643520C9A6E8002244D0 /* ProductFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductFilterView.swift; sourceTree = "<group>"; };
 		BFDF48D420BDC78E00563695 /* EShopColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EShopColors.swift; sourceTree = "<group>"; };
 		BFED589320A77C7B00E6DA92 /* ShopPricePVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopPricePVC.swift; sourceTree = "<group>"; };
 		BFED589520A77C7B00E6DA92 /* ShopPriceContentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopPriceContentVC.swift; sourceTree = "<group>"; };
 		BFEFBA8120BA851C004143DE /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		BFEFBA8420BA879A004143DE /* eShopFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eShopFonts.swift; sourceTree = "<group>"; };
+		BFEFBA8420BA879A004143DE /* EShopFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EShopFonts.swift; sourceTree = "<group>"; };
 		BFEFBA9120BA94C3004143DE /* SanFranciscoDisplay-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoDisplay-Bold.otf"; sourceTree = "<group>"; };
 		BFEFBA9320BA95B8004143DE /* SanFranciscoDisplay-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoDisplay-Regular.otf"; sourceTree = "<group>"; };
 		BFEFBA9420BA95E7004143DE /* SanFranciscoDisplay-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoDisplay-Ultralight.otf"; sourceTree = "<group>"; };
@@ -179,6 +186,8 @@
 			isa = PBXGroup;
 			children = (
 				BF014D8020A1783E00F7E1A4 /* UIAlertController+rx.swift */,
+				BF635E6E20CAE83D00F81A4C /* DoubleExtension.swift */,
+				BFBEF9C420D66C2000D37855 /* UIViewExtension.swift */,
 				BFEFBA8120BA851C004143DE /* BaseViewController.swift */,
 			);
 			path = Extensions;
@@ -251,6 +260,7 @@
 		BF6361E420947540008A174C /* eShop */ = {
 			isa = PBXGroup;
 			children = (
+				BF462DD720C9541C00094777 /* eShop.entitlements */,
 				BF63620F20947F46008A174C /* ViewLayer */,
 				BF7CC6E12099FE24009C422F /* DomainLayer */,
 				BF63621E2094941A008A174C /* DataLayer */,
@@ -368,6 +378,7 @@
 			children = (
 				BF682F9D20B311080010094C /* ProductPricesTVC.swift */,
 				BF682F9E20B311080010094C /* ProductPricesContentVC.swift */,
+				BFDD643520C9A6E8002244D0 /* ProductFilterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -524,7 +535,7 @@
 		BFEFBA8320BA876C004143DE /* Styles */ = {
 			isa = PBXGroup;
 			children = (
-				BFEFBA8420BA879A004143DE /* eShopFonts.swift */,
+				BFEFBA8420BA879A004143DE /* EShopFonts.swift */,
 				BFDF48D420BDC78E00563695 /* EShopColors.swift */,
 			);
 			path = Styles;
@@ -614,6 +625,11 @@
 				TargetAttributes = {
 					BF6361E120947540008A174C = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					BF6361F520947542008A174C = {
 						CreatedOnToolsVersion = 9.3;
@@ -717,6 +733,7 @@
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -729,6 +746,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -783,6 +801,7 @@
 				BF682FA120B311090010094C /* ProductPricesContentVC.swift in Sources */,
 				BF55468320A6CC25003388F0 /* ScanForPriceUC.swift in Sources */,
 				BFEFBA8220BA851C004143DE /* BaseViewController.swift in Sources */,
+				BFDD643620C9A6E8002244D0 /* ProductFilterView.swift in Sources */,
 				BF7CC701209A014A009C422F /* UIApplicationExtension.swift in Sources */,
 				BF7CC6DC2099FC8E009C422F /* AppStoryboard.swift in Sources */,
 				BF6361E820947541008A174C /* ViewController.swift in Sources */,
@@ -795,14 +814,16 @@
 				BFEFBA9C20BA99C0004143DE /* DistanceSelectorView.swift in Sources */,
 				BFB11460209ACA56001CB1A8 /* BarcodeScannerPVC.swift in Sources */,
 				BF6362232094941A008A174C /* FirebaseManager.swift in Sources */,
+				BF635E6F20CAE83D00F81A4C /* DoubleExtension.swift in Sources */,
 				BFF54B5420A06D7C004917AC /* DataManager.swift in Sources */,
 				BF682F9F20B311090010094C /* ProductPricesPVC.swift in Sources */,
 				BF636228209506C4008A174C /* Shop.swift in Sources */,
 				BFB11461209ACA56001CB1A8 /* BarcodeScannerContainerVC.swift in Sources */,
 				BFB11469209ACC8A001CB1A8 /* PresentSplashOperation.swift in Sources */,
-				BFEFBA8520BA879A004143DE /* eShopFonts.swift in Sources */,
+				BFEFBA8520BA879A004143DE /* EShopFonts.swift in Sources */,
 				BF73C4ED20AB462B00452BBD /* ShopPriceTVC.swift in Sources */,
 				BF7CC6F82099FE4B009C422F /* PresentMainAppOperation.swift in Sources */,
+				BFBEF9C520D66C2000D37855 /* UIViewExtension.swift in Sources */,
 				BF6361E620947541008A174C /* AppDelegate.swift in Sources */,
 				BF63621A209480B7008A174C /* R.generated.swift in Sources */,
 				BF63622E2095F938008A174C /* Price.swift in Sources */,
@@ -981,6 +1002,8 @@
 			baseConfigurationReference = 8856398CD142B99E40406E97 /* Pods-eShop.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = eShop/eShop.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				INFOPLIST_FILE = eShop/Info.plist;
@@ -988,8 +1011,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jca.eShop.debug;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jca.eshop.debug;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1000,6 +1024,8 @@
 			baseConfigurationReference = A12AAAD9FAD84030B79DF1E8 /* Pods-eShop.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = eShop/eShop.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				INFOPLIST_FILE = eShop/Info.plist;
@@ -1007,8 +1033,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jca.eShop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jca.eshop.debug;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

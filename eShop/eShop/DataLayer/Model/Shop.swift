@@ -49,9 +49,9 @@ struct Shop {
         self.ref = nil
     }
 
-    init(key:String) {
+    init(shopLocation:String) {
         //41p4189-2p0008
-        let splitted = key.replacingOccurrences(of: "p", with: ".").components(separatedBy: "-")
+        let splitted = shopLocation.replacingOccurrences(of: "p", with: ".").components(separatedBy: "-")
         guard splitted.count == 2 else { self.init(name: nil, latitude: 0, longitude: 0); return }
 
         self.init(name: nil, latitude: Double(splitted[0]) ?? 0, longitude: Double(splitted[1]) ?? 0)

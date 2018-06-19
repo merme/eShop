@@ -1,0 +1,31 @@
+Development notes - Push notifications iMug
+-------------------------------------------
+
+
+
+
+1.Regular Notifications:
+
+
+
+1.a Background
+
+1.a.i Notification trigger
+
+1.a.ii Notification pressed by user
+
+1.b Foreground
+
+1.b.i Notification trigger
+
+1.b.ii Notification pressed by user
+
+1.c Killed
+
+1.c.i Notification trigger
+
+1.c.ii Notification pressed by user
+
+
+2. Silent Notifications
+

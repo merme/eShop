@@ -1,22 +1,17 @@
 //
-//  MainTabBarController.swift
+//  ProductSearchListContentVC.swift
 //  eShop
 //
-//  Created by 08APO0516 on 27/05/2018.
+//  Created by 08APO0516 on 19/06/2018.
 //  Copyright © 2018 jca. All rights reserved.
 //
 
 import UIKit
 
-class MainTabBarController: UITabBarController {
+class ProductSearchListContentVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //UITabBar.appearance().barTintColor = UIColor.orange
-        UITabBar.appearance().tintColor = ColorsEShop.NavigationBar.TitleFontColor
-
-
 
         // Do any additional setup after loading the view.
     }

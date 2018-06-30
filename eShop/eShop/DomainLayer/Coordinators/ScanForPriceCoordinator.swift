@@ -20,7 +20,13 @@ class  ScanForPriceCoordinator {
 
     // MARK: - Pulic methods
     @discardableResult func start() -> UINavigationController {
+        
+        scanForPriceNC.tabBarItem =  UITabBarItem(title: R.string.localizable.start_scanning_title.key.localized,
+                                                  image: R.image.tab_scancode(),
+                                                  selectedImage: R.image.tab_scancode())
+        
         self.presentStartScanning()
+        
         return scanForPriceNC
     }
 

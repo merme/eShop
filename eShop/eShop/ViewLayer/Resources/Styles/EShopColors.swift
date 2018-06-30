@@ -51,7 +51,7 @@ struct ColorsEShop {
     
     // MARK: - ShopPrice
     struct ShopPrice {
-        static let PricesFoundBackground = ColorsEShop.Interface.ColorWhiteAlpha05
+        static let PricesFoundBackground = ColorsEShop.Interface.ColorWhite
         static let FontColor = ColorsEShop.Interface.ColorDarkBlue
     }
     

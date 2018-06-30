@@ -117,7 +117,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 8 images.
+  /// This `R.image` struct is generated, and contains static references to 9 images.
   struct image {
     /// Image `background`.
     static let background = Rswift.ImageResource(bundle: R.hostingBundle, name: "background")
@@ -135,6 +135,8 @@ struct R: Rswift.Validatable {
     static let img_scancode = Rswift.ImageResource(bundle: R.hostingBundle, name: "img_scancode")
     /// Image `img_shop`.
     static let img_shop = Rswift.ImageResource(bundle: R.hostingBundle, name: "img_shop")
+    /// Image `tab_scancode`.
+    static let tab_scancode = Rswift.ImageResource(bundle: R.hostingBundle, name: "tab_scancode")
     
     /// `UIImage(named: "background", bundle: ..., traitCollection: ...)`
     static func background(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
@@ -176,6 +178,11 @@ struct R: Rswift.Validatable {
       return UIKit.UIImage(resource: R.image.img_shop, compatibleWith: traitCollection)
     }
     
+    /// `UIImage(named: "tab_scancode", bundle: ..., traitCollection: ...)`
+    static func tab_scancode(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.tab_scancode, compatibleWith: traitCollection)
+    }
+    
     fileprivate init() {}
   }
   
@@ -194,7 +201,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.segue` struct is generated, and contains static references to 3 view controllers.
+  /// This `R.segue` struct is generated, and contains static references to 4 view controllers.
   struct segue {
     /// This struct is generated for `ProductPricesPVC`, and contains static references to 1 segues.
     struct productPricesPVC {
@@ -206,6 +213,21 @@ struct R: Rswift.Validatable {
       /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
       static func productPricesSegue(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, ProductPricesPVC, ProductPricesContentVC>? {
         return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.productPricesPVC.productPricesSegue, segue: segue)
+      }
+      
+      fileprivate init() {}
+    }
+    
+    /// This struct is generated for `ProductSearchListPVC`, and contains static references to 1 segues.
+    struct productSearchListPVC {
+      /// Segue identifier `ProductSearchListContentSegue`.
+      static let productSearchListContentSegue: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, ProductSearchListPVC, ProductSearchListContentVC> = Rswift.StoryboardSegueIdentifier(identifier: "ProductSearchListContentSegue")
+      
+      /// Optionally returns a typed version of segue `ProductSearchListContentSegue`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func productSearchListContentSegue(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, ProductSearchListPVC, ProductSearchListContentVC>? {
+        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.productSearchListPVC.productSearchListContentSegue, segue: segue)
       }
       
       fileprivate init() {}
@@ -244,12 +266,14 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.storyboard` struct is generated, and contains static references to 3 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 4 storyboards.
   struct storyboard {
     /// Storyboard `LaunchScreen`.
     static let launchScreen = _R.storyboard.launchScreen()
     /// Storyboard `Main`.
     static let main = _R.storyboard.main()
+    /// Storyboard `productList`.
+    static let productList = _R.storyboard.productList()
     /// Storyboard `scanForPrice`.
     static let scanForPrice = _R.storyboard.scanForPrice()
     
@@ -261,6 +285,11 @@ struct R: Rswift.Validatable {
     /// `UIStoryboard(name: "Main", bundle: ...)`
     static func main(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.main)
+    }
+    
+    /// `UIStoryboard(name: "productList", bundle: ...)`
+    static func productList(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.productList)
     }
     
     /// `UIStoryboard(name: "scanForPrice", bundle: ...)`
@@ -278,7 +307,7 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
     
-    /// This `R.string.localizable` struct is generated, and contains static references to 10 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 11 localization keys.
     struct localizable {
       /// en translation: %d prices found
       /// 
@@ -296,6 +325,10 @@ struct R: Rswift.Validatable {
       /// 
       /// Locales: en, es
       static let start_scanning_price_placeholder = Rswift.StringResource(key: "start_scanning_price_placeholder", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
+      /// en translation: Product search
+      /// 
+      /// Locales: en, es
+      static let product_search_title = Rswift.StringResource(key: "product_search_title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
       /// en translation: Product?
       /// 
       /// Locales: en, es
@@ -347,6 +380,13 @@ struct R: Rswift.Validatable {
       /// Locales: en, es
       static func start_scanning_price_placeholder(_: Void = ()) -> String {
         return NSLocalizedString("start_scanning_price_placeholder", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Product search
+      /// 
+      /// Locales: en, es
+      static func product_search_title(_: Void = ()) -> String {
+        return NSLocalizedString("product_search_title", bundle: R.hostingBundle, comment: "")
       }
       
       /// en translation: Product?
@@ -423,6 +463,7 @@ struct _R: Rswift.Validatable {
     static func validate() throws {
       try main.validate()
       try scanForPrice.validate()
+      try productList.validate()
     }
     
     struct launchScreen: Rswift.StoryboardResourceWithInitialControllerType {
@@ -453,6 +494,28 @@ struct _R: Rswift.Validatable {
       static func validate() throws {
         if _R.storyboard.main().mainTabBarController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'mainTabBarController' could not be loaded from storyboard 'Main' as 'MainTabBarController'.") }
         if _R.storyboard.main().splashVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'splashVC' could not be loaded from storyboard 'Main' as 'SplashVC'.") }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct productList: Rswift.StoryboardResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "productList"
+      let productListNC = StoryboardViewControllerResource<ProductListNC>(identifier: "ProductListNC")
+      let productSearchListPVC = StoryboardViewControllerResource<ProductSearchListPVC>(identifier: "ProductSearchListPVC")
+      
+      func productListNC(_: Void = ()) -> ProductListNC? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: productListNC)
+      }
+      
+      func productSearchListPVC(_: Void = ()) -> ProductSearchListPVC? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: productSearchListPVC)
+      }
+      
+      static func validate() throws {
+        if _R.storyboard.productList().productSearchListPVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'productSearchListPVC' could not be loaded from storyboard 'productList' as 'ProductSearchListPVC'.") }
+        if _R.storyboard.productList().productListNC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'productListNC' could not be loaded from storyboard 'productList' as 'ProductListNC'.") }
       }
       
       fileprivate init() {}

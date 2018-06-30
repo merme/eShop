@@ -14,7 +14,7 @@ enum ShopPriceContentField {
     
     case shopName(String?)
     case productName(String?)
-    case priceValue(Double?)
+    case priceValue(String?)
     case count
     
     func key() -> String {
@@ -39,7 +39,7 @@ enum ShopPriceContentField {
         switch self {
         case .shopName(let shopname):       return shopname
         case .productName(let productname): return productname
-        case .priceValue(let priceValue):   return String(format:"%.2f", priceValue ?? 0.0)
+        case .priceValue(let priceValue):   return priceValue //String(format:"%.2f", priceValue ?? "8.88")
         default: return ""
         }
     }
@@ -91,7 +91,7 @@ class ShopPriceContentVC: BaseViewController {
         didSet {
             self.datasource.value = [ShopPriceContentField.shopName(price?.shop?.name),
                                      ShopPriceContentField.productName(price?.product?.name),
-                                     ShopPriceContentField.priceValue(price?.price)]
+                                     ShopPriceContentField.priceValue("\(price?.price ?? 0.00 )")]
         }
     }
     
@@ -204,7 +204,14 @@ class ShopPriceContentVC: BaseViewController {
             switch shopPriceContentField {
             case .productName(let productName) :  weakSelf.newProductName = productName
             case .shopName(let shopName):     weakSelf.newShopName = shopName
-            case .priceValue(let priceValue):   weakSelf.newPriceValue = priceValue //(newValue == nil) ? weakSelf.price?.price : Double(newValue!)
+            case .priceValue(let priceValue):   //weakSelf.newPriceValue = Double(priceValue!) ?? 9.99//(newValue == nil) ? weakSelf.price?.price : Double(newValue!)
+            guard let _priceValue = priceValue else {
+                weakSelf.newPriceValue  = 9.99
+                return
+                }
+            
+                 weakSelf.newPriceValue = _priceValue.doubleValue
+                
               /*  if newValue == nil {
                     weakSelf.newPriceValue =  weakSelf.price?.price
                 } else {

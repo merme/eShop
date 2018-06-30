@@ -40,6 +40,11 @@
 		BF7CC6F92099FE4B009C422F /* StartUpAppSequencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CC6EE2099FE4B009C422F /* StartUpAppSequencer.swift */; };
 		BF7CC701209A014A009C422F /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CC700209A014A009C422F /* UIApplicationExtension.swift */; };
 		BF7FC7D920A6B472008859BF /* UTScanForPriceUC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7FC7D820A6B472008859BF /* UTScanForPriceUC.swift */; };
+		BFA73BAE20D9854700E5E7AB /* ProductListNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA73BAD20D9854700E5E7AB /* ProductListNC.swift */; };
+		BFA73BB020D9858E00E5E7AB /* productList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFA73BAF20D9858E00E5E7AB /* productList.storyboard */; };
+		BFA73BB420D986A800E5E7AB /* ProductSearchListPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA73BB320D986A800E5E7AB /* ProductSearchListPVC.swift */; };
+		BFA73BB620D9876500E5E7AB /* ProductListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA73BB520D9876500E5E7AB /* ProductListCoordinator.swift */; };
+		BFA73BB920D98ABD00E5E7AB /* ProductSearchListContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA73BB820D98ABD00E5E7AB /* ProductSearchListContentVC.swift */; };
 		BFAACEB8209A5CD40067C80D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFAACEB7209A5CD40067C80D /* Main.storyboard */; };
 		BFB11460209ACA56001CB1A8 /* BarcodeScannerPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB11455209ACA56001CB1A8 /* BarcodeScannerPVC.swift */; };
 		BFB11461209ACA56001CB1A8 /* BarcodeScannerContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB11457209ACA56001CB1A8 /* BarcodeScannerContainerVC.swift */; };
@@ -121,6 +126,11 @@
 		BF7CC6EE2099FE4B009C422F /* StartUpAppSequencer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartUpAppSequencer.swift; sourceTree = "<group>"; };
 		BF7CC700209A014A009C422F /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
 		BF7FC7D820A6B472008859BF /* UTScanForPriceUC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTScanForPriceUC.swift; sourceTree = "<group>"; };
+		BFA73BAD20D9854700E5E7AB /* ProductListNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListNC.swift; sourceTree = "<group>"; };
+		BFA73BAF20D9858E00E5E7AB /* productList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = productList.storyboard; sourceTree = "<group>"; };
+		BFA73BB320D986A800E5E7AB /* ProductSearchListPVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProductSearchListPVC.swift; path = eShop/ViewLayer/Controllers/ProductList/ProductSearchList/ProductSearchListPVC.swift; sourceTree = SOURCE_ROOT; };
+		BFA73BB520D9876500E5E7AB /* ProductListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductListCoordinator.swift; sourceTree = "<group>"; };
+		BFA73BB820D98ABD00E5E7AB /* ProductSearchListContentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSearchListContentVC.swift; sourceTree = "<group>"; };
 		BFAACEB7209A5CD40067C80D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BFB11455209ACA56001CB1A8 /* BarcodeScannerPVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerPVC.swift; sourceTree = "<group>"; };
 		BFB11457209ACA56001CB1A8 /* BarcodeScannerContainerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerContainerVC.swift; sourceTree = "<group>"; };
@@ -222,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				BF55468020A6CC24003388F0 /* ScanForPriceCoordinator.swift */,
+				BFA73BB520D9876500E5E7AB /* ProductListCoordinator.swift */,
 			);
 			name = Coordinators;
 			path = eShop/DomainLayer/Coordinators;
@@ -389,6 +400,7 @@
 				BF7CC6DB2099FC8E009C422F /* AppStoryboard.swift */,
 				BFAACEB7209A5CD40067C80D /* Main.storyboard */,
 				BF7CC6D92099FC75009C422F /* scanForPrice.storyboard */,
+				BFA73BAF20D9858E00E5E7AB /* productList.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -449,9 +461,44 @@
 			path = UseCases;
 			sourceTree = "<group>";
 		};
+		BFA73BAC20D984FF00E5E7AB /* ProductList */ = {
+			isa = PBXGroup;
+			children = (
+				BFA73BAD20D9854700E5E7AB /* ProductListNC.swift */,
+				BFA73BB220D9862C00E5E7AB /* ShopPrices */,
+				BFA73BB120D9860900E5E7AB /* ProductSearchList */,
+			);
+			path = ProductList;
+			sourceTree = "<group>";
+		};
+		BFA73BB120D9860900E5E7AB /* ProductSearchList */ = {
+			isa = PBXGroup;
+			children = (
+				BFA73BB320D986A800E5E7AB /* ProductSearchListPVC.swift */,
+				BFA73BB720D98A9400E5E7AB /* Views */,
+			);
+			path = ProductSearchList;
+			sourceTree = "<group>";
+		};
+		BFA73BB220D9862C00E5E7AB /* ShopPrices */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ShopPrices;
+			sourceTree = "<group>";
+		};
+		BFA73BB720D98A9400E5E7AB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BFA73BB820D98ABD00E5E7AB /* ProductSearchListContentVC.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		BFB11452209ACA56001CB1A8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BFA73BAC20D984FF00E5E7AB /* ProductList */,
 				BF0C555620BB133200D6F7BC /* Main */,
 				BFB11453209ACA56001CB1A8 /* ScanForPrice */,
 				BFB1145E209ACA56001CB1A8 /* Splash */,
@@ -668,6 +715,7 @@
 				BFEFBA9920BA96E0004143DE /* SanFranciscoDisplay-Regular.otf in Resources */,
 				BFEFBA9A20BA96E0004143DE /* SanFranciscoDisplay-Bold.otf in Resources */,
 				BFBBD67120999284003EB7E7 /* GoogleService-Info-DEBUG.plist in Resources */,
+				BFA73BB020D9858E00E5E7AB /* productList.storyboard in Resources */,
 				BF6361F020947542008A174C /* LaunchScreen.storyboard in Resources */,
 				BF63620920947763008A174C /* GoogleService-Info.plist in Resources */,
 				BFAACEB8209A5CD40067C80D /* Main.storyboard in Resources */,
@@ -798,6 +846,7 @@
 				BF0C555920BB13C900D6F7BC /* MainTabBarController.swift in Sources */,
 				BFDF48D520BDC78E00563695 /* EShopColors.swift in Sources */,
 				BFB11463209ACA56001CB1A8 /* StartScanningContentVC.swift in Sources */,
+				BFA73BB420D986A800E5E7AB /* ProductSearchListPVC.swift in Sources */,
 				BF682FA120B311090010094C /* ProductPricesContentVC.swift in Sources */,
 				BF55468320A6CC25003388F0 /* ScanForPriceUC.swift in Sources */,
 				BFEFBA8220BA851C004143DE /* BaseViewController.swift in Sources */,
@@ -812,6 +861,7 @@
 				BFEFBAA120BABC3F004143DE /* Strings.swift in Sources */,
 				BFB11465209ACA56001CB1A8 /* SplashVC.swift in Sources */,
 				BFEFBA9C20BA99C0004143DE /* DistanceSelectorView.swift in Sources */,
+				BFA73BB920D98ABD00E5E7AB /* ProductSearchListContentVC.swift in Sources */,
 				BFB11460209ACA56001CB1A8 /* BarcodeScannerPVC.swift in Sources */,
 				BF6362232094941A008A174C /* FirebaseManager.swift in Sources */,
 				BF635E6F20CAE83D00F81A4C /* DoubleExtension.swift in Sources */,
@@ -824,12 +874,14 @@
 				BF73C4ED20AB462B00452BBD /* ShopPriceTVC.swift in Sources */,
 				BF7CC6F82099FE4B009C422F /* PresentMainAppOperation.swift in Sources */,
 				BFBEF9C520D66C2000D37855 /* UIViewExtension.swift in Sources */,
+				BFA73BAE20D9854700E5E7AB /* ProductListNC.swift in Sources */,
 				BF6361E620947541008A174C /* AppDelegate.swift in Sources */,
 				BF63621A209480B7008A174C /* R.generated.swift in Sources */,
 				BF63622E2095F938008A174C /* Price.swift in Sources */,
 				BF55468520A6CC25003388F0 /* LocationManager.swift in Sources */,
 				BF7CC6F92099FE4B009C422F /* StartUpAppSequencer.swift in Sources */,
 				BFED589720A77C7C00E6DA92 /* ShopPriceContentVC.swift in Sources */,
+				BFA73BB620D9876500E5E7AB /* ProductListCoordinator.swift in Sources */,
 				BF014D8120A1783E00F7E1A4 /* UIAlertController+rx.swift in Sources */,
 				BFB11462209ACA56001CB1A8 /* ScanForPriceNC.swift in Sources */,
 				BFED589620A77C7C00E6DA92 /* ShopPricePVC.swift in Sources */,
@@ -1055,7 +1107,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jca.eShopTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jca.eShopTests.debug;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

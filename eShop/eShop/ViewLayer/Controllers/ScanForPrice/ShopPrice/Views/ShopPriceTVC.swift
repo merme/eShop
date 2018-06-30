@@ -72,7 +72,7 @@ class ShopPriceTVC: UITableViewCell, UITextFieldDelegate {
                 switch weakSelf.shopPriceContentField {
                 case .shopName:  weakSelf.onEditingEnd(ShopPriceContentField.shopName(_text))
                 case .productName:  weakSelf.onEditingEnd(ShopPriceContentField.productName(_text))
-                case .priceValue:  weakSelf.onEditingEnd(ShopPriceContentField.priceValue(Double(_text) ?? 0.0))
+                case .priceValue:  weakSelf.onEditingEnd(ShopPriceContentField.priceValue(_text))
                 case .count: return
                 }
                 
@@ -116,6 +116,7 @@ class ShopPriceTVC: UITableViewCell, UITextFieldDelegate {
     func _refreshView() {
         
         imgIcon.image = shopPriceContentField.icon()
+        imgIcon.contentMode = .scaleAspectFit
         
         if (txtValue.text?.isEmpty)! && self.isEditMode == false {
             txtValue.text = shopPriceContentField.value() ?? ""

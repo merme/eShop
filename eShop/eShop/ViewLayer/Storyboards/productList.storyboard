@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Product ListNC-->
+        <scene sceneID="QsE-m0-tPi">
+            <objects>
+                <navigationController storyboardIdentifier="ProductListNC" id="y77-Ae-AW9" customClass="ProductListNC" customModule="eShop" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GX2-BQ-WfO">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0sc-cm-cGx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1041" y="170"/>
+        </scene>
+        <!--Product Search ListPVC-->
+        <scene sceneID="VkQ-dF-V42">
+            <objects>
+                <viewController storyboardIdentifier="ProductSearchListPVC" id="5ck-FP-pfi" customClass="ProductSearchListPVC" customModule="eShop" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vfg-Sy-nvG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kue-tZ-0H4">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <connections>
+                                    <segue destination="dum-RW-WTF" kind="embed" identifier="ProductSearchListContentSegue" id="e2y-WM-KgJ"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Kue-tZ-0H4" firstAttribute="leading" secondItem="YgI-ed-IsV" secondAttribute="leading" id="0Tj-kK-dB9"/>
+                            <constraint firstItem="YgI-ed-IsV" firstAttribute="bottom" secondItem="Kue-tZ-0H4" secondAttribute="bottom" id="6B1-Nh-OyN"/>
+                            <constraint firstItem="Kue-tZ-0H4" firstAttribute="top" secondItem="YgI-ed-IsV" secondAttribute="top" id="7QB-YB-nQV"/>
+                            <constraint firstItem="YgI-ed-IsV" firstAttribute="trailing" secondItem="Kue-tZ-0H4" secondAttribute="trailing" id="iU2-0Y-liJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YgI-ed-IsV"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jka-LX-68C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-255" y="187"/>
+        </scene>
+        <!--Product Search List ContentVC-->
+        <scene sceneID="ZdO-KA-Kim">
+            <objects>
+                <viewController id="dum-RW-WTF" customClass="ProductSearchListContentVC" customModule="eShop" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lgr-Zm-g7g">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gYS-q7-iaW">
+                                <rect key="frame" x="45" y="239" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gzU-4w-Opj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-255" y="983"/>
+        </scene>
+    </scenes>
+</document>

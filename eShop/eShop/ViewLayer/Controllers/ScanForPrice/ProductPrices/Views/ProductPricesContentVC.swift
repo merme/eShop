@@ -41,7 +41,7 @@ class ProductPricesContentVC: UIViewController {
     
     private var newProductName:String?
     private var newShopName:String?
-    private var newPriceValue:Double?
+    private var newPriceValue:String?
     
     private var disposeBag = DisposeBag()
     

@@ -13,8 +13,6 @@ import UserNotifications
 import CocoaLumberjack
 import UserNotifications
 
-
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

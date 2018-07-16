@@ -20,16 +20,15 @@ struct Shop {
     }
     static let gapErrorDistanceM:Double = 1.1132 * 10 * 3 //15.0
     static let gapErrorDistanceDegrees:Double = Shop.m2Degree(m:gapErrorDistanceM)
-    
+
     static func m2Degree(m:Double) -> Double {
         return m * 0.00001 / 1.1132
     }
-    
+
     static func degree2m(degrees:Double) -> Double {
-         return degrees * 1.1132 / 0.00001
+        return degrees * 1.1132 / 0.00001
     }
-    
-    
+
     let key: String
     let latitude: Double
     let longitude: Double
@@ -96,34 +95,34 @@ struct Shop {
     }
 
     func distanceInM(latitude: Double, longitude: Double) -> Double {
-/*
-        let shop:CLLocation = CLLocation(latitude: CLLocationDegrees(self.latitude),
-                                         longitude: CLLocationDegrees(self.latitude))
+        /*
+         let shop:CLLocation = CLLocation(latitude: CLLocationDegrees(self.latitude),
+         longitude: CLLocationDegrees(self.latitude))
 
-        let distance:Double = shop.distance(from: CLLocation(latitude: CLLocationDegrees(latitude),
-                                                             longitude: CLLocationDegrees(latitude)))
+         let distance:Double = shop.distance(from: CLLocation(latitude: CLLocationDegrees(latitude),
+         longitude: CLLocationDegrees(latitude)))
 
-        return Double(round(10000 * distance) / 10000)
- */
-        
-       // func distance(lat1:Double, self.longitude:Double, lat2:Double, longitude:Double, unit:String) -> Double {
-            let theta = self.longitude - longitude
+         return Double(round(10000 * distance) / 10000)
+         */
+
+        // func distance(lat1:Double, self.longitude:Double, lat2:Double, longitude:Double, unit:String) -> Double {
+        let theta = self.longitude - longitude
         var dist = sin(deg2rad(deg: self.latitude)) * sin(deg2rad(deg: latitude)) + cos(deg2rad(deg: self.latitude)) * cos(deg2rad(deg: latitude)) * cos(deg2rad(deg: theta))
-            dist = acos(dist)
+        dist = acos(dist)
         dist = rad2deg(rad: dist)
-            dist *= ( 60 * 1.1515 )
-        
-            dist *=  (1.609344 * 1000)
-        
-            return dist
-       // }
-        
+        dist *= ( 60 * 1.1515 )
+
+        dist *=  (1.609344 * 1000)
+
+        return dist
+        // }
+
     }
-    
+
     private func deg2rad(deg:Double) -> Double {
         return deg * .pi / 180
     }
-    
+
     private func rad2deg(rad:Double) -> Double {
         return rad * 180.0 / .pi
     }

@@ -20,9 +20,9 @@ class  StartUpAppSequencer {
 
         let presentMainAppOperation = PresentMainAppOperation()
         //let presentSplashOperation = PresentSplashOperation()
-       
+
         let operations = [/*presentSplashOperation,*/
-                          presentMainAppOperation]
+            presentMainAppOperation]
 
         // Add operation dependencies
         //presentMainAppOperation.addDependency(presentSplashOperation)

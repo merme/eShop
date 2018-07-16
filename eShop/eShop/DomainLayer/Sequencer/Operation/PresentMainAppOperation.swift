@@ -21,12 +21,9 @@ class PresentMainAppOperation: ConcurrentOperation {
                                                     ProductListCoordinator.shared.start()]
             mainTabBarController.modalTransitionStyle = .crossDissolve
 
-           
-            
             let appDelegate  = UIApplication.shared.delegate as! AppDelegate
             appDelegate.window!.rootViewController?.present(mainTabBarController, animated: true, completion: nil)
-            
-            
+
             self.state = .Finished
         }
     }

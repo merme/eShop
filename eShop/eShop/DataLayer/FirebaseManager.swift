@@ -59,14 +59,14 @@ final class FirebaseManager {
     }
 
     func find(barcode:String, onComplete:@escaping (Product?) -> Void ) {
-        
+
         productsKeyReference.child(barcode).observeSingleEvent(of: .value, with: { snapshot in
             onComplete(Product(snapshot: snapshot ))
         })
     }
-    
+
     func find(productName:String, onComplete:@escaping ([Product]) -> Void ) {
-        
+
         productsKeyReference.queryOrdered(byChild: "name")
             .queryStarting(atValue: productName)
             .queryEnding(atValue: "\(productName)z")
@@ -74,32 +74,9 @@ final class FirebaseManager {
                 let products:[Product] = snapshot.children.map {
                     return Product(snapshot: $0 as! DataSnapshot)!
                 }
-            onComplete(products)
-        })
-        /*
-        pricesKeyReference
-            .queryOrdered(byChild: Price.Field.barcode)
-            .queryEqual(toValue: barcode).observeSingleEvent(of: .value) { snapshot in
-                let prices:[Price] = snapshot.children
-                    .map { return Price(snapshot: $0 as! DataSnapshot) ?? Price(barcode: "", shop: "", price: nil) }
-                    .filter {
-                        let isInRange = Shop(key: $0.shopLocation).distanceInM(latitude: latitude, longitude: longitude) <= radiousInM
-                        return $0.price != nil && isInRange
-                    }
-                    .sorted(by: {
-                        /*if sortByPrice {
-                         return   $0.price! < $1.price!
-                         } else {
-                         return  $0.distanceInM(latitude:latitude,longitude:longitude) < $1.distanceInM(latitude:latitude,longitude:longitude)
-                         }*/
-                        return sortByPrice ? $0.price! < $1.price! : $0.distanceInM(latitude:latitude,longitude:longitude) < $1.distanceInM(latitude:latitude,longitude:longitude)
-                        
-                    })
-                
-                onComplete(prices)
-        }*/
+                onComplete(products)
+            })
     }
-    
 
     // MARK: - Shop
     func create(shop:Shop) {
@@ -214,11 +191,7 @@ final class FirebaseManager {
                         return $0.price != nil && isInRange
                     }
                     .sorted(by: {
-                        /*if sortByPrice {
-                         return   $0.price! < $1.price!
-                         } else {
-                         return  $0.distanceInM(latitude:latitude,longitude:longitude) < $1.distanceInM(latitude:latitude,longitude:longitude)
-                         }*/
+ 
                         return sortByPrice ? $0.price! < $1.price! : $0.distanceInM(latitude:latitude,longitude:longitude) < $1.distanceInM(latitude:latitude,longitude:longitude)
 
                     })

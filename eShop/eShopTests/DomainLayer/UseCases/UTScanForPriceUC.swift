@@ -38,7 +38,8 @@ class UTScanForPriceUC: XCTestCase {
         
         
         let disposeBag = DisposeBag()
-        ScanForPriceUC.shared.find(barcode: "12345678").subscribe { event in
+        
+        ScanForPriceUC.shared.find(barcode: "12345678",sortByPrice:false).subscribe { event in
             switch event {
             case .success(let price):
                 
@@ -85,7 +86,7 @@ class UTScanForPriceUC: XCTestCase {
         
         
         let disposeBag = DisposeBag()
-        ScanForPriceUC.shared.find(barcode: "12345678").subscribe { event in
+        ScanForPriceUC.shared.find(barcode: "12345678",sortByPrice:false).subscribe { event in
             switch event {
             case .success(let price):
                 
@@ -131,7 +132,7 @@ class UTScanForPriceUC: XCTestCase {
         
         
         let disposeBag = DisposeBag()
-        ScanForPriceUC.shared.find(barcode: "12345678").subscribe { event in
+        ScanForPriceUC.shared.find(barcode: "12345678",sortByPrice:false).subscribe { event in
             switch event {
             case .success(let price):
                 
@@ -176,7 +177,7 @@ class UTScanForPriceUC: XCTestCase {
         
         
         let disposeBag = DisposeBag()
-        ScanForPriceUC.shared.find(barcode: "2222222").subscribe { event in
+        ScanForPriceUC.shared.find(barcode: "2222222",sortByPrice:false).subscribe { event in
             switch event {
             case .success(let price):
                 
@@ -219,7 +220,7 @@ class UTScanForPriceUC: XCTestCase {
         
         
         let disposeBag = DisposeBag()
-        ScanForPriceUC.shared.find(barcode: "2222222").subscribe { event in
+        ScanForPriceUC.shared.find(barcode: "2222222",sortByPrice:false).subscribe { event in
             switch event {
             case .success(let price):
                 
@@ -261,7 +262,7 @@ class UTScanForPriceUC: XCTestCase {
         
         
         let disposeBag = DisposeBag()
-        ScanForPriceUC.shared.find(barcode: "2222222").subscribe { event in
+        ScanForPriceUC.shared.find(barcode: "2222222",sortByPrice:false).subscribe { event in
             switch event {
             case .success(let price):
                 
@@ -310,7 +311,7 @@ class UTScanForPriceUC: XCTestCase {
             switch event {
             case .completed:
                 
-                ScanForPriceUC.shared.find(barcode: "12345678").subscribe { event in
+                ScanForPriceUC.shared.find(barcode: "12345678",sortByPrice:false).subscribe { event in
                     switch event {
                     case .success(let price):
                         
@@ -362,7 +363,7 @@ class UTScanForPriceUC: XCTestCase {
         
         let disposeBag = DisposeBag()
         
-        ScanForPriceUC.shared.find(barcode: "12345678", radiousInM: 10000).subscribe { event in
+        ScanForPriceUC.shared.find(barcode: "12345678", radiousInM: 10000,sortByPrice:false).subscribe { event in
             
             switch event {
             case .success(let prices):
@@ -409,7 +410,7 @@ class UTScanForPriceUC: XCTestCase {
         
         let disposeBag = DisposeBag()
         
-        ScanForPriceUC.shared.find(barcode: "12345678", radiousInM: 20000).subscribe { event in
+        ScanForPriceUC.shared.find(barcode: "12345678", radiousInM: 20000,sortByPrice:false).subscribe { event in
             
             switch event {
             case .success(let prices):
@@ -466,7 +467,7 @@ class UTScanForPriceUC: XCTestCase {
         
         let disposeBag = DisposeBag()
         
-        ScanForPriceUC.shared.find(barcode: "12345678", radiousInM: 1000).subscribe { event in
+        ScanForPriceUC.shared.find(barcode: "12345678", radiousInM: 1000,sortByPrice:false).subscribe { event in
             
             switch event {
             case .success(let prices):

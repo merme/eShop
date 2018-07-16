@@ -20,15 +20,15 @@ class PresentSplashOperation: ConcurrentOperation {
             let splashViewController = SplashVC.instantiate(fromAppStoryboard: .Main)
             splashViewController.modalTransitionStyle = .crossDissolve
             splashViewController.onAnimationDoneAction = { [weak self] in
-                
+
                 guard let weakSelf = self else { return }
-                
+
                 weakSelf.state = .Finished
             }
-            
+
             appDelegate.window!.rootViewController = splashViewController
             // ?.present(splashViewController, animated: true, completion: nil)//
         }
-        
+
     }
 }

@@ -24,7 +24,7 @@ extension UIApplication {
         }
         return controller
     }
-    
+
     class func present(viewController: UIViewController, animated: Bool, completion: (() -> Swift.Void)? = nil) {
 
         if var topController = UIApplication.shared.delegate?.window??.rootViewController {

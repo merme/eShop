@@ -20,18 +20,18 @@ class  ScanForPriceCoordinator {
 
     // MARK: - Pulic methods
     @discardableResult func start() -> UINavigationController {
-        
+
         scanForPriceNC.tabBarItem =  UITabBarItem(title: R.string.localizable.start_scanning_title.key.localized,
                                                   image: R.image.tab_scancode(),
                                                   selectedImage: R.image.tab_scancode())
-        
+
         self.presentStartScanning()
-        
+
         return scanForPriceNC
     }
 
     // MARK: - Private/Internal
-    private func presentStartScanning()  {
+    private func presentStartScanning() {
         DispatchQueue.main.async {
 
             let startScanningPVC =  StartScanningPVC.instantiate(fromAppStoryboard: .scanForPrice)
@@ -40,20 +40,20 @@ class  ScanForPriceCoordinator {
                 weakSelf.radiousInM = distanceInM
                 weakSelf.presentBarcodeScanner()
             }
-            
+
             self.scanForPriceNC.viewControllers = [startScanningPVC]
         }
     }
-    
+
     private func presentBarcodeScanner() {
-        
+
         let barcodeScannerPVC =  BarcodeScannerPVC.instantiate(fromAppStoryboard: .scanForPrice)
         barcodeScannerPVC.hidesBottomBarWhenPushed = true
         barcodeScannerPVC.onShopPrice = { [weak self] price in
             guard let weakSelf = self else { return }
             weakSelf.presentShopPrice(price: price)
         }
-        
+
         scanForPriceNC.pushViewController(barcodeScannerPVC, animated: true)
     }
 
@@ -63,19 +63,19 @@ class  ScanForPriceCoordinator {
         shopPricePVC.onPriceUpdated = { [weak self] updatedPrice in
             guard let weakSelf = self,
                 let _product = updatedPrice.product else { return }
-           weakSelf.presentProductPrices(product:_product,radiousInM:weakSelf.radiousInM)
+            weakSelf.presentProductPrices(product:_product,radiousInM:weakSelf.radiousInM)
         }
         shopPricePVC.onClose = { [weak self]  in
             guard let weakSelf = self else { return }
-           
+
             weakSelf.scanForPriceNC.popToRootViewController(animated: false)
         }
-        
+
         scanForPriceNC.pushViewController(shopPricePVC, animated: true)
     }
-    
+
     private func presentProductPrices(product: Product, radiousInM: Int) {
-        
+
         let productPricesPVC = ProductPricesPVC.instantiate(fromAppStoryboard: .scanForPrice)
         productPricesPVC.product = product
         productPricesPVC.radiousInM = radiousInM
@@ -83,19 +83,16 @@ class  ScanForPriceCoordinator {
             guard let weakSelf = self else { return }
             weakSelf.scanForPriceNC.popToRootViewController(animated: false)
         }
-        
-        
-         scanForPriceNC.pushViewController(productPricesPVC, animated: true)
-        
+
+        scanForPriceNC.pushViewController(productPricesPVC, animated: true)
+
         /*
-        self.scanForPriceNC.viewControllers = [productProductPrices]
-        
-        if let topController = UIApplication.topViewController() {
-            topController.present(self.scanForPriceNC, animated: true, completion: nil )
-        }*/
-        
+         self.scanForPriceNC.viewControllers = [productProductPrices]
+
+         if let topController = UIApplication.topViewController() {
+         topController.present(self.scanForPriceNC, animated: true, completion: nil )
+         }*/
+
     }
-    
-    
-    
+
 }

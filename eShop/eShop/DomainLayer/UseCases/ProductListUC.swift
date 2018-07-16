@@ -9,15 +9,32 @@
 import Foundation
 import RxSwift
 
-class ScanForPriceUC {
+class ProductListUC {
 
-    static let shared =  ScanForPriceUC()
+    static let shared =  ProductListUC()
 
     // MARK :- Private attributes
     var disposeBag = DisposeBag()
 
     // MARK :-
     private init() {} //This prevents others from using the default '()' initializer for this class.
+    /*
+    func find(productName:String, onComplete:@escaping ([Product]) -> Void ) {
+        
+        FirebaseManager.shared.find(productName: productName, onComplete: onComplete)
+    }*/
+    func find(productName:String) -> Single<[Product]> {
+        return Single.create { single in
+            let disposable = Disposables.create()
+            
+            FirebaseManager.shared.find(productName: productName, onComplete: { products in
+                  single(.success(products))
+            })
+            
+             return disposable
+        }
+    }
+    
 
     func find(barcode: String,sortByPrice:Bool) -> Single<Price> {
         return Single.create { single in

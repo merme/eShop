@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 extension Int {
-    
+
     func formatDist() -> String {
-        
+
         if self < 1000 {
             return "\(String(self)) m"
         } else if self >= 1000 && self < 10000 {
@@ -21,6 +21,5 @@ extension Int {
             return "\(String(self / 1000)) Km"
         }
     }
-    
-}
 
+}

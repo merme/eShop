@@ -11,7 +11,7 @@ import UIKit.UIColor
 
 // MARK: - App Colors
 struct ColorsEShop {
-    
+
     struct Interface {
         static let ColorPink            = #colorLiteral(red: 0.8470588235, green: 0.3607843137, blue: 0.4470588235, alpha: 1)//D85C72
         static let ColorYellow          = #colorLiteral(red: 0.9333333333, green: 0.862745098, blue: 0, alpha: 1)//EEDC00
@@ -32,29 +32,28 @@ struct ColorsEShop {
         static let ColorRed             = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)//FF0000
         static let ColorGreen           = #colorLiteral(red: 0.3921568627, green: 0.7294117647, blue: 0.01568627451, alpha: 1)//64BA04
     }
-    
-    
+
     // MARK: - NavigationBar
     struct NavigationBar {
         static let TitleFontColor  = Interface.ColorDarkBlue
         static let BackgroundColor = Interface.ColorWhite
     }
-    
+
     struct DistanceSelector {
         static let TitleFontColor = Interface.ColorDarkBlue
         static let DistanceFontColor = Interface.ColorDarkBlue
     }
-    
+
     struct StartScanning {
         static let TitleFontColor = Interface.ColorDarkBlue
     }
-    
+
     // MARK: - ShopPrice
     struct ShopPrice {
         static let PricesFoundBackground = ColorsEShop.Interface.ColorWhite
         static let FontColor = ColorsEShop.Interface.ColorDarkBlue
     }
-    
+
     struct ProductPrices {
         static let PriceFontColor = ColorsEShop.Interface.ColorDarkBlue
         static let DistanceFontColor = ColorsEShop.Interface.ColorDarkBlue
@@ -71,8 +70,7 @@ extension UIColor {
         let green = CGFloat((rgbaValue >> 16) & 0xff) / 255.0
         let blue  = CGFloat((rgbaValue >>  8) & 0xff) / 255.0
         let alpha = CGFloat((rgbaValue      ) & 0xff) / 255.0
-        
+
         self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
 }
-

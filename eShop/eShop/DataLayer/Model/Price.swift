@@ -37,20 +37,20 @@ struct Price {
     }
 
     init(product: Product, shop: Shop, price: Double?) {
-        
+
         self.init(barcode: product.barcode, shop: shop.getKey(), price: price)
         self.product = product
         self.shop = shop
     }
-    
+
     init? (price:Price) {
-        
+
         guard let _product = price.product,
             let _shop = price.shop else { return nil }
-        
+
         self.init(product: _product, shop: _shop, price: price.price)
     }
-    
+
     init?(snapshot: DataSnapshot) {
         guard let _snapshotValue = snapshot.value as? [String: AnyObject] ,
             let _price = _snapshotValue[Field.price] as? Double ,
@@ -79,11 +79,11 @@ struct Price {
     func getKey() -> String {
         return "\(barcode)-\(shopLocation)"
     }
-    
+
     func distanceInM(latitude: Double, longitude: Double) -> Double {
         return Shop(shopLocation: self.shopLocation).distanceInM(latitude: latitude, longitude: longitude)
     }
-    
+
     func getShop(shopLocation:String, onCompletion: @escaping (Shop?) -> Void ) {
         DataManager.shared.getShop(shopLocation: shopLocation, onComplete: onCompletion)
     }
@@ -95,9 +95,7 @@ extension Price: Equatable {
         guard let _lhsShop = lhs.shop, let _rhsShop = rhs.shop else { return false }
         guard let _lhsProduct = lhs.product, let _rhsProduct = rhs.product else { return false }
         guard let _lhsPrice = lhs.price, let _rhsPrice = rhs.price else { return false }
-        
-        
-        
+
         return _lhsShop == _rhsShop  && _lhsProduct == _rhsProduct && _lhsPrice == _rhsPrice
     }
 }

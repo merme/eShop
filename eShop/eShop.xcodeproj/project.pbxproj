@@ -10,6 +10,8 @@
 		00DB072F203F235427605218 /* Pods_eShop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 693EBEB6285F376CB57A8A3D /* Pods_eShop.framework */; };
 		BF014D8120A1783E00F7E1A4 /* UIAlertController+rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF014D8020A1783E00F7E1A4 /* UIAlertController+rx.swift */; };
 		BF0C555920BB13C900D6F7BC /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0C555820BB13C900D6F7BC /* MainTabBarController.swift */; };
+		BF29EDA820E7EA5B00E31BC4 /* ProductSearchListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29EDA720E7EA5B00E31BC4 /* ProductSearchListCell.swift */; };
+		BF29EDAA20E7F0CB00E31BC4 /* ProductListUC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29EDA920E7F0CB00E31BC4 /* ProductListUC.swift */; };
 		BF384A6F209789CA00E0D073 /* UTProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF384A6E209789C900E0D073 /* UTProduct.swift */; };
 		BF384A7120984A5900E0D073 /* UTPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF384A7020984A5900E0D073 /* UTPrice.swift */; };
 		BF4E901420B47E6B002B908B /* UTDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4E901320B47E6A002B908B /* UTDataManager.swift */; };
@@ -91,6 +93,8 @@
 		A12AAAD9FAD84030B79DF1E8 /* Pods-eShop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eShop.release.xcconfig"; path = "Pods/Target Support Files/Pods-eShop/Pods-eShop.release.xcconfig"; sourceTree = "<group>"; };
 		BF014D8020A1783E00F7E1A4 /* UIAlertController+rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+rx.swift"; sourceTree = "<group>"; };
 		BF0C555820BB13C900D6F7BC /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		BF29EDA720E7EA5B00E31BC4 /* ProductSearchListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSearchListCell.swift; sourceTree = "<group>"; };
+		BF29EDA920E7F0CB00E31BC4 /* ProductListUC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductListUC.swift; sourceTree = "<group>"; };
 		BF384A6E209789C900E0D073 /* UTProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UTProduct.swift; sourceTree = "<group>"; };
 		BF384A7020984A5900E0D073 /* UTPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UTPrice.swift; sourceTree = "<group>"; };
 		BF462DD720C9541C00094777 /* eShop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = eShop.entitlements; sourceTree = "<group>"; };
@@ -222,6 +226,7 @@
 		BF55467D20A6CC24003388F0 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				BF29EDA920E7F0CB00E31BC4 /* ProductListUC.swift */,
 				BF55467E20A6CC24003388F0 /* ScanForPriceUC.swift */,
 			);
 			name = UseCases;
@@ -465,7 +470,6 @@
 			isa = PBXGroup;
 			children = (
 				BFA73BAD20D9854700E5E7AB /* ProductListNC.swift */,
-				BFA73BB220D9862C00E5E7AB /* ShopPrices */,
 				BFA73BB120D9860900E5E7AB /* ProductSearchList */,
 			);
 			path = ProductList;
@@ -480,17 +484,11 @@
 			path = ProductSearchList;
 			sourceTree = "<group>";
 		};
-		BFA73BB220D9862C00E5E7AB /* ShopPrices */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ShopPrices;
-			sourceTree = "<group>";
-		};
 		BFA73BB720D98A9400E5E7AB /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				BFA73BB820D98ABD00E5E7AB /* ProductSearchListContentVC.swift */,
+				BF29EDA720E7EA5B00E31BC4 /* ProductSearchListCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -873,8 +871,10 @@
 				BFEFBA8520BA879A004143DE /* EShopFonts.swift in Sources */,
 				BF73C4ED20AB462B00452BBD /* ShopPriceTVC.swift in Sources */,
 				BF7CC6F82099FE4B009C422F /* PresentMainAppOperation.swift in Sources */,
+				BF29EDA820E7EA5B00E31BC4 /* ProductSearchListCell.swift in Sources */,
 				BFBEF9C520D66C2000D37855 /* UIViewExtension.swift in Sources */,
 				BFA73BAE20D9854700E5E7AB /* ProductListNC.swift in Sources */,
+				BF29EDAA20E7F0CB00E31BC4 /* ProductListUC.swift in Sources */,
 				BF6361E620947541008A174C /* AppDelegate.swift in Sources */,
 				BF63621A209480B7008A174C /* R.generated.swift in Sources */,
 				BF63622E2095F938008A174C /* Price.swift in Sources */,

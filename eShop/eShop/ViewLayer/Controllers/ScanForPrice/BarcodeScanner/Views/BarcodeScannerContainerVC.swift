@@ -13,11 +13,11 @@ class BarcodeScannerContainerVC: BarcodeScannerViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.messageViewController.regularTintColor = ColorsEShop.NavigationBar.TitleFontColor
         self.messageViewController.messages.scanningText = "_scannig text"
         self.messageViewController.messages.processingText = "_processing text"
-        
+
         self.headerViewController.titleLabel.font = EShopFonts.NavigationBar.TitleFont
         self.headerViewController.titleLabel.highlightedTextColor = ColorsEShop.NavigationBar.TitleFontColor
 
@@ -28,16 +28,15 @@ class BarcodeScannerContainerVC: BarcodeScannerViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
-    // MARK: - Navigation
+     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
 
 }

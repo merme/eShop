@@ -9,9 +9,9 @@
 import UIKit
 
 extension UIView {
-    
+
     func dropShadow(scale: Bool = true) {
-        
+
         self.layer.borderColor = self.backgroundColor?.cgColor
         self.layer.borderWidth = 3.0
         self.layer.shadowColor = UIColor.darkGray.cgColor//self.backgroundColor?.cgColor
@@ -21,11 +21,11 @@ extension UIView {
         self.layer.masksToBounds = false
         self.layer.shouldRasterize = true
         self.layer.rasterizationScale =  UIScreen.main.scale//[UIScreen mainScreen].scale;
-        
+
     }
-    
+
     func dropUpperShadow(scale: Bool = true) {
-        
+
         self.layer.borderColor = self.backgroundColor?.cgColor
         self.layer.borderWidth = 3.0
         self.layer.shadowColor = UIColor.darkGray.cgColor//self.backgroundColor?.cgColor
@@ -35,7 +35,7 @@ extension UIView {
         self.layer.masksToBounds = false
         self.layer.shouldRasterize = true
         self.layer.rasterizationScale =  UIScreen.main.scale//[UIScreen mainScreen].scale;
-        
+
     }
-    
+
 }

@@ -21,7 +21,6 @@ class ProductSearchListPVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     // MARK :-  Private/Internal
     func setupPresenterViewController() {

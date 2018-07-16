@@ -24,19 +24,19 @@ class  ProductListCoordinator {
     }
 
     // MARK: - Private/Internal
-    private func presentProductSearchList()  {
+    private func presentProductSearchList() {
         DispatchQueue.main.async {
 
             let productSearchListPVC =  ProductSearchListPVC.instantiate(fromAppStoryboard: .productList)
             /*
-            startScanningPVC.onScan = { [weak self]  distanceInM in
-                guard let weakSelf = self else { return }
-                weakSelf.radiousInM = distanceInM
-                weakSelf.presentBarcodeScanner()
-            }*/
-            
+             startScanningPVC.onScan = { [weak self]  distanceInM in
+             guard let weakSelf = self else { return }
+             weakSelf.radiousInM = distanceInM
+             weakSelf.presentBarcodeScanner()
+             }*/
+
             self.productListNC.viewControllers = [productSearchListPVC]
         }
     }
-    
+
 }

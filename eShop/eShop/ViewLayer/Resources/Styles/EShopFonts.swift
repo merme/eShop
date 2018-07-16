@@ -10,16 +10,16 @@ import Foundation
 import UIKit
 
 struct EShopFonts {
-    
+
     struct NavigationBar {
         static let TitleFont = TextStyle.h18Bold.font
     }
-    
+
     struct DistanceSelector {
         static let TitleFont = TextStyle.h18Bold.font
         static let DistanceFont = TextStyle.h18Bold.font
     }
-    
+
     struct StartScanning {
         static let TitleFont      = TextStyle.h24Bold.font
     }
@@ -30,17 +30,16 @@ struct EShopFonts {
         static let PriceFont        = TextStyle.h40Bold.font
         static let SelectorFont        = TextStyle.h20Bold.font
     }
-    
-    
+
     struct ShopPrice {
         static let ProductFont      = TextStyle.h40Bold.font
         static let ShopFont         = TextStyle.h40Bold.font
         static let PriceFont        = TextStyle.h75Bold.font
         static let PricesFoundFont  = TextStyle.h36Bold.font
     }
-    
+
     struct Home {
-        
+
         static let MachineSelectorFont      = TextStyle.h15Regular.font
         static let MissingAlarmFont         = TextStyle.h15Regular.font
         static let MissingFavouriteFont     = TextStyle.h15Bold.font
@@ -49,7 +48,7 @@ struct EShopFonts {
         static let AlarmNameFont            = TextStyle.h15Regular.font
         static let MachineNameFont          = TextStyle.h15Regular.font
     }
-    
+
 }
 
 enum TextStyle {
@@ -79,10 +78,10 @@ enum TextStyleSize:Int {
 }
 
 extension TextStyle {
-    
+
     static let body = TextStyle.dynamic(style: .body)
     //static let headline = TextStyle.customBold(size: 20, weight: UIFontWeightBold, height: 24, dropShadow: true)
-    
+
     static let h120Bold = TextStyle.customBold(size: CGFloat(TextStyleSize.h120.rawValue))
     static let h75Bold = TextStyle.customBold(size: CGFloat(TextStyleSize.h75.rawValue))
     static let h40Bold = TextStyle.customBold(size: CGFloat(TextStyleSize.h40.rawValue))
@@ -94,7 +93,7 @@ extension TextStyle {
     static let h15Bold = TextStyle.customBold(size: CGFloat(TextStyleSize.h15.rawValue))
     static let h14Bold = TextStyle.customBold(size: CGFloat(TextStyleSize.h14.rawValue))
     static let h10Bold = TextStyle.customBold(size: CGFloat(TextStyleSize.h10.rawValue))
-    
+
     static let h120Regular = TextStyle.customRegular(size: CGFloat(TextStyleSize.h75.rawValue))
     static let h75Regular = TextStyle.customRegular(size: CGFloat(TextStyleSize.h75.rawValue))
     static let h40Regular = TextStyle.customRegular(size: CGFloat(TextStyleSize.h40.rawValue))
@@ -107,7 +106,7 @@ extension TextStyle {
     static let h14Regular = TextStyle.customRegular(size: CGFloat(TextStyleSize.h14.rawValue))
     static let h10Regular = TextStyle.customRegular(size: CGFloat(TextStyleSize.h10.rawValue))
     static let h6Regular  = TextStyle.customRegular(size: CGFloat(TextStyleSize.h6.rawValue))
-    
+
     static let h120Thin = TextStyle.customRegular(size: CGFloat(TextStyleSize.h120.rawValue))
     static let h75Thin = TextStyle.customThin(size: CGFloat(TextStyleSize.h75.rawValue))
     static let h40Thin = TextStyle.customThin(size: CGFloat(TextStyleSize.h40.rawValue))
@@ -119,7 +118,7 @@ extension TextStyle {
     static let h15Thin = TextStyle.customThin(size: CGFloat(TextStyleSize.h15.rawValue))
     static let h14Thin = TextStyle.customThin(size: CGFloat(TextStyleSize.h14.rawValue))
     static let h10Thin = TextStyle.customThin(size: CGFloat(TextStyleSize.h10.rawValue))
-    
+
     static let h120Ultralight = TextStyle.customUltralight(size: CGFloat(TextStyleSize.h120.rawValue))
     static let h75Ultralight = TextStyle.customUltralight(size: CGFloat(TextStyleSize.h75.rawValue))
     static let h40Ultralight = TextStyle.customUltralight(size: CGFloat(TextStyleSize.h40.rawValue))
@@ -134,9 +133,9 @@ extension TextStyle {
     static let h15Ultralight = TextStyle.customUltralight(size: CGFloat(TextStyleSize.h15.rawValue))
     static let h14Ultralight = TextStyle.customUltralight(size: CGFloat(TextStyleSize.h14.rawValue))
     static let h10Ultralight = TextStyle.customUltralight(size: CGFloat(TextStyleSize.h10.rawValue))
-    
+
     var font :UIFont {
-        
+
         let font:UIFont?
         switch self {
         case let .dynamic(style):
@@ -153,10 +152,9 @@ extension TextStyle {
         guard font != nil else {
             return UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.bold)
         }
-        
-        return font!
-            
-    }
-    
-}
 
+        return font!
+
+    }
+
+}
